@@ -1,0 +1,717 @@
+<title>Nyland Inmobiliaria Horizonte</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: app de agencia con barra lateral verde Nyland; vista inicial = WhatsApp en vivo + ficha del lead que se rellena sola */
+:root{
+  --verde:#1C3A2E; --oro:#D6B26C; --menta:#96E1BE; --marfil:#F2F5F0;
+  --bg:#EEF2EE; --fg:#1C3A2E; --muted:#557064; --surface:#FFFFFF; --line:#D6DFD8; --soft:#E5F4EB;
+  --side:#1C3A2E; --side-fg:#E8EEE9; --accent:#94732F;
+  --hot:#B5482F; --hot-bg:#F8E3DC; --warm:#9A6A12; --warm-bg:#F6ECD3; --cold:#3D6A86; --cold-bg:#DFEBF2;
+  --chat-bg:#E4EAE3; --b-in:#FFFFFF; --b-out:#D7F2E1;
+  --f-display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --f-body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0E1D17; --fg:#E6EDE8; --muted:#9FB5AA; --surface:#152B23; --line:#284539; --soft:#1C3A2E;
+  --side:#0A1611; --side-fg:#E6EDE8; --accent:#D6B26C;
+  --hot:#F0937A; --hot-bg:#4A2219; --warm:#E8C27A; --warm-bg:#43341A; --cold:#93C3E0; --cold-bg:#1B3444;
+  --chat-bg:#10231C; --b-in:#1B352C; --b-out:#235140; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E1D17; --fg:#E6EDE8; --muted:#9FB5AA; --surface:#152B23; --line:#284539; --soft:#1C3A2E;
+  --side:#0A1611; --side-fg:#E6EDE8; --accent:#D6B26C;
+  --hot:#F0937A; --hot-bg:#4A2219; --warm:#E8C27A; --warm-bg:#43341A; --cold:#93C3E0; --cold-bg:#1B3444;
+  --chat-bg:#10231C; --b-in:#1B352C; --b-out:#235140; color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.5}
+button{font:inherit;color:inherit}
+h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.15;text-wrap:balance}
+h2{font-size:1.6rem;font-weight:800;letter-spacing:-.01em}
+h3{font-size:1.05rem;font-weight:600}
+p{margin:0}
+.muted{color:var(--muted)}
+.small{font-size:.82rem}
+.mono{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.04em}
+:focus-visible{outline:3px solid var(--menta);outline-offset:2px}
+
+.app{display:grid;grid-template-columns:230px minmax(0,1fr);min-height:100vh}
+.side{background:var(--side);color:var(--side-fg);padding-block:22px;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:16px;display:flex;flex-direction:column;gap:22px;position:sticky;top:0;height:100vh}
+.brand{font-family:var(--f-display);font-weight:800;font-size:1.2rem}
+.brand span{color:var(--oro)}
+.brand small{display:block;font-family:var(--f-body);font-weight:500;font-size:.78rem;color:var(--menta);margin-top:2px}
+.nav{display:flex;flex-direction:column;gap:4px}
+.nav button{background:none;border:0;text-align:left;padding:10px 12px;border-radius:10px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:8px;color:var(--side-fg);opacity:.82}
+.nav button:hover{opacity:1;background:rgba(255,255,255,.06)}
+.nav button[aria-current="page"]{opacity:1;background:rgba(150,225,190,.14);color:#FFFFFF;box-shadow:inset 3px 0 0 var(--oro)}
+.badge{font-family:var(--f-mono);font-size:.7rem;background:var(--oro);color:#1C3A2E;border-radius:999px;padding:1px 7px}
+.side-foot{margin-top:auto;font-size:.76rem;opacity:.75;display:grid;gap:6px}
+.side-foot b{color:var(--oro);font-family:var(--f-display);font-size:.95rem}
+
+main{min-width:0;padding-block:22px 40px;padding-left:24px;padding-right:max(16px, env(safe-area-inset-right, 0px))}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+.demo-tag{font-size:.78rem;background:var(--warm-bg);color:var(--warm);border-radius:999px;padding:4px 12px}
+.view{display:grid;gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;min-width:0}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.btn{border:0;border-radius:9px;padding:9px 14px;font-weight:600;cursor:pointer;background:var(--verde);color:var(--marfil)}
+.btn:disabled{opacity:.55;cursor:default}
+.btn.oro{background:var(--oro);color:#1C3A2E}
+.btn.ghost{background:transparent;color:var(--fg);border:1px solid var(--line)}
+.pill{display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:2px 9px;font-size:.75rem;font-weight:600;white-space:nowrap}
+.pill.hot{background:var(--hot-bg);color:var(--hot)}
+.pill.warm{background:var(--warm-bg);color:var(--warm)}
+.pill.cold{background:var(--cold-bg);color:var(--cold)}
+.pill.src{background:var(--soft);color:var(--fg);font-weight:500}
+
+/* WhatsApp */
+.wa-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:18px;align-items:start}
+.phone{background:var(--chat-bg);border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;height:min(640px,78vh);min-height:460px}
+.phone-top{background:var(--verde);color:var(--marfil);padding:11px 14px;display:flex;align-items:center;gap:10px}
+.avatar{width:36px;height:36px;border-radius:50%;background:var(--menta);color:var(--verde);display:grid;place-items:center;font-weight:700;font-size:.85rem;flex:none}
+.phone-top small{display:block;font-size:.74rem;color:var(--menta)}
+.mode{margin-left:auto;display:flex;background:rgba(255,255,255,.1);border-radius:999px;padding:3px}
+.mode button{border:0;background:none;color:var(--marfil);font-size:.72rem;padding:4px 9px;border-radius:999px;cursor:pointer}
+.mode button[aria-pressed="true"]{background:var(--oro);color:#1C3A2E;font-weight:600}
+.msgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:8px}
+.msg{max-width:85%;padding:8px 11px;border-radius:12px;background:var(--b-in);white-space:pre-wrap;overflow-wrap:anywhere;font-size:.92rem;line-height:1.45}
+.msg.me{align-self:flex-end;background:var(--b-out)}
+.msg time{display:block;text-align:right;font-size:.66rem;color:var(--muted);margin-top:2px}
+.sys{align-self:center;text-align:center;font-size:.74rem;color:var(--muted);background:var(--surface);border-radius:8px;padding:4px 10px;max-width:92%}
+.ev{align-self:center;font-family:var(--f-mono);font-size:.68rem;color:var(--accent);border:1px dashed var(--accent);border-radius:8px;padding:3px 9px;max-width:92%;text-align:center}
+.typing{align-self:flex-start;font-size:.8rem;color:var(--muted);font-style:italic}
+.chips{display:flex;gap:6px;overflow-x:auto;padding:8px 12px 0;scrollbar-width:thin}
+.chips button{flex:none;border:1px solid var(--accent);color:var(--accent);background:var(--surface);border-radius:999px;padding:5px 11px;font-size:.78rem;cursor:pointer}
+.composer{display:flex;gap:8px;padding:10px 12px 12px}
+.composer input{flex:1;min-width:0;border:1px solid var(--line);border-radius:999px;padding:10px 14px;background:var(--surface);color:var(--fg);font:inherit}
+.composer button{border-radius:999px}
+
+.lead-live{display:grid;gap:14px}
+.score{display:flex;align-items:center;gap:16px}
+.gauge{--v:0;width:84px;height:84px;border-radius:50%;flex:none;background:conic-gradient(var(--oro) calc(var(--v)*1%), var(--line) 0);display:grid;place-items:center}
+.gauge span{width:66px;height:66px;border-radius:50%;background:var(--surface);display:grid;place-items:center;font-family:var(--f-display);font-weight:800;font-size:1.5rem}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.field{background:var(--bg);border-radius:10px;padding:8px 10px;min-width:0;transition:background .4s}
+.field .k{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.field .v{font-weight:600;overflow-wrap:anywhere}
+.field .v.empty{color:var(--muted);font-weight:400;font-style:italic}
+.field.flash{background:var(--soft)}
+.steps{display:grid;gap:6px;font-size:.86rem}
+.steps div{display:flex;gap:8px;align-items:center}
+.dot{width:10px;height:10px;border-radius:50%;border:2px solid var(--line);flex:none}
+.dot.on{background:var(--menta);border-color:var(--menta)}
+
+/* Panel */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.kpi b{display:block;font-family:var(--f-display);font-size:2rem;font-weight:800;font-variant-numeric:tabular-nums}
+.kpi span{font-size:.82rem;color:var(--muted)}
+.two{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:18px}
+.feed{display:grid;gap:0;max-height:360px;overflow-y:auto}
+.feed div{display:grid;grid-template-columns:52px 1fr;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:.88rem}
+.feed time{font-family:var(--f-mono);font-size:.74rem;color:var(--muted)}
+.flow{display:grid;gap:10px;counter-reset:f}
+.flow div{display:grid;grid-template-columns:28px 1fr;gap:10px;font-size:.88rem;align-items:start}
+.flow div::before{counter-increment:f;content:counter(f);width:24px;height:24px;border-radius:50%;background:var(--soft);display:grid;place-items:center;font-family:var(--f-mono);font-size:.72rem;color:var(--accent)}
+
+/* Pipeline */
+.board-wrap{overflow-x:auto;padding-bottom:6px}
+.board{display:grid;grid-template-columns:repeat(5,minmax(200px,1fr));gap:12px;min-width:1040px}
+.col{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:8px;min-height:240px}
+.col h3{display:flex;justify-content:space-between;font-size:.92rem}
+.col h3 span{font-family:var(--f-mono);font-size:.74rem;color:var(--muted)}
+.lc{border:1px solid var(--line);border-radius:11px;padding:10px;background:var(--bg);cursor:pointer;text-align:left;display:grid;gap:5px;width:100%}
+.lc:hover{border-color:var(--accent)}
+.lc.new{animation:pop 1.2s ease}
+@keyframes pop{0%{box-shadow:0 0 0 3px var(--oro)}100%{box-shadow:0 0 0 0 transparent}}
+.lc b{font-size:.92rem}
+.lc .small{color:var(--muted)}
+
+/* detalle */
+.drawer{position:fixed;inset:0;background:rgba(10,22,17,.45);display:flex;justify-content:flex-end;z-index:20}
+.drawer-in{background:var(--surface);width:min(460px,100%);height:100%;overflow-y:auto;padding-block:calc(20px + env(safe-area-inset-top, 0px)) 20px;padding-left:20px;padding-right:max(20px, env(safe-area-inset-right, 0px));display:grid;gap:16px;align-content:start}
+textarea{width:100%;min-height:150px;border:1px solid var(--line);border-radius:10px;padding:10px;font:inherit;background:var(--bg);color:var(--fg);resize:vertical}
+.breakdown{display:grid;gap:4px;font-size:.86rem}
+.breakdown div{display:flex;justify-content:space-between;gap:8px}
+.breakdown b{font-family:var(--f-mono);font-weight:500}
+
+/* Inmuebles */
+.props{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.prop{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.ph{aspect-ratio:16/9;max-width:100%;position:relative;display:flex;align-items:flex-end;padding:10px;color:#FFFFFF}
+.ph .ref{font-family:var(--f-mono);font-size:.72rem;background:rgba(0,0,0,.35);border-radius:6px;padding:2px 7px}
+.ph .op{position:absolute;top:10px;right:10px;font-size:.72rem;font-weight:600;background:var(--oro);color:#1C3A2E;border-radius:6px;padding:2px 8px}
+.prop-b{padding:14px;display:grid;gap:6px;flex:1;align-content:start}
+.price{font-family:var(--f-display);font-weight:800;font-size:1.3rem;font-variant-numeric:tabular-nums}
+.feat{display:flex;gap:10px;flex-wrap:wrap;font-size:.82rem;color:var(--muted)}
+.prop-f{padding:0 14px 14px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+.ad{white-space:pre-wrap;background:var(--bg);border-radius:10px;padding:12px;font-size:.88rem}
+
+/* Agenda */
+.agenda{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.day{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px;display:grid;gap:8px;align-content:start}
+.day h3{font-size:.95rem}
+.slot{border-radius:10px;padding:8px 10px;font-size:.84rem;border:1px dashed var(--line);color:var(--muted)}
+.slot.busy{border:0;background:var(--soft);color:var(--fg)}
+.slot.ai{background:var(--warm-bg);color:var(--fg);box-shadow:inset 3px 0 0 var(--oro)}
+.slot b{font-family:var(--f-mono);font-weight:500;font-size:.78rem;display:block}
+
+@media (max-width:1100px){.wa-grid,.two{grid-template-columns:1fr}.kpis{grid-template-columns:1fr 1fr}.agenda{grid-template-columns:1fr 1fr}}
+@media (max-width:780px){
+  .app{grid-template-columns:minmax(0,1fr)}
+  .side{min-width:0}
+  .side{position:sticky;top:0;height:auto;z-index:10;flex-direction:row;align-items:center;padding-block:10px;padding-right:max(16px, env(safe-area-inset-right, 0px));gap:12px;top:env(safe-area-inset-top, 0px)}
+  .brand small,.side-foot{display:none}
+  .nav{flex-direction:row;overflow-x:auto;flex:1;min-width:0}
+  .nav button{flex:none;padding:7px 10px;font-size:.85rem}
+  .nav button[aria-current="page"]{box-shadow:inset 0 -3px 0 var(--oro)}
+  main{padding-left:max(16px, env(safe-area-inset-left, 0px))}
+  body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top, 0px);z-index:11;background:var(--side)}
+}
+@media (max-width:520px){.fields,.kpis,.agenda{grid-template-columns:1fr}.phone{height:70vh}}
+@media (prefers-reduced-motion:reduce){.lc.new{animation:none}.field{transition:none}}
+</style>
+
+<div class="app">
+  <aside class="side">
+    <div class="brand">Nyland<span>.</span><small>Inmobiliaria Horizonte</small></div>
+    <nav class="nav" aria-label="Secciones">
+      <button data-view="wa" aria-current="page">WhatsApp en vivo</button>
+      <button data-view="panel">Panel</button>
+      <button data-view="leads">Leads <span class="badge" id="nav-leads">0</span></button>
+      <button data-view="props">Inmuebles</button>
+      <button data-view="agenda">Agenda <span class="badge" id="nav-visits">0</span></button>
+    </nav>
+    <div class="side-foot"><b>HUMAN + AI</b>El asistente cualifica y agenda. Los agentes visitan, negocian y cierran.</div>
+  </aside>
+
+  <main>
+    <div class="topbar">
+      <h2 id="view-title">WhatsApp en vivo</h2>
+      <span class="demo-tag">Demo: agencia, inmuebles y leads ficticios</span>
+    </div>
+
+    <!-- WHATSAPP -->
+    <section class="view" id="v-wa">
+      <p class="muted" style="max-width:70ch">Escribe como si fueras un comprador que llega desde un portal. El asistente te responde, rellena la ficha del lead en el CRM y te agenda la visita en la agenda real de la agencia.</p>
+      <div class="wa-grid">
+        <div class="phone">
+          <div class="phone-top">
+            <div class="avatar">IH</div>
+            <div><strong>Inmobiliaria Horizonte</strong><small id="wa-status">Asistente virtual · en línea</small></div>
+            <div class="mode" role="group" aria-label="Motor del asistente">
+              <button id="m-ai" aria-pressed="true">IA real</button>
+              <button id="m-demo" aria-pressed="false">Guiada</button>
+            </div>
+          </div>
+          <div class="msgs" id="msgs" aria-live="polite"></div>
+          <div class="chips" id="chips"></div>
+          <form class="composer" id="composer">
+            <input id="wa-input" autocomplete="off" placeholder="Escribe un mensaje…" aria-label="Mensaje">
+            <button class="btn" id="wa-send" type="submit">Enviar</button>
+          </form>
+        </div>
+
+        <div class="card lead-live">
+          <div class="row" style="justify-content:space-between">
+            <h3>Ficha del lead en el CRM</h3>
+            <span class="pill src">Origen: portal → WhatsApp</span>
+          </div>
+          <div class="score">
+            <div class="gauge" id="g-live"><span id="g-live-n">0</span></div>
+            <div style="display:grid;gap:4px">
+              <span id="live-temp"></span>
+              <p class="small muted">Puntuación de 0 a 100. Sube con el presupuesto, la financiación y la urgencia.</p>
+            </div>
+          </div>
+          <div class="fields" id="live-fields"></div>
+          <div>
+            <p class="mono muted" style="margin-bottom:8px">FLUJO AUTOMÁTICO</p>
+            <div class="steps" id="live-steps"></div>
+          </div>
+          <div class="row">
+            <button class="btn ghost" id="reset-chat" type="button">Empezar otra conversación</button>
+            <button class="btn ghost" id="open-lead" type="button">Ver en Leads</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PANEL -->
+    <section class="view" id="v-panel" hidden>
+      <div class="kpis">
+        <div class="card kpi"><b id="k-active">0</b><span>leads activos</span></div>
+        <div class="card kpi"><b id="k-hot">0</b><span>leads calientes (70+)</span></div>
+        <div class="card kpi"><b id="k-visits">0</b><span>visitas agendadas</span></div>
+        <div class="card kpi"><b id="k-ai">0</b><span>acciones del asistente hoy</span></div>
+      </div>
+      <div class="two">
+        <div class="card"><h3 style="margin-bottom:8px">Actividad en tiempo real</h3><div class="feed" id="feed"></div></div>
+        <div class="card">
+          <h3 style="margin-bottom:12px">Cómo funciona</h3>
+          <div class="flow">
+            <div>Un comprador pregunta por un inmueble en un portal o en Instagram.</div>
+            <div>El asistente le escribe por WhatsApp al momento y le dice que es una IA.</div>
+            <div>Cualifica: operación, zona, presupuesto, financiación y plazo.</div>
+            <div>La ficha y la puntuación se guardan solas en el CRM.</div>
+            <div>Propone inmuebles que encajan y agenda la visita con el agente.</div>
+            <div>Si el lead pide hablar con una persona, o algo se sale de lo normal, pasa a un agente.</div>
+          </div>
+        </div>
+      </div>
+      <p class="small muted">Cifras calculadas sobre los datos de ejemplo de esta demo y lo que hagas en ella.</p>
+    </section>
+
+    <!-- LEADS -->
+    <section class="view" id="v-leads" hidden>
+      <p class="muted">Pulsa un lead para ver su ficha y pedir a la IA un mensaje de seguimiento.</p>
+      <div class="board-wrap"><div class="board" id="board"></div></div>
+    </section>
+
+    <!-- INMUEBLES -->
+    <section class="view" id="v-props" hidden>
+      <p class="muted">Cartera de ejemplo. Cada inmueble muestra cuántos leads encajan y puede generar su anuncio con IA.</p>
+      <div class="props" id="props"></div>
+    </section>
+
+    <!-- AGENDA -->
+    <section class="view" id="v-agenda" hidden>
+      <p class="muted">Las visitas que agenda el asistente aparecen marcadas en oro. El agente las confirma.</p>
+      <div class="agenda" id="agenda"></div>
+    </section>
+  </main>
+</div>
+
+<div class="drawer" id="drawer" hidden>
+  <div class="drawer-in" role="dialog" aria-modal="true" aria-labelledby="d-title" id="drawer-in"></div>
+</div>
+
+<script>
+(function(){
+"use strict";
+const $=s=>document.querySelector(s);
+const el=(tag,cls,text)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e;};
+const eur=n=>n==null?"":Number(n).toLocaleString("es-ES")+" €";
+const hhmm=d=>d.toLocaleTimeString("es-ES",{hour:"2-digit",minute:"2-digit"});
+
+/* ---------- Datos de ejemplo (ficticios) ---------- */
+const PROPS=[
+  {id:"H-101",tipo:"Piso",zona:"Ruzafa",op:"venta",hab:3,banos:2,m2:98,precio:335000,extras:"balcón, ascensor, reformado",c:["#5B7F6E","#2F5244"]},
+  {id:"H-102",tipo:"Ático",zona:"Benimaclet",op:"venta",hab:2,banos:1,m2:72,precio:245000,extras:"terraza de 30 m², mucha luz",c:["#C7A35E","#8A6A2E"]},
+  {id:"H-103",tipo:"Piso",zona:"Campanar",op:"venta",hab:4,banos:2,m2:120,precio:389000,extras:"garaje, piscina comunitaria",c:["#4F7A8C","#2C4D5C"]},
+  {id:"H-104",tipo:"Casa",zona:"El Cabanyal",op:"venta",hab:3,banos:2,m2:110,precio:410000,extras:"patio, a 400 m de la playa",c:["#7FB89C","#3E7A5E"]},
+  {id:"H-105",tipo:"Piso",zona:"Patraix",op:"venta",hab:3,banos:1,m2:85,precio:219000,extras:"para reformar, buena distribución",c:["#9A8C7A","#5E5345"]},
+  {id:"H-106",tipo:"Piso",zona:"Ruzafa",op:"alquiler",hab:2,banos:1,m2:70,precio:1350,extras:"amueblado, junto al mercado",c:["#6E8C5B","#40592F"]},
+  {id:"H-107",tipo:"Estudio",zona:"Centro",op:"alquiler",hab:1,banos:1,m2:45,precio:950,extras:"exterior, recién pintado",c:["#8C6E7F","#5A3F4F"]},
+  {id:"H-108",tipo:"Piso",zona:"Benimaclet",op:"venta",hab:3,banos:2,m2:92,precio:299000,extras:"ascensor, a 3 min del metro",c:["#5E8A86","#2F5753"]},
+];
+const ZONAS=["Ruzafa","Benimaclet","Campanar","El Cabanyal","Patraix","Centro"];
+const priceTxt=p=>p.op==="alquiler"?eur(p.precio)+"/mes":eur(p.precio);
+
+// Agenda: próximos 4 días laborables desde hoy
+const DAYS=[];(function(){const d=new Date();d.setHours(0,0,0,0);while(DAYS.length<4){d.setDate(d.getDate()+1);const w=d.getDay();if(w!==0)DAYS.push(new Date(d));}})();
+const dayName=d=>d.toLocaleDateString("es-ES",{weekday:"long",day:"numeric",month:"long"});
+const HOURS=["10:00","12:00","17:00","18:30"];
+const visits=[ // ocupadas de ejemplo
+  {day:0,hour:"10:00",prop:"H-103",lead:"L1",ai:false},
+  {day:1,hour:"17:00",prop:"H-104",lead:"L3",ai:false},
+  {day:2,hour:"12:00",prop:"H-106",lead:"L2",ai:false},
+];
+const slotKey=(d,h)=>d+"|"+h;
+const freeSlots=()=>{const out=[];DAYS.forEach((d,i)=>HOURS.forEach(h=>{if(!visits.some(v=>v.day===i&&v.hour===h))out.push({id:slotKey(i,h),txt:dayName(d)+" a las "+h});}));return out;};
+
+const STAGES=["Nuevo","Cualificado","Visita","Oferta","Cerrado"];
+let leads=[
+  {id:"L1",nombre:"Laura M.",origen:"Portal",operacion:"compra",zona:"Campanar",habitaciones:4,presupuesto:380000,financiacion:"preaprobada",plazo:"menos de 3 meses",stage:"Visita",ejemplo:true},
+  {id:"L2",nombre:"Javier R.",origen:"Web",operacion:"alquiler",zona:"Ruzafa",habitaciones:2,presupuesto:1400,financiacion:"no aplica",plazo:"menos de 3 meses",stage:"Visita",ejemplo:true},
+  {id:"L3",nombre:"Marta y Pablo",origen:"Portal",operacion:"compra",zona:"El Cabanyal",habitaciones:3,presupuesto:420000,financiacion:"en trámite",plazo:"3 a 6 meses",stage:"Oferta",ejemplo:true},
+  {id:"L4",nombre:"Andrés T.",origen:"Instagram",operacion:"compra",zona:"Patraix",habitaciones:3,presupuesto:200000,financiacion:"sin financiación",plazo:"más de 6 meses",stage:"Nuevo",ejemplo:true},
+  {id:"L5",nombre:"Sofía G.",origen:"Instagram",operacion:"compra",zona:"Benimaclet",habitaciones:null,presupuesto:null,financiacion:null,plazo:null,stage:"Nuevo",ejemplo:true},
+  {id:"L6",nombre:"Carmen V.",origen:"Referido",operacion:"compra",zona:"Ruzafa",habitaciones:3,presupuesto:340000,financiacion:"preaprobada",plazo:"menos de 3 meses",stage:"Cerrado",ejemplo:true},
+];
+const feed=[];
+let aiActions=0;
+function log(txt,ai){feed.unshift({t:new Date(),txt});if(ai)aiActions++;renderPanel();}
+
+/* ---------- Puntuación ---------- */
+function scoreParts(l){
+  const p=[];
+  if(l.nombre)p.push(["Se ha identificado",10]);
+  if(l.operacion)p.push(["Operación clara",5]);
+  if(l.zona)p.push(["Zona definida",10]);
+  if(l.habitaciones)p.push(["Habitaciones definidas",5]);
+  if(l.presupuesto)p.push(["Presupuesto conocido",20]);
+  const f=(l.financiacion||"").toLowerCase();
+  if(f.includes("preaprob")||f.includes("contado")||f.includes("no aplica"))p.push(["Financiación resuelta",25]);
+  else if(f.includes("trámite"))p.push(["Financiación en trámite",12]);
+  const pl=(l.plazo||"").toLowerCase();
+  if(pl.includes("menos de 3"))p.push(["Quiere moverse en menos de 3 meses",25]);
+  else if(pl.includes("3 a 6"))p.push(["Plazo de 3 a 6 meses",12]);
+  else if(pl)p.push(["Plazo largo",3]);
+  return p;
+}
+const score=l=>Math.min(100,scoreParts(l).reduce((a,b)=>a+b[1],0));
+const temp=s=>s>=70?["hot","Caliente"]:s>=40?["warm","Templado"]:["cold","Frío"];
+function tempPill(s){const[t,txt]=temp(s);return el("span","pill "+t,txt+" · "+s);}
+function matches(l){
+  return PROPS.filter(p=>{
+    if(l.operacion){const op=l.operacion==="alquiler"?"alquiler":"venta";if(p.op!==op)return false;}
+    if(l.zona&&p.zona!==l.zona)return false;
+    if(l.presupuesto&&p.precio>l.presupuesto*1.05)return false;
+    if(l.habitaciones&&p.hab<l.habitaciones)return false;
+    return true;
+  });
+}
+
+/* ---------- Navegación ---------- */
+const TITLES={wa:"WhatsApp en vivo",panel:"Panel",leads:"Leads",props:"Inmuebles",agenda:"Agenda"};
+function go(v){
+  document.querySelectorAll(".nav button").forEach(b=>{if(b.dataset.view===v)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current");});
+  Object.keys(TITLES).forEach(k=>$("#v-"+k).hidden=k!==v);
+  $("#view-title").textContent=TITLES[v];
+  try{localStorage.setItem("nyl-view",v);}catch(e){}
+}
+document.querySelectorAll(".nav button").forEach(b=>b.addEventListener("click",()=>go(b.dataset.view)));
+
+/* ---------- Render: Panel ---------- */
+function renderPanel(){
+  if(!$("#feed"))return;
+  const act=leads.filter(l=>l.stage!=="Cerrado");
+  $("#k-active").textContent=act.length;
+  $("#k-hot").textContent=act.filter(l=>score(l)>=70).length;
+  $("#k-visits").textContent=visits.length;
+  $("#k-ai").textContent=aiActions;
+  $("#nav-leads").textContent=act.length;
+  $("#nav-visits").textContent=visits.length;
+  const f=$("#feed");f.replaceChildren();
+  feed.forEach(x=>{const d=el("div");d.append(el("time",null,hhmm(x.t)),el("span",null,x.txt));f.append(d);});
+}
+
+/* ---------- Render: Pipeline ---------- */
+let flashId=null;
+function renderBoard(){
+  const b=$("#board");b.replaceChildren();
+  STAGES.forEach(st=>{
+    const col=el("div","col");const items=leads.filter(l=>l.stage===st);
+    const h=el("h3",null,st);h.append(el("span",null,String(items.length)));col.append(h);
+    items.sort((a,c)=>score(c)-score(a)).forEach(l=>{
+      const c=el("button","lc"+(l.id===flashId?" new":""));c.type="button";
+      const top=el("div","row");top.style.justifyContent="space-between";top.append(el("b",null,l.nombre||"Lead sin nombre"),tempPill(score(l)));
+      const sub=el("span","small",[l.operacion,l.zona,l.presupuesto?(l.operacion==="alquiler"?eur(l.presupuesto)+"/mes":eur(l.presupuesto)):null].filter(Boolean).join(" · ")||"Faltan datos");
+      const tags=el("div","row");tags.append(el("span","pill src",l.origen));if(l.agente)tags.append(el("span","pill hot","Pide agente"));if(!l.ejemplo)tags.append(el("span","pill warm","Desde el chat"));
+      c.append(top,sub,tags);c.addEventListener("click",()=>openLead(l.id));col.append(c);
+    });
+    b.append(col);
+  });
+  renderPanel();
+}
+
+/* ---------- Render: Inmuebles ---------- */
+function renderProps(){
+  const g=$("#props");g.replaceChildren();
+  PROPS.forEach(p=>{
+    const card=el("article","prop");
+    const ph=el("div","ph");ph.style.background=`linear-gradient(135deg,${p.c[0]},${p.c[1]})`;
+    ph.append(el("span","ref",p.id),el("span","op",p.op==="venta"?"Venta":"Alquiler"));
+    const b=el("div","prop-b");
+    b.append(el("span","price",priceTxt(p)),el("h3",null,`${p.tipo} en ${p.zona}`));
+    const ft=el("div","feat");[`${p.hab} hab.`,`${p.banos} baño${p.banos>1?"s":""}`,`${p.m2} m²`].forEach(t=>ft.append(el("span",null,t)));
+    b.append(ft,el("p","small muted",p.extras));
+    const n=leads.filter(l=>l.stage!=="Cerrado"&&matches(l).includes(p)).length;
+    const f=el("div","prop-f");
+    f.append(el("span","pill "+(n?"warm":"src"),n+" lead"+(n===1?"":"s")+" compatible"+(n===1?"":"s")));
+    const btn=el("button","btn ghost","Redactar anuncio con IA");btn.type="button";
+    const out=el("div","ad");out.hidden=true;
+    btn.addEventListener("click",()=>writeAd(p,btn,out));
+    f.append(btn);
+    card.append(ph,b,f,out);out.style.margin="0 14px 14px";
+    g.append(card);
+  });
+}
+
+/* ---------- Render: Agenda ---------- */
+function renderAgenda(){
+  const g=$("#agenda");g.replaceChildren();
+  DAYS.forEach((d,i)=>{
+    const col=el("div","day");const h=el("h3",null,dayName(d));h.style.textTransform="capitalize";col.append(h);
+    HOURS.forEach(hr=>{
+      const v=visits.find(x=>x.day===i&&x.hour===hr);
+      const s=el("div","slot"+(v?(v.ai?" ai":" busy"):""));
+      s.append(el("b",null,hr));
+      if(v){const l=leads.find(x=>x.id===v.lead);s.append(el("span",null,`Visita ${v.prop} · ${l?l.nombre||"Lead del chat":""}`));if(v.ai)s.append(el("span","small muted"," · agendada por el asistente"));}
+      else s.append(el("span",null,"Libre"));
+      col.append(s);
+    });
+    g.append(col);
+  });
+  renderPanel();
+}
+
+/* ---------- Detalle de lead ---------- */
+function closeDrawer(){$("#drawer").hidden=true;}
+$("#drawer").addEventListener("click",e=>{if(e.target.id==="drawer")closeDrawer();});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("#drawer").hidden)closeDrawer();});
+function openLead(id){
+  const l=leads.find(x=>x.id===id);if(!l)return;
+  const d=$("#drawer-in");d.replaceChildren();
+  const top=el("div","row");top.style.justifyContent="space-between";
+  const t=el("h2",null,l.nombre||"Lead sin nombre");t.id="d-title";
+  const x=el("button","btn ghost","Cerrar");x.type="button";x.addEventListener("click",closeDrawer);
+  top.append(t,x);
+  const meta=el("div","row");meta.append(tempPill(score(l)),el("span","pill src",l.origen),el("span","pill src",l.stage));
+  const fields=el("div","fields");
+  fieldDefs().forEach(([k,lab,fmt])=>{const f=el("div","field");f.append(el("div","k",lab));const v=l[k];f.append(el("div","v"+(v==null||v===""?" empty":""),v==null||v===""?"Sin dato":fmt?fmt(v,l):String(v)));fields.append(f);});
+  const bd=el("div","breakdown");bd.append(el("p","mono muted","POR QUÉ ESTA PUNTUACIÓN"));
+  scoreParts(l).forEach(([k,v])=>{const r=el("div");r.append(el("span",null,k),el("b",null,"+"+v));bd.append(r);});
+  const m=matches(l);
+  const mm=el("div");mm.append(el("p","mono muted","INMUEBLES QUE ENCAJAN"));
+  mm.append(el("p",null,m.length?m.map(p=>`${p.id} · ${p.tipo} en ${p.zona} · ${priceTxt(p)}`).join("\n"):"Ninguno en cartera ahora mismo. Se avisará al entrar uno nuevo."));mm.lastChild.style.whiteSpace="pre-wrap";
+  const stageRow=el("div","row");stageRow.append(el("span","small muted","Mover a:"));
+  STAGES.forEach(s=>{if(s===l.stage)return;const b=el("button","btn ghost",s);b.type="button";b.style.padding="5px 10px";b.addEventListener("click",()=>{l.stage=s;log(`${l.nombre||"Lead"} movido a ${s} por el agente`);renderAll();openLead(l.id);});stageRow.append(b);});
+  const fu=el("div");fu.style.display="grid";fu.style.gap="8px";
+  fu.append(el("p","mono muted","SEGUIMIENTO"));
+  const ta=el("textarea");ta.id="followup";ta.placeholder="Pulsa el botón y la IA redacta un WhatsApp de seguimiento para este lead. Lo revisas y lo editas antes de enviarlo.";
+  const r=el("div","row");const gen=el("button","btn oro","Redactar seguimiento con IA");gen.type="button";
+  const save=el("button","btn ghost","Guardar en el historial");save.type="button";
+  const note=el("span","small muted");
+  gen.addEventListener("click",()=>writeFollowup(l,gen,ta,note));
+  save.addEventListener("click",()=>{if(!ta.value.trim()){note.textContent="Escribe o genera el mensaje primero.";return;}log(`Seguimiento a ${l.nombre||"lead"} revisado y guardado por el agente`);note.textContent="Guardado en el historial de esta demo. No se ha enviado a nadie.";});
+  r.append(gen,save);fu.append(ta,r,note);
+  d.append(top,meta,fields,bd,mm,stageRow,fu);
+  if(l.chat&&l.chat.length){const c=el("div");c.append(el("p","mono muted","CONVERSACIÓN"));const pre=el("p","small");pre.style.whiteSpace="pre-wrap";pre.textContent=l.chat.map(t=>(t.role==="user"?"Cliente: ":"Asistente: ")+t.content).join("\n");c.append(pre);d.append(c);}
+  $("#drawer").hidden=false;x.focus();
+}
+function fieldDefs(){return[
+  ["nombre","Nombre"],["operacion","Operación"],["zona","Zona"],["habitaciones","Habitaciones",v=>v+" o más"],
+  ["presupuesto","Presupuesto",(v,l)=>l.operacion==="alquiler"?eur(v)+"/mes":eur(v)],["financiacion","Financiación"],["plazo","Plazo"],["telefono","Contacto"]
+];}
+
+/* ---------- Lead en vivo (chat) ---------- */
+let live=null;
+function newLive(){
+  live={id:"C"+Date.now(),nombre:null,origen:"Portal",operacion:null,zona:null,habitaciones:null,presupuesto:null,financiacion:null,plazo:null,telefono:"WhatsApp (demo)",stage:"Nuevo",ejemplo:false,chat:[],visita:null,agente:false};
+  leads.push(live);flashId=live.id;
+}
+let lastScore=0;
+function renderLive(changed){
+  const s=score(live);
+  $("#g-live").style.setProperty("--v",s);$("#g-live-n").textContent=s;
+  const lt=$("#live-temp");lt.replaceChildren(tempPill(s));
+  const f=$("#live-fields");f.replaceChildren();
+  fieldDefs().slice(0,7).forEach(([k,lab,fmt])=>{
+    const box=el("div","field"+(changed&&changed.includes(k)?" flash":""));
+    box.append(el("div","k",lab));const v=live[k];
+    box.append(el("div","v"+(v==null||v===""?" empty":""),v==null||v===""?"Pendiente":fmt?fmt(v,live):String(v)));
+    f.append(box);
+    if(changed&&changed.includes(k))setTimeout(()=>box.classList.remove("flash"),1600);
+  });
+  const st=$("#live-steps");st.replaceChildren();
+  const cualif=["operacion","zona","presupuesto","financiacion","plazo"].every(k=>live[k]);
+  [["Primer contacto en segundos",live.chat.length>0],["Lead creado en el CRM",live.chat.length>0],["Cualificado (operación, zona, presupuesto, financiación, plazo)",cualif],["Inmuebles propuestos",!!live.propuestos],["Visita agendada",!!live.visita],["Agente avisado",!!live.visita||live.agente]].forEach(([t,on])=>{const r=el("div");r.append(el("span","dot"+(on?" on":"")),el("span",null,t));st.append(r);});
+  if(cualif&&live.stage==="Nuevo"){live.stage="Cualificado";log(`Asistente: ${live.nombre||"lead del chat"} cualificado (${s} puntos)`,true);}
+  if(s>=70&&lastScore<70)log(`Aviso al agente: lead caliente en WhatsApp (${live.nombre||"sin nombre"})`,true);
+  lastScore=s;
+  renderBoard();renderProps();
+}
+function setFields(obj){
+  const changed=[];
+  const allowed=["nombre","operacion","zona","habitaciones","presupuesto","financiacion","plazo"];
+  for(const k of allowed){
+    let v=obj[k];if(v==null||v==="")continue;
+    if(k==="habitaciones"||k==="presupuesto"){v=Number(String(v).replace(/[^\d]/g,""));if(!v)continue;}
+    else v=String(v).slice(0,60);
+    if(k==="zona"){const z=ZONAS.find(z=>z.toLowerCase()===v.toLowerCase()||v.toLowerCase().includes(z.toLowerCase().replace("el ","")));v=z||v;}
+    if(k==="operacion")v=/alquil/i.test(v)?"alquiler":"compra";
+    if(live[k]!==v){live[k]=v;changed.push(k);}
+  }
+  if(changed.length)log(`Asistente actualizó la ficha: ${changed.join(", ")}`,true);
+  renderLive(changed);
+  return changed;
+}
+function bookVisit(propId,slotId){
+  const p=PROPS.find(x=>x.id===String(propId).toUpperCase());
+  if(!p)throw new Error("Ese inmueble no existe. Usa una referencia de la cartera.");
+  const [d,h]=String(slotId).split("|");const di=Number(d);
+  if(!(di>=0&&di<DAYS.length)||!HOURS.includes(h))throw new Error("Hueco no válido. Usa uno de la lista de huecos libres.");
+  if(visits.some(v=>v.day===di&&v.hour===h))throw new Error("Ese hueco ya está ocupado.");
+  if(live.visita){const i=visits.findIndex(v=>v===live.visita);if(i>=0)visits.splice(i,1);}
+  const v={day:di,hour:h,prop:p.id,lead:live.id,ai:true};visits.push(v);live.visita=v;live.stage="Visita";
+  log(`Asistente agendó visita a ${p.id} el ${dayName(DAYS[di])} a las ${h}`,true);
+  addEvent(`📅 Visita agendada · ${p.id} · ${dayName(DAYS[di])} ${h}`);
+  renderLive([]);renderAgenda();
+  return {ok:true,inmueble:p.id,cuando:dayName(DAYS[di])+" a las "+h,agente:"Lucía, agente de la zona"};
+}
+
+/* ---------- Chat UI ---------- */
+const msgs=$("#msgs");
+function addMsg(text,me){const m=el("div","msg"+(me?" me":""),text);m.append(el("time",null,hhmm(new Date())));msgs.append(m);msgs.scrollTop=msgs.scrollHeight;}
+function addEvent(t){const e=el("div","ev",t);msgs.append(e);msgs.scrollTop=msgs.scrollHeight;}
+function addSys(t){msgs.append(el("div","sys",t));msgs.scrollTop=msgs.scrollHeight;}
+const GREETING="¡Hola! Soy el asistente virtual de Inmobiliaria Horizonte. Soy una IA y estoy aquí para ayudarte a encontrar casa en Valencia. Si en algún momento prefieres hablar con una persona, dímelo.\n\n¿Buscas comprar o alquilar, y en qué zona?";
+const CHIPS=["Busco piso para comprar en Ruzafa, 3 habitaciones","Me llamo Elena","Mi presupuesto es de 340.000 €","Tengo la hipoteca preaprobada","Quiero mudarme en 2 meses","¿Puedo verlo el primer día disponible por la tarde?","Prefiero hablar con una persona"];
+function renderChips(){const c=$("#chips");c.replaceChildren();CHIPS.forEach(t=>{const b=el("button",null,t);b.type="button";b.addEventListener("click",()=>send(t));c.append(b);});}
+function startChat(){
+  msgs.replaceChildren();newLive();lastScore=0;
+  addSys("Conversación simulada. Los datos que escribas solo se usan en esta página.");
+  addMsg(GREETING,false);live.chat.push({role:"assistant",content:GREETING});
+  log("Nuevo lead desde un portal: el asistente escribe por WhatsApp",true);
+  renderLive([]);
+}
+$("#reset-chat").addEventListener("click",startChat);
+$("#open-lead").addEventListener("click",()=>{go("leads");openLead(live.id);});
+
+/* ---------- Motor: IA real (Claude) ---------- */
+let sample=null,mode="ai",busy=false,ctl=null;
+function setMode(m){mode=m;$("#m-ai").setAttribute("aria-pressed",m==="ai");$("#m-demo").setAttribute("aria-pressed",m==="demo");$("#wa-status").textContent=m==="ai"?"Asistente virtual con IA · en línea":"Asistente virtual · modo guiado";}
+$("#m-ai").addEventListener("click",()=>{if(!sample){addSys("La IA real no está disponible en esta vista. Sigue en modo guiado.");return;}setMode("ai");});
+$("#m-demo").addEventListener("click",()=>setMode("demo"));
+
+function rules(){
+  const cat=PROPS.map(p=>`${p.id}: ${p.tipo} en ${p.zona}, ${p.op}, ${p.hab} hab, ${p.banos} baños, ${p.m2} m², ${priceTxt(p)}, ${p.extras}`).join("\n");
+  const slots=freeSlots().slice(0,10).map(s=>`${s.id} = ${s.txt}`).join("\n");
+  return `Eres el asistente de WhatsApp de "Inmobiliaria Horizonte", una agencia de Valencia (empresa ficticia de una demo de Nyland AI Solutions). Escribes en español de España, con mensajes cortos de WhatsApp (máximo 3 frases o una lista breve), cercano y profesional, sin markdown ni asteriscos.
+
+Tu trabajo:
+1. Cualificar al lead preguntando UNA cosa cada vez, sin interrogatorios: nombre, operación (compra o alquiler), zona, habitaciones, presupuesto, financiación (preaprobada, en trámite, sin financiación, al contado) y plazo (menos de 3 meses, 3 a 6 meses, más de 6 meses).
+2. Cada vez que el cliente dé un dato nuevo, llama a actualizar_lead con TODOS los datos conocidos.
+3. Cuando sepas operación, zona y presupuesto, propón como máximo 2 inmuebles de la cartera que encajen (referencia, precio y un detalle). Si ninguno encaja, dilo y ofrece avisarle.
+4. Si quiere visitar, ofrece huecos de la lista y, cuando elija, llama a agendar_visita. Confirma día, hora y que le atenderá Lucía, la agente de la zona.
+5. Si pide una persona, se queja, pregunta algo legal, fiscal o sobre su hipoteca concreta, o algo que no sabes, llama a pasar_a_agente y díselo.
+
+Reglas: nunca inventes inmuebles, precios ni datos fuera de la cartera; no prometas rebajas; no des asesoramiento financiero o legal; no pidas datos innecesarios como DNI o datos bancarios. No escribas texto antes de llamar a una herramienta: llama a la herramienta y después escribe tu única respuesta al cliente.
+
+Cartera disponible:
+${cat}
+
+Huecos libres para visitas (id = cuándo):
+${slots}
+
+Datos ya conocidos del lead: ${JSON.stringify({nombre:live.nombre,operacion:live.operacion,zona:live.zona,habitaciones:live.habitaciones,presupuesto:live.presupuesto,financiacion:live.financiacion,plazo:live.plazo})}`;
+}
+const TOOLS=()=>[
+  {name:"actualizar_lead",description:"Guarda en el CRM los datos del lead que conozcas. Devuelve la puntuación actualizada.",
+   inputSchema:{type:"object",properties:{nombre:{type:"string"},operacion:{type:"string",enum:["compra","alquiler"]},zona:{type:"string",enum:ZONAS},habitaciones:{type:"integer"},presupuesto:{type:"integer",description:"Euros. En alquiler, euros al mes."},financiacion:{type:"string",enum:["preaprobada","en trámite","sin financiación","al contado","no aplica"]},plazo:{type:"string",enum:["menos de 3 meses","3 a 6 meses","más de 6 meses"]}}},
+   execute:(i)=>{setFields(i);return{ok:true,puntuacion:score(live),inmuebles_que_encajan:matches(live).map(p=>p.id)};}},
+  {name:"agendar_visita",description:"Reserva una visita a un inmueble en un hueco libre. Devuelve la confirmación o un error si el hueco no vale.",
+   inputSchema:{type:"object",properties:{inmueble:{type:"string",description:"Referencia, p. ej. H-101"},hueco:{type:"string",description:"id del hueco, p. ej. 0|17:00"}},required:["inmueble","hueco"]},
+   execute:(i)=>bookVisit(i.inmueble,i.hueco)},
+  {name:"pasar_a_agente",description:"Avisa a un agente humano para que continúe la conversación.",
+   inputSchema:{type:"object",properties:{motivo:{type:"string"}},required:["motivo"]},
+   execute:(i)=>{live.agente=true;log(`Escalado a agente: ${String(i.motivo||"").slice(0,80)}`,true);addEvent("👤 Conversación pasada a Lucía (agente)");renderLive([]);return{ok:true,agente:"Lucía",respuesta:"en menos de 15 minutos en horario de oficina"};}},
+];
+async function aiReply(){
+  const typing=el("div","typing","Escribiendo…");msgs.append(typing);msgs.scrollTop=msgs.scrollHeight;
+  ctl=new AbortController();
+  const turns=live.chat.slice(-16);
+  // la lista empieza con las instrucciones (user) y termina con el último mensaje del cliente
+  const input=[{role:"user",content:rules()},...turns];
+  try{
+    const {text}=await sample(input,{tools:TOOLS(),modelTier:"quick",signal:ctl.signal});
+    typing.remove();
+    const parts=text.split(/\n\s*\n/).map(s=>s.trim()).filter(Boolean);
+    const reply=(text.trim().length<500?text.trim():parts.slice(-2).join("\n\n"))||"Perdona, ¿me lo repites?";
+    live.chat.push({role:"assistant",content:reply});addMsg(reply,false);
+    if(/\b(H-\d{3})\b/.test(reply)&&!live.propuestos){live.propuestos=true;log("Asistente propuso inmuebles compatibles",true);renderLive([]);}
+  }catch(e){
+    typing.remove();
+    if(e&&e.code==="cancelled")return;
+    if(e&&(e.code==="not_granted"||e.code==="tools_unavailable")){addSys("La IA real no está disponible. Continúo en modo guiado.");setMode("demo");demoReply(live.chat[live.chat.length-1].content);return;}
+    if(e&&e.code==="rate_limited"){addSys("Demasiados mensajes seguidos. Espera un momento y vuelve a escribir.");return;}
+    addSys("No se pudo obtener respuesta de la IA. Prueba otra vez o usa el modo guiado.");
+  }
+}
+
+/* ---------- Motor: modo guiado (sin IA) ---------- */
+function extract(t){
+  const o={};const s=t.toLowerCase();
+  if(/alquil/.test(s))o.operacion="alquiler";else if(/compr|vend/.test(s))o.operacion="compra";
+  for(const z of ZONAS){if(s.includes(z.toLowerCase())||s.includes(z.toLowerCase().replace("el ","")))o.zona=z;}
+  const h=s.match(/(\d)\s*(hab|dorm|cuartos)/);if(h)o.habitaciones=+h[1];
+  const nm=t.match(/(?:me llamo|mi nombre es|soy)\s+([A-Za-zÁÉÍÓÚÑáéíóúñ]+)/i);if(nm&&!/^(de|el|la|un|una)$/i.test(nm[1]))o.nombre=nm[1][0].toUpperCase()+nm[1].slice(1).toLowerCase();
+  const money=s.match(/(\d{1,3}(?:[.\s]\d{3})+|\d+)\s*(k|mil|€|euros)?/g);
+  if(money&&/presupuesto|€|euros|mil|\bk\b|hasta|máximo/.test(s)){
+    for(const m of money){const mm=m.match(/(\d{1,3}(?:[.\s]\d{3})+|\d+)\s*(k|mil)?/);let n=Number(mm[1].replace(/[.\s]/g,""));if(mm[2])n*=1000;if(n>=300){o.presupuesto=n;break;}}
+  }
+  if(/preaprob|aprobad/.test(s))o.financiacion="preaprobada";else if(/trámite|tramite|estudiando|banco/.test(s))o.financiacion="en trámite";else if(/contado/.test(s))o.financiacion="al contado";else if(/sin hipoteca|sin financ|no tengo hipoteca/.test(s))o.financiacion="sin financiación";
+  const pm=s.match(/(\d+)\s*mes/);if(pm){const n=+pm[1];o.plazo=n<3?"menos de 3 meses":n<=6?"3 a 6 meses":"más de 6 meses";}else if(/ya|cuanto antes|urgente|este mes/.test(s)&&/mud|entrar|plazo|mover/.test(s))o.plazo="menos de 3 meses";
+  return o;
+}
+function demoReply(t){
+  const s=t.toLowerCase();
+  setTimeout(()=>{
+    if(/persona|agente|humano|llamad/.test(s)){live.agente=true;log("Escalado a agente: el cliente lo pide",true);addEvent("👤 Conversación pasada a Lucía (agente)");renderLive([]);say("Claro. Aviso ahora mismo a Lucía, la agente de la zona, y te escribe por aquí en menos de 15 minutos en horario de oficina.");return;}
+    if(live.operacion==="alquiler")live.financiacion=live.financiacion||"no aplica";
+    setFields(extract(t));
+    if(/visita|verlo|ver el|verla|cita|disponible/.test(s)){
+      const m=matches(live)[0]||PROPS.find(p=>p.op===(live.operacion==="alquiler"?"alquiler":"venta"));
+      const free=freeSlots();const tarde=/tarde/.test(s);
+      const slot=free.find(x=>tarde?(/17:00|18:30/.test(x.id)):true)||free[0];
+      const r=bookVisit(m.id,slot.id);
+      say(`Hecho${live.nombre?", "+live.nombre:""}. Te he reservado la visita a ${m.id} el ${r.cuando}. Te atenderá Lucía, la agente de la zona. Te recordaré la cita el día antes.`);return;
+    }
+    const q=[["operacion","¿Buscas comprar o alquilar?"],["zona","¿En qué zona te gustaría vivir? Trabajamos Ruzafa, Benimaclet, Campanar, El Cabanyal, Patraix y Centro."],["nombre","Perfecto. ¿Cómo te llamas?"],["habitaciones","¿Cuántas habitaciones necesitas como mínimo?"],["presupuesto","¿Qué presupuesto máximo manejas?"],["financiacion","¿Cómo lo financiarías? Hipoteca preaprobada, en trámite, al contado…"],["plazo","¿Para cuándo te gustaría mudarte?"]];
+    const next=q.find(([k])=>!live[k]);
+    if(next){say(next[1]);return;}
+    const m=matches(live).slice(0,2);
+    if(m.length){live.propuestos=true;log("Asistente propuso inmuebles compatibles",true);renderLive([]);
+      say(`Gracias${live.nombre?", "+live.nombre:""}. Con lo que me cuentas te encajan:\n${m.map(p=>`• ${p.id}: ${p.tipo} en ${p.zona}, ${p.hab} hab, ${priceTxt(p)}. ${p.extras}.`).join("\n")}\n\n¿Quieres que te reserve una visita?`);}
+    else say("Ahora mismo no tengo nada en cartera que encaje del todo. Te aviso en cuanto entre algo así. ¿Quieres que mire en zonas cercanas?");
+  },650);
+}
+function say(t){live.chat.push({role:"assistant",content:t});addMsg(t,false);}
+
+/* ---------- Envío ---------- */
+async function send(text){
+  text=String(text||"").trim();if(!text||busy)return;
+  busy=true;$("#wa-send").disabled=true;
+  addMsg(text,true);live.chat.push({role:"user",content:text});
+  if(mode==="ai"&&sample)await aiReply();else{demoReply(text);await new Promise(r=>setTimeout(r,700));}
+  busy=false;$("#wa-send").disabled=false;$("#wa-input").focus();
+}
+$("#composer").addEventListener("submit",e=>{e.preventDefault();const i=$("#wa-input");const v=i.value;i.value="";send(v);});
+
+/* ---------- IA: anuncio y seguimiento ---------- */
+async function writeAd(p,btn,out){
+  out.hidden=false;btn.disabled=true;
+  const fallback=`${p.tipo} en ${p.zona} · ${priceTxt(p)}\n\n${p.tipo} de ${p.m2} m² con ${p.hab} habitaciones y ${p.banos} baño${p.banos>1?"s":""}. Destaca por: ${p.extras}. Ref. ${p.id}.\n\n¿Quieres verlo? Escríbenos por WhatsApp y te agendamos la visita.`;
+  if(!sample){out.textContent=fallback+"\n\n(Plantilla sin IA: la IA real no está disponible en esta vista.)";btn.disabled=false;return;}
+  out.textContent="Pensando…";
+  try{
+    await sample(`Redacta el anuncio para portales inmobiliarios de este inmueble de una agencia de Valencia. Español de España, tono cálido y concreto, sin exagerar ni inventar características que no estén en los datos. Formato: un titular de máximo 70 caracteres, una línea en blanco, 2 párrafos cortos y una llamada a la acción final para escribir por WhatsApp. Sin markdown ni emojis.\n\nDatos: ${p.tipo} en ${p.zona}, ${p.op}, ${p.hab} habitaciones, ${p.banos} baños, ${p.m2} m², ${priceTxt(p)}, ${p.extras}. Referencia ${p.id}.`,
+      {modelTier:"quick",onText:({text})=>{out.textContent=text;}});
+    log(`IA redactó el anuncio de ${p.id} (pendiente de revisión)`,true);
+  }catch(e){out.textContent=e&&e.code==="not_granted"?fallback+"\n\n(Plantilla sin IA: no se ha permitido usar Claude.)":(e&&e.text)||"No se pudo generar. Prueba otra vez.";}
+  btn.disabled=false;btn.textContent="Otra versión";
+}
+async function writeFollowup(l,btn,ta,note){
+  btn.disabled=true;note.textContent="";
+  const m=matches(l).slice(0,2).map(p=>`${p.id} (${p.tipo} en ${p.zona}, ${priceTxt(p)}, ${p.extras})`).join("; ")||"ninguno ahora mismo";
+  const fallback=`Hola${l.nombre?" "+l.nombre.split(" ")[0]:""}, soy Lucía de Inmobiliaria Horizonte. ¿Cómo va la búsqueda en ${l.zona||"Valencia"}? Tengo novedades que encajan con lo que buscas. ¿Te viene bien que hablemos esta semana?`;
+  if(!sample){ta.value=fallback;note.textContent="Plantilla sin IA. Revísala antes de enviarla.";btn.disabled=false;return;}
+  ta.value="Pensando…";
+  try{
+    await sample(`Escribe un WhatsApp de seguimiento (máximo 4 frases, español de España, cercano y profesional, sin markdown) que la agente Lucía de Inmobiliaria Horizonte enviará a este lead. Adapta el mensaje a su fase y su temperatura. No inventes datos ni prometas rebajas.\n\nLead: ${JSON.stringify({nombre:l.nombre,fase:l.stage,operacion:l.operacion,zona:l.zona,habitaciones:l.habitaciones,presupuesto:l.presupuesto,financiacion:l.financiacion,plazo:l.plazo,puntuacion:score(l)})}\nInmuebles que encajan: ${m}`,
+      {modelTier:"quick",cache:false,onText:({text})=>{ta.value=text;}});
+    note.textContent="Borrador de la IA. Revísalo y edítalo antes de enviarlo.";
+    log(`IA redactó un seguimiento para ${l.nombre||"lead"}`,true);
+  }catch(e){ta.value=(e&&e.text)||fallback;note.textContent=e&&e.code==="not_granted"?"No se ha permitido usar Claude: te dejo una plantilla.":"No se pudo generar con IA: te dejo una plantilla.";}
+  btn.disabled=false;
+}
+
+/* ---------- Arranque ---------- */
+function renderAll(){renderBoard();renderProps();renderAgenda();renderPanel();}
+log("Visita de Laura M. a H-103 confirmada por el agente");
+log("Marta y Pablo: oferta enviada al propietario de H-104");
+renderChips();startChat();renderAll();
+try{const v=localStorage.getItem("nyl-view");if(v&&TITLES[v])go(v);}catch(e){}
+setMode("demo");$("#wa-status").textContent="Conectando con la IA…";
+(async()=>{
+  try{sample=window.claude&&window.claude.use?await window.claude.use("sample"):null;}catch(e){sample=null;}
+  if(sample){setMode("ai");}
+  else{setMode("demo");addSys("Modo guiado: el asistente funciona con reglas. Abre esta página en claude.ai para probarlo con IA real.");}
+})();
+})();
+</script>
