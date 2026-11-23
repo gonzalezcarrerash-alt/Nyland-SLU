@@ -1,0 +1,499 @@
+<title>Nyland HUMAN + AI</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: banda verde de portada → bloques marfil alternos; un hilo "IMAGINA · CONSTRUYE · CRECE" recorre la página */
+:root{
+  --verde:#1C3A2E; --oro:#D6B26C; --menta:#96E1BE; --marfil:#F2F5F0;
+  --bg:#F2F5F0; --fg:#1C3A2E; --muted:#4A6358; --surface:#FFFFFF; --line:#D5DED7;
+  --band:#1C3A2E; --band-fg:#F2F5F0; --accent:#9C7A35; --chip:#E3F5EA;
+  --bubble-in:#FFFFFF; --bubble-out:#DDF4E6; --chat-bg:#E7ECE6;
+  --f-display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --f-body:"Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0F201A; --fg:#E8EEE9; --muted:#A3B8AD; --surface:#16302A; --line:#2A4A3E;
+  --band:#0A1712; --band-fg:#F2F5F0; --accent:#D6B26C; --chip:#1E3D33;
+  --bubble-in:#1D3830; --bubble-out:#24503F; --chat-bg:#12271F; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F201A; --fg:#E8EEE9; --muted:#A3B8AD; --surface:#16302A; --line:#2A4A3E;
+  --band:#0A1712; --band-fg:#F2F5F0; --accent:#D6B26C; --chip:#1E3D33;
+  --bubble-in:#1D3830; --bubble-out:#24503F; --chat-bg:#12271F; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.6}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+h1,h2,h3{font-family:var(--f-display);line-height:1.08;text-wrap:balance;margin:0}
+h2{font-size:clamp(1.9rem,4vw,2.8rem);font-weight:800;letter-spacing:-.02em}
+h3{font-size:1.15rem;font-weight:700}
+p{margin:0}
+.eyebrow{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.lead{color:var(--muted);max-width:62ch;font-size:1.06rem}
+section{padding-block:clamp(56px,8vw,96px)}
+.sec-head{display:grid;gap:12px;margin-bottom:36px}
+.note{font-size:.82rem;color:var(--muted)}
+
+/* PORTADA */
+.hero{background:var(--band);color:var(--band-fg);margin-top:calc(-1 * env(safe-area-inset-top, 0px));padding-top:calc(env(safe-area-inset-top, 0px) + 28px);padding-bottom:64px;overflow:hidden;position:relative}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.logo{font-family:var(--f-display);font-weight:800;font-size:1.3rem;letter-spacing:-.01em}
+.logo span{color:var(--oro)}
+.nav-links{display:flex;gap:20px;flex-wrap:wrap;font-size:.9rem}
+.nav-links a{color:var(--band-fg);opacity:.8;text-decoration:none}
+.nav-links a:hover,.nav-links a:focus-visible{opacity:1;color:var(--menta)}
+.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center;margin-top:64px}
+.slogan{font-size:clamp(3.2rem,10vw,7.4rem);font-weight:800;letter-spacing:-.04em;line-height:.92}
+.slogan .plus{color:var(--oro);display:inline-block;transform:translateY(-.04em)}
+.slogan .ai{color:var(--menta)}
+.hero p.sub{font-size:1.2rem;max-width:44ch;margin-top:24px;color:#C9D6CE}
+.method{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;font-family:var(--f-mono);font-size:.8rem;letter-spacing:.12em}
+.method span{border:1px solid rgba(150,225,190,.45);border-radius:999px;padding:7px 14px;color:var(--menta)}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;border-radius:10px;padding:13px 20px;text-decoration:none;border:0;cursor:pointer;font:inherit;font-weight:600}
+.btn-oro{background:var(--oro);color:#1C3A2E}
+.btn-ghost{background:transparent;color:var(--band-fg);border:1px solid rgba(242,245,240,.35)}
+.btn:focus-visible,.tab:focus-visible,input:focus-visible{outline:3px solid var(--menta);outline-offset:2px}
+.hero-card{background:rgba(242,245,240,.06);border:1px solid rgba(242,245,240,.14);border-radius:18px;padding:24px;display:grid;gap:16px}
+.hero-card .row{display:flex;justify-content:space-between;gap:12px;font-size:.92rem;border-bottom:1px dashed rgba(242,245,240,.15);padding-bottom:10px}
+.hero-card .row:last-child{border:0;padding:0}
+.hero-card b{font-family:var(--f-mono);font-weight:500;color:var(--menta);white-space:nowrap}
+.hero-card .tag{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--oro)}
+
+/* QUÉ VENDEMOS */
+.mods{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.mod{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;display:grid;gap:8px;align-content:start}
+.mod .n{font-family:var(--f-mono);font-size:.75rem;color:var(--accent)}
+.mod p{color:var(--muted);font-size:.92rem}
+
+/* CÓMO FUNCIONA */
+.phases{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--surface)}
+.phase{padding:28px;display:grid;gap:14px;align-content:start;border-right:1px solid var(--line)}
+.phase:last-child{border-right:0}
+.phase .step{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.14em;color:var(--accent)}
+.phase h3{font-size:1.9rem;font-weight:800;letter-spacing:-.02em}
+.phase ul{margin:0;padding-left:18px;color:var(--muted);font-size:.94rem;display:grid;gap:6px}
+.phase .out{margin-top:auto;font-size:.85rem;background:var(--chip);border-radius:10px;padding:10px 12px}
+
+/* DEMO */
+.demo-band{background:var(--surface);border-block:1px solid var(--line)}
+.client{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.client span{font-size:.82rem;background:var(--chip);border-radius:999px;padding:5px 12px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px;border-bottom:1px solid var(--line)}
+.tab{background:none;border:0;font:inherit;font-weight:600;color:var(--muted);padding:10px 14px;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-1px}
+.tab[aria-selected="true"]{color:var(--fg);border-bottom-color:var(--oro)}
+.panel{min-width:0}
+
+/* antes/después */
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ba-col{border-radius:16px;padding:22px;border:1px solid var(--line);background:var(--bg);min-width:0}
+.ba-col.after{border-color:var(--menta)}
+.ba-col h3{display:flex;justify-content:space-between;gap:8px;align-items:baseline;margin-bottom:14px}
+.ba-col h3 small{font-family:var(--f-mono);font-size:.8rem;font-weight:500;color:var(--muted)}
+.task{display:grid;grid-template-columns:1fr auto;gap:12px;padding:10px 0;border-top:1px solid var(--line);font-size:.93rem}
+.task b{font-family:var(--f-mono);font-weight:500;font-variant-numeric:tabular-nums;white-space:nowrap}
+.after .task b{color:var(--accent)}
+.total{display:flex;justify-content:space-between;margin-top:12px;font-weight:600}
+.total b{font-family:var(--f-display);font-size:1.6rem}
+
+/* mapa del cerebro */
+.brain{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;position:relative}
+.node{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:16px;display:grid;gap:4px;font-size:.9rem;min-width:0}
+.node strong{font-family:var(--f-display);font-size:1rem}
+.node span{color:var(--muted)}
+.core{background:var(--verde);color:var(--marfil);border:0;display:grid;place-items:center;text-align:center;align-content:center;gap:6px}
+.core strong{font-size:1.25rem}
+.core span{color:var(--menta)}
+.core .ring{width:56px;height:56px;border-radius:50%;border:2px solid var(--oro);display:grid;place-items:center;font-family:var(--f-mono);color:var(--oro);font-size:.8rem}
+
+/* chat */
+.chat-wrap{display:grid;grid-template-columns:minmax(0,420px) 1fr;gap:32px;align-items:start}
+.phone{background:var(--chat-bg);border-radius:22px;border:1px solid var(--line);overflow:hidden}
+.phone-top{background:var(--verde);color:var(--marfil);padding:12px 16px;display:flex;align-items:center;gap:10px}
+.avatar{width:34px;height:34px;border-radius:50%;background:var(--menta);color:var(--verde);display:grid;place-items:center;font-weight:700;font-size:.85rem}
+.phone-top small{display:block;font-size:.75rem;color:var(--menta)}
+.msgs{padding:16px;display:grid;gap:8px;font-size:.92rem}
+.msg{max-width:84%;padding:9px 12px;border-radius:12px;background:var(--bubble-in);line-height:1.45}
+.msg.me{justify-self:end;background:var(--bubble-out)}
+.msg time{display:block;text-align:right;font-size:.68rem;color:var(--muted);margin-top:2px}
+.sys{justify-self:center;font-size:.74rem;color:var(--muted);background:var(--bg);border-radius:8px;padding:4px 10px;text-align:center}
+.quick{display:flex;gap:6px;flex-wrap:wrap}
+.quick span{border:1px solid var(--accent);color:var(--accent);border-radius:999px;padding:3px 10px;font-size:.8rem;background:var(--bubble-in)}
+.why{display:grid;gap:14px}
+.why li{margin-bottom:6px}
+.why ul{margin:0;padding-left:18px;color:var(--muted)}
+
+/* calculadora */
+.calc{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--bg)}
+table{border-collapse:collapse;width:100%;min-width:620px;font-size:.92rem}
+th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--line)}
+th{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+input[type=number]{width:84px;font:inherit;font-variant-numeric:tabular-nums;text-align:right;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--fg)}
+.calc-sum{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+.big{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:18px}
+.big b{display:block;font-family:var(--f-display);font-size:2.2rem;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.big span{font-size:.85rem;color:var(--muted)}
+.big.hl{background:var(--verde);border:0;color:var(--marfil)}
+.big.hl b{color:var(--oro)}
+.big.hl span{color:#C9D6CE}
+.rate{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px;font-size:.92rem}
+
+/* tarjetas por nicho */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{border-radius:16px;padding:22px;background:var(--verde);color:var(--marfil);display:grid;gap:14px;align-content:start}
+.card .niche{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--oro)}
+.card dl{margin:0;display:grid;gap:10px}
+.card dt{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--menta)}
+.card dd{margin:0;font-size:.95rem}
+
+/* guion */
+.script{display:grid;gap:0;border-left:2px solid var(--oro);margin-left:8px}
+.beat{display:grid;grid-template-columns:90px 1fr;gap:16px;padding:0 0 22px 22px;position:relative}
+.beat::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--oro)}
+.beat .t{font-family:var(--f-mono);font-size:.85rem;color:var(--accent)}
+.beat q{display:block;margin-top:4px;color:var(--muted);font-style:italic;quotes:"«" "»"}
+
+/* reglas */
+.rules{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+.rule{border-top:3px solid var(--menta);padding-top:14px;display:grid;gap:6px}
+.rule p{color:var(--muted);font-size:.92rem}
+
+/* cierre */
+.close{background:var(--band);color:var(--band-fg);text-align:left}
+.close h2{font-size:clamp(2.2rem,6vw,4rem)}
+.close p{color:#C9D6CE;max-width:56ch;margin-top:16px;font-size:1.08rem}
+.contact{font-family:var(--f-mono);font-size:.9rem;color:var(--menta);margin-top:20px}
+footer{padding-block:24px;font-size:.8rem;color:var(--muted)}
+
+@media (max-width:860px){
+  .hero-grid,.chat-wrap{grid-template-columns:1fr}
+  .phases{grid-template-columns:1fr}
+  .phase{border-right:0;border-bottom:1px solid var(--line)}
+  .phase:last-child{border-bottom:0}
+  .cards{grid-template-columns:1fr 1fr}
+  .brain{grid-template-columns:1fr 1fr}
+  .core{grid-column:1 / -1;order:-1}
+}
+@media (max-width:600px){
+  .ba,.cards,.brain,.calc-sum{grid-template-columns:1fr}
+  .beat{grid-template-columns:1fr;gap:2px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .slogan .plus{animation:pulse 3.2s ease-in-out infinite}
+  @keyframes pulse{50%{transform:translateY(-.04em) rotate(90deg)}}
+}
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <nav class="nav" aria-label="Principal">
+      <div class="logo">Nyland<span>.</span> AI Solutions</div>
+      <div class="nav-links">
+        <a href="#servicios">Qué hacemos</a>
+        <a href="#metodo">Cómo funciona</a>
+        <a href="#demo">Demo</a>
+        <a href="#reglas">Compromisos</a>
+      </div>
+    </nav>
+    <div class="hero-grid">
+      <div>
+        <h1 class="slogan">HUMAN <span class="plus">+</span> <span class="ai">AI</span></h1>
+        <p class="sub">Construimos el cerebro de IA de tu empresa. La IA potencia a tu equipo, no lo sustituye.</p>
+        <div class="method" aria-label="Método Nyland"><span>IMAGINA</span><span>CONSTRUYE</span><span>CRECE</span></div>
+        <div class="cta-row">
+          <a class="btn btn-oro" href="#demo">Ver cómo quedaría en tu sector</a>
+          <a class="btn btn-ghost" href="#metodo">Cómo trabajamos</a>
+        </div>
+      </div>
+      <aside class="hero-card" aria-label="Qué recibe el cliente">
+        <div class="tag">Lo que recibe tu empresa</div>
+        <div class="row">Diagnóstico por departamento <b>Fase 1</b></div>
+        <div class="row">Asistentes y automatizaciones a medida <b>Fase 2</b></div>
+        <div class="row">Implantación, formación y KPIs <b>Fase 3</b></div>
+        <div class="row">Una persona responsable en cada flujo <b>Siempre</b></div>
+      </aside>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="servicios">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Qué vendemos</div>
+      <h2>Un asistente o una automatización para cada departamento</h2>
+      <p class="lead">Buscamos las tareas repetitivas, los cuellos de botella y las ventas que se escapan. Después conectamos la IA con las herramientas que ya usas: CRM, ERP, email, WhatsApp, Excel o tu software contable.</p>
+    </div>
+    <div class="mods">
+      <article class="mod"><span class="n">RR. HH.</span><h3>Recursos Humanos</h3><p>Cribado de CV, entrevistas preliminares, onboarding, vacaciones y fichajes, FAQ interna y formación.</p></article>
+      <article class="mod"><span class="n">SOPORTE</span><h3>Atención al cliente</h3><p>Asistente 24/7 en web, WhatsApp y email, clasificación de tickets y escalado a una persona.</p></article>
+      <article class="mod"><span class="n">VENTAS</span><h3>Ventas</h3><p>Puntuación de leads, seguimiento automático, presupuestos, previsión y recuperación de clientes inactivos.</p></article>
+      <article class="mod"><span class="n">MARKETING</span><h3>Captación y marketing</h3><p>Prospección, campañas personalizadas, contenido para redes, landing pages y nutrición de leads.</p></article>
+      <article class="mod"><span class="n">FINANZAS</span><h3>Contabilidad y finanzas</h3><p>Lectura de facturas, conciliación bancaria, control de impagos y alertas. Siempre revisado por tu asesor.</p></article>
+      <article class="mod"><span class="n">OPERACIONES</span><h3>Operaciones</h3><p>Inventario, pedidos, logística, agendas y reservas, control de calidad y documentación de procesos.</p></article>
+      <article class="mod"><span class="n">PRODUCTO</span><h3>Desarrollo y producto</h3><p>Herramientas internas, integraciones por API, apps a medida, paneles de datos y agentes entre departamentos.</p></article>
+      <article class="mod"><span class="n">DIRECCIÓN</span><h3>Dirección</h3><p>Cuadro de mando, resumen semanal, análisis de escenarios y apoyo a decisiones.</p></article>
+      <article class="mod"><span class="n">NUEVA VENTA</span><h3>Nuevos métodos de venta</h3><p>Venta conversacional por WhatsApp e Instagram, asistentes de compra, recomendadores y social selling.</p></article>
+      <article class="mod"><span class="n">ESCALA</span><h3>Escalabilidad</h3><p>De 1 a N sedes, equipos o países, con plantillas reutilizables y métricas por unidad de negocio.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="metodo" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Cómo funciona</div>
+      <h2>Primero entendemos, luego proponemos, luego construimos</h2>
+      <p class="lead">Tres fases. Al final de cada una tienes un entregable que revisas y apruebas. El agente propone, una persona decide.</p>
+    </div>
+    <div class="phases">
+      <div class="phase">
+        <span class="step">FASE 1</span>
+        <h3>Imagina</h3>
+        <ul>
+          <li>Mapeamos quién hace qué, con qué herramienta y cuánto tiempo le cuesta.</li>
+          <li>Puntuamos cada oportunidad de 1 a 5 en impacto, esfuerzo y riesgo.</li>
+        </ul>
+        <p class="out"><strong>Entregable:</strong> tabla priorizada con victorias rápidas (2–4 semanas), proyectos medios y transformación a largo plazo.</p>
+      </div>
+      <div class="phase">
+        <span class="step">FASE 2</span>
+        <h3>Construye</h3>
+        <ul>
+          <li>Ficha de cada solución: objetivo, reglas, excepciones y punto de escalado a humano.</li>
+          <li>Diagrama del flujo, prompts de cada asistente e integraciones (n8n, Make, Zapier, APIs).</li>
+          <li>Plan de pruebas con casos reales y casos límite.</li>
+        </ul>
+        <p class="out"><strong>Entregable:</strong> asistentes y automatizaciones funcionando, documentados y probados.</p>
+      </div>
+      <div class="phase">
+        <span class="step">FASE 3</span>
+        <h3>Crece</h3>
+        <ul>
+          <li>Implantación por etapas y formación del equipo.</li>
+          <li>KPIs con línea base: horas ahorradas, tiempo de respuesta, conversión, coste por lead.</li>
+          <li>Revisión mensual: qué mejorar, qué escalar, qué módulo añadir.</li>
+        </ul>
+        <p class="out"><strong>Entregable:</strong> panel de resultados y hoja de ruta para el siguiente trimestre.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="demo" class="demo-band">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Demo · ejemplo ficticio</div>
+      <h2>Así quedaría en una clínica dental</h2>
+      <p class="lead">Un ejemplo inventado para enseñar el método. Con tus datos reales, preparamos esta misma demo para tu empresa.</p>
+      <div class="client"><span>Clínica Dental Sonrisa (ficticia)</span><span>12 empleados</span><span>Recepción · Clínica · Administración</span><span>WhatsApp, agenda online, Excel</span></div>
+    </div>
+
+    <div class="tabs" role="tablist" aria-label="Piezas de la demo">
+      <button class="tab" role="tab" id="t-ba" aria-controls="p-ba" aria-selected="true">Antes / después</button>
+      <button class="tab" role="tab" id="t-map" aria-controls="p-map" aria-selected="false" tabindex="-1">Mapa del cerebro de IA</button>
+      <button class="tab" role="tab" id="t-chat" aria-controls="p-chat" aria-selected="false" tabindex="-1">Conversación</button>
+      <button class="tab" role="tab" id="t-calc" aria-controls="p-calc" aria-selected="false" tabindex="-1">Calculadora de ahorro</button>
+      <button class="tab" role="tab" id="t-script" aria-controls="p-script" aria-selected="false" tabindex="-1">Guion de 5 minutos</button>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-ba" aria-labelledby="t-ba">
+      <div class="ba">
+        <div class="ba-col">
+          <h3>Hoy <small>tiempo de recepción al día</small></h3>
+          <div class="task">Llamar para confirmar las citas de mañana <b>90 min</b></div>
+          <div class="task">Responder WhatsApp: precios, horarios, urgencias <b>75 min</b></div>
+          <div class="task">Reprogramar cancelaciones y huecos libres <b>40 min</b></div>
+          <div class="task">Perseguir presupuestos sin respuesta <b>30 min</b></div>
+          <div class="task">Pasar facturas a Excel <b>25 min</b></div>
+          <div class="total">Total <b>4 h 20 min</b></div>
+        </div>
+        <div class="ba-col after">
+          <h3>Con Nyland <small>tiempo de recepción al día</small></h3>
+          <div class="task">Recordatorio automático por WhatsApp; recepción solo llama a quien no confirma <b>15 min</b></div>
+          <div class="task">El asistente responde lo habitual y pasa urgencias a una persona <b>20 min</b></div>
+          <div class="task">Lista de espera que ofrece el hueco libre sola <b>10 min</b></div>
+          <div class="task">Seguimiento de presupuestos a los 3 y 10 días <b>5 min</b></div>
+          <div class="task">Lectura de facturas; administración revisa y aprueba <b>10 min</b></div>
+          <div class="total">Total <b>1 h</b></div>
+        </div>
+      </div>
+      <p class="note" style="margin-top:14px">Tiempos ilustrativos para el ejemplo. En un caso real salen del diagnóstico de la Fase 1.</p>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-map" aria-labelledby="t-map" hidden>
+      <div class="brain">
+        <div class="node"><strong>Recepción</strong><span>Asistente de WhatsApp que da citas, confirma y resuelve dudas.</span></div>
+        <div class="node"><strong>Pacientes</strong><span>Recordatorios de revisión cada 6 meses y de tratamientos a medias.</span></div>
+        <div class="node"><strong>Ventas</strong><span>Seguimiento de presupuestos de implantes y ortodoncia.</span></div>
+        <div class="node"><strong>Marketing</strong><span>Pide reseñas tras la visita y prepara los posts del mes.</span></div>
+        <div class="node core"><div class="ring">IA</div><strong>Clínica Dental Sonrisa</strong><span>HUMAN + AI</span></div>
+        <div class="node"><strong>Administración</strong><span>Lee facturas de proveedores y avisa de cobros pendientes.</span></div>
+        <div class="node"><strong>Equipo clínico</strong><span>Resume la ficha del paciente antes de cada cita. El diagnóstico lo hace el dentista.</span></div>
+        <div class="node"><strong>RR. HH.</strong><span>Turnos, vacaciones y FAQ interna para el personal.</span></div>
+        <div class="node"><strong>Dirección</strong><span>Resumen semanal: citas, huecos, presupuestos aceptados y reseñas.</span></div>
+      </div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-chat" aria-labelledby="t-chat" hidden>
+      <div class="chat-wrap">
+        <div class="phone" aria-label="Conversación simulada de WhatsApp">
+          <div class="phone-top"><div class="avatar">CS</div><div><strong>Clínica Sonrisa</strong><small>Asistente virtual · responde al momento</small></div></div>
+          <div class="msgs">
+            <div class="sys">Hola, soy el asistente virtual de la clínica. Si lo prefieres, te paso con una persona en cualquier momento.</div>
+            <div class="msg me">Hola, me sangran las encías al cepillarme. ¿Tenéis cita esta semana?<time>18:42</time></div>
+            <div class="msg">Gracias por escribir. Para eso lo indicado es una revisión con higiene. Tengo estos huecos:<time>18:42</time></div>
+            <div class="quick"><span>Jue 10:30</span><span>Jue 17:00</span><span>Vie 12:15</span></div>
+            <div class="msg me">Jueves a las 17:00<time>18:43</time></div>
+            <div class="msg">Reservado: jueves a las 17:00 con la higienista. La primera visita y la revisión son gratuitas. Te recordaré la cita el miércoles. ¿Quieres saber cómo llegar o dónde aparcar?<time>18:43</time></div>
+            <div class="msg me">No, gracias. ¿Y si me duele mucho antes?<time>18:44</time></div>
+            <div class="msg">Si hay dolor fuerte, inflamación o fiebre, llama al teléfono de urgencias de la clínica y te atiende una persona del equipo. No puedo hacer diagnósticos por aquí.<time>18:44</time></div>
+          </div>
+        </div>
+        <div class="why">
+          <h3>Qué hace este asistente</h3>
+          <ul>
+            <li>Dice desde el primer mensaje que es una IA y ofrece hablar con una persona.</li>
+            <li>Consulta la agenda real y reserva sin llamadas.</li>
+            <li>Usa el lenguaje de la clínica: higiene, revisión, primera visita.</li>
+            <li>No diagnostica: ante síntomas fuertes, deriva a una persona.</li>
+            <li>Guarda solo los datos necesarios para la cita (RGPD).</li>
+          </ul>
+          <p class="note">Conversación simulada. Precios y condiciones de ejemplo.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-calc" aria-labelledby="t-calc" hidden>
+      <div class="rate">
+        <label for="rate">Coste por hora del equipo (€)</label>
+        <input type="number" id="rate" min="0" step="1" value="18">
+        <span class="note">Cambia cualquier cifra por la de tu empresa.</span>
+      </div>
+      <div class="calc">
+        <table>
+          <thead><tr><th>Tarea</th><th class="num">Horas al mes</th><th class="num">% que asume la IA</th><th class="num">Horas ahorradas</th><th class="num">Ahorro €/mes</th></tr></thead>
+          <tbody id="calc-body"></tbody>
+        </table>
+      </div>
+      <div class="calc-sum">
+        <div class="big"><b id="sum-h">0</b><span>horas liberadas al mes</span></div>
+        <div class="big"><b id="sum-d">0</b><span>días de trabajo (8 h) al mes</span></div>
+        <div class="big hl"><b id="sum-e">0 €</b><span>ahorro estimado al mes</span></div>
+      </div>
+      <p class="note" style="margin-top:14px">Estimación orientativa con datos de ejemplo. No es un resultado garantizado. Las horas liberadas se dedican a atender mejor a los pacientes.</p>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-script" aria-labelledby="t-script" hidden>
+      <div class="script">
+        <div class="beat"><span class="t">0:00–0:45</span><div><strong>El problema</strong><q>Su recepción pasa más de cuatro horas al día al teléfono y en WhatsApp. Vamos a ver cuántas podemos devolverle.</q></div></div>
+        <div class="beat"><span class="t">0:45–1:45</span><div><strong>Antes / después</strong><q>A la izquierda, su día de hoy. A la derecha, el mismo día con el asistente. Las personas siguen al mando.</q></div></div>
+        <div class="beat"><span class="t">1:45–3:00</span><div><strong>Conversación en vivo</strong><q>Este es un paciente que escribe a las siete de la tarde. Fíjese: reserva solo, y si hay una urgencia, le atiende su equipo.</q></div></div>
+        <div class="beat"><span class="t">3:00–4:00</span><div><strong>Calculadora con sus cifras</strong><q>Pongamos sus horas y su coste por hora. Esto es lo que liberaría cada mes, según sus propios datos.</q></div></div>
+        <div class="beat"><span class="t">4:00–5:00</span><div><strong>Propuesta</strong><q>Empezamos con una victoria rápida: el asistente de citas, en 2 a 4 semanas. Si funciona, seguimos con presupuestos y reseñas.</q></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="nichos">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Para cualquier sector</div>
+      <h2>Hablamos el idioma de tu negocio</h2>
+      <p class="lead">Adaptamos cada solución a la jerga, la normativa y la temporada alta del sector.</p>
+    </div>
+    <div class="cards">
+      <article class="card"><span class="niche">Clínicas</span><dl><dt>Problema</dt><dd>Citas que no se presentan y huecos vacíos.</dd><dt>Solución con IA</dt><dd>Recordatorios por WhatsApp y lista de espera automática.</dd><dt>Resultado esperado</dt><dd>Menos huecos y una recepción menos saturada.</dd></dl></article>
+      <article class="card"><span class="niche">Inmobiliarias</span><dl><dt>Problema</dt><dd>Leads de portales que nadie contesta a tiempo.</dd><dt>Solución con IA</dt><dd>Asistente que cualifica al lead y agenda la visita.</dd><dt>Resultado esperado</dt><dd>Los agentes dedican su tiempo a visitas con interés real.</dd></dl></article>
+      <article class="card"><span class="niche">Restaurantes</span><dl><dt>Problema</dt><dd>Reservas por teléfono en plena hora punta.</dd><dt>Solución con IA</dt><dd>Reservas y pedidos por WhatsApp, y respuesta a reseñas.</dd><dt>Resultado esperado</dt><dd>Sala atendida y ninguna reserva perdida.</dd></dl></article>
+      <article class="card"><span class="niche">Comercio online</span><dl><dt>Problema</dt><dd>Carritos abandonados y preguntas repetidas.</dd><dt>Solución con IA</dt><dd>Asistente de compra y recomendador de productos.</dd><dt>Resultado esperado</dt><dd>Más ventas cerradas desde el propio chat.</dd></dl></article>
+      <article class="card"><span class="niche">Asesorías</span><dl><dt>Problema</dt><dd>Facturas de clientes que llegan desordenadas.</dd><dt>Solución con IA</dt><dd>Lectura y clasificación automática, revisada por el asesor.</dd><dt>Resultado esperado</dt><dd>Cierres de trimestre con menos horas extra.</dd></dl></article>
+      <article class="card"><span class="niche">Talleres</span><dl><dt>Problema</dt><dd>Clientes que llaman para saber si el coche está listo.</dd><dt>Solución con IA</dt><dd>Avisos de estado y presupuesto por WhatsApp.</dd><dt>Resultado esperado</dt><dd>Menos llamadas y más tiempo en el taller.</dd></dl></article>
+    </div>
+  </div>
+</section>
+
+<section id="reglas" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Nuestros compromisos</div>
+      <h2>La IA trabaja con reglas claras</h2>
+    </div>
+    <div class="rules">
+      <div class="rule"><h3>Una persona al mando</h3><p>Cada automatización tiene un responsable humano y un punto de escalado.</p></div>
+      <div class="rule"><h3>RGPD desde el diseño</h3><p>Solo los datos necesarios, dónde se guardan y quién puede verlos. Avisamos si hace falta revisión legal o laboral.</p></div>
+      <div class="rule"><h3>Transparencia</h3><p>Tus clientes siempre saben cuándo hablan con una IA.</p></div>
+      <div class="rule"><h3>Decisiones sensibles, con supervisión</h3><p>Contrataciones, despidos, créditos, diagnósticos y temas fiscales los decide una persona.</p></div>
+      <div class="rule"><h3>Sin promesas infladas</h3><p>No garantizamos resultados ni inventamos cifras. Medimos con línea base.</p></div>
+      <div class="rule"><h3>Lo más simple que funcione</h3><p>Te explicamos costes recurrentes y alternativas antes de construir.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="close">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--oro)">Siguiente paso</div>
+    <h2 style="margin-top:12px">Imagina. Construye. Crece.</h2>
+    <p>Empezamos con una reunión de diagnóstico: rellenamos juntos la ficha de tu empresa y en una semana te enseñamos esta misma demo con tus procesos y tus cifras.</p>
+    <div class="cta-row"><a class="btn btn-oro" href="#demo">Volver a la demo</a></div>
+  </div>
+</section>
+</main>
+<footer><div class="wrap">Nyland AI Solutions · HUMAN + AI · La demo usa una clínica ficticia y cifras de ejemplo.</div></footer>
+
+<script>
+(function(){
+  // Pestañas de la demo
+  const tabs=[...document.querySelectorAll('.tab')];
+  function select(tab){
+    tabs.forEach(t=>{const on=t===tab;t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden=!on;});
+  }
+  tabs.forEach((t,i)=>{
+    t.addEventListener('click',()=>select(t));
+    t.addEventListener('keydown',e=>{
+      if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft')return;
+      const n=tabs[(i+(e.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length];select(n);n.focus();
+    });
+  });
+
+  // Calculadora de ahorro (estimación)
+  const rows=[
+    ['Confirmar citas por teléfono',30,80],
+    ['Responder WhatsApp y preguntas frecuentes',25,70],
+    ['Reprogramar cancelaciones',13,70],
+    ['Seguimiento de presupuestos',10,80],
+    ['Pasar facturas a Excel',8,60],
+  ];
+  const body=document.getElementById('calc-body');
+  const fmt=n=>n.toLocaleString('es-ES',{maximumFractionDigits:0});
+  rows.forEach((r,i)=>{
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td>${r[0]}</td>
+      <td class="num"><input type="number" id="h${i}" min="0" step="1" value="${r[1]}" aria-label="Horas al mes: ${r[0]}"></td>
+      <td class="num"><input type="number" id="p${i}" min="0" max="100" step="5" value="${r[2]}" aria-label="Porcentaje que asume la IA: ${r[0]}"></td>
+      <td class="num" id="s${i}"></td><td class="num" id="e${i}"></td>`;
+    body.appendChild(tr);
+  });
+  function calc(){
+    const rate=Math.max(0,+document.getElementById('rate').value||0);
+    let H=0;
+    rows.forEach((r,i)=>{
+      const h=Math.max(0,+document.getElementById('h'+i).value||0);
+      const p=Math.min(100,Math.max(0,+document.getElementById('p'+i).value||0));
+      const s=h*p/100;H+=s;
+      document.getElementById('s'+i).textContent=fmt(s)+' h';
+      document.getElementById('e'+i).textContent=fmt(s*rate)+' €';
+    });
+    document.getElementById('sum-h').textContent=fmt(H);
+    document.getElementById('sum-d').textContent=(H/8).toLocaleString('es-ES',{maximumFractionDigits:1});
+    document.getElementById('sum-e').textContent=fmt(H*rate)+' €';
+  }
+  document.getElementById('p-calc').addEventListener('input',calc);
+  calc();
+})();
+</script>
