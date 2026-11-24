@@ -9,6 +9,7 @@ Método **IMAGINA · CONSTRUYE · CRECE**.
 | Ruta | Qué es |
 |---|---|
 | `prompts/ingeniero-ia-nyland.md` | El prompt maestro (copiar y pegar como instrucciones del sistema) |
+| `prompts/agente-captacion.md` | Prompt del agente de captación y ventas (nichos de alto valor) |
 | `plantillas/ficha-cliente.md` | Ficha de cliente para la primera reunión |
 | `ejemplos/peticiones.md` | Peticiones de prueba (diagnóstico, demo, tarjetas, construcción…) |
 | `clientes/` | Una carpeta por cliente con su ficha y entregables |
