@@ -1,8 +1,16 @@
 # App Nyland para el teléfono
 
-App genérica de Nyland AI Solutions: filosofía HUMAN + AI, los 10 módulos de servicios,
-el método IMAGINA · CONSTRUYE · CRECE, la escalabilidad de 1 a N sedes y una sección
-«Tu negocio» que adapta el modelo a cualquier sector. Funciona sin conexión.
+App genérica de Nyland AI Solutions para enseñar al cliente, desde el teléfono, cómo funciona
+Nyland y cómo se aplicaría a su negocio. Funciona sin conexión.
+
+- **Inicio, Servicios, Método y Escala:** filosofía HUMAN + AI, los 10 módulos, el método
+  IMAGINA · CONSTRUYE · CRECE y la escalabilidad de 1 a N sedes.
+- **Demo** (botón central): pones el nombre y el sector del cliente y la app le enseña en 7 pasos
+  cómo quedaría en su empresa: hoy y con Nyland, mapa del cerebro de IA, un chat que el cliente
+  puede probar, el panel que vería su equipo, la calculadora de ahorro, el plan por etapas y la
+  ficha para el diagnóstico. Sectores incluidos: salud, inmobiliaria, hostelería, comercio,
+  servicios profesionales, industria, educación y uno genérico para cualquier otro negocio.
+  Para añadir o ajustar un sector, edita la lista `SECTORS` en `app.html`.
 
 ## Archivos
 

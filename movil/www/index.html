@@ -176,6 +176,64 @@ input[type=range]{width:100%;accent-color:var(--oro)}
 .note{font-size:.82rem;color:var(--muted)}
 .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(92px + env(safe-area-inset-bottom, 0px));background:var(--verde);color:var(--marfil);padding:10px 16px;border-radius:12px;font-size:.9rem;z-index:30;max-width:calc(100% - 32px)}
 .install{display:grid;gap:8px;padding:14px;border-radius:14px;border:1px dashed var(--accent)}
+
+/* demo */
+.demo-tab .dt-ic{width:34px;height:34px;border-radius:50%;background:var(--oro);display:grid;place-items:center;margin-top:-14px;box-shadow:0 0 0 4px var(--tabbar)}
+.demo-tab .dt-ic svg{width:16px;height:16px;fill:#1C3A2E;stroke:none}
+.tabbar a.demo-tab[aria-current="page"] .dt-ic svg{stroke:none}
+.prog{display:flex;gap:4px;margin-top:14px}
+.prog i{flex:1;height:4px;border-radius:2px;background:rgba(255,255,255,.2)}
+.prog i.on{background:var(--oro)}
+.navrow{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+.ba{border:1px solid var(--line);border-radius:16px;padding:14px 16px;background:var(--surface)}
+.ba.after{border:2px solid var(--menta)}
+.ba-h{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px}
+.ba-h b{font-family:var(--f-mono);font-size:.82rem;font-weight:500}
+.ba.after .ba-h b{color:var(--accent)}
+.task{display:grid;grid-template-columns:1fr auto;gap:12px;padding:8px 0;border-top:1px solid var(--line);font-size:.9rem}
+.task b{font-family:var(--f-mono);font-weight:500;white-space:nowrap;font-size:.82rem}
+.bignum{background:var(--verde);color:var(--marfil);border-radius:16px;padding:16px;display:grid;gap:2px}
+.bignum b{font-family:var(--f-display);font-size:2.4rem;font-weight:800;color:var(--oro);line-height:1}
+.bignum span{color:#C9D6CE;font-size:.9rem}
+.brain{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.brain .core{grid-column:1 / -1;background:var(--verde);color:var(--marfil);border-radius:16px;padding:16px;display:grid;justify-items:center;text-align:center;gap:4px}
+.brain .core .ring{width:48px;height:48px;border-radius:50%;border:2px solid var(--oro);display:grid;place-items:center;font-family:var(--f-mono);color:var(--oro);font-size:.8rem}
+.brain .core strong{font-family:var(--f-display);font-size:1.2rem}
+.brain .core span:last-child{color:var(--menta);font-size:.78rem;font-family:var(--f-mono);letter-spacing:.1em}
+.brain .node{border:1px solid var(--line);background:var(--surface);border-radius:14px;padding:12px;display:grid;gap:3px;font-size:.86rem;min-width:0}
+.brain .node strong{font-family:var(--f-display)}
+.brain .node .a{color:var(--accent);font-weight:600;font-size:.8rem}
+.phone{background:var(--soft);border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column}
+.ph-top{background:var(--verde);color:var(--marfil);padding:10px 14px;display:flex;gap:10px;align-items:center}
+.ph-top .av{width:34px;height:34px;border-radius:50%;background:var(--menta);color:var(--verde);display:grid;place-items:center;font-weight:700;font-size:.8rem;flex:none}
+.ph-top small{display:block;color:var(--menta);font-size:.72rem}
+.msgs{height:340px;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:7px}
+.msg{max-width:85%;padding:8px 11px;border-radius:12px;background:var(--surface);font-size:.92rem;line-height:1.4;overflow-wrap:anywhere}
+.msg.me{align-self:flex-end;background:var(--menta);color:#1C3A2E}
+.ev{align-self:center;font-family:var(--f-mono);font-size:.68rem;color:var(--accent);border:1px dashed var(--accent);border-radius:8px;padding:3px 9px;text-align:center;max-width:94%}
+.typing{font-size:.8rem;color:var(--muted);font-style:italic}
+.sugg{display:flex;gap:6px;overflow-x:auto;padding:8px 10px 0}
+.sugg button{flex:none;border:1px solid var(--accent);color:var(--accent);background:var(--surface);border-radius:999px;padding:6px 11px;font-size:.8rem;cursor:pointer}
+.composer{display:flex;gap:8px;padding:10px}
+.composer input{flex:1;min-width:0;border:1px solid var(--line);border-radius:999px;padding:10px 14px;background:var(--surface);color:var(--fg);font-size:16px}
+.composer .btn{padding:10px 14px;border-radius:999px}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.log{display:grid;gap:6px}
+.log div{font-size:.88rem;padding:9px 12px;background:var(--surface);border:1px solid var(--line);border-radius:12px}
+.calc{display:grid;gap:8px}
+.crow{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:10px 12px}
+.crow > div{display:grid;gap:2px;min-width:0}
+.crow b{font-size:.9rem}
+.hrs{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted)}
+.hrs input,.f input[type=number]{width:84px;border:1px solid var(--line);border-radius:10px;padding:8px;background:var(--bg);color:var(--fg);text-align:right;font-size:16px}
+.stats2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.stat.hl{background:var(--verde);border:0;color:var(--marfil)}
+.stat.hl b{color:var(--oro)}
+.stat.hl span{color:#C9D6CE}
+.phases3{display:grid;gap:6px}
+.phases3 div{display:grid;gap:1px;padding:10px 12px;border-left:3px solid var(--oro);background:var(--surface);border-radius:0 12px 12px 0}
+.phases3 b{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.12em;color:var(--accent)}
+.phases3 span{font-size:.88rem}
 @media (prefers-reduced-motion:reduce){.step{transition:none}details.mod summary .plus{transition:none}}
 </style>
 
@@ -224,7 +282,13 @@ input[type=range]{width:100%;accent-color:var(--oro)}
         </div>
       </div>
 
-      <a class="btn oro block" href="#negocio">Ver cómo se aplica a mi negocio</a>
+      <a class="btn oro block" href="#demo">Ver cómo se aplica a mi negocio</a>
+
+      <div class="install" id="install">
+        <h3>Instala Nyland en tu teléfono</h3>
+        <p class="small muted">En iPhone: abre esta página en Safari, toca Compartir y luego «Añadir a pantalla de inicio». En Android: menú ⋮ y «Instalar aplicación».</p>
+        <button class="btn ghost" id="install-btn" type="button" hidden>Instalar ahora</button>
+      </div>
     </section>
 
     <!-- SERVICIOS -->
@@ -295,36 +359,9 @@ input[type=range]{width:100%;accent-color:var(--oro)}
       </div>
     </section>
 
-    <!-- TU NEGOCIO -->
-    <section class="screen" id="s-negocio" data-head="negocio" hidden>
-      <div class="sec">
-        <h3>1 · ¿A qué se dedica tu empresa?</h3>
-        <div class="pick" id="pick-sector" role="group" aria-label="Sector"></div>
-        <h3 style="margin-top:6px">2 · ¿Qué quieres conseguir primero?</h3>
-        <div class="pick" id="pick-goal" role="group" aria-label="Objetivo"></div>
-      </div>
-      <div class="result" id="result" aria-live="polite"></div>
-
-      <div class="sec">
-        <p class="eyebrow">Tu ficha para Nyland</p>
-        <h2>Prepara la primera reunión</h2>
-        <p class="muted">Rellénala y compártela con Nyland. Es el punto de partida del diagnóstico. Se guarda solo en este teléfono.</p>
-        <form class="form" id="ficha">
-          <div class="f"><label for="fi-empresa">Empresa</label><input id="fi-empresa" autocomplete="organization"></div>
-          <div class="f"><label for="fi-equipo">Personas y departamentos</label><input id="fi-equipo" placeholder="Ej.: 15 personas, ventas, atención y administración"></div>
-          <div class="f"><label for="fi-herr">Herramientas que usáis</label><input id="fi-herr" placeholder="CRM, Excel, WhatsApp, programa de facturación…"></div>
-          <div class="f"><label for="fi-tareas">Las 3 tareas que más tiempo os quitan</label><textarea id="fi-tareas"></textarea></div>
-          <div class="f"><label for="fi-resp">Persona responsable</label><input id="fi-resp" autocomplete="name"></div>
-          <button class="btn oro block" type="submit">Compartir mi ficha</button>
-          <p class="note" id="ficha-note">El sector y el objetivo se toman de lo que hayas elegido arriba.</p>
-        </form>
-      </div>
-
-      <div class="install" id="install">
-        <h3>Instala Nyland en tu teléfono</h3>
-        <p class="small muted" id="install-txt">En iPhone: abre esta página en Safari, toca Compartir y luego «Añadir a pantalla de inicio». En Android: menú ⋮ y «Instalar aplicación».</p>
-        <button class="btn ghost" id="install-btn" type="button" hidden>Instalar ahora</button>
-      </div>
+    <!-- DEMO PARA EL CLIENTE -->
+    <section class="screen" id="s-demo" data-head="demo" hidden>
+      <div id="demo"></div>
     </section>
   </main>
 </div>
@@ -333,9 +370,9 @@ input[type=range]{width:100%;accent-color:var(--oro)}
   <nav aria-label="Secciones">
     <a href="#inicio" data-tab="inicio"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg>Inicio</a>
     <a href="#servicios" data-tab="servicios"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Servicios</a>
+    <a href="#demo" data-tab="demo" class="demo-tab"><span class="dt-ic"><svg viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z"/></svg></span>Demo</a>
     <a href="#metodo" data-tab="metodo"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="2.5"/><circle cx="12" cy="12" r="2.5"/><circle cx="19" cy="12" r="2.5"/><path d="M7.5 12h2M14.5 12h2"/></svg>Método</a>
     <a href="#escala" data-tab="escala"><svg viewBox="0 0 24 24"><path d="M4 20V14M10 20V10M16 20V6M22 20V3"/></svg>Escala</a>
-    <a href="#negocio" data-tab="negocio"><svg viewBox="0 0 24 24"><path d="M4 7h16v13H4z"/><path d="M9 7V4h6v3"/><path d="M4 12h16"/></svg>Tu negocio</a>
   </nav>
 </div>
 <div class="toast" id="toast" role="status" hidden></div>
@@ -354,16 +391,17 @@ const HEADS={
   servicios:()=>[h("h1",{text:"Qué hacemos"}),h("p",{class:"sub",text:"Un asistente o una automatización para cada departamento."})],
   metodo:()=>[h("h1",{text:"Cómo funciona"}),h("p",{class:"sub",text:"Tres fases. Al final de cada una, un entregable que tú apruebas."})],
   escala:()=>[h("h1",{text:"Escalabilidad"}),h("p",{class:"sub",text:"De 1 a N sedes, equipos o países sin empezar de cero."})],
-  negocio:()=>[h("h1",{text:"Tu negocio"}),h("p",{class:"sub",text:"El mismo modelo, adaptado al idioma de cada sector."})],
+  demo:()=>demoHead(),
 };
 
 /* ---------- Navegación ---------- */
-const TABS=["inicio","servicios","metodo","escala","negocio"];
+const TABS=["inicio","servicios","demo","metodo","escala"];
 function show(){
   let t=(location.hash||"").slice(1);if(!TABS.includes(t))t="inicio";
   TABS.forEach(k=>{$("#s-"+k).hidden=k!==t;});
   document.querySelectorAll(".tabbar a").forEach(a=>{if(a.dataset.tab===t)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current");});
   $("#head").replaceChildren(...HEADS[t]());
+  if(t==="demo")renderDemo();
   window.scrollTo(0,0);
 }
 window.addEventListener("hashchange",show);
@@ -434,67 +472,239 @@ function renderScale(){
 }
 $("#sedes").addEventListener("input",renderScale);
 
-/* ---------- Tu negocio ---------- */
+/* ---------- DEMO PARA EL CLIENTE ---------- */
+// Cada sector: vocabulario, antes/después (min/día), mapa, chat simulado (intenciones) y plan.
+const PERSONA={id:"persona",k:["persona","humano","hablar con","encargado","responsable","queja","reclam"],q:"Prefiero hablar con una persona",a:"Claro. Aviso ahora a una persona del equipo y te escribe en breve por aquí.",ev:"👤 Conversación pasada a una persona del equipo",kpi:"escalados"};
 const SECTORS=[
-  {id:"salud",t:"Salud y bienestar",cli:"pacientes",cita:"citas",prod:"tratamientos",q:"Recordatorios de citas y respuestas a pacientes por WhatsApp"},
-  {id:"inmo",t:"Inmobiliaria",cli:"compradores e inquilinos",cita:"visitas",prod:"inmuebles",q:"Responder al momento a los contactos de portales y agendar visitas"},
-  {id:"hosteleria",t:"Hostelería",cli:"comensales",cita:"reservas",prod:"carta y eventos",q:"Reservas por WhatsApp y respuesta a reseñas"},
-  {id:"comercio",t:"Comercio y tienda online",cli:"clientes",cita:"pedidos",prod:"productos",q:"Asistente de compra y seguimiento de pedidos"},
-  {id:"profesional",t:"Servicios profesionales",cli:"clientes",cita:"reuniones",prod:"servicios",q:"Clasificar consultas entrantes y preparar presupuestos"},
-  {id:"industria",t:"Industria y logística",cli:"clientes y proveedores",cita:"entregas",prod:"pedidos y stock",q:"Lectura automática de pedidos y albaranes"},
-  {id:"educacion",t:"Educación y formación",cli:"alumnos y familias",cita:"matrículas",prod:"cursos",q:"Respuestas a alumnos y seguimiento de matrículas"},
-  {id:"otro",t:"Otro sector",cli:"clientes",cita:"citas o pedidos",prod:"productos o servicios",q:"Atención 24/7 con escalado a una persona"},
+ {id:"salud",t:"Salud y bienestar",ej:"Clínica",cli:"pacientes",cita:"citas",
+  antes:[["Confirmar citas por teléfono",90],["Responder WhatsApp: precios y horarios",60],["Reprogramar cancelaciones",40],["Recordar revisiones pendientes",30]],
+  despues:[["Recordatorio automático; solo se llama a quien no confirma",15],["El asistente responde lo habitual",15],["La lista de espera ofrece el hueco libre",10],["Avisos de revisión automáticos",5]],
+  mapa:[["Recepción","Asistente de citas","Da, cambia y confirma citas por WhatsApp."],["Pacientes","Recordatorios","Avisa de revisiones y tratamientos pendientes."],["Ventas","Presupuestos","Hace seguimiento de presupuestos sin aceptar."],["Marketing","Reseñas","Pide opinión después de la visita."],["Administración","Facturas","Lee facturas y avisa de cobros pendientes."],["Dirección","Resumen semanal","Citas, huecos libres y satisfacción."]],
+  who:"Paciente",chat:[
+   {id:"reservar",k:["cita","reservar","pedir","disponible","semana","hueco"],q:"¿Tenéis cita esta semana?",a:"Claro. Tengo el jueves a las 10:30 o el viernes a las 17:00. ¿Cuál te viene mejor?",ev:"🔎 Agenda consultada",kpi:"atendidos"},
+   {id:"confirmar",k:["jueves","viernes","10:30","17:00","vale","perfecto"],q:"El jueves a las 10:30",a:"Reservado: jueves a las 10:30. Te enviaré un recordatorio el día antes. Si necesitas cambiarla, escríbeme por aquí.",ev:"📅 Cita creada en la agenda",kpi:"citas"},
+   {id:"info",k:["precio","cuesta","cuánto","cuanto","tarifa","limpieza"],q:"¿Cuánto cuesta una limpieza?",a:"El precio depende de cada caso. En la primera visita el equipo lo valora y te da el presupuesto. ¿Te reservo esa visita?",ev:"💬 Consulta resuelta",kpi:"atendidos"},
+   {id:"cambio",k:["cambiar","anular","cancelar","no puedo"],q:"Tengo que cambiar mi cita",a:"Sin problema. Te ofrezco el martes a las 12:00 o el miércoles a las 18:30. Tu hueco anterior pasa a la lista de espera.",ev:"🔁 Cita reprogramada y hueco ofrecido a la lista de espera",kpi:"citas"},
+   {id:"persona",k:["dolor","duele","urgente","urgencia","persona","hablar con"],q:"Me duele mucho una muela",a:"Lo siento. Esto lo tiene que valorar el equipo: aviso ahora a recepción para que te llamen. Si es grave, llama al teléfono de urgencias de la clínica. No puedo hacer diagnósticos.",ev:"👤 Urgencia pasada a recepción",kpi:"escalados"}],
+  plan:[["Asistente de citas por WhatsApp","Recordatorios, cambios y preguntas frecuentes, conectado a la agenda."],["Presupuestos y reseñas","Seguimiento de presupuestos y petición de reseñas tras cada visita."],["Panel de dirección y nuevas sedes","Indicadores por centro y plantillas para abrir más clínicas."]]},
+ {id:"inmo",t:"Inmobiliaria",ej:"Inmobiliaria",cli:"compradores e inquilinos",cita:"visitas",
+  antes:[["Contestar contactos de portales",90],["Llamar para cualificar a cada interesado",60],["Coordinar visitas",45],["Seguimiento después de la visita",30]],
+  despues:[["El asistente responde al momento",10],["Cualifica presupuesto, zona y plazo",10],["Agenda la visita en la agenda del agente",10],["Seguimiento automático a los 2 y 7 días",5]],
+  mapa:[["Captación","Asistente de portales","Responde al instante a cada contacto."],["Ventas","Cualificación","Puntúa a cada comprador de 0 a 100."],["Agenda","Visitas","Coordina visitas con agentes y propietarios."],["Propietarios","Captación de inmuebles","Atiende a quien quiere vender y agenda la valoración."],["Marketing","Anuncios","Redacta los anuncios de cada inmueble."],["Dirección","Panel","Contactos, visitas y operaciones por agente."]],
+  who:"Comprador",chat:[
+   {id:"reservar",k:["visita","ver","verlo","visitar","piso","casa"],q:"¿Puedo ver el piso de 3 habitaciones?",a:"Claro. Para proponerte lo que mejor encaja: ¿qué presupuesto manejas y cómo lo financiarías?",ev:"🏷️ Contacto creado en el CRM",kpi:"atendidos"},
+   {id:"cualifica",k:["presupuesto","hipoteca","€","euros","mil","preaprobada","contado"],q:"Hasta 300.000 €, con hipoteca preaprobada",a:"Encaja muy bien. Te propongo la visita el sábado a las 11:00 con la agente de la zona. ¿Te va bien?",ev:"⭐ Lead cualificado: caliente",kpi:"ventas"},
+   {id:"confirmar",k:["sábado","sabado","va bien","vale","perfecto","sí","si"],q:"Sí, el sábado me va bien",a:"Visita confirmada el sábado a las 11:00. Te envío la ubicación y te recuerdo la cita el viernes.",ev:"📅 Visita agendada con la agente",kpi:"citas"},
+   {id:"vender",k:["vender","vendo","valor","tasar","tasación"],q:"Quiero vender mi casa",a:"Te ayudamos. Dime la zona y los metros aproximados y te agendo una valoración con un agente.",ev:"🏠 Propietario registrado para captación",kpi:"ventas"},PERSONA],
+  plan:[["Asistente de portales por WhatsApp","Responde y cualifica cada contacto en segundos y agenda visitas."],["Seguimiento y captación","Seguimiento automático tras las visitas y atención a propietarios."],["Panel por agente y oficina","Indicadores por agente y plantillas para nuevas oficinas."]]},
+ {id:"hosteleria",t:"Hostelería",ej:"Restaurante",cli:"comensales",cita:"reservas",
+  antes:[["Coger reservas por teléfono en hora punta",60],["Responder horarios, carta y alérgenos",40],["Confirmar reservas y gestionar ausencias",30],["Responder reseñas",20]],
+  despues:[["Reservas por WhatsApp y web",10],["Respuestas automáticas con la carta",5],["Confirmación automática y lista de espera",5],["Borradores de respuesta a reseñas",5]],
+  mapa:[["Sala","Reservas","Coge y confirma reservas a cualquier hora."],["Clientes","Carta y alérgenos","Responde dudas con la información del local."],["Pedidos","Para llevar","Toma pedidos por WhatsApp."],["Marketing","Reseñas","Prepara respuestas y pide opinión."],["Compras","Proveedores","Avisa de stock bajo."],["Dirección","Panel por local","Reservas, ticket medio y reseñas de cada local."]],
+  who:"Cliente",chat:[
+   {id:"reservar",k:["reserva","mesa","reservar","cenar","comer","personas"],q:"Mesa para 4 el sábado por la noche",a:"Tengo mesa para 4 el sábado a las 21:00 o a las 22:15. ¿Cuál prefieres?",ev:"🔎 Disponibilidad consultada",kpi:"atendidos"},
+   {id:"confirmar",k:["21","22","vale","perfecto","primera","segunda"],q:"A las 21:00",a:"Reservada mesa para 4 el sábado a las 21:00. Te enviaré un recordatorio. Si cambian los planes, escríbeme por aquí.",ev:"📅 Reserva creada",kpi:"citas"},
+   {id:"info",k:["alérgen","alergen","gluten","vegano","carta","menú","menu"],q:"¿Tenéis opciones sin gluten?",a:"Sí, la carta marca los platos sin gluten. Si tienes una alergia grave, avísalo al llegar y cocina te confirma cada plato.",ev:"💬 Consulta resuelta",kpi:"atendidos"},
+   {id:"pedido",k:["llevar","domicilio","pedido","pedir","recoger"],q:"¿Puedo pedir para llevar?",a:"Sí. Dime qué quieres y a qué hora pasas a recogerlo, y te confirmo el pedido con el total.",ev:"🛍️ Pedido para llevar registrado",kpi:"ventas"},PERSONA],
+  plan:[["Reservas por WhatsApp","Reservas, confirmaciones y lista de espera sin teléfono."],["Pedidos y reseñas","Pedidos para llevar y respuesta a reseñas."],["Panel por local","Indicadores por local y plantillas para abrir nuevos locales."]]},
+ {id:"comercio",t:"Comercio y tienda online",ej:"Tienda",cli:"clientes",cita:"pedidos",
+  antes:[["Responder dudas de productos",60],["Contestar «¿dónde está mi pedido?»",45],["Gestionar cambios y devoluciones",40],["Preparar ofertas a mano",30]],
+  despues:[["Asistente de compra con el catálogo",10],["Estado del pedido automático",5],["Devoluciones guiadas paso a paso",10],["Ofertas personalizadas automáticas",5]],
+  mapa:[["Atención","Asistente de compra","Recomienda productos del catálogo real."],["Pedidos","Seguimiento","Informa del estado y la entrega."],["Posventa","Devoluciones","Guía cambios y devoluciones."],["Ventas","Carritos","Recupera carritos abandonados."],["Marketing","Ofertas","Campañas según lo que compra cada cliente."],["Dirección","Panel","Ventas, devoluciones y satisfacción."]],
+  who:"Cliente",chat:[
+   {id:"info",k:["busco","regalo","recomiend","producto","tienes","talla"],q:"Busco un regalo, unos 50 €",a:"Te propongo tres opciones del catálogo dentro de ese presupuesto. ¿Te las enseño con foto?",ev:"🛒 Recomendación enviada",kpi:"ventas"},
+   {id:"pedido",k:["pedido","dónde","donde","llega","envío","envio"],q:"¿Dónde está mi pedido?",a:"Tu pedido ya ha salido del almacén y está en camino. Te aviso en cuanto esté en reparto.",ev:"📦 Estado del pedido consultado",kpi:"atendidos"},
+   {id:"cambio",k:["devol","cambiar","cambio","roto"],q:"Quiero devolver un producto",a:"Sin problema. Te explico los pasos según la política de devoluciones de la tienda y te envío la etiqueta.",ev:"🔁 Devolución iniciada",kpi:"atendidos"},PERSONA],
+  plan:[["Asistente de compra y pedidos","Responde dudas de productos y el estado de cada pedido."],["Devoluciones y carritos","Devoluciones guiadas y recuperación de carritos abandonados."],["Panel y nuevos canales","Venta por WhatsApp e Instagram y panel por canal."]]},
+ {id:"profesional",t:"Servicios profesionales",ej:"Despacho",cli:"clientes",cita:"reuniones",
+  antes:[["Clasificar emails y consultas",60],["Pedir documentación a clientes",45],["Agendar reuniones",30],["Preparar presupuestos",40]],
+  despues:[["Clasificación y respuesta inicial automática",10],["Recordatorios automáticos de documentación",5],["Agenda online con confirmación",5],["Borrador de presupuesto para revisar",15]],
+  mapa:[["Entrada","Clasificador","Ordena consultas por tipo y urgencia."],["Clientes","Documentación","Pide lo que falta y lo recuerda."],["Agenda","Reuniones","Agenda y recuerda reuniones."],["Ventas","Presupuestos","Prepara borradores para revisar."],["Facturación","Cobros","Avisa de facturas pendientes."],["Dirección","Panel","Carga de trabajo y plazos."]],
+  who:"Cliente",chat:[
+   {id:"info",k:["ayuda","consulta","duda","necesito","renta","declaración"],q:"Necesito ayuda con la declaración de la renta",a:"Te ayudamos. Para preparar tu caso dime si eres asalariado o autónomo. Un profesional del equipo lo revisará.",ev:"📥 Consulta clasificada: renta",kpi:"atendidos"},
+   {id:"reservar",k:["reunión","reunion","cita","quedar","llamada"],q:"¿Podemos hacer una reunión?",a:"Claro. Tengo el martes a las 10:00 o el jueves a las 16:00, en el despacho o por videollamada.",ev:"🔎 Agenda consultada",kpi:"atendidos"},
+   {id:"confirmar",k:["martes","jueves","vale","perfecto","video"],q:"El jueves a las 16:00 por videollamada",a:"Hecho: jueves a las 16:00 por videollamada. Te envío el enlace y la lista de documentos que necesitamos.",ev:"📅 Reunión agendada",kpi:"citas"},
+   {id:"persona",k:["hacienda","inspección","inspeccion","multa","persona","hablar con"],q:"Me ha llegado una carta de Hacienda",a:"Esto lo tiene que ver un profesional del despacho. Aviso ahora a tu asesor para que te llame hoy.",ev:"👤 Caso fiscal pasado al asesor",kpi:"escalados"}],
+  plan:[["Clasificación de consultas y agenda","Respuesta inicial, reuniones y documentación sin perseguir a nadie."],["Presupuestos y cobros","Borradores de presupuesto y avisos de facturas pendientes."],["Panel de carga de trabajo","Plazos y carga por profesional, listo para crecer."]]},
+ {id:"industria",t:"Industria y logística",ej:"Empresa",cli:"clientes y proveedores",cita:"pedidos",
+  antes:[["Pasar pedidos del email al ERP",90],["Responder por el estado de pedidos",45],["Revisar albaranes y facturas",60],["Controlar el stock",30]],
+  despues:[["Lectura automática de pedidos, revisada",15],["Estado del pedido automático",5],["Cuadre automático de albaranes",15],["Alertas de stock bajo",5]],
+  mapa:[["Pedidos","Lector de pedidos","Pasa los pedidos al ERP para revisar."],["Clientes","Estado de pedidos","Responde dónde está cada pedido."],["Compras","Proveedores","Avisa de retrasos y stock bajo."],["Calidad","Incidencias","Registra y clasifica incidencias."],["Administración","Albaranes","Cuadra albaranes y facturas."],["Dirección","Panel","Plazos, incidencias y márgenes."]],
+  who:"Cliente",chat:[
+   {id:"pedido",k:["necesito","unidades","referencia","pedido","quiero"],q:"Necesito 200 unidades de la referencia A-120",a:"Recibido. Hay stock para 150 unidades hoy y el resto según planificación. ¿Lo envío en dos entregas o espero a tenerlo todo?",ev:"🧾 Pedido registrado en el ERP",kpi:"ventas"},
+   {id:"confirmar",k:["dos","entregas","espero","vale"],q:"En dos entregas",a:"Perfecto. Primera entrega mañana y la segunda en cuanto esté lista. Te aviso de cada salida.",ev:"🚚 Entregas programadas",kpi:"atendidos"},
+   {id:"estado",k:["cuándo","cuando","estado","llega","retraso"],q:"¿Cuándo llega mi pedido?",a:"Tu pedido está en preparación y sale mañana. Te envío el seguimiento al cargarlo.",ev:"📦 Estado consultado",kpi:"atendidos"},
+   {id:"persona",k:["incidencia","defect","roto","reclam","persona"],q:"Ha llegado material defectuoso",a:"Siento la incidencia. La registro con el número de pedido y aviso a calidad para que te contacten hoy.",ev:"👤 Incidencia pasada a calidad",kpi:"escalados"}],
+  plan:[["Lectura automática de pedidos","Los pedidos del email pasan al ERP para revisar en un clic."],["Estado de pedidos y albaranes","Respuestas automáticas a clientes y cuadre de albaranes."],["Panel de operaciones","Plazos, incidencias y stock por planta o almacén."]]},
+ {id:"educacion",t:"Educación y formación",ej:"Academia",cli:"alumnos y familias",cita:"matrículas",
+  antes:[["Responder información de cursos",60],["Gestionar matrículas y pagos",45],["Avisar de cambios y recordatorios",30],["Seguimiento de interesados",30]],
+  despues:[["Asistente con la información de cursos",10],["Matrícula guiada online",10],["Avisos automáticos",5],["Seguimiento automático",5]],
+  mapa:[["Información","Asistente de cursos","Resuelve dudas de cursos y horarios."],["Matrículas","Matrícula guiada","Acompaña la matrícula paso a paso."],["Alumnos","Avisos","Recordatorios de clases y entregas."],["Ventas","Interesados","Seguimiento de quien pidió información."],["Profesorado","Material","Prepara material de apoyo para revisar."],["Dirección","Panel","Matrículas, asistencia y bajas."]],
+  who:"Alumno",chat:[
+   {id:"info",k:["curso","cursos","horario","empieza","nivel","información","informacion"],q:"¿Qué cursos de inglés tenéis para adultos?",a:"Tenemos grupos por niveles, de mañana y de tarde. ¿Sabes tu nivel o te reservo una prueba de nivel?",ev:"💬 Información enviada",kpi:"atendidos"},
+   {id:"reservar",k:["prueba","clase","probar"],q:"Quiero hacer la prueba de nivel",a:"Te puedo reservar el lunes a las 18:00 o el miércoles a las 19:00. ¿Qué día te va mejor?",ev:"🔎 Horarios consultados",kpi:"atendidos"},
+   {id:"confirmar",k:["lunes","miércoles","miercoles","vale","perfecto"],q:"El lunes a las 18:00",a:"Reservada la prueba de nivel el lunes a las 18:00. Te enviaré un recordatorio el día antes.",ev:"📅 Prueba de nivel reservada",kpi:"citas"},
+   {id:"precio",k:["precio","cuesta","cuánto","cuanto","pago","beca"],q:"¿Cuánto cuesta?",a:"Depende del curso y la modalidad. Te envío la tabla de precios del centro y las formas de pago.",ev:"💬 Consulta resuelta",kpi:"atendidos"},PERSONA],
+  plan:[["Asistente de cursos y matrículas","Información, pruebas de nivel y matrícula guiada."],["Avisos y seguimiento","Recordatorios a alumnos y seguimiento de interesados."],["Panel y nuevos centros","Matrículas y bajas por centro, listo para crecer."]]},
+ {id:"otro",t:"Otro sector",ej:"Empresa",cli:"clientes",cita:"citas",
+  antes:[["Responder mensajes repetidos",60],["Gestionar citas o pedidos",45],["Hacer seguimiento a interesados",30],["Pasar datos entre programas",40]],
+  despues:[["El asistente responde lo habitual",10],["Citas o pedidos automáticos",10],["Seguimiento automático",5],["Integración entre programas",5]],
+  mapa:[["Atención","Asistente 24/7","Responde dudas en WhatsApp, web y email."],["Ventas","Seguimiento","Hace seguimiento a cada interesado."],["Operaciones","Citas y pedidos","Gestiona citas, pedidos y recordatorios."],["Marketing","Contenido","Prepara campañas y publicaciones."],["Administración","Facturas","Lee facturas y avisa de cobros."],["Dirección","Panel","Resumen semanal con lo importante."]],
+  who:"Cliente",chat:[
+   {id:"info",k:["servicio","servicios","información","informacion","precio","horario","qué","que"],q:"¿Qué servicios ofrecéis?",a:"Te cuento los servicios principales y te hago un par de preguntas para recomendarte el que mejor encaja.",ev:"💬 Consulta resuelta",kpi:"atendidos"},
+   {id:"reservar",k:["cita","reservar","quedar","disponible"],q:"Quiero pedir cita",a:"Claro. Tengo el martes a las 10:00 o el jueves a las 17:00. ¿Cuál prefieres?",ev:"🔎 Agenda consultada",kpi:"atendidos"},
+   {id:"confirmar",k:["martes","jueves","vale","perfecto"],q:"El jueves a las 17:00",a:"Hecho: jueves a las 17:00. Te enviaré un recordatorio el día antes.",ev:"📅 Cita creada",kpi:"citas"},PERSONA],
+  plan:[["Asistente de atención 24/7","Responde lo habitual y gestiona citas o pedidos, con escalado a una persona."],["Seguimiento e integraciones","Seguimiento de interesados y conexión entre tus programas."],["Panel de dirección","Indicadores clave y plantillas para crecer."]]},
 ];
-const GOALS=[
-  {id:"vender",t:"Vender más",mods:["ventas","venta","marketing"]},
-  {id:"tiempo",t:"Ahorrar tiempo",mods:["soporte","operaciones","finanzas"]},
-  {id:"atender",t:"Atender mejor",mods:["soporte","ventas","direccion"]},
-  {id:"escalar",t:"Escalar",mods:["escala","operaciones","direccion"]},
-];
-let sector=store.get("sector","otro"),goal=store.get("goal","tiempo");
-function pickers(){
-  const ps=$("#pick-sector");ps.replaceChildren();
-  SECTORS.forEach(s=>ps.append(h("button",{type:"button","aria-pressed":String(s.id===sector),onclick:()=>{sector=s.id;store.set("sector",sector);pickers();renderResult();}},s.t)));
-  const pg=$("#pick-goal");pg.replaceChildren();
-  GOALS.forEach(g=>pg.append(h("button",{type:"button","aria-pressed":String(g.id===goal),onclick:()=>{goal=g.id;store.set("goal",goal);pickers();renderResult();}},g.t)));
+const GOALS=[{id:"vender",t:"Vender más"},{id:"tiempo",t:"Ahorrar tiempo"},{id:"atender",t:"Atender mejor"},{id:"escalar",t:"Escalar"}];
+const STEPS=["Hoy y con Nyland","El cerebro de IA","Pruébalo tú","Lo que ve tu equipo","Tiempo que recuperas","El plan","Siguiente paso"];
+const D=Object.assign({empresa:"",sector:"otro",goal:"tiempo",step:0,rate:18},store.get("demo",{}));
+D.step=0;
+let chat=null;
+const sec=()=>SECTORS.find(s=>s.id===D.sector)||SECTORS[SECTORS.length-1];
+const emp=()=>D.empresa.trim()||("Tu "+sec().ej.toLowerCase());
+function saveD(){store.set("demo",{empresa:D.empresa,sector:D.sector,goal:D.goal,rate:D.rate});}
+function resetChat(){const s=sec();chat={msgs:[{me:false,t:`Hola, soy el asistente virtual de ${emp()}. Soy una IA y puedo ayudarte con tus ${s.cita}. Si prefieres hablar con una persona, dímelo.`}],kpi:{atendidos:0,citas:0,ventas:0,escalados:0},log:[],used:[],busy:false};}
+function demoHead(){
+  if(D.step===0)return[h("h1",{text:"Demo para tu negocio"}),h("p",{class:"sub",text:"Pon el nombre y el sector del cliente y enséñale cómo quedaría Nyland en su empresa."})];
+  const bar=h("div",{class:"prog"});for(let i=1;i<=STEPS.length;i++)bar.append(h("i",{class:i<=D.step?"on":""}));
+  return[h("p",{class:"tagline",style:"margin-top:14px",text:emp().toUpperCase()+" · PASO "+D.step+" DE "+STEPS.length}),h("h1",{text:STEPS[D.step-1]}),bar];
 }
-function adapt(m,s){
-  const map={
-    soporte:`Asistente que responde a tus ${s.cli} a cualquier hora sobre ${s.prod}, y pasa a una persona lo delicado.`,
-    ventas:`Cualifica a los ${s.cli} interesados, hace seguimiento y avisa al equipo de los más calientes.`,
-    venta:`Venta conversacional: tus ${s.cli} consultan ${s.prod} y cierran ${s.cita} desde WhatsApp o Instagram.`,
-    marketing:`Campañas personalizadas para cada tipo de ${s.cli} y contenidos para redes sobre tus ${s.prod}.`,
-    operaciones:`Gestiona ${s.cita}, recordatorios y cambios sin llamadas, conectado a tu agenda o sistema.`,
-    finanzas:`Lee facturas y tickets, concilia el banco y avisa de cobros pendientes. Lo revisa tu asesor.`,
-    direccion:`Resumen semanal con lo importante: ${s.cita}, ventas, incidencias y satisfacción de tus ${s.cli}.`,
-    escala:`Plantillas para abrir nuevas sedes con los mismos asistentes y métricas por unidad.`,
-    rrhh:`Onboarding y preguntas frecuentes del equipo.`,producto:`Integraciones entre tus sistemas.`,
-  };
-  return map[m]||"";
+function go(n){D.step=n;$("#head").replaceChildren(...demoHead());renderDemo();window.scrollTo(0,0);}
+function navRow(){
+  const r=h("div",{class:"navrow"});
+  r.append(h("button",{class:"btn ghost",type:"button",onclick:()=>go(D.step-1)},D.step===1?"Cambiar datos":"Anterior"));
+  if(D.step<STEPS.length)r.append(h("button",{class:"btn",type:"button",onclick:()=>go(D.step+1)},"Siguiente"));
+  else r.append(h("button",{class:"btn",type:"button",onclick:()=>{resetChat();go(0);}},"Nueva demo"));
+  return r;
 }
-function renderResult(){
-  const s=SECTORS.find(x=>x.id===sector)||SECTORS[7];const g=GOALS.find(x=>x.id===goal)||GOALS[1];
-  const r=$("#result");r.replaceChildren();
-  r.append(h("div",{class:"rcard quick"},h("span",{class:"k",text:"Victoria rápida sugerida · 2 a 4 semanas"}),h("h3",{text:s.q}),h("p",{text:"Un primer paso pequeño, medible y con una persona responsable. Se confirma en el diagnóstico."})));
-  g.mods.forEach(id=>{const m=MODS.find(x=>x.id===id);r.append(h("div",{class:"rcard"},h("span",{class:"k",text:m.t}),h("p",{text:adapt(id,s)})));});
-  r.append(h("p",{class:"note",text:"Orientación general. El plan real sale del diagnóstico con los datos de tu empresa."}));
+function renderDemo(){
+  const box=$("#demo");box.replaceChildren();const s=sec();
+  const V=[setupView,baView,brainView,chatView,panelView,calcView,planView,nextView][D.step];
+  box.append(V(s));
+  if(D.step>0)box.append(navRow());
 }
-
-/* ---------- Ficha ---------- */
-const FI=["empresa","equipo","herr","tareas","resp"];
-const saved=store.get("ficha",{});
-FI.forEach(k=>{const e=$("#fi-"+k);e.value=saved[k]||"";e.addEventListener("input",()=>{const o={};FI.forEach(x=>o[x]=$("#fi-"+x).value);store.set("ficha",o);});});
-function fichaText(){
-  const s=SECTORS.find(x=>x.id===sector),g=GOALS.find(x=>x.id===goal);
-  const v=k=>$("#fi-"+k).value.trim()||"(por completar)";
-  return `Ficha para Nyland AI Solutions\n\nEmpresa: ${v("empresa")}\nSector: ${s?s.t:""}\nObjetivo principal: ${g?g.t:""}\nPersonas y departamentos: ${v("equipo")}\nHerramientas: ${v("herr")}\nTareas que más tiempo quitan: ${v("tareas")}\nResponsable: ${v("resp")}`;
+function setupView(s){
+  const name=h("input",{id:"dm-empresa",placeholder:"Ej.: "+s.ej+" Sol",autocomplete:"organization"});name.value=D.empresa;
+  name.addEventListener("input",()=>{D.empresa=name.value;saveD();});
+  const ps=h("div",{class:"pick",role:"group","aria-label":"Sector"});
+  SECTORS.forEach(x=>ps.append(h("button",{type:"button","aria-pressed":String(x.id===D.sector),onclick:()=>{D.sector=x.id;saveD();renderDemo();}},x.t)));
+  const pg=h("div",{class:"pick",role:"group","aria-label":"Objetivo"});
+  GOALS.forEach(x=>pg.append(h("button",{type:"button","aria-pressed":String(x.id===D.goal),onclick:()=>{D.goal=x.id;saveD();renderDemo();}},x.t)));
+  return h("div",{class:"sec"},
+    h("div",{class:"f"},h("label",{for:"dm-empresa"},"Nombre de la empresa del cliente"),name),
+    h("h3",{text:"¿A qué se dedica?"}),ps,
+    h("h3",{text:"¿Qué quiere conseguir primero?"}),pg,
+    h("button",{class:"btn oro block",type:"button",onclick:()=>{resetChat();go(1);}},"Empezar la demo"),
+    h("p",{class:"note",text:"La demo usa ejemplos ilustrativos del sector. Las cifras reales salen del diagnóstico."}));
 }
-$("#ficha").addEventListener("submit",async e=>{
-  e.preventDefault();const t=fichaText();
-  if(navigator.share){try{await navigator.share({title:"Ficha para Nyland",text:t});return;}catch(err){if(err&&err.name==="AbortError")return;}}
-  try{await navigator.clipboard.writeText(t);toast("Ficha copiada. Pégala en tu mensaje a Nyland.");}
-  catch(err){$("#ficha-note").textContent=t;$("#ficha-note").style.whiteSpace="pre-wrap";toast("Selecciona el texto de abajo y cópialo.");}
-});
+const fmtMin=m=>m>=60?(Math.floor(m/60)+" h"+(m%60?" "+(m%60)+" min":"")):m+" min";
+function baView(s){
+  const tA=s.antes.reduce((a,b)=>a+b[1],0),tD=s.despues.reduce((a,b)=>a+b[1],0);
+  const col=(title,items,tot,cls)=>{const c=h("div",{class:"ba "+cls},h("div",{class:"ba-h"},h("h3",{text:title}),h("b",{text:fmtMin(tot)+"/día"})));items.forEach(([t,m])=>c.append(h("div",{class:"task"},h("span",{text:t}),h("b",{text:fmtMin(m)}))));return c;};
+  return h("div",{class:"sec"},
+    h("p",{class:"muted",text:`Así es un día normal en ${emp()} y así sería con su cerebro de IA. El equipo sigue al mando.`}),
+    col("Hoy",s.antes,tA,"before"),col("Con Nyland",s.despues,tD,"after"),
+    h("div",{class:"bignum"},h("b",{text:fmtMin(tA-tD)}),h("span",{text:"al día que el equipo dedica a sus "+s.cli})),
+    h("p",{class:"note",text:"Tiempos ilustrativos del sector."}));
+}
+function brainView(s){
+  const g=h("div",{class:"brain"});
+  g.append(h("div",{class:"core"},h("span",{class:"ring",text:"IA"}),h("strong",{text:emp()}),h("span",{text:"HUMAN + AI"})));
+  s.mapa.forEach(([d,a,f])=>g.append(h("div",{class:"node"},h("strong",{text:d}),h("span",{class:"a",text:a}),h("span",{class:"muted",text:f}))));
+  return h("div",{class:"sec"},h("p",{class:"muted",text:"Cada departamento tiene su asistente o automatización, conectado a las herramientas que ya usáis y con una persona responsable."}),g);
+}
+function chatView(s){
+  if(!chat)resetChat();
+  const wrap=h("div",{class:"sec"});
+  wrap.append(h("p",{class:"muted",text:`Dale el teléfono al cliente: que escriba como si fuera uno de sus ${s.cli}, o que toque una sugerencia.`}));
+  const phone=h("div",{class:"phone"});
+  const top=h("div",{class:"ph-top"},h("span",{class:"av",text:emp().slice(0,2).toUpperCase()}),h("div",null,h("b",{text:emp()}),h("small",{text:"Asistente virtual · en línea"})));
+  const msgs=h("div",{class:"msgs",id:"dm-msgs"});
+  chat.msgs.forEach(m=>msgs.append(m.ev?h("div",{class:"ev",text:m.t}):h("div",{class:"msg"+(m.me?" me":""),text:m.t})));
+  if(chat.busy)msgs.append(h("div",{class:"typing",text:"escribiendo…"}));
+  const chips=h("div",{class:"sugg"});
+  const intents=s.chat.some(x=>x.id==="persona")?s.chat:s.chat.concat([PERSONA]);
+  intents.filter(x=>!chat.used.includes(x.id)).slice(0,3).forEach(x=>chips.append(h("button",{type:"button",onclick:()=>send(x.q)},x.q)));
+  const inp=h("input",{id:"dm-input",placeholder:"Escribe como "+s.who.toLowerCase()+"…",autocomplete:"off","aria-label":"Mensaje"});
+  const form=h("form",{class:"composer"},inp,h("button",{class:"btn",type:"submit"},"Enviar"));
+  form.addEventListener("submit",e=>{e.preventDefault();const v=inp.value;inp.value="";send(v,true);});
+  phone.append(top,msgs,chips,form);
+  wrap.append(phone,h("p",{class:"note",text:"Conversación simulada para la demo. En el sistema real, el asistente usa los datos y la agenda de la empresa."}));
+  setTimeout(()=>{msgs.scrollTop=msgs.scrollHeight;},0);
+  return wrap;
+}
+function match(s,text){
+  const t=text.toLowerCase();const intents=s.chat.some(x=>x.id==="persona")?s.chat:s.chat.concat([PERSONA]);
+  let best=null,score=0;
+  intents.forEach(x=>{const sc=x.k.reduce((a,k)=>a+(t.includes(k)?1:0),0)+(x.q.toLowerCase()===t?5:0);if(sc>score||(sc===score&&sc>0&&best&&chat.used.includes(best.id)&&!chat.used.includes(x.id))){best=x;score=sc;}});
+  return score>0?best:null;
+}
+function send(text,keep){
+  text=String(text||"").trim();if(!text||chat.busy)return;const s=sec();
+  chat.msgs.push({me:true,t:text});chat.busy=true;renderDemo();if(keep){const i=document.getElementById("dm-input");if(i)i.focus();}
+  setTimeout(()=>{
+    const it=match(s,text);
+    if(it){chat.msgs.push({me:false,t:it.a});if(it.ev){chat.msgs.push({ev:true,t:it.ev});chat.log.unshift(it.ev);}chat.kpi[it.kpi]=(chat.kpi[it.kpi]||0)+1;if(!chat.used.includes(it.id))chat.used.push(it.id);}
+    else{chat.msgs.push({me:false,t:`Puedo ayudarte con información, ${s.cita} y dudas habituales. Si es otra cosa, te paso con una persona del equipo. ¿Qué necesitas?`});chat.kpi.atendidos++;}
+    chat.busy=false;renderDemo();
+    if(keep){const i=document.getElementById("dm-input");if(i)i.focus();}
+  },700);
+}
+function panelView(s){
+  if(!chat)resetChat();
+  const k=chat.kpi;const tiles=[["Conversaciones atendidas",k.atendidos+k.citas+k.ventas+k.escalados],[s.cita.charAt(0).toUpperCase()+s.cita.slice(1)+" creadas",k.citas],["Oportunidades de venta",k.ventas],["Pasadas a una persona",k.escalados]];
+  const g=h("div",{class:"kpis"});tiles.forEach(([l,v])=>g.append(h("div",{class:"stat"},h("b",{text:String(v)}),h("span",{text:l}))));
+  const log=h("div",{class:"log"});
+  if(chat.log.length)chat.log.forEach(e=>log.append(h("div",{text:e})));
+  else log.append(h("p",{class:"muted small",text:"Aún no hay actividad. Vuelve al paso anterior y prueba el chat: lo que hagas aparece aquí."}));
+  return h("div",{class:"sec"},
+    h("p",{class:"muted",text:`Esto es lo que vería el equipo de ${emp()} después de la conversación que acabáis de tener.`}),g,
+    h("h3",{text:"Actividad"}),log,
+    h("div",{class:"human"},h("span",{text:"👤"}),h("span",null,h("b",{text:"Lo importante llega a una persona. "}),"Las urgencias, quejas y decisiones sensibles se avisan al responsable al momento.")),
+    h("p",{class:"note",text:"Datos de esta demo. En el sistema real se mide cada mes contra la línea base."}));
+}
+function calcView(s){
+  const rows=s.antes.map(([t,m],i)=>{const d=s.despues[i]?s.despues[i][1]:m;return{t,h:Math.round(m*22/60),pct:Math.round((m-d)/m*100)};});
+  const rate=h("input",{type:"number",id:"dm-rate",min:"0",step:"1",inputmode:"numeric"});rate.value=D.rate;
+  const list=h("div",{class:"calc"});const ins=[];
+  rows.forEach((r,i)=>{const hi=h("input",{type:"number",id:"dm-h"+i,min:"0",step:"1",inputmode:"numeric","aria-label":"Horas al mes: "+r.t});hi.value=r.h;ins.push([hi,r]);
+    list.append(h("div",{class:"crow"},h("div",null,h("b",{text:r.t}),h("span",{class:"small muted",text:"La IA asume aprox. el "+r.pct+"%"})),h("label",{class:"hrs"},hi,h("span",{text:"h/mes"}))));});
+  const H=h("b"),E=h("b");
+  function calc(){D.rate=Math.max(0,+rate.value||0);saveD();let t=0;ins.forEach(([hi,r])=>{t+=Math.max(0,+hi.value||0)*r.pct/100;});H.textContent=Math.round(t)+" h";E.textContent=Math.round(t*D.rate).toLocaleString("es-ES")+" €";}
+  const box=h("div",{class:"sec"},
+    h("p",{class:"muted",text:"Ajusta las horas con lo que te diga el cliente. Todo es editable."}),
+    h("div",{class:"f"},h("label",{for:"dm-rate"},"Coste por hora del equipo (€)"),rate),list,
+    h("div",{class:"stats2"},h("div",{class:"stat"},H,h("span",{text:"horas liberadas al mes"})),h("div",{class:"stat hl"},E,h("span",{text:"ahorro estimado al mes"}))),
+    h("p",{class:"note",text:"Estimación orientativa, no un resultado garantizado. Las horas liberadas se dedican a atender y vender mejor."}));
+  box.addEventListener("input",calc);calc();return box;
+}
+function planView(s){
+  const labels=["Victoria rápida · 2 a 4 semanas","Proyecto medio · 1 a 3 meses","Crecimiento · 3 a 12 meses"];const cls=["quick","",""];
+  const goalTxt={vender:"vender más",tiempo:"ahorrar tiempo",atender:"atender mejor",escalar:"escalar"}[D.goal];
+  const box=h("div",{class:"sec"},h("p",{class:"muted",text:`Un plan por etapas para que ${emp()} pueda ${goalTxt}, empezando por lo más simple que funcione.`}));
+  s.plan.forEach(([t,d],i)=>box.append(h("div",{class:"rcard "+cls[i]},h("span",{class:"k",text:labels[i]}),h("h3",{text:t}),h("p",{text:d}))));
+  const ph=h("div",{class:"phases3"});[["IMAGINA","Diagnóstico de procesos y oportunidades"],["CONSTRUYE","Asistentes a medida, probados con casos reales"],["CRECE","Implantación, formación y revisión mensual"]].forEach(([a,b])=>ph.append(h("div",null,h("b",{text:a}),h("span",{text:b}))));
+  box.append(h("h3",{text:"Con el método Nyland"}),ph,h("p",{class:"note",text:"Plazos orientativos. Se concretan tras el diagnóstico."}));
+  return box;
+}
+function nextView(s){
+  const saved=store.get("ficha",{});
+  const fields=[["equipo","Personas y departamentos","Ej.: 15 personas, ventas, atención y administración"],["herr","Herramientas que usan","CRM, Excel, WhatsApp, facturación…"],["tareas","Las 3 tareas que más tiempo les quitan",""],["resp","Persona responsable",""]];
+  const form=h("form",{class:"form"});
+  fields.forEach(([k,l,ph])=>{const e=k==="tareas"?h("textarea",{id:"fi-"+k}):h("input",{id:"fi-"+k,placeholder:ph});e.value=saved[k]||"";e.addEventListener("input",()=>{const o=store.get("ficha",{});o[k]=e.value;store.set("ficha",o);});form.append(h("div",{class:"f"},h("label",{for:"fi-"+k},l),e));});
+  const note=h("p",{class:"note",text:"Se guarda solo en este teléfono."});
+  form.append(h("button",{class:"btn oro block",type:"submit"},"Compartir la ficha"),note);
+  form.addEventListener("submit",async e=>{e.preventDefault();
+    const v=k=>(document.getElementById("fi-"+k).value.trim()||"(por completar)");
+    const g=GOALS.find(x=>x.id===D.goal);
+    const t=`Ficha para Nyland AI Solutions\n\nEmpresa: ${emp()}\nSector: ${s.t}\nObjetivo principal: ${g?g.t:""}\nPersonas y departamentos: ${v("equipo")}\nHerramientas: ${v("herr")}\nTareas que más tiempo quitan: ${v("tareas")}\nResponsable: ${v("resp")}`;
+    if(navigator.share){try{await navigator.share({title:"Ficha para Nyland",text:t});return;}catch(err){if(err&&err.name==="AbortError")return;}}
+    try{await navigator.clipboard.writeText(t);toast("Ficha copiada.");}catch(err){note.textContent=t;note.style.whiteSpace="pre-wrap";toast("Selecciona el texto y cópialo.");}
+  });
+  return h("div",{class:"sec"},
+    h("p",{class:"muted",text:`El siguiente paso es el diagnóstico de ${emp()}. Rellenad juntos estos datos para prepararlo.`}),form);
+}
 
 /* ---------- Instalación ---------- */
 let deferred=null;
@@ -504,7 +714,7 @@ const standalone=(window.matchMedia&&matchMedia("(display-mode: standalone)").ma
 if(standalone)$("#install").hidden=true;
 
 /* ---------- Arranque ---------- */
-renderMods();renderFlow(0);renderToggles();$("#sedes").value=store.get("sedes",1);renderScale();pickers();renderResult();show();
+renderMods();renderFlow(0);renderToggles();$("#sedes").value=store.get("sedes",1);renderScale();show();
 })();
 </script>
 
