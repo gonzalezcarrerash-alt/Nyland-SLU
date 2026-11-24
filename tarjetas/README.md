@@ -42,3 +42,17 @@ python3 tarjetas/generar_web.py tarjetas/web/ejemplo-comercial.json foto.jpg sal
 Sube la carpeta `salida/` a una web (GitHub Pages, Netlify o tu dominio), pon esa dirección en
 `"url"` del JSON y vuelve a generarla: el QR (`qr-tarjeta.png`) abrirá la tarjeta en el móvil de
 quien lo escanee. Sin `"url"`, el QR guarda directamente el contacto.
+
+## Solo WhatsApp: «Escríbeme por WhatsApp»
+
+El QR abre un chat de WhatsApp con el comercial y un mensaje ya escrito. La persona solo
+pulsa enviar.
+
+```bash
+pip install segno pillow
+python3 tarjetas/generar_whatsapp.py tarjetas/ejemplo-whatsapp.json salida/ foto.jpg   # la foto es opcional
+```
+
+Genera `whatsapp-pantalla.png` (para el móvil), `whatsapp-impresion.png` (55 × 85 mm),
+`qr-whatsapp.png` y `enlace.txt` (el enlace wa.me, útil para la bio de Instagram o la firma
+del email).
