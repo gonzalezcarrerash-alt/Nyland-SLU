@@ -1,0 +1,661 @@
+<title>Nyland Studio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: lista de clientes a la izquierda; a la derecha el cliente recorre IMAGINA → CONSTRUYE → CRECE en pestañas */
+:root{
+  --verde:#1C3A2E; --oro:#D6B26C; --menta:#96E1BE; --marfil:#F2F5F0;
+  --bg:#EEF2EE; --fg:#1C3A2E; --muted:#557064; --surface:#FFFFFF; --line:#D6DFD8; --soft:#E5F4EB;
+  --side:#1C3A2E; --side-fg:#E8EEE9; --accent:#94732F;
+  --ok:#2E7D57; --ok-bg:#DDF2E6; --warn:#9A6A12; --warn-bg:#F6ECD3; --bad:#B5482F; --bad-bg:#F8E3DC;
+  --f-display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --f-body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0E1D17; --fg:#E6EDE8; --muted:#9FB5AA; --surface:#152B23; --line:#284539; --soft:#1C3A2E;
+  --side:#0A1611; --side-fg:#E6EDE8; --accent:#D6B26C;
+  --ok:#86D9AE; --ok-bg:#183C2C; --warn:#E8C27A; --warn-bg:#43341A; --bad:#F0937A; --bad-bg:#4A2219; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E1D17; --fg:#E6EDE8; --muted:#9FB5AA; --surface:#152B23; --line:#284539; --soft:#1C3A2E;
+  --side:#0A1611; --side-fg:#E6EDE8; --accent:#D6B26C;
+  --ok:#86D9AE; --ok-bg:#183C2C; --warn:#E8C27A; --warn-bg:#43341A; --bad:#F0937A; --bad-bg:#4A2219; color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.5}
+button,input,textarea,select{font:inherit;color:inherit}
+h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.15;text-wrap:balance}
+h2{font-size:1.7rem;font-weight:800;letter-spacing:-.01em}
+h3{font-size:1.05rem;font-weight:600}
+p{margin:0}
+ul,ol{margin:0;padding-left:20px}
+.muted{color:var(--muted)}
+.small{font-size:.82rem}
+.mono{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+:focus-visible{outline:3px solid var(--menta);outline-offset:2px}
+
+.app{display:grid;grid-template-columns:260px minmax(0,1fr);min-height:100vh}
+.side{background:var(--side);color:var(--side-fg);padding-block:22px;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:16px;display:flex;flex-direction:column;gap:18px;position:sticky;top:0;height:100vh;min-width:0}
+.brand{font-family:var(--f-display);font-weight:800;font-size:1.25rem}
+.brand span{color:var(--oro)}
+.brand small{display:block;font-family:var(--f-mono);font-weight:500;font-size:.68rem;letter-spacing:.14em;color:var(--menta);margin-top:2px}
+.newbtn{background:var(--oro);color:#1C3A2E;border:0;border-radius:10px;padding:10px 12px;font-weight:600;cursor:pointer;text-align:left}
+.side input.search{width:100%;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);border-radius:9px;padding:8px 10px;color:var(--side-fg)}
+.search::placeholder{color:rgba(232,238,233,.6)}
+.clist{display:flex;flex-direction:column;gap:4px;overflow-y:auto;min-height:0;flex:1}
+.ci{background:none;border:0;text-align:left;padding:9px 10px;border-radius:10px;cursor:pointer;color:var(--side-fg);display:grid;gap:2px}
+.ci:hover{background:rgba(255,255,255,.06)}
+.ci[aria-current="true"]{background:rgba(150,225,190,.14);box-shadow:inset 3px 0 0 var(--oro)}
+.ci b{font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ci span{font-size:.75rem;opacity:.75;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.side-empty{font-size:.82rem;opacity:.7}
+.side-foot{font-size:.74rem;opacity:.7}
+.side-foot b{color:var(--oro);font-family:var(--f-display);font-size:.9rem}
+
+main{min-width:0;padding-block:24px 48px;padding-left:28px;padding-right:max(16px, env(safe-area-inset-right, 0px))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;min-width:0}
+.stack{display:grid;gap:16px}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.between{justify-content:space-between}
+.btn{border:0;border-radius:9px;padding:9px 14px;font-weight:600;cursor:pointer;background:var(--verde);color:var(--marfil)}
+.btn:disabled{opacity:.5;cursor:default}
+.btn.oro{background:var(--oro);color:#1C3A2E}
+.btn.ghost{background:transparent;color:var(--fg);border:1px solid var(--line)}
+.btn.danger{background:transparent;color:var(--bad);border:1px solid var(--bad)}
+.pill{display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:2px 10px;font-size:.75rem;font-weight:600;white-space:nowrap}
+.pill.ok{background:var(--ok-bg);color:var(--ok)}
+.pill.warn{background:var(--warn-bg);color:var(--warn)}
+.pill.bad{background:var(--bad-bg);color:var(--bad)}
+.pill.n{background:var(--soft);color:var(--fg);font-weight:500}
+
+/* Bienvenida */
+.hero{display:grid;gap:14px;max-width:760px;padding-block:20px}
+.hero h1{font-size:clamp(2.4rem,6vw,4rem);font-weight:800;letter-spacing:-.03em;line-height:.95}
+.hero h1 .p{color:var(--accent)}
+.how{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:10px}
+.how .card h3{font-size:1.25rem;font-weight:800}
+
+/* Cabecera cliente */
+.chead{display:grid;gap:10px;margin-bottom:18px}
+.phases{display:flex;gap:6px;flex-wrap:wrap}
+.tabs{display:flex;gap:2px;border-bottom:1px solid var(--line);overflow-x:auto;margin-bottom:18px}
+.tab{background:none;border:0;padding:10px 14px;font-weight:600;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-1px;white-space:nowrap;display:flex;gap:6px;align-items:center}
+.tab[aria-selected="true"]{color:var(--fg);border-bottom-color:var(--oro)}
+.tab .ph{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.1em;color:var(--accent)}
+.tdot{width:8px;height:8px;border-radius:50%;background:var(--line)}
+.tdot.draft{background:var(--oro)}
+.tdot.ok{background:var(--ok)}
+
+/* Formularios */
+.form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.f{display:grid;gap:5px;min-width:0}
+.f.full{grid-column:1 / -1}
+.f label{font-size:.82rem;font-weight:600}
+.f label i{font-style:normal;color:var(--bad)}
+.f small{color:var(--muted);font-size:.76rem}
+input[type=text],input[type=number],textarea,select{width:100%;border:1px solid var(--line);border-radius:9px;padding:9px 11px;background:var(--bg);color:var(--fg)}
+textarea{min-height:80px;resize:vertical}
+
+/* Generación */
+.gen{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:14px 16px;border:1px dashed var(--accent);border-radius:12px;background:var(--surface)}
+.gen p{flex:1;min-width:220px}
+.prog{font-family:var(--f-mono);font-size:.8rem;color:var(--accent)}
+.approval{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:10px 14px;border-radius:12px;background:var(--soft)}
+.approval.done{background:var(--ok-bg)}
+
+/* Diagnóstico */
+.summary{display:grid;gap:6px;font-size:1.02rem}
+.summary li{margin-bottom:2px}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:760px;font-size:.88rem}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500;background:var(--bg)}
+td.n,th.n{text-align:center;font-variant-numeric:tabular-nums}
+.score{font-family:var(--f-display);font-weight:800;font-size:1.1rem}
+.bars{display:inline-flex;gap:2px}
+.bars i{width:7px;height:12px;border-radius:2px;background:var(--line);display:inline-block}
+.bars i.on{background:var(--accent)}
+.hz-rapida{background:var(--ok-bg);color:var(--ok)}
+.hz-media{background:var(--warn-bg);color:var(--warn)}
+.hz-largo{background:var(--soft);color:var(--fg)}
+.qs{display:grid;gap:6px}
+.qs li{color:var(--fg)}
+
+/* Demo */
+.dgrid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.task{display:grid;grid-template-columns:1fr auto;gap:12px;padding:8px 0;border-top:1px solid var(--line);font-size:.9rem}
+.task b{font-family:var(--f-mono);font-weight:500;white-space:nowrap}
+.after{border-color:var(--menta)}
+.brain{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.node{border:1px solid var(--line);border-radius:12px;padding:12px;display:grid;gap:3px;font-size:.88rem;background:var(--bg);min-width:0}
+.node strong{font-family:var(--f-display)}
+.node .a{color:var(--accent);font-weight:600;font-size:.82rem}
+.core{background:var(--verde);color:var(--marfil);border:0;display:grid;place-items:center;text-align:center;align-content:center}
+.core strong{font-size:1.15rem}
+.core span{color:var(--menta);font-size:.8rem}
+.chat{background:var(--bg);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:8px;max-width:460px}
+.msg{max-width:85%;padding:8px 11px;border-radius:12px;background:var(--surface);white-space:pre-wrap;font-size:.9rem;overflow-wrap:anywhere}
+.msg.c{align-self:flex-end;background:var(--ok-bg)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.ncard{background:var(--verde);color:var(--marfil);border-radius:14px;padding:16px;display:grid;gap:8px;align-content:start}
+.ncard dt{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--menta)}
+.ncard dd{margin:0 0 4px;font-size:.92rem}
+.ncard dl{margin:0}
+.script{border-left:2px solid var(--oro);margin-left:6px;display:grid}
+.beat{padding:0 0 16px 18px;position:relative;display:grid;grid-template-columns:96px 1fr;gap:12px}
+.beat::before{content:"";position:absolute;left:-7px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--oro)}
+.beat .t{font-family:var(--f-mono);font-size:.8rem;color:var(--accent)}
+.beat q{display:block;color:var(--muted);font-style:italic;quotes:"«" "»"}
+.big3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+.big{border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--bg)}
+.big b{display:block;font-family:var(--f-display);font-size:1.9rem;font-weight:800;font-variant-numeric:tabular-nums}
+.big span{font-size:.82rem;color:var(--muted)}
+.big.hl{background:var(--verde);border:0;color:var(--marfil)}
+.big.hl b{color:var(--oro)}
+.big.hl span{color:#C9D6CE}
+td input[type=number],td input[type=text]{padding:5px 8px;min-width:70px}
+
+/* Propuesta */
+.fases{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--surface)}
+.fase{padding:18px;display:grid;gap:10px;align-content:start;border-right:1px solid var(--line);min-width:0}
+.fase:last-child{border-right:0}
+.fase h3{font-size:1.5rem;font-weight:800}
+.fase .pl{font-family:var(--f-mono);font-size:.74rem;color:var(--accent)}
+.fase ul{font-size:.9rem;color:var(--muted);display:grid;gap:4px}
+
+.notice{padding:12px 14px;border-radius:12px;background:var(--warn-bg);color:var(--fg);font-size:.9rem}
+.err{padding:12px 14px;border-radius:12px;background:var(--bad-bg);color:var(--fg);font-size:.9rem}
+.toast{position:fixed;bottom:calc(16px + env(safe-area-inset-bottom, 0px));left:50%;transform:translateX(-50%);background:var(--verde);color:var(--marfil);padding:10px 16px;border-radius:10px;font-size:.9rem;z-index:30;max-width:calc(100% - 32px)}
+.confirm{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:10px 12px;border:1px solid var(--bad);border-radius:10px}
+
+@media (max-width:1000px){.brain,.cards{grid-template-columns:1fr 1fr}.fases{grid-template-columns:1fr}.fase{border-right:0;border-bottom:1px solid var(--line)}.fase:last-child{border-bottom:0}.how{grid-template-columns:1fr}}
+@media (max-width:780px){
+  .app{grid-template-columns:minmax(0,1fr)}
+  .side{position:static;height:auto;padding-right:max(16px, env(safe-area-inset-right, 0px))}
+  .clist{max-height:220px}
+  .side-foot{display:none}
+  main{padding-left:max(16px, env(safe-area-inset-left, 0px))}
+  .form,.dgrid2{grid-template-columns:1fr}
+}
+@media (max-width:520px){.brain,.cards,.big3{grid-template-columns:1fr}.beat{grid-template-columns:1fr;gap:2px}}
+</style>
+
+<div class="app">
+  <aside class="side">
+    <div class="brand">Nyland<span>.</span> Studio<small>HUMAN + AI</small></div>
+    <button class="newbtn" id="new-client" type="button">+ Nuevo cliente</button>
+    <input class="search" id="search" type="text" placeholder="Buscar cliente o sector" aria-label="Buscar cliente">
+    <div class="clist" id="clist" aria-label="Clientes"><p class="side-empty" id="side-empty">Cargando clientes…</p></div>
+    <div class="side-foot"><b>IMAGINA · CONSTRUYE · CRECE</b><br>El agente propone, una persona decide.</div>
+  </aside>
+  <main id="main"></main>
+</div>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script>
+(function(){
+"use strict";
+const $=s=>document.querySelector(s);
+function h(tag,attrs,...kids){const e=document.createElement(tag);if(attrs)for(const[k,v]of Object.entries(attrs)){if(v==null||v===false)continue;if(k==="class")e.className=v;else if(k==="text")e.textContent=v;else if(k.startsWith("on"))e.addEventListener(k.slice(2),v);else e.setAttribute(k,v===true?"":v);}for(const k of kids.flat()){if(k==null||k===false)continue;e.append(k instanceof Node?k:document.createTextNode(String(k)));}return e;}
+const S=v=>v==null?"":String(v);
+const num=v=>{if(v==null||v==="")return null;const n=Number(v);return Number.isFinite(n)?n:null;};
+const clamp=(n,a,b)=>Math.min(b,Math.max(a,n));
+const eur=n=>Math.round(n).toLocaleString("es-ES")+" €";
+const fmtDate=iso=>{try{return new Date(iso).toLocaleDateString("es-ES",{day:"numeric",month:"short",year:"numeric"});}catch(e){return "";}};
+let toastT;function toast(t){const e=$("#toast");e.textContent=t;e.hidden=false;clearTimeout(toastT);toastT=setTimeout(()=>e.hidden=true,3200);}
+
+/* ---------- Ficha ---------- */
+const FICHA=[
+  ["empresa","Empresa",true,"text"],
+  ["sector","Sector / nicho",true,"text","Ej.: clínica dental, inmobiliaria, restaurante con 3 locales"],
+  ["empleados","Nº de empleados y departamentos",true,"area"],
+  ["herramientas","Herramientas actuales",false,"area","CRM, ERP, email, WhatsApp, Excel, software contable…"],
+  ["objetivo","Objetivo principal",true,"text","Vender más, ahorrar tiempo, escalar…"],
+  ["tareas","3 tareas que más tiempo les quitan",true,"area","Cuánto tiempo dedican, si lo saben"],
+  ["canales","Canales de venta y captación",false,"area"],
+  ["sensibles","Datos sensibles que manejan",false,"area","Datos de salud, menores, financieros…"],
+  ["presupuesto","Presupuesto mensual orientativo (€)",false,"text"],
+  ["plazo","Plazo deseado",false,"text"],
+  ["responsable","Persona responsable en la empresa",false,"text","Nombre y cargo"],
+  ["coste_hora","Coste por hora del equipo (€)",false,"number","Para la calculadora de ahorro. Déjalo vacío si no lo sabes."],
+  ["notas","Notas de la reunión",false,"area"],
+];
+const REQUIRED=FICHA.filter(f=>f[2]).map(f=>f[0]);
+const EXAMPLE={empresa:"Clínica Dental Sonrisa (ejemplo)",sector:"Clínica dental",empleados:"12 personas: 2 en recepción, 6 en clínica (dentistas e higienistas), 1 en administración, dirección",herramientas:"Agenda online, WhatsApp Business, Excel, programa de facturación",objetivo:"Ahorrar tiempo en recepción y recuperar presupuestos no aceptados",tareas:"Confirmar citas por teléfono (unas 6 h/semana), responder WhatsApp con precios y horarios (5 h/semana), perseguir presupuestos sin respuesta (2 h/semana)",canales:"Google, Instagram, recomendaciones de pacientes",sensibles:"Datos de salud de pacientes",presupuesto:"300 €/mes",plazo:"Empezar en 1 mes",responsable:"Directora de la clínica",coste_hora:"18",notas:""};
+
+/* ---------- Instrucciones de Nyland (resumen del prompt maestro) ---------- */
+const NYLAND=`Eres el Ingeniero Jefe de Soluciones de IA de Nyland AI Solutions. Diseñas "cerebros de IA" a medida para empresas: automatizaciones y asistentes que ahorran tiempo, ayudan a los equipos y aumentan las ventas. Piensas como consultor de negocio, trabajas como ingeniero senior y explicas como un buen profesor. Filosofía HUMAN + AI: la IA potencia a las personas, no las sustituye. Método IMAGINA · CONSTRUYE · CRECE.
+Módulos posibles por departamento: Recursos Humanos; Atención al cliente y soporte (24/7 en web, WhatsApp, email, escalado a humano); Ventas (puntuación de leads, seguimiento, presupuestos, recuperación de inactivos); Captación y marketing; Contabilidad y finanzas (siempre con revisión del asesor); Operaciones (inventario, pedidos, agendas, reservas); Desarrollo y producto (integraciones por API, paneles); Dirección (cuadro de mando, resúmenes); Nuevos métodos de venta (venta conversacional por WhatsApp e Instagram, recomendadores); Escalabilidad (de 1 a N sedes).
+Habla el idioma del sector del cliente: sus procesos, su jerga, su normativa y su temporada alta.
+Reglas: nunca inventes datos del cliente; si falta algo, indícalo como pregunta pendiente. Cada automatización tiene un responsable humano y un punto de escalado. Aplica el RGPD y avisa cuando un caso requiera revisión legal o laboral. Los clientes finales deben saber que hablan con una IA. Decisiones sensibles (despidos, contrataciones, créditos, diagnósticos, temas fiscales) siempre con supervisión humana. No prometas resultados garantizados ni inventes cifras, casos de éxito o testimonios: toda cifra es una estimación basada en los datos del cliente y se señala como tal. Recomienda la opción más simple que funcione y explica costes recurrentes. Escribe en español de España, frases cortas y claras para un gerente sin conocimientos técnicos.`;
+const fichaTxt=f=>FICHA.map(([k,l])=>f&&f[k]?`- ${l}: ${S(f[k])}`:null).filter(Boolean).join("\n");
+
+const PROMPTS={
+  diagnostico:c=>`${NYLAND}
+
+TAREA: FASE 1 · IMAGINA. Haz el diagnóstico por departamento de este cliente y detecta oportunidades de IA.
+
+FICHA DEL CLIENTE:
+${fichaTxt(c.ficha)}
+
+Devuelve SOLO un objeto JSON con esta forma:
+{"resumen":["3 frases: qué propones y qué gana el cliente"],
+ "procesos":[{"departamento":"","quien":"","herramienta":"","tiempo":"tiempo que cuesta, o 'por medir'"}],
+ "oportunidades":[{"departamento":"","titulo":"nombre corto","que_hace":"1-2 frases","impacto":1,"esfuerzo":1,"riesgo":1,"horizonte":"rapida|media|largo","horas_mes":null,"herramientas":"herramientas recomendadas","responsable":"rol humano responsable"}],
+ "avisos":["avisos de RGPD, legales o laborales si aplican"],
+ "preguntas":["preguntas que necesitas resolver con el cliente"]}
+Entre 5 y 9 oportunidades. impacto, esfuerzo y riesgo de 1 a 5. horizonte: "rapida" = victoria rápida de 2 a 4 semanas, "media" = proyecto medio, "largo" = transformación a largo plazo. horas_mes: horas al mes que se liberarían, SOLO si se puede estimar con los datos de la ficha; si no, null.`,
+  demo:c=>`${NYLAND}
+
+TAREA: MÓDULO DE DEMOSTRACIÓN VISUAL para enseñar al gerente de "${S(c.ficha.empresa)}" cómo quedaría la IA en su negocio.
+
+FICHA DEL CLIENTE:
+${fichaTxt(c.ficha)}
+
+OPORTUNIDADES DEL DIAGNÓSTICO:
+${(c.diagnostico&&c.diagnostico.oportunidades||[]).map(o=>`- ${S(o.departamento)}: ${S(o.titulo)} (${S(o.que_hace)})`).join("\n")||"(sin diagnóstico: básate en la ficha)"}
+
+Devuelve SOLO un objeto JSON con esta forma:
+{"antes":[{"tarea":"","tiempo":"p. ej. 90 min/día"}],
+ "despues":[{"tarea":"cómo es con Nyland","tiempo":""}],
+ "mapa":[{"departamento":"","asistente":"nombre del asistente o automatización","frase":"qué hace, en una frase"}],
+ "chat":{"canal":"WhatsApp|Web|Email","interlocutor":"quién escribe (cliente o empleado del sector)","mensajes":[{"de":"persona|ia","texto":""}]},
+ "tarjetas":[{"problema":"","solucion":"","resultado":"resultado esperado, sin cifras inventadas"}],
+ "guion":[{"tiempo":"0:00–0:45","paso":"","frase":"frase exacta que decir"}]}
+antes y despues: 4-6 tareas cada uno, en el mismo orden, con tiempos ilustrativos coherentes con la ficha. mapa: 5-8 departamentos. chat: 6-10 mensajes realistas con su producto y su jerga; la IA dice que es una IA y deriva a una persona cuando toca. tarjetas: 3-6. guion: 5-6 pasos que sumen 5 minutos y terminen con una propuesta clara.`,
+  propuesta:c=>`${NYLAND}
+
+TAREA: Convierte el diagnóstico en una propuesta comercial de 3 fases (IMAGINA, CONSTRUYE, CRECE) con plazos, entregables y KPIs.
+
+FICHA DEL CLIENTE:
+${fichaTxt(c.ficha)}
+
+OPORTUNIDADES PRIORIZADAS:
+${(c.diagnostico&&c.diagnostico.oportunidades||[]).map(o=>`- [${S(o.horizonte)}] ${S(o.departamento)}: ${S(o.titulo)} · impacto ${S(o.impacto)}, esfuerzo ${S(o.esfuerzo)}, riesgo ${S(o.riesgo)}`).join("\n")}
+
+Devuelve SOLO un objeto JSON con esta forma:
+{"resumen":["3 frases: qué propones y qué gana el cliente"],
+ "fases":[{"nombre":"IMAGINA","plazo":"","objetivo":"","entregables":[""],"kpis":[{"kpi":"","linea_base":"valor actual, o 'por medir'","objetivo":"meta orientativa"}]}],
+ "inversion":"cómo encaja con el presupuesto indicado, sin inventar precios de Nyland; indica qué costes recurrentes tendrá (licencias, mensajes, IA) y alternativas más simples",
+ "responsables":"quién decide y supervisa en el cliente",
+ "siguientes_pasos":[""],
+ "preguntas":[""]}
+Exactamente 3 fases en este orden: IMAGINA (diagnóstico detallado), CONSTRUYE (empieza por las victorias rápidas), CRECE (implantación, formación, revisión mensual).`,
+  revision:c=>`${NYLAND}
+
+TAREA: FASE 3 · CRECE. Prepara la revisión mensual de "${S(c.ficha.empresa)}" a partir de sus KPIs.
+
+KPIs (línea base → objetivo → valor actual):
+${(c.seguimiento&&c.seguimiento.kpis||[]).map(k=>`- ${S(k.kpi)}: ${S(k.linea_base)} → ${S(k.objetivo)} → actual: ${S(k.actual)||"sin dato"}`).join("\n")||"(sin KPIs)"}
+
+Notas del equipo: ${S(c.seguimiento&&c.seguimiento.notas)||"(ninguna)"}
+
+Devuelve SOLO un objeto JSON: {"lectura":"2-3 frases sobre cómo va","mejorar":[""],"escalar":[""],"nuevo_modulo":"siguiente módulo recomendado y por qué","preguntas":[""]}. No inventes valores que no estén en los datos.`,
+};
+
+/* ---------- Estado ---------- */
+let db=null,user=null,sample=null,downloads=null,canWrite=true,myId=null;
+let clients=[];let currentId=null;let tab="ficha";let draft=null;let editingNew=false;
+const gens={}; // generaciones en curso por cliente/tipo
+try{const t=localStorage.getItem("nyl-tab");if(t)tab=t;}catch(e){}
+
+/* ---------- Lista ---------- */
+function stageOf(c){
+  if(c.seguimiento&&(c.seguimiento.kpis||[]).length)return["CRECE","ok"];
+  if(c.propuesta||c.demo)return["CONSTRUYE","warn"];
+  if(c.diagnostico)return["IMAGINA","n"];
+  return["FICHA","n"];
+}
+function renderList(){
+  const box=$("#clist");box.replaceChildren();
+  const q=$("#search").value.trim().toLowerCase();
+  const list=clients.filter(c=>!q||(S(c.ficha&&c.ficha.empresa)+" "+S(c.ficha&&c.ficha.sector)).toLowerCase().includes(q));
+  if(!list.length){box.append(h("p",{class:"side-empty",text:clients.length?"Ningún cliente coincide.":"Aún no hay clientes. Crea el primero."}));return;}
+  list.forEach(c=>{
+    const [st]=stageOf(c);
+    box.append(h("button",{class:"ci",type:"button","aria-current":c.id===currentId&&!editingNew?"true":"false",onclick:()=>openClient(c.id)},
+      h("b",{text:S(c.ficha&&c.ficha.empresa)||"Sin nombre"}),
+      h("span",{text:[S(c.ficha&&c.ficha.sector),st].filter(Boolean).join(" · ")})));
+  });
+}
+$("#search").addEventListener("input",renderList);
+$("#new-client").addEventListener("click",()=>{editingNew=true;currentId=null;draft={};renderList();renderMain();});
+
+/* ---------- Main ---------- */
+function renderMain(){
+  const m=$("#main");m.replaceChildren();
+  if(editingNew){m.append(newClientView());return;}
+  const c=clients.find(x=>x.id===currentId);
+  if(!c){m.append(welcome());return;}
+  m.append(clientView(c));
+}
+function welcome(){
+  return h("div",{class:"stack"},
+    h("div",{class:"hero"},
+      h("p",{class:"mono",text:"Herramienta interna de Nyland AI Solutions"}),
+      h("h1",null,"HUMAN ",h("span",{class:"p",text:"+"})," AI"),
+      h("p",{class:"muted",style:"font-size:1.1rem;max-width:60ch",text:"Rellena la ficha de un cliente y Nyland Studio prepara el diagnóstico, la demo visual y la propuesta comercial con el método del prompt maestro. Tú revisas y apruebas cada entregable."}),
+      h("div",{class:"row"},h("button",{class:"btn oro",type:"button",onclick:()=>$("#new-client").click()},"Crear el primer cliente"))),
+    h("div",{class:"how"},
+      h("div",{class:"card"},h("p",{class:"mono",text:"Fase 1"}),h("h3",{text:"Imagina"}),h("p",{class:"muted small",text:"Ficha del cliente y diagnóstico por departamento con oportunidades puntuadas en impacto, esfuerzo y riesgo."})),
+      h("div",{class:"card"},h("p",{class:"mono",text:"Fase 2"}),h("h3",{text:"Construye"}),h("p",{class:"muted small",text:"Demo visual para el gerente: antes y después, mapa del cerebro de IA, conversación de ejemplo, calculadora de ahorro, tarjetas y guion. Después, la propuesta de 3 fases."})),
+      h("div",{class:"card"},h("p",{class:"mono",text:"Fase 3"}),h("h3",{text:"Crece"}),h("p",{class:"muted small",text:"KPIs con línea base, valores reales mes a mes y una revisión mensual preparada por la IA."}))),
+    noticeBar());
+}
+function noticeBar(){
+  const out=h("div",{class:"stack"});
+  if(!db)out.append(h("div",{class:"notice",text:"No se pueden guardar clientes en esta vista. Abre Nyland Studio en claude.ai con tu cuenta para trabajar con datos guardados."}));
+  else if(!canWrite)out.append(h("div",{class:"notice",text:"Tienes acceso de solo lectura. Pide al propietario que te dé acceso de Colaborador para crear y editar clientes."}));
+  if(!sample)out.append(h("div",{class:"notice",text:"La IA no está disponible en esta vista. Puedes rellenar fichas y KPIs, pero no generar entregables."}));
+  return out;
+}
+
+/* ---------- Formulario de ficha ---------- */
+function fichaForm(values,prefix){
+  const f=h("div",{class:"form"});
+  FICHA.forEach(([k,l,req,type,help])=>{
+    const id=prefix+"-"+k;
+    const inp=type==="area"?h("textarea",{id,rows:"3"}):h("input",{id,type:type==="number"?"number":"text",min:type==="number"?"0":null});
+    inp.value=S(values&&values[k]);
+    inp.disabled=!db||!canWrite;
+    f.append(h("div",{class:"f"+(type==="area"?" full":"")},h("label",{for:id},l,req?h("i",{text:" *"}):null),inp,help?h("small",{text:help}):null));
+  });
+  return f;
+}
+function readForm(prefix){const o={};FICHA.forEach(([k])=>{const e=document.getElementById(prefix+"-"+k);if(e)o[k]=e.value.trim();});return o;}
+function missing(f){return REQUIRED.filter(k=>!f||!S(f[k]).trim()).map(k=>FICHA.find(x=>x[0]===k)[1]);}
+
+function newClientView(){
+  const err=h("p",{class:"small",style:"color:var(--bad)"});
+  const save=h("button",{class:"btn oro",type:"button"},"Guardar cliente");
+  const wrap=h("div",{class:"stack"},
+    h("div",{class:"chead"},h("p",{class:"mono",text:"Nuevo cliente · Ficha"}),h("h2",{text:"Ficha de cliente"}),h("p",{class:"muted",text:"Rellénala en la primera reunión. Los campos con * son necesarios para el diagnóstico."})),
+    noticeBar(),
+    h("div",{class:"card stack"},
+      h("div",{id:"nf-wrap"},fichaForm(draft,"nf")),
+      h("div",{class:"row"},save,
+        h("button",{class:"btn ghost",type:"button",onclick:()=>{draft=Object.assign({},EXAMPLE);document.getElementById("nf-wrap").replaceChildren(fichaForm(draft,"nf"));}},"Rellenar con un ejemplo"),
+        h("button",{class:"btn ghost",type:"button",onclick:()=>{editingNew=false;renderList();renderMain();}},"Cancelar")),
+      err));
+  save.disabled=!db||!canWrite;
+  save.addEventListener("click",async()=>{
+    const f=readForm("nf");if(!f.empresa){err.textContent="Escribe al menos el nombre de la empresa.";return;}
+    save.disabled=true;err.textContent="";
+    try{
+      const now=new Date().toISOString();
+      const ref=db.collection("clientes").doc();
+      await ref.set({ficha:f,creadoEn:now,actualizadoEn:now,creadoPor:myId||null});
+      editingNew=false;currentId=ref.id;tab="ficha";toast("Cliente guardado");renderAll();
+    }catch(e){err.textContent=dbMsg(e);save.disabled=false;}
+  });
+  return wrap;
+}
+function dbMsg(e){const c=e&&e.code;if(c==="invalid_argument")return"No tienes permiso para guardar aquí, o los datos no son válidos.";if(c==="quota_exceeded")return"Se ha llenado el espacio de datos. Borra clientes antiguos.";if(c==="resource_exhausted")return"Demasiadas operaciones seguidas. Espera unos segundos.";return"No se pudo guardar. Prueba otra vez.";}
+
+/* ---------- Vista de cliente ---------- */
+const TABS=[["ficha","Ficha","IMAGINA"],["diagnostico","Diagnóstico","IMAGINA"],["demo","Demo visual","CONSTRUYE"],["propuesta","Propuesta","CONSTRUYE"],["seguimiento","Seguimiento","CRECE"]];
+function tabState(c,k){if(k==="ficha")return missing(c.ficha).length?"":"ok";if(k==="seguimiento")return(c.seguimiento&&(c.seguimiento.kpis||[]).length)?"ok":"";const d=c[k];if(!d)return"";return d.aprobado?"ok":"draft";}
+function clientView(c){
+  if(!TABS.some(t=>t[0]===tab))tab="ficha";
+  const [st,cls]=stageOf(c);
+  const head=h("div",{class:"chead"},
+    h("div",{class:"row between"},
+      h("div",null,h("p",{class:"mono",text:S(c.ficha.sector)||"Sector sin indicar"}),h("h2",{text:S(c.ficha.empresa)||"Sin nombre"})),
+      h("div",{class:"row"},h("span",{class:"pill "+cls,text:"Fase actual: "+st}),c.actualizadoEn?h("span",{class:"pill n",text:"Actualizado "+fmtDate(c.actualizadoEn)}):null)));
+  const tabs=h("div",{class:"tabs",role:"tablist"});
+  TABS.forEach(([k,l,ph])=>{const s=tabState(c,k);tabs.append(h("button",{class:"tab",role:"tab",type:"button","aria-selected":tab===k?"true":"false",onclick:()=>{tab=k;try{localStorage.setItem("nyl-tab",k);}catch(e){}renderMain();}},h("span",{class:"tdot "+s,title:s==="ok"?"Aprobado o completo":s==="draft"?"Borrador pendiente de aprobar":"Pendiente"}),l,h("span",{class:"ph",text:ph})));});
+  const body=({ficha:fichaTab,diagnostico:diagTab,demo:demoTab,propuesta:propTab,seguimiento:segTab})[tab](c);
+  return h("div",null,head,noticeBar(),tabs,body);
+}
+
+/* ---- Ficha ---- */
+function fichaTab(c){
+  const msg=h("p",{class:"small muted"});
+  const save=h("button",{class:"btn",type:"button"},"Guardar ficha");save.disabled=!db||!canWrite;
+  save.addEventListener("click",async()=>{save.disabled=true;try{await patch(c,{ficha:readForm("ef")});msg.textContent="Ficha guardada.";}catch(e){msg.textContent=dbMsg(e);}save.disabled=false;});
+  const del=h("button",{class:"btn danger",type:"button"},"Eliminar cliente");del.disabled=!db||!canWrite;
+  const confirmBox=h("div",{class:"confirm",hidden:true},h("span",{text:"¿Eliminar este cliente y todos sus entregables? No se puede deshacer."}),
+    h("button",{class:"btn danger",type:"button",onclick:async()=>{try{await db.collection("clientes").doc(c.id).delete();currentId=null;toast("Cliente eliminado");renderAll();}catch(e){msg.textContent=dbMsg(e);}}},"Sí, eliminar"),
+    h("button",{class:"btn ghost",type:"button",onclick:()=>{confirmBox.hidden=true;}},"Cancelar"));
+  del.addEventListener("click",()=>{confirmBox.hidden=false;});
+  const miss=missing(c.ficha);
+  return h("div",{class:"stack"},
+    miss.length?h("div",{class:"notice",text:"Faltan datos para el diagnóstico: "+miss.join(", ")+"."}):null,
+    h("div",{class:"card stack"},fichaForm(c.ficha,"ef"),h("div",{class:"row between"},h("div",{class:"row"},save,msg),del),confirmBox));
+}
+
+/* ---- Generación común ---- */
+function genBar(c,kind,label,desc,blockers){
+  const key=c.id+"|"+kind;const g=gens[key];
+  const bar=h("div",{class:"gen"},h("p",null,h("b",{text:label}),h("br"),h("span",{class:"small muted",text:desc})));
+  if(g){
+    const prog=h("span",{class:"prog",text:"Generando… "+Math.round((Date.now()-g.t0)/1000)+" s"});g.prog=prog;
+    bar.append(prog,h("button",{class:"btn ghost",type:"button",onclick:()=>g.ctl.abort()},"Detener"));
+  }else{
+    const b=h("button",{class:"btn oro",type:"button"},c[kind]?"Generar de nuevo":"Generar con IA");
+    b.disabled=!sample||!db||!canWrite||blockers.length>0;
+    b.addEventListener("click",()=>generate(c,kind));
+    bar.append(b);
+  }
+  const wrap=h("div",{class:"stack"},bar);
+  if(blockers.length)wrap.append(h("div",{class:"notice",text:blockers.join(" ")}));
+  if(gens["err|"+key])wrap.append(h("div",{class:"err",text:gens["err|"+key]}));
+  return wrap;
+}
+async function generate(c,kind){
+  const key=c.id+"|"+kind;delete gens["err|"+key];
+  const ctl=new AbortController();const g={ctl,t0:Date.now(),prog:null};gens[key]=g;
+  const timer=setInterval(()=>{if(g.prog)g.prog.textContent="Generando… "+Math.round((Date.now()-g.t0)/1000)+" s";},1000);
+  renderMain();
+  try{
+    const fresh=clients.find(x=>x.id===c.id)||c;
+    const data=await sample.json(PROMPTS[kind](fresh),{signal:ctl.signal,cache:false,modelTier:"default"});
+    if(!data||typeof data!=="object"||Array.isArray(data))throw{code:"invalid_json"};
+    const val=Object.assign({},data,{generadoEn:new Date().toISOString(),generadoPor:myId||null,aprobado:null});
+    if(kind==="revision"){const seg=Object.assign({},fresh.seguimiento||{});seg.revision=val;await patch(fresh,{seguimiento:seg});}
+    else await patch(fresh,{[kind]:val});
+    toast("Borrador listo. Revísalo y apruébalo.");
+  }catch(e){
+    const code=e&&e.code;
+    if(code!=="cancelled")gens["err|"+key]=code==="not_granted"?"No se ha permitido usar Claude en esta página. Puedes permitirlo desde el menú de permisos del artefacto.":code==="rate_limited"?"Has llegado al límite de uso por ahora. Prueba más tarde.":code==="invalid_json"?"La IA devolvió una respuesta que no se pudo leer. Pulsa Generar de nuevo.":(code==="invalid_argument"||code==="quota_exceeded"||code==="resource_exhausted")?dbMsg(e):"No se pudo generar. Prueba otra vez.";
+  }finally{clearInterval(timer);delete gens[key];renderMain();}
+}
+async function patch(c,fields){
+  const body=Object.assign({},fields,{actualizadoEn:new Date().toISOString()});
+  await db.collection("clientes").doc(c.id).update(body);
+}
+function approvalBar(c,kind,path){
+  const d=path?path(c):c[kind];if(!d)return null;
+  const a=d.aprobado;
+  const bar=h("div",{class:"approval"+(a?" done":"")});
+  if(a){
+    const who=h("b",{text:"un miembro del equipo"});
+    resolveName(a.por).then(n=>{if(n)who.textContent=n;});
+    bar.append(h("span",null,"Aprobado por ",who," el ",fmtDate(a.en),"."));
+    const b=h("button",{class:"btn ghost",type:"button"},"Quitar aprobación");b.disabled=!canWrite;
+    b.addEventListener("click",()=>setApproval(c,kind,null));bar.append(b);
+  }else{
+    bar.append(h("span",{text:"Borrador de la IA generado el "+fmtDate(d.generadoEn)+". Revísalo antes de enseñarlo al cliente."}));
+    const b=h("button",{class:"btn",type:"button"},"Aprobar");b.disabled=!canWrite||!db;
+    b.addEventListener("click",()=>setApproval(c,kind,{por:myId||null,en:new Date().toISOString()}));bar.append(b);
+  }
+  return bar;
+}
+async function setApproval(c,kind,val){try{const d=Object.assign({},c[kind],{aprobado:val});await patch(c,{[kind]:d});toast(val?"Aprobado":"Aprobación retirada");}catch(e){toast(dbMsg(e));}}
+const nameCache={};
+async function resolveName(id){if(!id||!user||!user.profiles)return null;if(id in nameCache)return nameCache[id];try{const ps=await user.profiles([id]);nameCache[id]=(ps&&ps[id]&&ps[id].name)||null;}catch(e){nameCache[id]=null;}return nameCache[id];}
+const arr=v=>Array.isArray(v)?v:[];
+function list(items,cls){const u=h("ul",{class:cls||null});arr(items).forEach(i=>u.append(h("li",{text:S(i)})));return u;}
+function section(title,...kids){return h("div",{class:"card stack"},h("h3",{text:title}),...kids);}
+
+/* ---- Diagnóstico ---- */
+function prio(o){const i=clamp(num(o.impacto)||0,0,5),e=clamp(num(o.esfuerzo)||0,0,5),r=clamp(num(o.riesgo)||0,0,5);return i*2-e-r+6;}
+function bars(n){const b=h("span",{class:"bars","aria-label":n+" de 5"});for(let i=1;i<=5;i++)b.append(h("i",{class:i<=n?"on":""}));return b;}
+const HZ={rapida:"Victoria rápida",media:"Proyecto medio",largo:"Largo plazo"};
+function diagTab(c){
+  const miss=missing(c.ficha);
+  const out=h("div",{class:"stack"},genBar(c,"diagnostico","Fase 1 · Diagnóstico por departamento","Mapea procesos, detecta oportunidades y las puntúa en impacto, esfuerzo y riesgo.",miss.length?["Completa la ficha antes de diagnosticar: "+miss.join(", ")+"."]:[]));
+  const d=c.diagnostico;if(!d)return out;
+  out.append(approvalBar(c,"diagnostico"));
+  out.append(section("Resumen",list(d.resumen,"summary")));
+  const ops=arr(d.oportunidades).slice().sort((a,b)=>({rapida:0,media:1,largo:2}[a.horizonte]??3)-({rapida:0,media:1,largo:2}[b.horizonte]??3)||prio(b)-prio(a));
+  const tb=h("tbody");
+  ops.forEach(o=>{
+    tb.append(h("tr",null,
+      h("td",null,h("span",{class:"pill hz-"+S(o.horizonte),text:HZ[o.horizonte]||S(o.horizonte)})),
+      h("td",null,h("b",{text:S(o.titulo)}),h("br"),h("span",{class:"small muted",text:S(o.departamento)})),
+      h("td",{style:"min-width:220px"},S(o.que_hace),o.herramientas?h("div",{class:"small muted",text:"Herramientas: "+S(o.herramientas)}):null,o.responsable?h("div",{class:"small muted",text:"Responsable: "+S(o.responsable)}):null),
+      h("td",{class:"n"},bars(clamp(num(o.impacto)||0,0,5))),
+      h("td",{class:"n"},bars(clamp(num(o.esfuerzo)||0,0,5))),
+      h("td",{class:"n"},bars(clamp(num(o.riesgo)||0,0,5))),
+      h("td",{class:"n"},h("span",{class:"score",text:String(prio(o))})),
+      h("td",{class:"n"},num(o.horas_mes)!=null?String(num(o.horas_mes))+" h":"—")));
+  });
+  out.append(h("div",{class:"stack"},h("h3",{text:"Oportunidades priorizadas"}),
+    h("div",{class:"tbl"},h("table",null,h("thead",null,h("tr",null,h("th",{text:"Horizonte"}),h("th",{text:"Oportunidad"}),h("th",{text:"Qué hace"}),h("th",{class:"n",text:"Impacto"}),h("th",{class:"n",text:"Esfuerzo"}),h("th",{class:"n",text:"Riesgo"}),h("th",{class:"n",text:"Prioridad"}),h("th",{class:"n",text:"Horas/mes"}))),tb)),
+    h("p",{class:"small muted",text:"Prioridad = impacto × 2 − esfuerzo − riesgo + 6 (de 0 a 16). Las horas al mes son estimaciones de la IA con los datos de la ficha; «—» significa que faltan datos."})));
+  if(arr(d.procesos).length){const tb2=h("tbody");arr(d.procesos).forEach(p=>tb2.append(h("tr",null,h("td",{text:S(p.departamento)}),h("td",{text:S(p.quien)}),h("td",{text:S(p.herramienta)}),h("td",{text:S(p.tiempo)}))));
+    out.append(h("div",{class:"stack"},h("h3",{text:"Procesos actuales"}),h("div",{class:"tbl"},h("table",null,h("thead",null,h("tr",null,h("th",{text:"Departamento"}),h("th",{text:"Quién"}),h("th",{text:"Herramienta"}),h("th",{text:"Tiempo"}))),tb2))));}
+  if(arr(d.avisos).length)out.append(section("Avisos (RGPD, legal, laboral)",list(d.avisos)));
+  if(arr(d.preguntas).length)out.append(section("Preguntas para el cliente",list(d.preguntas,"qs")));
+  return out;
+}
+
+/* ---- Demo ---- */
+function demoTab(c){
+  const out=h("div",{class:"stack"},genBar(c,"demo","Demo visual para el gerente","Antes y después, mapa del cerebro de IA, conversación de ejemplo, tarjetas y guion de 5 minutos.",c.diagnostico?[]:["Genera primero el diagnóstico para que la demo se base en él."]));
+  const d=c.demo;if(!d)return out;
+  out.append(approvalBar(c,"demo"));
+  const col=(title,items,cls)=>{const b=h("div",{class:"card "+(cls||"")},h("h3",{style:"margin-bottom:8px",text:title}));arr(items).forEach(t=>b.append(h("div",{class:"task"},h("span",{text:S(t.tarea)}),h("b",{text:S(t.tiempo)}))));return b;};
+  out.append(h("div",{class:"stack"},h("h3",{text:"1 · Antes / después"}),h("div",{class:"dgrid2"},col("Hoy",d.antes),col("Con Nyland",d.despues,"after")),h("p",{class:"small muted",text:"Tiempos ilustrativos basados en la ficha."})));
+  const brain=h("div",{class:"brain"});const m=arr(d.mapa);const mid=Math.min(4,Math.floor(m.length/2));
+  m.forEach((n,i)=>{if(i===mid)brain.append(h("div",{class:"node core"},h("strong",{text:S(c.ficha.empresa)}),h("span",{text:"Cerebro de IA · HUMAN + AI"})));brain.append(h("div",{class:"node"},h("strong",{text:S(n.departamento)}),h("span",{class:"a",text:S(n.asistente)}),h("span",{class:"muted",text:S(n.frase)})));});
+  if(m.length&&mid>=m.length)brain.append(h("div",{class:"node core"},h("strong",{text:S(c.ficha.empresa)})));
+  out.append(h("div",{class:"stack"},h("h3",{text:"2 · Mapa del cerebro de IA"}),brain));
+  if(d.chat){const ch=h("div",{class:"chat"});arr(d.chat.mensajes).forEach(x=>ch.append(h("div",{class:"msg"+(x.de==="ia"?"":" c"),text:S(x.texto)})));
+    out.append(h("div",{class:"stack"},h("h3",{text:"3 · Conversación de ejemplo · "+S(d.chat.canal)}),h("p",{class:"small muted",text:"Escribe: "+S(d.chat.interlocutor)+". Conversación simulada."}),ch));}
+  out.append(calculator(c));
+  const cards=h("div",{class:"cards"});arr(d.tarjetas).forEach(t=>cards.append(h("article",{class:"ncard"},h("dl",null,h("dt",{text:"Problema"}),h("dd",{text:S(t.problema)}),h("dt",{text:"Solución con IA"}),h("dd",{text:S(t.solucion)}),h("dt",{text:"Resultado esperado"}),h("dd",{text:S(t.resultado)})))));
+  out.append(h("div",{class:"stack"},h("h3",{text:"5 · Tarjetas por nicho"}),cards));
+  const sc=h("div",{class:"script"});arr(d.guion).forEach(b=>sc.append(h("div",{class:"beat"},h("span",{class:"t",text:S(b.tiempo)}),h("div",null,h("b",{text:S(b.paso)}),h("q",{text:S(b.frase)})))));
+  out.append(h("div",{class:"stack"},h("h3",{text:"6 · Guion de demo de 5 minutos"}),sc));
+  return out;
+}
+function calculator(c){
+  const ops=arr(c.diagnostico&&c.diagnostico.oportunidades);
+  const box=h("div",{class:"stack"},h("h3",{text:"4 · Calculadora de ahorro"}));
+  if(!ops.length){box.append(h("p",{class:"muted",text:"Necesita el diagnóstico."}));return box;}
+  const rateIn=h("input",{type:"number",id:"calc-rate",min:"0",step:"1"});rateIn.value=S(c.ficha.coste_hora);
+  const tb=h("tbody");const rows=[];
+  ops.forEach((o,i)=>{const hin=h("input",{type:"number",id:"calc-h"+i,min:"0",step:"1",placeholder:"rellenar"});if(num(o.horas_mes)!=null)hin.value=String(num(o.horas_mes));const e=h("td",{class:"n"});rows.push([hin,e]);tb.append(h("tr",null,h("td",{text:S(o.titulo)}),h("td",{class:"n"},hin),e));});
+  const H=h("b"),D=h("b"),E=h("b");
+  function calc(){const r=num(rateIn.value);let t=0;rows.forEach(([hin,e])=>{const v=num(hin.value);if(v!=null&&v>0){t+=v;e.textContent=r?eur(v*r):"—";}else e.textContent="—";});H.textContent=Math.round(t)+" h";D.textContent=(t/8).toLocaleString("es-ES",{maximumFractionDigits:1});E.textContent=r?eur(t*r):"Falta el coste/hora";}
+  box.addEventListener("input",calc);
+  box.append(h("div",{class:"row"},h("label",{for:"calc-rate"},"Coste por hora (€)"),rateIn),
+    h("div",{class:"tbl"},h("table",{style:"min-width:480px"},h("thead",null,h("tr",null,h("th",{text:"Tarea"}),h("th",{class:"n",text:"Horas liberadas al mes"}),h("th",{class:"n",text:"Ahorro €/mes"}))),tb)),
+    h("div",{class:"big3"},h("div",{class:"big"},H,h("span",{text:"horas liberadas al mes"})),h("div",{class:"big"},D,h("span",{text:"jornadas de 8 h al mes"})),h("div",{class:"big hl"},E,h("span",{text:"ahorro estimado al mes"}))),
+    h("p",{class:"small muted",text:"Estimación orientativa con los datos del cliente. Las casillas vacías se rellenan en la reunión. No es un resultado garantizado."}));
+  calc();return box;
+}
+
+/* ---- Propuesta ---- */
+function propMarkdown(c){
+  const p=c.propuesta;if(!p)return"";
+  let s=`# Propuesta Nyland para ${S(c.ficha.empresa)}\n\n`;
+  arr(p.resumen).forEach(x=>s+=`- ${S(x)}\n`);
+  arr(p.fases).forEach(f=>{s+=`\n## ${S(f.nombre)} · ${S(f.plazo)}\n\n${S(f.objetivo)}\n\n**Entregables**\n`;arr(f.entregables).forEach(e=>s+=`- ${S(e)}\n`);if(arr(f.kpis).length){s+=`\n| KPI | Línea base | Objetivo |\n|---|---|---|\n`;arr(f.kpis).forEach(k=>s+=`| ${S(k.kpi)} | ${S(k.linea_base)} | ${S(k.objetivo)} |\n`);}});
+  if(p.inversion)s+=`\n## Inversión y costes recurrentes\n\n${S(p.inversion)}\n`;
+  if(p.responsables)s+=`\n## Responsables\n\n${S(p.responsables)}\n`;
+  if(arr(p.siguientes_pasos).length){s+=`\n## Siguientes pasos\n\n`;arr(p.siguientes_pasos).forEach((x,i)=>s+=`${i+1}. ${S(x)}\n`);}
+  if(arr(p.preguntas).length){s+=`\n## Preguntas pendientes\n\n`;arr(p.preguntas).forEach(x=>s+=`- ${S(x)}\n`);}
+  s+=`\n---\nNyland AI Solutions · HUMAN + AI · Las cifras son estimaciones basadas en los datos facilitados.\n`;
+  return s;
+}
+function propTab(c){
+  const out=h("div",{class:"stack"},genBar(c,"propuesta","Propuesta comercial de 3 fases","Plazos, entregables y KPIs a partir del diagnóstico.",c.diagnostico?[]:["Genera primero el diagnóstico."]));
+  const p=c.propuesta;if(!p)return out;
+  out.append(approvalBar(c,"propuesta"));
+  out.append(section("Resumen",list(p.resumen,"summary")));
+  const fs=h("div",{class:"fases"});
+  arr(p.fases).forEach(f=>{const k=h("ul");arr(f.kpis).forEach(x=>k.append(h("li",{text:`${S(x.kpi)}: ${S(x.linea_base)} → ${S(x.objetivo)}`})));
+    fs.append(h("div",{class:"fase"},h("span",{class:"pl",text:S(f.plazo)}),h("h3",{text:S(f.nombre)}),h("p",{text:S(f.objetivo)}),h("p",{class:"mono",text:"Entregables"}),list(f.entregables),arr(f.kpis).length?h("p",{class:"mono",text:"KPIs"}):null,arr(f.kpis).length?k:null));});
+  out.append(fs);
+  if(p.inversion)out.append(section("Inversión y costes recurrentes",h("p",{text:S(p.inversion)})));
+  if(p.responsables)out.append(section("Responsables",h("p",{text:S(p.responsables)})));
+  if(arr(p.siguientes_pasos).length){const o=h("ol");arr(p.siguientes_pasos).forEach(x=>o.append(h("li",{text:S(x)})));out.append(section("Siguientes pasos",o));}
+  if(arr(p.preguntas).length)out.append(section("Preguntas pendientes",list(p.preguntas)));
+  const md=propMarkdown(c);
+  const copy=h("button",{class:"btn ghost",type:"button"},"Copiar como texto");
+  const ta=h("textarea",{id:"prop-md",readonly:true,rows:"8",hidden:true});ta.value=md;
+  copy.addEventListener("click",async()=>{try{await navigator.clipboard.writeText(md);toast("Propuesta copiada");}catch(e){ta.hidden=false;ta.select();toast("Selecciona el texto y cópialo");}});
+  const dl=h("button",{class:"btn ghost",type:"button"},"Descargar .md");dl.hidden=!downloads;
+  dl.addEventListener("click",async()=>{try{await downloads.save({filename:"propuesta-"+S(c.ficha.empresa).toLowerCase().replace(/[^a-z0-9áéíóúñ]+/gi,"-").replace(/^-|-$/g,"")+".md",data:md});}catch(e){toast("No se descargó el archivo.");}});
+  out.append(h("div",{class:"row"},copy,dl),ta);
+  return out;
+}
+
+/* ---- Seguimiento ---- */
+function segTab(c){
+  const seg=c.seguimiento||{};const kpis=arr(seg.kpis).map(k=>Object.assign({},k));
+  const out=h("div",{class:"stack"});
+  const tb=h("tbody");
+  const msg=h("p",{class:"small muted"});
+  function row(k,i){const mk=(f,ph)=>{const e=h("input",{type:"text",id:`kpi-${i}-${f}`,placeholder:ph||""});e.value=S(k[f]);e.disabled=!canWrite||!db;e.addEventListener("input",()=>{k[f]=e.value;});return h("td",null,e);};
+    const rm=h("button",{class:"btn ghost",type:"button",style:"padding:5px 9px"},"Quitar");rm.disabled=!canWrite||!db;rm.addEventListener("click",()=>{kpis.splice(i,1);draw();});
+    return h("tr",null,mk("kpi","Nombre del KPI"),mk("linea_base","por medir"),mk("objetivo"),mk("actual","valor de este mes"),h("td",null,rm));}
+  function draw(){tb.replaceChildren();kpis.forEach((k,i)=>tb.append(row(k,i)));if(!kpis.length)tb.append(h("tr",null,h("td",{colspan:"5",class:"muted",text:"Sin KPIs todavía. Impórtalos de la propuesta o añádelos a mano."})));}
+  draw();
+  const notas=h("textarea",{id:"seg-notas",rows:"4",placeholder:"Qué ha pasado este mes, incidencias, comentarios del cliente…"});notas.value=S(seg.notas);notas.disabled=!canWrite||!db;
+  const add=h("button",{class:"btn ghost",type:"button"},"Añadir KPI");add.disabled=!canWrite||!db;add.addEventListener("click",()=>{kpis.push({kpi:"",linea_base:"",objetivo:"",actual:""});draw();});
+  const imp=h("button",{class:"btn ghost",type:"button"},"Importar KPIs de la propuesta");imp.disabled=!canWrite||!db||!c.propuesta;
+  imp.addEventListener("click",()=>{arr(c.propuesta&&c.propuesta.fases).forEach(f=>arr(f.kpis).forEach(k=>{if(!kpis.some(x=>S(x.kpi)===S(k.kpi)))kpis.push({kpi:S(k.kpi),linea_base:S(k.linea_base),objetivo:S(k.objetivo),actual:""});}));draw();msg.textContent="KPIs importados. Pulsa Guardar.";});
+  const save=h("button",{class:"btn",type:"button"},"Guardar seguimiento");save.disabled=!canWrite||!db;
+  save.addEventListener("click",async()=>{save.disabled=true;try{await patch(c,{seguimiento:Object.assign({},seg,{kpis:kpis.filter(k=>S(k.kpi).trim()),notas:notas.value.trim()})});msg.textContent="Seguimiento guardado.";}catch(e){msg.textContent=dbMsg(e);}save.disabled=false;});
+  out.append(h("div",{class:"card stack"},h("h3",{text:"KPIs con línea base"}),
+    h("div",{class:"tbl"},h("table",{style:"min-width:640px"},h("thead",null,h("tr",null,h("th",{text:"KPI"}),h("th",{text:"Línea base"}),h("th",{text:"Objetivo"}),h("th",{text:"Valor actual"}),h("th",{text:""}))),tb)),
+    h("div",{class:"row"},add,imp),
+    h("div",{class:"f"},h("label",{for:"seg-notas"},"Notas del mes"),notas),
+    h("div",{class:"row"},save,msg)));
+  const kindKey="revision";
+  const rv=seg.revision;
+  const fakeC=Object.assign({},c,{revision:rv});
+  out.append(genBar(fakeC,kindKey,"Revisión mensual","Qué mejorar, qué escalar y qué nuevo módulo añadir, según los KPIs guardados.",arr(seg.kpis).length?[]:["Guarda al menos un KPI para preparar la revisión."]));
+  if(rv){
+    out.append(h("p",{class:"small muted",text:"Revisión generada el "+fmtDate(rv.generadoEn)+". Es una propuesta: decide con el cliente."}));
+    out.append(section("Lectura del mes",h("p",{text:S(rv.lectura)})));
+    out.append(h("div",{class:"dgrid2"},section("Qué mejorar",list(rv.mejorar)),section("Qué escalar",list(rv.escalar))));
+    if(rv.nuevo_modulo)out.append(section("Nuevo módulo recomendado",h("p",{text:S(rv.nuevo_modulo)})));
+    if(arr(rv.preguntas).length)out.append(section("Preguntas",list(rv.preguntas)));
+  }
+  return out;
+}
+
+/* ---------- Abrir / arrancar ---------- */
+function openClient(id){editingNew=false;currentId=id;try{localStorage.setItem("nyl-client",id);}catch(e){}renderList();renderMain();}
+function renderAll(){renderList();renderMain();}
+renderMain();
+
+(async()=>{
+  const W=window.claude;
+  const [d,u,s,dl]=await Promise.all(["db","user","sample","downloads"].map(n=>W&&W.use?W.use(n).catch(()=>null):Promise.resolve(null)));
+  db=d;user=u;sample=s;downloads=dl;
+  if(user){try{myId=await user.id();}catch(e){}try{const cw=await user.can("data.write");if(cw===false)canWrite=false;}catch(e){}}
+  if(!db){$("#side-empty")&&($("#side-empty").textContent="Sin acceso a datos en esta vista.");$("#new-client").disabled=true;renderMain();return;}
+  if(!canWrite)$("#new-client").disabled=true;
+  let loaded=false;
+  const timeout=setTimeout(()=>{if(!loaded){$("#clist").replaceChildren(h("p",{class:"side-empty",text:"Los clientes tardan en cargar. Revisa la conexión y recarga la página."}));}},10000);
+  db.collection("clientes").orderBy("actualizadoEn","desc").onSnapshot(snap=>{
+    loaded=true;clearTimeout(timeout);
+    clients=snap.docs.filter(x=>x.exists).map(x=>Object.assign({id:x.id},x.data()));
+    if(currentId&&!clients.some(c=>c.id===currentId))currentId=null;
+    if(!currentId&&!editingNew&&clients.length){try{const last=localStorage.getItem("nyl-client");if(last&&clients.some(c=>c.id===last))currentId=last;}catch(e){}}
+    // no redibujar mientras se escribe en un campo de este cliente
+    const a=document.activeElement;const typing=a&&(a.tagName==="INPUT"||a.tagName==="TEXTAREA")&&a.id!=="search"&&!a.readOnly;
+    renderList();if(!typing)renderMain();
+  },e=>{clearTimeout(timeout);$("#clist").replaceChildren(h("p",{class:"side-empty",text:"No se pudieron cargar los clientes."}));});
+})();
+})();
+</script>
