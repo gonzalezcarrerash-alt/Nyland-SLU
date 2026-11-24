@@ -1,0 +1,23 @@
+{
+  "nombre": "Nombre",
+  "apellidos": "Apellido",
+  "cargo": "Asesor comercial",
+  "empresa": "Tu empresa",
+  "telefono": "+34 600 000 000",
+  "whatsapp": "+34 600 000 000",
+  "email": "nombre@ejemplo.com",
+  "web": "",
+  "url": "",
+  "color": "#1C3A2E",
+  "color2": "#3E7A5E",
+  "horario": [9, 20],
+  "saludo": "Hola, soy Nombre. Cuéntame qué necesitas y te ayudo hoy mismo.",
+  "saludo_whatsapp": "Hola, te escribo desde tu tarjeta digital.",
+  "bio": "",
+  "datos": [],
+  "servicios": [
+    {"icono": "💬", "titulo": "Pedir información", "detalle": "Te respondo por WhatsApp", "mensaje": "Hola, me gustaría recibir información."},
+    {"icono": "📅", "titulo": "Pedir una cita", "detalle": "Elige día y hora", "mensaje": "Hola, me gustaría pedir una cita."}
+  ],
+  "pie": ""
+}

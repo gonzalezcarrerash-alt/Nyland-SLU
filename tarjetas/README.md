@@ -21,3 +21,24 @@ Android aparece «Añadir contacto», sin web, servidor ni conexión.
    - `contacto.vcf`: el contacto para enviarlo por WhatsApp o email.
 
 No subas al repositorio los JSON ni las tarjetas con datos personales de terceros.
+
+## Tarjeta digital interactiva con foto
+
+Una página para el móvil, personalizada para cada comercial:
+
+- Su foto a toda pantalla, con nombre, cargo y empresa, y un indicador de «Disponible ahora»
+  según su horario.
+- Botones de llamar, WhatsApp, email y guardar el contacto (con foto).
+- Un saludo que se escribe solo y la sección «¿En qué te ayudo?», donde cada botón abre WhatsApp
+  con un mensaje distinto (por ejemplo: vender, comprar, alquilar, valorar).
+- «Sobre mí» y una tarjeta que gira al tocarla y muestra el QR para que la escaneen.
+- Botón de compartir la tarjeta.
+
+```bash
+pip install segno pillow
+python3 tarjetas/generar_web.py tarjetas/web/ejemplo-comercial.json foto.jpg salida/
+```
+
+Sube la carpeta `salida/` a una web (GitHub Pages, Netlify o tu dominio), pon esa dirección en
+`"url"` del JSON y vuelve a generarla: el QR (`qr-tarjeta.png`) abrirá la tarjeta en el móvil de
+quien lo escanee. Sin `"url"`, el QR guarda directamente el contacto.
