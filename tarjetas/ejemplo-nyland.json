@@ -1,0 +1,13 @@
+{
+  "nombre": "Nombre",
+  "apellidos": "Apellido",
+  "cargo": "Consultor de IA",
+  "empresa": "Nyland AI Solutions",
+  "telefonos": [{"etiqueta": "Móvil", "numero": "+34 600 000 000", "tipo": "CELL"}],
+  "email": "nombre@ejemplo.com",
+  "web": "",
+  "nota": "HUMAN + AI",
+  "color": "#1C3A2E",
+  "acento": "#94732F",
+  "color_qr": "#1C3A2E"
+}
