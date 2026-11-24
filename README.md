@@ -13,6 +13,7 @@ Método **IMAGINA · CONSTRUYE · CRECE**.
 | `ejemplos/peticiones.md` | Peticiones de prueba (diagnóstico, demo, tarjetas, construcción…) |
 | `clientes/` | Una carpeta por cliente con su ficha y entregables |
 | `app/index.html` | **Nyland Studio**: la app interna (ficha, diagnóstico, demo, propuesta y seguimiento con IA) |
+| `movil/` | **App Nyland para el teléfono** (PWA instalable, genérica para cualquier negocio) |
 | `demo/` | Escaparate de Nyland y prototipo interactivo para inmobiliarias |
 | `CLAUDE.md` | Hace que Claude Code trabaje como el ingeniero de Nyland en este repo |
 

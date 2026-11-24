@@ -1,0 +1,493 @@
+<title>Nyland App</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: app móvil de una columna (máx. 560 px), cabecera verde Nyland y barra de pestañas fija abajo */
+:root{
+  --verde:#1C3A2E; --oro:#D6B26C; --menta:#96E1BE; --marfil:#F2F5F0;
+  --bg:#F2F5F0; --fg:#1C3A2E; --muted:#557064; --surface:#FFFFFF; --line:#D6DFD8; --soft:#E3F3EA;
+  --band:#1C3A2E; --band-fg:#F2F5F0; --accent:#94732F; --tabbar:#FFFFFF;
+  --f-display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --f-body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0E1D17; --fg:#E6EDE8; --muted:#9FB5AA; --surface:#152B23; --line:#284539; --soft:#1C3A2E;
+  --band:#0A1611; --band-fg:#F2F5F0; --accent:#D6B26C; --tabbar:#10221B; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E1D17; --fg:#E6EDE8; --muted:#9FB5AA; --surface:#152B23; --line:#284539; --soft:#1C3A2E;
+  --band:#0A1611; --band-fg:#F2F5F0; --accent:#D6B26C; --tabbar:#10221B; color-scheme:dark}
+
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+[hidden]{display:none!important}
+html,body{background:var(--bg)}
+body{color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.5;margin:0}
+button,input,textarea,select{font:inherit;color:inherit}
+h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.12;text-wrap:balance}
+h2{font-size:1.65rem;font-weight:800;letter-spacing:-.015em}
+h3{font-size:1.05rem;font-weight:600}
+p{margin:0}
+ul{margin:0;padding-left:20px}
+.muted{color:var(--muted)}
+.small{font-size:.84rem}
+.eyebrow{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+:focus-visible{outline:3px solid var(--menta);outline-offset:2px}
+
+.shell{max-width:560px;margin:0 auto;min-height:100%;padding-bottom:calc(84px + env(safe-area-inset-bottom, 0px))}
+.wrap{padding-left:max(18px, env(safe-area-inset-left, 0px));padding-right:max(18px, env(safe-area-inset-right, 0px))}
+.screen{display:grid;gap:26px;padding-block:22px 10px}
+.sec{display:grid;gap:12px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;min-width:0}
+
+/* cabecera */
+.top{background:var(--band);color:var(--band-fg);margin-top:calc(-1 * env(safe-area-inset-top, 0px));padding-top:calc(env(safe-area-inset-top, 0px) + 18px);padding-bottom:22px;border-radius:0 0 24px 24px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.logo{font-family:var(--f-display);font-weight:800;font-size:1.25rem}
+.logo span{color:var(--oro)}
+.top .tagline{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.14em;color:var(--menta)}
+.top h1{font-size:1.5rem;font-weight:800;margin-top:14px}
+.top .sub{color:#C9D6CE;margin-top:6px;font-size:.95rem}
+.hero-slogan{font-size:clamp(3rem,15vw,4.6rem);font-weight:800;letter-spacing:-.04em;line-height:.9;margin-top:22px}
+.hero-slogan .p{color:var(--oro)}
+.hero-slogan .ai{color:var(--menta)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.chip{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.12em;border:1px solid rgba(150,225,190,.45);color:var(--menta);border-radius:999px;padding:6px 12px}
+
+/* barra inferior */
+.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--tabbar);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom, 0px);padding-left:env(safe-area-inset-left, 0px);padding-right:env(safe-area-inset-right, 0px)}
+.tabbar nav{max-width:560px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr)}
+.tabbar a{display:grid;justify-items:center;gap:3px;padding:9px 2px 8px;text-decoration:none;color:var(--muted);font-size:.7rem;font-weight:600}
+.tabbar a svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.tabbar a[aria-current="page"]{color:var(--fg)}
+.tabbar a[aria-current="page"] svg{stroke:var(--accent)}
+
+/* botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:12px;padding:13px 18px;font-weight:600;cursor:pointer;background:var(--verde);color:var(--marfil);text-decoration:none}
+.btn.oro{background:var(--oro);color:#1C3A2E}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--fg)}
+.btn.block{width:100%}
+.btn:disabled{opacity:.5}
+
+/* cerebro */
+.layers{display:grid;gap:8px}
+.layer{border-radius:14px;padding:12px 14px;display:grid;gap:6px}
+.layer .k{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase}
+.layer .tags{display:flex;flex-wrap:wrap;gap:6px}
+.layer .tags span{font-size:.8rem;border-radius:999px;padding:3px 10px;background:var(--surface);border:1px solid var(--line)}
+.l-in{background:var(--soft)}
+.l-in .k{color:var(--accent)}
+.l-core{background:var(--verde);color:var(--marfil)}
+.l-core .k{color:var(--oro)}
+.l-core .tags span{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18);color:var(--marfil)}
+.l-out{background:var(--surface);border:1px solid var(--line)}
+.l-out .k{color:var(--accent)}
+.arrow{justify-self:center;color:var(--muted);font-size:.8rem;font-family:var(--f-mono)}
+.human{display:flex;gap:10px;align-items:center;border:1px dashed var(--accent);border-radius:14px;padding:10px 14px;font-size:.88rem}
+.human b{color:var(--accent)}
+
+.list{display:grid;gap:10px}
+.li{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start}
+.li .ic{width:34px;height:34px;border-radius:10px;background:var(--soft);display:grid;place-items:center;color:var(--accent);font-family:var(--f-mono);font-size:.78rem}
+.li p{color:var(--muted);font-size:.9rem}
+.pillars{display:grid;gap:10px}
+.pillar{border-left:3px solid var(--oro);padding:2px 0 2px 14px;display:grid;gap:3px}
+.pillar p{color:var(--muted);font-size:.92rem}
+
+/* servicios */
+details.mod{background:var(--surface);border:1px solid var(--line);border-radius:14px}
+details.mod+details.mod{margin-top:8px}
+details.mod summary{list-style:none;cursor:pointer;padding:14px 16px;display:flex;justify-content:space-between;gap:10px;align-items:center}
+details.mod summary::-webkit-details-marker{display:none}
+details.mod summary .t{display:grid;gap:2px}
+details.mod summary small{color:var(--muted);font-size:.82rem}
+details.mod summary .plus{font-family:var(--f-mono);color:var(--accent);font-size:1.1rem;transition:transform .2s}
+details.mod[open] summary .plus{transform:rotate(45deg)}
+details.mod .body{padding:0 16px 16px;display:grid;gap:10px;font-size:.92rem}
+details.mod .who{font-size:.82rem;background:var(--soft);border-radius:10px;padding:8px 10px}
+
+/* método */
+.phase{display:grid;gap:8px;padding:16px;border-radius:16px;border:1px solid var(--line);background:var(--surface)}
+.phase .n{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.14em;color:var(--accent)}
+.phase h3{font-size:1.6rem;font-weight:800}
+.phase ul{color:var(--muted);font-size:.92rem;display:grid;gap:4px}
+.phase .out{font-size:.85rem;background:var(--soft);border-radius:10px;padding:9px 11px}
+.flow{display:grid;gap:0}
+.step{display:grid;grid-template-columns:30px 1fr;gap:12px;padding:10px 0;opacity:.45;transition:opacity .3s}
+.step.on{opacity:1}
+.step .d{width:30px;height:30px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font-family:var(--f-mono);font-size:.72rem;color:var(--muted);background:var(--surface)}
+.step.on .d{border-color:var(--oro);background:var(--oro);color:#1C3A2E}
+.step p{font-size:.88rem;color:var(--muted)}
+.rules{display:grid;gap:8px}
+.rule{display:flex;gap:10px;font-size:.92rem}
+.rule::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--menta);margin-top:8px}
+
+/* escala */
+.ctrl{display:grid;gap:8px}
+.ctrl label{font-weight:600;font-size:.92rem;display:flex;justify-content:space-between}
+.ctrl label b{font-family:var(--f-display);font-size:1.3rem}
+input[type=range]{width:100%;accent-color:var(--oro)}
+.toggles{display:flex;flex-wrap:wrap;gap:8px}
+.toggles label{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:.84rem;background:var(--surface);cursor:pointer}
+.toggles input{accent-color:var(--verde)}
+.sites{display:grid;grid-template-columns:repeat(10,1fr);gap:6px;padding:14px;background:var(--surface);border:1px solid var(--line);border-radius:16px}
+.site{aspect-ratio:1;max-width:100%;border-radius:6px;background:var(--line)}
+.site.on{background:var(--menta)}
+.site.hq{background:var(--oro)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px;display:grid;gap:2px}
+.stat b{font-family:var(--f-display);font-size:1.6rem;font-weight:800;font-variant-numeric:tabular-nums}
+.stat span{font-size:.74rem;color:var(--muted)}
+.stage{display:grid;gap:4px;padding:12px 14px;border-radius:14px;background:var(--soft)}
+
+/* tu negocio */
+.pick{display:flex;flex-wrap:wrap;gap:8px}
+.pick button{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 13px;font-size:.86rem;cursor:pointer}
+.pick button[aria-pressed="true"]{background:var(--verde);border-color:var(--verde);color:var(--marfil)}
+.result{display:grid;gap:10px}
+.rcard{border-radius:16px;padding:16px;background:var(--verde);color:var(--marfil);display:grid;gap:8px}
+.rcard .k{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--oro)}
+.rcard p{color:#D5E1D9;font-size:.92rem}
+.rcard.quick{background:var(--surface);color:var(--fg);border:2px solid var(--oro)}
+.rcard.quick p{color:var(--muted)}
+.rcard.quick .k{color:var(--accent)}
+.form{display:grid;gap:12px}
+.f{display:grid;gap:5px}
+.f label{font-size:.84rem;font-weight:600}
+.f input,.f textarea{width:100%;border:1px solid var(--line);border-radius:11px;padding:11px 12px;background:var(--surface);color:var(--fg);font-size:16px}
+.f textarea{min-height:84px;resize:vertical}
+.note{font-size:.82rem;color:var(--muted)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(92px + env(safe-area-inset-bottom, 0px));background:var(--verde);color:var(--marfil);padding:10px 16px;border-radius:12px;font-size:.9rem;z-index:30;max-width:calc(100% - 32px)}
+.install{display:grid;gap:8px;padding:14px;border-radius:14px;border:1px dashed var(--accent)}
+@media (prefers-reduced-motion:reduce){.step{transition:none}details.mod summary .plus{transition:none}}
+</style>
+
+<div class="shell">
+  <header class="top">
+    <div class="wrap">
+      <div class="topbar"><div class="logo">Nyland<span>.</span> AI Solutions</div><div class="tagline">HUMAN + AI</div></div>
+      <div id="head"></div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- INICIO -->
+    <section class="screen" id="s-inicio" data-head="inicio">
+      <div class="sec">
+        <p class="eyebrow">Qué es un cerebro de IA</p>
+        <h2>Un sistema que trabaja con tu equipo en todos los departamentos</h2>
+        <p class="muted">Recibe lo que llega por tus canales, entiende qué hace falta, trabaja con tus herramientas y deja las decisiones importantes a las personas.</p>
+        <div class="layers" aria-label="Esquema del cerebro de IA">
+          <div class="layer l-in"><span class="k">Lo que llega</span><div class="tags"><span>WhatsApp</span><span>Web</span><span>Email</span><span>Instagram</span><span>Formularios</span><span>Documentos</span></div></div>
+          <span class="arrow">↓</span>
+          <div class="layer l-core"><span class="k">Cerebro de IA de tu empresa</span><div class="tags"><span>Asistentes por departamento</span><span>Automatizaciones</span><span>Base de conocimiento</span><span>Paneles y alertas</span></div></div>
+          <span class="arrow">↓</span>
+          <div class="layer l-out"><span class="k">Tus herramientas</span><div class="tags"><span>CRM</span><span>ERP</span><span>Agenda</span><span>Excel</span><span>Contabilidad</span><span>Tienda online</span></div></div>
+          <div class="human"><span>👤</span><span><b>Personas al mando.</b> Cada flujo tiene un responsable y un punto de escalado.</span></div>
+        </div>
+      </div>
+
+      <div class="sec">
+        <p class="eyebrow">Lo que recibe quien contrata Nyland</p>
+        <div class="list">
+          <div class="li"><span class="ic">01</span><div><h3>Diagnóstico de su empresa</h3><p>Procesos por departamento y oportunidades ordenadas por impacto, esfuerzo y riesgo.</p></div></div>
+          <div class="li"><span class="ic">02</span><div><h3>Asistentes y automatizaciones a medida</h3><p>Conectados a las herramientas que ya usa, documentados y probados.</p></div></div>
+          <div class="li"><span class="ic">03</span><div><h3>Implantación y formación</h3><p>Por etapas, con el equipo, sin parar el negocio.</p></div></div>
+          <div class="li"><span class="ic">04</span><div><h3>Resultados medidos</h3><p>KPIs con línea base y una revisión cada mes: qué mejorar, qué escalar, qué añadir.</p></div></div>
+        </div>
+      </div>
+
+      <div class="sec">
+        <p class="eyebrow">Filosofía</p>
+        <div class="pillars">
+          <div class="pillar"><h3>La IA potencia a las personas</h3><p>Quita trabajo repetitivo para que el equipo dedique su tiempo a los clientes y a decidir.</p></div>
+          <div class="pillar"><h3>Una persona decide</h3><p>El agente propone. Las decisiones sensibles siempre pasan por alguien del equipo.</p></div>
+          <div class="pillar"><h3>Lo más simple que funcione</h3><p>Empezamos por victorias rápidas de 2 a 4 semanas y crecemos sobre resultados.</p></div>
+          <div class="pillar"><h3>Transparencia y RGPD</h3><p>Tus clientes saben cuándo hablan con una IA. Solo se usan los datos necesarios.</p></div>
+        </div>
+      </div>
+
+      <a class="btn oro block" href="#negocio">Ver cómo se aplica a mi negocio</a>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section class="screen" id="s-servicios" data-head="servicios" hidden>
+      <div class="sec">
+        <p class="muted">Diez módulos que se combinan según cada empresa. Toca uno para ver qué automatiza.</p>
+        <div id="mods"></div>
+      </div>
+    </section>
+
+    <!-- MÉTODO -->
+    <section class="screen" id="s-metodo" data-head="metodo" hidden>
+      <div class="sec">
+        <div class="phase"><span class="n">FASE 1</span><h3>Imagina</h3><ul><li>Mapeamos quién hace qué, con qué herramienta y cuánto tiempo cuesta.</li><li>Puntuamos cada oportunidad de 1 a 5 en impacto, esfuerzo y riesgo.</li></ul><p class="out"><b>Entregable:</b> tabla priorizada con victorias rápidas, proyectos medios y transformación a largo plazo.</p></div>
+        <div class="phase"><span class="n">FASE 2</span><h3>Construye</h3><ul><li>Ficha de cada solución: objetivo, reglas, excepciones y punto de escalado.</li><li>Diagrama del flujo, instrucciones de cada asistente e integraciones.</li><li>Pruebas con casos reales y casos límite.</li></ul><p class="out"><b>Entregable:</b> asistentes funcionando, documentados y probados.</p></div>
+        <div class="phase"><span class="n">FASE 3</span><h3>Crece</h3><ul><li>Implantación por etapas y formación del equipo.</li><li>KPIs con línea base: horas ahorradas, tiempo de respuesta, conversión, coste por cliente.</li><li>Revisión mensual: qué mejorar, qué escalar y qué módulo añadir.</li></ul><p class="out"><b>Entregable:</b> panel de resultados y plan del siguiente trimestre.</p></div>
+      </div>
+
+      <div class="sec">
+        <p class="eyebrow">Así trabaja un asistente</p>
+        <h2>De un mensaje a una tarea resuelta</h2>
+        <div class="card">
+          <div class="flow" id="flow"></div>
+          <button class="btn block" id="flow-play" type="button">Ver el recorrido</button>
+        </div>
+      </div>
+
+      <div class="sec">
+        <p class="eyebrow">Compromisos</p>
+        <div class="rules">
+          <div class="rule">Primero entendemos, luego proponemos, luego construimos. Nunca sin un objetivo medible.</div>
+          <div class="rule">Cada automatización tiene un responsable humano y un punto de escalado.</div>
+          <div class="rule">RGPD desde el diseño: datos mínimos, dónde se guardan y quién los ve.</div>
+          <div class="rule">Contrataciones, despidos, créditos, diagnósticos y temas fiscales los decide una persona.</div>
+          <div class="rule">No prometemos resultados garantizados ni inventamos cifras.</div>
+          <div class="rule">Explicamos los costes recurrentes y las alternativas antes de construir.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ESCALA -->
+    <section class="screen" id="s-escala" data-head="escala" hidden>
+      <div class="sec">
+        <p class="muted">Cada solución se diseña para crecer de una sede a muchas, con plantillas reutilizables y métricas por unidad de negocio. Mueve los controles.</p>
+        <div class="card ctrl">
+          <label for="sedes">Sedes, equipos o países <b id="sedes-n">1</b></label>
+          <input type="range" id="sedes" min="1" max="50" value="1">
+        </div>
+        <div class="card ctrl">
+          <span style="font-weight:600;font-size:.92rem">Módulos activos</span>
+          <div class="toggles" id="toggles"></div>
+        </div>
+        <div class="sites" id="sites" aria-label="Sedes"></div>
+        <div class="stats">
+          <div class="stat"><b id="st-brain">1</b><span>cerebro central</span></div>
+          <div class="stat"><b id="st-tpl">0</b><span>plantillas reutilizables</span></div>
+          <div class="stat"><b id="st-inst">0</b><span>asistentes en marcha</span></div>
+        </div>
+        <div class="stage" id="stage"></div>
+      </div>
+      <div class="sec">
+        <p class="eyebrow">Qué se replica y qué se adapta</p>
+        <div class="list">
+          <div class="li"><span class="ic">=</span><div><h3>Se replica</h3><p>Instrucciones de los asistentes, flujos, integraciones y reglas de escalado. Se configuran una vez.</p></div></div>
+          <div class="li"><span class="ic">≈</span><div><h3>Se adapta</h3><p>Horarios, catálogo, idioma, responsables y normativa local de cada sede o país.</p></div></div>
+          <div class="li"><span class="ic">%</span><div><h3>Se mide</h3><p>Cada unidad tiene sus propios KPIs, y dirección ve el conjunto en un panel.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TU NEGOCIO -->
+    <section class="screen" id="s-negocio" data-head="negocio" hidden>
+      <div class="sec">
+        <h3>1 · ¿A qué se dedica tu empresa?</h3>
+        <div class="pick" id="pick-sector" role="group" aria-label="Sector"></div>
+        <h3 style="margin-top:6px">2 · ¿Qué quieres conseguir primero?</h3>
+        <div class="pick" id="pick-goal" role="group" aria-label="Objetivo"></div>
+      </div>
+      <div class="result" id="result" aria-live="polite"></div>
+
+      <div class="sec">
+        <p class="eyebrow">Tu ficha para Nyland</p>
+        <h2>Prepara la primera reunión</h2>
+        <p class="muted">Rellénala y compártela con Nyland. Es el punto de partida del diagnóstico. Se guarda solo en este teléfono.</p>
+        <form class="form" id="ficha">
+          <div class="f"><label for="fi-empresa">Empresa</label><input id="fi-empresa" autocomplete="organization"></div>
+          <div class="f"><label for="fi-equipo">Personas y departamentos</label><input id="fi-equipo" placeholder="Ej.: 15 personas, ventas, atención y administración"></div>
+          <div class="f"><label for="fi-herr">Herramientas que usáis</label><input id="fi-herr" placeholder="CRM, Excel, WhatsApp, programa de facturación…"></div>
+          <div class="f"><label for="fi-tareas">Las 3 tareas que más tiempo os quitan</label><textarea id="fi-tareas"></textarea></div>
+          <div class="f"><label for="fi-resp">Persona responsable</label><input id="fi-resp" autocomplete="name"></div>
+          <button class="btn oro block" type="submit">Compartir mi ficha</button>
+          <p class="note" id="ficha-note">El sector y el objetivo se toman de lo que hayas elegido arriba.</p>
+        </form>
+      </div>
+
+      <div class="install" id="install">
+        <h3>Instala Nyland en tu teléfono</h3>
+        <p class="small muted" id="install-txt">En iPhone: abre esta página en Safari, toca Compartir y luego «Añadir a pantalla de inicio». En Android: menú ⋮ y «Instalar aplicación».</p>
+        <button class="btn ghost" id="install-btn" type="button" hidden>Instalar ahora</button>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="tabbar">
+  <nav aria-label="Secciones">
+    <a href="#inicio" data-tab="inicio"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg>Inicio</a>
+    <a href="#servicios" data-tab="servicios"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Servicios</a>
+    <a href="#metodo" data-tab="metodo"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="2.5"/><circle cx="12" cy="12" r="2.5"/><circle cx="19" cy="12" r="2.5"/><path d="M7.5 12h2M14.5 12h2"/></svg>Método</a>
+    <a href="#escala" data-tab="escala"><svg viewBox="0 0 24 24"><path d="M4 20V14M10 20V10M16 20V6M22 20V3"/></svg>Escala</a>
+    <a href="#negocio" data-tab="negocio"><svg viewBox="0 0 24 24"><path d="M4 7h16v13H4z"/><path d="M9 7V4h6v3"/><path d="M4 12h16"/></svg>Tu negocio</a>
+  </nav>
+</div>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script>
+(function(){
+"use strict";
+const $=s=>document.querySelector(s);
+function h(tag,attrs,...kids){const e=document.createElement(tag);if(attrs)for(const[k,v]of Object.entries(attrs)){if(v==null||v===false)continue;if(k==="class")e.className=v;else if(k==="text")e.textContent=v;else if(k.startsWith("on"))e.addEventListener(k.slice(2),v);else e.setAttribute(k,v===true?"":v);}for(const k of kids.flat()){if(k==null||k===false)continue;e.append(k instanceof Node?k:document.createTextNode(String(k)));}return e;}
+let toastT;function toast(t){const e=$("#toast");e.textContent=t;e.hidden=false;clearTimeout(toastT);toastT=setTimeout(()=>e.hidden=true,3000);}
+const store={get(k,d){try{const v=localStorage.getItem("nyland-"+k);return v==null?d:JSON.parse(v);}catch(e){return d;}},set(k,v){try{localStorage.setItem("nyland-"+k,JSON.stringify(v));}catch(e){}}};
+
+/* ---------- Cabeceras por pantalla ---------- */
+const HEADS={
+  inicio:()=>[h("div",{class:"hero-slogan"},"HUMAN ",h("span",{class:"p",text:"+"})," ",h("span",{class:"ai",text:"AI"})),h("p",{class:"sub",text:"Construimos el cerebro de IA de tu empresa. La IA potencia a tu equipo, no lo sustituye."}),h("div",{class:"chips"},h("span",{class:"chip",text:"IMAGINA"}),h("span",{class:"chip",text:"CONSTRUYE"}),h("span",{class:"chip",text:"CRECE"}))],
+  servicios:()=>[h("h1",{text:"Qué hacemos"}),h("p",{class:"sub",text:"Un asistente o una automatización para cada departamento."})],
+  metodo:()=>[h("h1",{text:"Cómo funciona"}),h("p",{class:"sub",text:"Tres fases. Al final de cada una, un entregable que tú apruebas."})],
+  escala:()=>[h("h1",{text:"Escalabilidad"}),h("p",{class:"sub",text:"De 1 a N sedes, equipos o países sin empezar de cero."})],
+  negocio:()=>[h("h1",{text:"Tu negocio"}),h("p",{class:"sub",text:"El mismo modelo, adaptado al idioma de cada sector."})],
+};
+
+/* ---------- Navegación ---------- */
+const TABS=["inicio","servicios","metodo","escala","negocio"];
+function show(){
+  let t=(location.hash||"").slice(1);if(!TABS.includes(t))t="inicio";
+  TABS.forEach(k=>{$("#s-"+k).hidden=k!==t;});
+  document.querySelectorAll(".tabbar a").forEach(a=>{if(a.dataset.tab===t)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current");});
+  $("#head").replaceChildren(...HEADS[t]());
+  window.scrollTo(0,0);
+}
+window.addEventListener("hashchange",show);
+
+/* ---------- Servicios ---------- */
+const MODS=[
+  {id:"rrhh",t:"Recursos Humanos",s:"Selección, onboarding y dudas internas",b:["Cribado de CV y entrevistas preliminares","Onboarding guiado y formación personalizada","Vacaciones, fichajes y preguntas frecuentes del equipo"],who:"Decide: responsable de personas. La IA nunca decide contrataciones ni despidos."},
+  {id:"soporte",t:"Atención al cliente",s:"24/7 en web, WhatsApp y email",b:["Respuestas con la base de conocimiento de la empresa","Clasificación de consultas y tickets","Escalado a una persona y encuestas de satisfacción"],who:"Decide: responsable de atención, que recibe lo que la IA no debe resolver sola."},
+  {id:"ventas",t:"Ventas",s:"Más oportunidades atendidas a tiempo",b:["Cualificación y puntuación de contactos","Seguimiento automático y presupuestos","Recuperación de clientes inactivos y venta cruzada"],who:"Decide: el equipo comercial, que negocia y cierra."},
+  {id:"marketing",t:"Captación y marketing",s:"Campañas y contenidos personalizados",b:["Prospección y campañas segmentadas","Contenido para redes y landing pages","Nutrición de contactos y análisis de campañas"],who:"Decide: marketing aprueba cada campaña antes de publicarla."},
+  {id:"finanzas",t:"Contabilidad y finanzas",s:"Menos papeleo, más control",b:["Lectura de facturas y tickets","Conciliación bancaria y control de cobros","Informes de tesorería y alertas de desviaciones"],who:"Decide: el asesor o responsable financiero revisa siempre."},
+  {id:"operaciones",t:"Operaciones",s:"Pedidos, agendas e inventario",b:["Inventario, pedidos y logística","Agendas, reservas y recordatorios","Control de calidad y documentación de procesos"],who:"Decide: responsable de operaciones de cada sede."},
+  {id:"producto",t:"Desarrollo y producto",s:"Integraciones y herramientas internas",b:["Conexión entre sistemas por API","Herramientas internas y apps a medida","Paneles de datos y agentes entre departamentos"],who:"Decide: responsable técnico o de producto."},
+  {id:"direccion",t:"Dirección",s:"Visión clara para decidir",b:["Cuadro de mando con los datos clave","Resumen semanal automático","Análisis de escenarios y apoyo a decisiones"],who:"Decide: dirección. La IA prepara, la persona decide."},
+  {id:"venta",t:"Nuevos métodos de venta",s:"Vender donde están tus clientes",b:["Venta conversacional por WhatsApp e Instagram","Asistentes de compra y recomendadores","Ofertas personalizadas y comunidades"],who:"Decide: el equipo comercial fija precios y condiciones."},
+  {id:"escala",t:"Escalabilidad",s:"De 1 a N sedes, equipos o países",b:["Plantillas reutilizables por sede o país","Módulos que se conectan sin rehacer nada","Métricas por unidad de negocio"],who:"Decide: dirección, sede a sede."},
+];
+function renderMods(){
+  const box=$("#mods");
+  MODS.forEach(m=>{
+    box.append(h("details",{class:"mod"},
+      h("summary",null,h("span",{class:"t"},h("b",{text:m.t}),h("small",{text:m.s})),h("span",{class:"plus","aria-hidden":"true",text:"+"})),
+      h("div",{class:"body"},h("ul",null,m.b.map(x=>h("li",{text:x}))),h("p",{class:"who",text:m.who}))));
+  });
+}
+
+/* ---------- Recorrido del asistente ---------- */
+const FLOW=[
+  ["Llega un mensaje","Un cliente escribe por WhatsApp, la web o el email, a cualquier hora."],
+  ["Se presenta como IA","El asistente dice que es una IA y que puede pasar con una persona."],
+  ["Entiende qué necesita","Detecta si es una consulta, un pedido, una cita, una queja o una oportunidad de venta."],
+  ["Consulta tus sistemas","Mira el catálogo, la agenda, el CRM o el estado del pedido."],
+  ["Resuelve o escala","Responde y registra la tarea. Si es sensible o se sale de las reglas, avisa a la persona responsable."],
+  ["Mide","Cada conversación suma a los KPIs: tiempo de respuesta, tareas resueltas, ventas."],
+];
+let flowT=null;
+function renderFlow(n){
+  const f=$("#flow");f.replaceChildren();
+  FLOW.forEach(([t,p],i)=>f.append(h("div",{class:"step"+(i<n?" on":"")},h("span",{class:"d",text:String(i+1)}),h("div",null,h("h3",{text:t}),h("p",{text:p})))));
+}
+$("#flow-play").addEventListener("click",()=>{
+  clearInterval(flowT);let n=0;renderFlow(0);
+  const reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(reduce){renderFlow(FLOW.length);return;}
+  flowT=setInterval(()=>{n++;renderFlow(n);if(n>=FLOW.length)clearInterval(flowT);},700);
+});
+
+/* ---------- Escala ---------- */
+const scaleMods=store.get("scale-mods",["soporte","ventas","operaciones"]);
+function renderToggles(){
+  const t=$("#toggles");
+  MODS.filter(m=>m.id!=="escala").forEach(m=>{
+    const id="tg-"+m.id;const inp=h("input",{type:"checkbox",id});inp.checked=scaleMods.includes(m.id);
+    inp.addEventListener("change",()=>{const i=scaleMods.indexOf(m.id);if(inp.checked&&i<0)scaleMods.push(m.id);if(!inp.checked&&i>=0)scaleMods.splice(i,1);store.set("scale-mods",scaleMods);renderScale();});
+    t.append(h("label",{for:id},inp,m.t));
+  });
+}
+function renderScale(){
+  const n=+$("#sedes").value;$("#sedes-n").textContent=n;
+  const s=$("#sites");s.replaceChildren();
+  for(let i=0;i<50;i++)s.append(h("span",{class:"site"+(i===0?" hq":i<n?" on":""),title:i===0?"Sede central":"Sede "+(i+1)}));
+  $("#st-tpl").textContent=scaleMods.length;
+  $("#st-inst").textContent=(scaleMods.length*n).toLocaleString("es-ES");
+  const st=$("#stage");st.replaceChildren();
+  const [t,p]=n===1?["Una sede","Montamos los módulos y medimos la línea base. Todo queda como plantilla."]:n<=5?["Varias sedes","Cada sede nueva reutiliza las plantillas. Solo se ajustan horarios, catálogo y responsables."]:n<=20?["Red de sedes o franquicia","Panel de dirección con métricas por sede. Las mejoras de una sede pasan a todas."]:["Varios países","Mismo cerebro central, con idioma, normativa y responsables de cada país."];
+  st.append(h("h3",{text:t}),h("p",{class:"small muted",text:p}));
+  store.set("sedes",n);
+}
+$("#sedes").addEventListener("input",renderScale);
+
+/* ---------- Tu negocio ---------- */
+const SECTORS=[
+  {id:"salud",t:"Salud y bienestar",cli:"pacientes",cita:"citas",prod:"tratamientos",q:"Recordatorios de citas y respuestas a pacientes por WhatsApp"},
+  {id:"inmo",t:"Inmobiliaria",cli:"compradores e inquilinos",cita:"visitas",prod:"inmuebles",q:"Responder al momento a los contactos de portales y agendar visitas"},
+  {id:"hosteleria",t:"Hostelería",cli:"comensales",cita:"reservas",prod:"carta y eventos",q:"Reservas por WhatsApp y respuesta a reseñas"},
+  {id:"comercio",t:"Comercio y tienda online",cli:"clientes",cita:"pedidos",prod:"productos",q:"Asistente de compra y seguimiento de pedidos"},
+  {id:"profesional",t:"Servicios profesionales",cli:"clientes",cita:"reuniones",prod:"servicios",q:"Clasificar consultas entrantes y preparar presupuestos"},
+  {id:"industria",t:"Industria y logística",cli:"clientes y proveedores",cita:"entregas",prod:"pedidos y stock",q:"Lectura automática de pedidos y albaranes"},
+  {id:"educacion",t:"Educación y formación",cli:"alumnos y familias",cita:"matrículas",prod:"cursos",q:"Respuestas a alumnos y seguimiento de matrículas"},
+  {id:"otro",t:"Otro sector",cli:"clientes",cita:"citas o pedidos",prod:"productos o servicios",q:"Atención 24/7 con escalado a una persona"},
+];
+const GOALS=[
+  {id:"vender",t:"Vender más",mods:["ventas","venta","marketing"]},
+  {id:"tiempo",t:"Ahorrar tiempo",mods:["soporte","operaciones","finanzas"]},
+  {id:"atender",t:"Atender mejor",mods:["soporte","ventas","direccion"]},
+  {id:"escalar",t:"Escalar",mods:["escala","operaciones","direccion"]},
+];
+let sector=store.get("sector","otro"),goal=store.get("goal","tiempo");
+function pickers(){
+  const ps=$("#pick-sector");ps.replaceChildren();
+  SECTORS.forEach(s=>ps.append(h("button",{type:"button","aria-pressed":String(s.id===sector),onclick:()=>{sector=s.id;store.set("sector",sector);pickers();renderResult();}},s.t)));
+  const pg=$("#pick-goal");pg.replaceChildren();
+  GOALS.forEach(g=>pg.append(h("button",{type:"button","aria-pressed":String(g.id===goal),onclick:()=>{goal=g.id;store.set("goal",goal);pickers();renderResult();}},g.t)));
+}
+function adapt(m,s){
+  const map={
+    soporte:`Asistente que responde a tus ${s.cli} a cualquier hora sobre ${s.prod}, y pasa a una persona lo delicado.`,
+    ventas:`Cualifica a los ${s.cli} interesados, hace seguimiento y avisa al equipo de los más calientes.`,
+    venta:`Venta conversacional: tus ${s.cli} consultan ${s.prod} y cierran ${s.cita} desde WhatsApp o Instagram.`,
+    marketing:`Campañas personalizadas para cada tipo de ${s.cli} y contenidos para redes sobre tus ${s.prod}.`,
+    operaciones:`Gestiona ${s.cita}, recordatorios y cambios sin llamadas, conectado a tu agenda o sistema.`,
+    finanzas:`Lee facturas y tickets, concilia el banco y avisa de cobros pendientes. Lo revisa tu asesor.`,
+    direccion:`Resumen semanal con lo importante: ${s.cita}, ventas, incidencias y satisfacción de tus ${s.cli}.`,
+    escala:`Plantillas para abrir nuevas sedes con los mismos asistentes y métricas por unidad.`,
+    rrhh:`Onboarding y preguntas frecuentes del equipo.`,producto:`Integraciones entre tus sistemas.`,
+  };
+  return map[m]||"";
+}
+function renderResult(){
+  const s=SECTORS.find(x=>x.id===sector)||SECTORS[7];const g=GOALS.find(x=>x.id===goal)||GOALS[1];
+  const r=$("#result");r.replaceChildren();
+  r.append(h("div",{class:"rcard quick"},h("span",{class:"k",text:"Victoria rápida sugerida · 2 a 4 semanas"}),h("h3",{text:s.q}),h("p",{text:"Un primer paso pequeño, medible y con una persona responsable. Se confirma en el diagnóstico."})));
+  g.mods.forEach(id=>{const m=MODS.find(x=>x.id===id);r.append(h("div",{class:"rcard"},h("span",{class:"k",text:m.t}),h("p",{text:adapt(id,s)})));});
+  r.append(h("p",{class:"note",text:"Orientación general. El plan real sale del diagnóstico con los datos de tu empresa."}));
+}
+
+/* ---------- Ficha ---------- */
+const FI=["empresa","equipo","herr","tareas","resp"];
+const saved=store.get("ficha",{});
+FI.forEach(k=>{const e=$("#fi-"+k);e.value=saved[k]||"";e.addEventListener("input",()=>{const o={};FI.forEach(x=>o[x]=$("#fi-"+x).value);store.set("ficha",o);});});
+function fichaText(){
+  const s=SECTORS.find(x=>x.id===sector),g=GOALS.find(x=>x.id===goal);
+  const v=k=>$("#fi-"+k).value.trim()||"(por completar)";
+  return `Ficha para Nyland AI Solutions\n\nEmpresa: ${v("empresa")}\nSector: ${s?s.t:""}\nObjetivo principal: ${g?g.t:""}\nPersonas y departamentos: ${v("equipo")}\nHerramientas: ${v("herr")}\nTareas que más tiempo quitan: ${v("tareas")}\nResponsable: ${v("resp")}`;
+}
+$("#ficha").addEventListener("submit",async e=>{
+  e.preventDefault();const t=fichaText();
+  if(navigator.share){try{await navigator.share({title:"Ficha para Nyland",text:t});return;}catch(err){if(err&&err.name==="AbortError")return;}}
+  try{await navigator.clipboard.writeText(t);toast("Ficha copiada. Pégala en tu mensaje a Nyland.");}
+  catch(err){$("#ficha-note").textContent=t;$("#ficha-note").style.whiteSpace="pre-wrap";toast("Selecciona el texto de abajo y cópialo.");}
+});
+
+/* ---------- Instalación ---------- */
+let deferred=null;
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferred=e;$("#install-btn").hidden=false;});
+$("#install-btn").addEventListener("click",async()=>{if(!deferred)return;deferred.prompt();try{await deferred.userChoice;}catch(e){}deferred=null;$("#install-btn").hidden=true;});
+const standalone=(window.matchMedia&&matchMedia("(display-mode: standalone)").matches)||navigator.standalone;
+if(standalone)$("#install").hidden=true;
+
+/* ---------- Arranque ---------- */
+renderMods();renderFlow(0);renderToggles();$("#sedes").value=store.get("sedes",1);renderScale();pickers();renderResult();show();
+})();
+</script>
