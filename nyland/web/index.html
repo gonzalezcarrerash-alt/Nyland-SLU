@@ -376,6 +376,75 @@ mark{background:none;color:var(--marfil);position:relative;white-space:normal;ba
   .lentes{grid-template-columns:1fr 1fr}
 }
 
+
+/* Efecto miércoles */
+.miercoles{padding:160px 0;background:radial-gradient(ellipse at 15% 20%,#22493a,var(--fondo) 60%)}
+.mx-cab{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:end}
+.miercoles h2{font-size:clamp(44px,6vw,90px);max-width:12ch;margin-top:18px}
+.semana{display:flex;gap:14px;align-items:flex-end;height:150px;margin-bottom:34px;padding-left:28px}
+.dia{flex:1;display:flex;flex-direction:column;align-items:center;gap:10px;height:100%;justify-content:flex-end}
+.dia i{display:block;width:100%;max-width:54px;height:var(--h);border-radius:12px 12px 4px 4px;background:linear-gradient(180deg,var(--menta),rgba(150,225,190,.25));transform-origin:bottom;animation:crece 1.6s cubic-bezier(.2,.7,.2,1) both}
+.dia.baja i{background:linear-gradient(180deg,#e98b7b,rgba(194,91,74,.3));animation:crece 1.6s cubic-bezier(.2,.7,.2,1) both,atasco 1.6s ease-in-out 1.6s infinite}
+.dia span{font:600 13px var(--sans);letter-spacing:.2em;color:var(--suave)}
+.dia.baja span{color:#e98b7b}
+@keyframes crece{from{transform:scaleY(0)}}
+.mx-sub{font-size:clamp(28px,3.2vw,42px);margin:110px 0 40px;max-width:24ch}
+.giros{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.giro{position:relative;border:0;padding:0;background:none;color:inherit;font:inherit;text-align:left;cursor:pointer;min-height:300px;perspective:1200px}
+.cara{position:absolute;inset:0;border-radius:24px;padding:26px;display:flex;flex-direction:column;backface-visibility:hidden;-webkit-backface-visibility:hidden;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.frente{background:linear-gradient(160deg,rgba(36,74,58,.85),rgba(15,36,27,.85));border:1px solid rgba(214,178,108,.3)}
+.dorso{background:linear-gradient(160deg,var(--oro-c),var(--oro));color:var(--noche);transform:rotateY(180deg)}
+.giro:hover .frente,.giro.on .frente{transform:rotateY(-180deg)}
+.giro:hover .dorso,.giro.on .dorso{transform:rotateY(0)}
+.giro:focus-visible{outline:2px solid var(--oro);outline-offset:4px;border-radius:24px}
+.frente .n{font-family:var(--serif);font-size:44px;color:var(--oro);opacity:.5;line-height:1}
+.frente .q{font-family:var(--serif);font-size:24px;line-height:1.22;margin-top:14px}
+.frente .toca{margin-top:auto;font:600 12px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--menta)}
+.dorso .rol{font:600 11px var(--sans);letter-spacing:.24em;text-transform:uppercase;opacity:.7}
+.dorso .r{font-family:var(--serif);font-style:italic;font-size:23px;line-height:1.25;margin-top:12px}
+.dorso .det{margin-top:auto;font-size:13px;line-height:1.45;border-top:1px solid rgba(11,29,21,.25);padding-top:12px}
+.mx-nota{font-size:13px;color:var(--suave);text-align:center;margin:24px 0 0}
+.mx-remate{text-align:center;font-family:var(--serif);font-size:clamp(28px,3.4vw,46px);margin:80px auto 34px;max-width:22ch}
+
+/* Manifiesto */
+.manifiesto{padding:160px 0;background:var(--noche)}
+.manifiesto h2{font-size:clamp(46px,6.4vw,96px);margin:18px 0 70px}
+.mf-tabla{border-top:1px solid rgba(214,178,108,.4)}
+.mf-cab,.mf-fila{display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:center}
+.mf-cab{padding:20px 0;font:600 12px var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--suave)}
+.mf-cab span:last-child{color:var(--oro)}
+.mf-fila{padding:30px 0;border-top:1px solid rgba(242,245,240,.08)}
+.mf-fila .no{font-size:19px;color:rgba(242,245,240,.45);position:relative;width:max-content;max-width:100%}
+.mf-fila .no::after{content:"";position:absolute;left:0;top:52%;height:1px;width:100%;background:#e98b7b;transform-origin:left;transition:transform 1s cubic-bezier(.2,.7,.2,1) .3s}
+.js .mf-fila .no::after{transform:scaleX(0)}
+.js .mf-fila.on .no::after{transform:scaleX(1)}
+.mf-fila .si{font-family:var(--serif);font-size:clamp(24px,2.6vw,34px);line-height:1.2;display:flex;gap:16px;align-items:baseline}
+.mf-fila .si::before{content:"✦";color:var(--oro);font-size:.6em}
+.mf-remate{margin-top:90px;font-family:var(--serif);font-size:clamp(30px,4vw,56px);line-height:1.15}
+
+/* Pacto */
+.pacto{padding:0 0 160px;background:var(--noche)}
+.pc-doc{position:relative;overflow:hidden;max-width:880px;margin:0 auto;padding:70px 64px;border-radius:30px;border:1px solid rgba(214,178,108,.55);background:linear-gradient(160deg,#1f4434,#0f241b);box-shadow:0 40px 90px rgba(0,0,0,.45),inset 0 0 0 10px rgba(214,178,108,.06)}
+.pc-sello{position:absolute;right:-90px;bottom:-90px;width:360px;opacity:.12;transform:rotate(-14deg)}
+.pc-doc h2{font-size:clamp(40px,5vw,66px);margin:16px 0 34px}
+.pc-doc ol{list-style:none;counter-reset:p;padding:0;margin:0;display:grid;gap:4px;position:relative}
+.pc-doc li{counter-increment:p;display:grid;grid-template-columns:56px 1fr;align-items:baseline;padding:16px 0;border-bottom:1px dashed rgba(214,178,108,.25);font-family:var(--serif);font-size:clamp(21px,2.2vw,27px);line-height:1.3}
+.pc-doc li::before{content:counter(p,upper-roman);font-family:var(--serif);color:var(--oro);font-size:22px}
+.pc-firma{margin-top:40px;display:grid;gap:2px;position:relative}
+.pc-firma span{font-size:14px;color:var(--suave)}
+.pc-firma b{font-family:var(--serif);font-style:italic;font-weight:500;font-size:40px;color:var(--oro)}
+.pc-firma small{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--menta)}
+@media (max-width:1000px){.giros{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:900px){
+  .miercoles,.manifiesto{padding:110px 0}.pacto{padding:0 0 110px}
+  .mx-cab{grid-template-columns:1fr;gap:30px}
+  .mx-sub{margin-top:70px}
+  .mf-cab{display:none}
+  .mf-fila{grid-template-columns:1fr;gap:10px}
+  .pc-doc{padding:44px 26px}
+}
+@media (max-width:560px){.giros{grid-template-columns:1fr}.giro{min-height:250px}}
+
 /* Responsive */
 @media (max-width:900px){
   body{font-size:16px}
@@ -490,6 +559,41 @@ mark{background:none;color:var(--marfil);position:relative;white-space:normal;ba
         <div class="puerta rv"><span class="k">iii</span><h3>Una huella que se queda</h3><p>Conceptos nuevos que tu empresa sigue aplicando cuando nosotros ya no estamos en la sala.</p></div>
       </div>
       <p class="remate rv">Abrimos puertas que no sabías que estaban ahí.</p>
+    </div>
+  </section>
+
+  <section class="miercoles" id="efecto-miercoles">
+    <div class="wrap">
+      <div class="mx-cab">
+        <div>
+          <span class="eyebrow">El efecto miércoles</span>
+          <h2 class="rv">¿Por qué tu empresa rinde menos <em>los miércoles?</em></h2>
+        </div>
+        <div>
+          <div class="semana rv" aria-label="Ejemplo: el rendimiento cambia según el día">
+            <div class="dia"><i style="--h:78%"></i><span>L</span></div>
+            <div class="dia"><i style="--h:86%"></i><span>M</span></div>
+            <div class="dia baja"><i style="--h:38%"></i><span>X</span></div>
+            <div class="dia"><i style="--h:92%"></i><span>J</span></div>
+            <div class="dia"><i style="--h:70%"></i><span>V</span></div>
+          </div>
+          <p class="voz rv">Lo llamamos <mark>el efecto miércoles</mark>: días en los que, sin motivo aparente, todo cuesta más. Casi siempre hay un motivo. Y casi nunca está en una herramienta.</p>
+        </div>
+      </div>
+      <h3 class="mx-sub rv">Las preguntas que todo empresario se hace <em>y nadie le responde.</em></h3>
+      <div class="giros">
+          <button class="giro" aria-pressed="false"><span class="cara frente"><span class="n">01</span><span class="q">¿Por qué hay días en que mi empresa rinde menos, sin que haya pasado nada?</span><span class="toca">Ver qué hay detrás ↻</span></span><span class="cara dorso"><span class="rol">Recepción dice:</span><span class="r">«Los miércoles llegan proveedores, pacientes y llamadas a la vez. Nadie lo ha planificado nunca.»</span><span class="det"><b>Lo que hay detrás:</b> Un pico de trabajo invisible para la dirección.</span></span></button>
+          <button class="giro" aria-pressed="false"><span class="cara frente"><span class="n">02</span><span class="q">¿Qué tareas podría quitarle a mi equipo y nadie las echaría de menos?</span><span class="toca">Ver qué hay detrás ↻</span></span><span class="cara dorso"><span class="rol">Recepción dice:</span><span class="r">«Cada mañana copio a mano las citas del WhatsApp a la agenda. Una hora, todos los días.»</span><span class="det"><b>Lo que hay detrás:</b> Una tarea que se puede automatizar.</span></span></button>
+          <button class="giro" aria-pressed="false"><span class="cara frente"><span class="n">03</span><span class="q">¿Por qué mi mejor empleado pasa la mitad del día haciendo papeleo?</span><span class="toca">Ver qué hay detrás ↻</span></span><span class="cara dorso"><span class="rol">Comercial dice:</span><span class="r">«Me contrataron para vender y paso el día rellenando hojas.»</span><span class="det"><b>Lo que hay detrás:</b> Talento gastado en lo que no es su trabajo.</span></span></button>
+          <button class="giro" aria-pressed="false"><span class="cara frente"><span class="n">04</span><span class="q">¿Qué sabe mi recepcionista de mi empresa que yo no sé?</span><span class="toca">Ver qué hay detrás ↻</span></span><span class="cara dorso"><span class="rol">Recepción dice:</span><span class="r">«Sé qué clientes van a cancelar antes de que llamen. Nadie me lo ha preguntado nunca.»</span><span class="det"><b>Lo que hay detrás:</b> Información valiosa que nadie recoge.</span></span></button>
+          <button class="giro" aria-pressed="false"><span class="cara frente"><span class="n">05</span><span class="q">Si alguien de mi equipo tiene un mal día, ¿mi empresa lo sostiene o se resiente?</span><span class="toca">Ver qué hay detrás ↻</span></span><span class="cara dorso"><span class="rol">Asistente dice:</span><span class="r">«Cuando tengo un mal día, todo lo que llevo de memoria se cae conmigo.»</span><span class="det"><b>Lo que hay detrás:</b> Procesos que dependen del ánimo de una persona.</span></span></button>
+          <button class="giro" aria-pressed="false"><span class="cara frente"><span class="n">06</span><span class="q">¿Cómo convierto los días malos en días de aprendizaje?</span><span class="toca">Ver qué hay detrás ↻</span></span><span class="cara dorso"><span class="rol">Encargado dice:</span><span class="r">«Aquí los errores se esconden. Si se hablaran, no se repetirían.»</span><span class="det"><b>Lo que hay detrás:</b> Falta un espacio para aprender del error.</span></span></button>
+          <button class="giro" aria-pressed="false"><span class="cara frente"><span class="n">07</span><span class="q">¿Por qué se me va la gente buena?</span><span class="toca">Ver qué hay detrás ↻</span></span><span class="cara dorso"><span class="rol">Técnica dice:</span><span class="r">«No me voy por el sueldo. Me voy porque siempre apago los mismos fuegos.»</span><span class="det"><b>Lo que hay detrás:</b> Desgaste por problemas que nadie resuelve.</span></span></button>
+          <button class="giro" aria-pressed="false"><span class="cara frente"><span class="n">08</span><span class="q">¿Cuántos clientes se me van solo porque nadie les vuelve a llamar?</span><span class="toca">Ver qué hay detrás ↻</span></span><span class="cara dorso"><span class="rol">Comercial dice:</span><span class="r">«Tengo una lista de presupuestos pendientes que nunca encuentro tiempo de llamar.»</span><span class="det"><b>Lo que hay detrás:</b> Dinero que se pierde en el seguimiento.</span></span></button>
+      </div>
+      <p class="mx-nota">Ejemplos ilustrativos basados en situaciones habituales. Pulsa una tarjeta para darle la vuelta.</p>
+      <p class="mx-remate rv">Tú haces las preguntas. Tu equipo tiene las respuestas. <em>Nosotros las encontramos.</em></p>
+      <div style="text-align:center"><button class="btn" data-abrir>Solicitar un diagnóstico <span class="arrow">→</span></button><p class="micro">Sin compromiso · 15 minutos · Directamente con el consultor</p></div>
     </div>
   </section>
 
@@ -608,6 +712,18 @@ mark{background:none;color:var(--marfil);position:relative;white-space:normal;ba
         <div class="pilar rv"><span class="k">02 · FORMACIÓN</span><h3>Capacitar, no solo instalar</h3><p>Formamos a cada persona para que domine lo nuevo desde el primer día. Una herramienta que nadie sabe usar no sirve de nada.</p></div>
         <div class="pilar rv"><span class="k">03 · RECONOCIMIENTO</span><h3>Profesionalizar cada puesto</h3><p>Que el trabajador sienta que se le escucha y que su trabajo se profesionaliza. Un equipo motivado es un equipo eficiente, y el empresario lo nota.</p></div>
       </div>
+    </div>
+  </section>
+
+  <section class="manifiesto" id="manifiesto">
+    <div class="wrap">
+      <span class="eyebrow">Manifiesto</span>
+      <h2 class="rv">Cualquiera puede. <em>Pocos lo hacen.</em></h2>
+      <div class="mf-tabla">
+        <div class="mf-cab"><span>Cualquiera puede…</span><span>Nosotros elegimos…</span></div>
+        <div class="mf-fila rv"><span class="no">Hacerte una web en una tarde</span><span class="si">Pasar un día con tu equipo antes de proponer nada</span></div><div class="mf-fila rv"><span class="no">Instalarte un chatbot</span><span class="si">Hablar con tu recepcionista, tu comercial y tu limpiadora</span></div><div class="mf-fila rv"><span class="no">Venderte una herramienta</span><span class="si">Decirte también lo que no necesitas</span></div><div class="mf-fila rv"><span class="no">Automatizar una tarea</span><span class="si">Entender por qué el miércoles es peor que el jueves</span></div><div class="mf-fila rv"><span class="no">Entregarte el trabajo y desaparecer</span><span class="si">Quedarse a mantenerlo y mejorarlo contigo</span></div>
+      </div>
+      <p class="mf-remate rv">La inteligencia artificial la tiene cualquiera.<br><em>La inteligencia emocional para aplicarla, no.</em></p>
     </div>
   </section>
 
@@ -770,6 +886,18 @@ mark{background:none;color:var(--marfil);position:relative;white-space:normal;ba
     </div>
   </section>
 
+  <section class="pacto" id="pacto">
+    <div class="wrap">
+      <div class="pc-doc rv">
+        <img class="pc-sello" src="assets/logo-nyland-consulting-web.png" alt="" aria-hidden="true">
+        <span class="eyebrow">Nuestro compromiso</span>
+        <h2>Pacto de transparencia</h2>
+        <ol><li><span>Hablamos con todos, de arriba abajo. Y todos ven el resultado.</span></li><li><span>Te entregamos el diagnóstico completo, aunque después no nos contrates.</span></li><li><span>Te decimos lo que no merece la pena automatizar.</span></li><li><span>Nuestro precio se mide por lo que te ahorramos, no por las horas.</span></li><li><span>Lo que nos cuente tu equipo es confidencial. Siempre.</span></li></ol>
+        <div class="pc-firma"><span>Firmado,</span><b>Nyland Consulting</b><small>El lado humano de la inteligencia artificial</small></div>
+      </div>
+    </div>
+  </section>
+
   <section class="cierre">
     <div class="globo" aria-hidden="true"><svg><use href="#globo"/></svg></div>
     <div class="wrap">
@@ -872,6 +1000,11 @@ document.documentElement.classList.add('js');
   fd.querySelectorAll('.fd-toggle button').forEach(b => b.addEventListener('click', () => {
     fd.dataset.modo = b.dataset.modo;
     fd.querySelectorAll('.fd-toggle button').forEach(x => x.classList.toggle('on', x === b));
+  }));
+
+  // Tarjetas del efecto miércoles
+  document.querySelectorAll('.giro').forEach(g => g.addEventListener('click', () => {
+    const on = g.classList.toggle('on'); g.setAttribute('aria-pressed', on);
   }));
   // Cabecera
   const top = document.getElementById('top'); let last = 0;
