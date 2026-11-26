@@ -1,12 +1,16 @@
 # Prompt · Web de Nyland Consulting (para AI Studio)
 
-> Basado en la plantilla de la Clase 1.1. Los campos marcados **[PENDIENTE]**
-> hay que rellenarlos antes de pegar el prompt. Copia desde la línea
+> Basado en la plantilla de la Clase 1.1. **Versión maqueta:** formulario,
+> contacto y logo están simulados para ver cómo queda. Antes de publicar de
+> verdad hay que conectar el formulario, poner el contacto real y redactar la
+> política de privacidad y el aviso legal. Copia desde la línea
 > "Crea una página web…" hasta el final.
 
 ---
 
 Crea una página web de una sola página (landing) para mi consultoría.
+Es una MAQUETA de prueba: el formulario y los datos de contacto son
+simulados.
 Todo el texto visible debe estar en español de España, con un tono cercano,
 seguro y elegante. Trata al visitante de tú.
 
@@ -68,7 +72,9 @@ con estos campos:
 - Casilla obligatoria de aceptación de la política de privacidad (RGPD)
 Tras enviar, muestra: "Recibido. Te contactamos en menos de 24 horas
 laborables para fijar tus 15 minutos."
-Destino del formulario: [PENDIENTE — email, Google Forms, Formspree…].
+Destino del formulario: SIMULADO. No envíes los datos a ningún sitio ni los
+guardes; al pulsar "Enviar", valida los campos obligatorios y muestra el
+mensaje de confirmación.
 
 --------------------------------------------------
 4. MISTERIO Y CURIOSIDAD (lo que nos hace distintos)
@@ -147,9 +153,10 @@ confusión hace que se vaya.
      mantenimiento forman parte del servicio.
    - ¿Por qué hablar con todo el equipo? → Porque quien vive el problema
      cada día es quien mejor lo conoce.
-11. PIE — Nyland Consulting S.L. · "Sigue siendo tú." · Contacto:
-   [PENDIENTE — email y teléfono] · Política de privacidad y aviso legal
-   [PENDIENTE].
+11. PIE — Nyland Consulting S.L. · "Sigue siendo tú." · Contacto de
+   ejemplo: hola@tudominio.es · +34 600 000 000 · Enlaces "Política de
+   privacidad" y "Aviso legal" que de momento no llevan a ninguna página
+   (no redactes estos textos legales; se harán aparte).
 
 --------------------------------------------------
 6. REGLAS VISUALES — UN DISEÑO QUE ROMPA
@@ -179,8 +186,9 @@ SÍ (estilo editorial, como una revista de diseño o una galería):
   líneas finas en oro que se dibujan al hacer scroll. Nada brusco y nada que
   distraiga del botón.
 - Hover en botones: el oro se ilumina ligeramente.
-- Logo: [PENDIENTE — describe el logo o escribe "usa el nombre Nyland
-  Consulting en serif como logotipo"].
+- Logo: usa "Nyland" en serif grande como logotipo, con "Consulting" en
+  versalitas pequeñas y espaciadas debajo, en oro sobre verde o en verde
+  sobre marfil.
 - Prioriza la versión móvil: la mayoría de los visitantes llegará desde el
   teléfono. En móvil, las animaciones deben ser más ligeras y todo debe
   leerse sin hacer zoom.
