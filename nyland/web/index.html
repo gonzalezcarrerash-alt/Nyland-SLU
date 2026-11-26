@@ -326,6 +326,56 @@ mark{background:none;color:var(--marfil);position:relative;white-space:normal;ba
 @media (hover:none){.halo-cursor{display:none}}
 @media (max-width:900px){.mirada-cab{grid-template-columns:1fr;gap:28px}}
 
+
+/* Ingeniería de procesos */
+.ingenieria{padding:160px 0 120px;background:linear-gradient(180deg,var(--noche),#10271d)}
+.ing-cab{display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:end;margin-bottom:70px}
+.ingenieria h2{font-size:clamp(40px,5.2vw,74px);max-width:14ch;margin-top:18px}
+.flujo-demo{border:1px solid rgba(214,178,108,.3);border-radius:30px;padding:36px;background:linear-gradient(160deg,rgba(36,74,58,.55),rgba(11,29,21,.5));box-shadow:0 40px 90px rgba(0,0,0,.35)}
+.fd-barra{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:34px}
+.fd-titulo{font:600 12px var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--menta)}
+.fd-toggle{display:inline-flex;background:rgba(0,0,0,.3);border-radius:999px;padding:5px;border:1px solid rgba(242,245,240,.12)}
+.fd-toggle button{border:0;background:transparent;color:var(--suave);font:600 14px var(--sans);padding:10px 20px;border-radius:999px;cursor:pointer;transition:all .4s}
+.fd-toggle button.on{background:var(--oro);color:var(--noche)}
+.fd-linea{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;position:relative}
+.fd-linea::before{content:"";position:absolute;left:5%;right:5%;top:27px;height:2px;background:repeating-linear-gradient(90deg,rgba(214,178,108,.6) 0 10px,transparent 10px 20px);animation:fluye 1.2s linear infinite}
+@keyframes fluye{to{background-position:20px 0}}
+.fd-nodo{position:relative;text-align:center}
+.fd-nodo i{position:relative;z-index:1;display:grid;place-items:center;width:56px;height:56px;margin:0 auto 16px;border-radius:50%;background:var(--verde);border:2px solid var(--oro);font:600 18px var(--sans);font-style:normal;color:var(--oro);transition:all .6s}
+.fd-nodo b{display:block;font-family:var(--serif);font-weight:500;font-size:22px;line-height:1.15;margin-bottom:8px}
+.fd-nodo small{display:block;font-size:13px;color:rgba(242,245,240,.7);line-height:1.4}
+.fd-nodo .d,.fd-nota .d{display:none}
+[data-modo=antes] .fd-linea::before{animation-duration:4s}
+[data-modo=antes] .atasco i{background:#c25b4a;border-color:#e98b7b;color:#fff;animation:atasco 1.4s ease-in-out infinite}
+@keyframes atasco{0%,100%{box-shadow:0 0 0 0 rgba(194,91,74,.6)}50%{box-shadow:0 0 0 14px rgba(194,91,74,0)}}
+[data-modo=despues] .fd-nodo .a,[data-modo=despues] .fd-nota .a{display:none}
+[data-modo=despues] .fd-nodo .d,[data-modo=despues] .fd-nota .d{display:block}
+[data-modo=despues] .fd-nodo i{background:var(--menta);border-color:var(--menta);color:var(--noche);box-shadow:0 0 22px rgba(150,225,190,.5)}
+[data-modo=despues] .fd-linea::before{background:repeating-linear-gradient(90deg,var(--menta) 0 10px,transparent 10px 20px);animation-duration:.6s}
+.fd-nota{margin:30px 0 0;text-align:center;font-family:var(--serif);font-style:italic;font-size:24px;color:var(--oro)}
+[data-modo=antes] .fd-nota{color:#e98b7b}
+.lentes{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:70px}
+.lente{padding:28px;border-radius:24px;border:1px solid rgba(242,245,240,.1);background:rgba(242,245,240,.03);transition:border-color .4s,transform .4s}
+.lente:hover{border-color:var(--oro);transform:translateY(-4px)}
+.lente svg{width:44px;height:44px;fill:none;stroke:var(--oro);stroke-width:2;margin-bottom:16px}
+.lente h3{font-size:28px;margin-bottom:6px}
+.lente p{margin:0;color:rgba(242,245,240,.75);font-size:15px}
+.puente{display:flex;flex-direction:column;align-items:center;gap:6px;margin:90px auto 0;text-align:center;text-decoration:none;width:max-content;max-width:100%}
+.puente span{font-size:15px;color:var(--suave);letter-spacing:.04em}
+.puente b{font-family:var(--serif);font-weight:500;font-size:clamp(34px,4vw,54px);color:var(--oro)}
+.puente i{font-style:normal;color:var(--menta);font-size:26px;animation:flotar 2.4s ease-in-out infinite}
+@media (max-width:900px){
+  .ingenieria{padding:110px 0 90px}
+  .ing-cab{grid-template-columns:1fr;gap:28px;margin-bottom:44px}
+  .flujo-demo{padding:24px 18px}
+  .fd-linea{grid-template-columns:1fr;gap:22px;text-align:left}
+  .fd-linea::before{left:27px;right:auto;top:28px;bottom:28px;width:2px;height:auto;background:repeating-linear-gradient(180deg,rgba(214,178,108,.6) 0 10px,transparent 10px 20px)}
+  [data-modo=despues] .fd-linea::before{background:repeating-linear-gradient(180deg,var(--menta) 0 10px,transparent 10px 20px)}
+  .fd-nodo{display:grid;grid-template-columns:56px 1fr;column-gap:16px;text-align:left}
+  .fd-nodo i{grid-row:span 2;margin:0}
+  .lentes{grid-template-columns:1fr 1fr}
+}
+
 /* Responsive */
 @media (max-width:900px){
   body{font-size:16px}
@@ -429,6 +479,43 @@ mark{background:none;color:var(--marfil);position:relative;white-space:normal;ba
         <div class="puerta rv"><span class="k">iii</span><h3>Una huella que se queda</h3><p>Conceptos nuevos que tu empresa sigue aplicando cuando nosotros ya no estamos en la sala.</p></div>
       </div>
       <p class="remate rv">Abrimos puertas que no sabías que estaban ahí.</p>
+    </div>
+  </section>
+
+  <section class="ingenieria" id="ingenieria">
+    <div class="wrap">
+      <div class="ing-cab">
+        <div><span class="eyebrow">Qué es la ingeniería de procesos</span>
+          <h2 class="rv">Tu empresa es una cadena de pasos. <em>Nosotros la hacemos fluir.</em></h2></div>
+        <p class="voz rv">La ingeniería de procesos estudia <mark>cómo se hace el trabajo de verdad</mark>: quién hace qué, en qué orden, con qué herramientas y dónde se atasca. Y lo rediseña para que todo avance sin esfuerzo.</p>
+      </div>
+
+      <div class="flujo-demo rv" id="flujoDemo" data-modo="antes">
+        <div class="fd-barra">
+          <span class="fd-titulo">Ejemplo de un proceso cualquiera</span>
+          <div class="fd-toggle" role="group" aria-label="Ver el proceso">
+            <button data-modo="antes" class="on">Como está hoy</button>
+            <button data-modo="despues">Rediseñado</button>
+          </div>
+        </div>
+        <div class="fd-linea">
+          <div class="fd-nodo"><i>1</i><b>Llega un cliente</b><small class="a">Por teléfono, email o WhatsApp, sin un sitio común</small><small class="d">Todo entra en un mismo sitio</small></div>
+          <div class="fd-nodo"><i>2</i><b>Se le atiende</b><small class="a">Depende de quién esté libre</small><small class="d">Cada caso llega a la persona adecuada</small></div>
+          <div class="fd-nodo"><i>3</i><b>Se presupuesta</b><small class="a">A mano, cada vez desde cero</small><small class="d">Plantillas listas en minutos</small></div>
+          <div class="fd-nodo atasco"><i>4</i><b>Se hace seguimiento</b><small class="a">Nadie se acuerda de volver a llamar</small><small class="d">Recordatorios automáticos</small></div>
+          <div class="fd-nodo"><i>5</i><b>Se cobra</b><small class="a">Facturas que se retrasan</small><small class="d">Factura y aviso sin perseguir a nadie</small></div>
+        </div>
+        <p class="fd-nota"><span class="a">Aquí se atascan el tiempo, el dinero y la paciencia del equipo.</span><span class="d">Mismo equipo, mismos clientes. Menos fricción en cada paso.</span></p>
+      </div>
+
+      <div class="lentes">
+        <div class="lente rv"><svg viewBox="0 0 48 48"><circle cx="24" cy="16" r="7"/><path d="M10 40c2-8 8-12 14-12s12 4 14 12"/></svg><h3>Personas</h3><p>Quién hace cada tarea y cómo la vive.</p></div>
+        <div class="lente rv"><svg viewBox="0 0 48 48"><circle cx="8" cy="24" r="4"/><circle cx="24" cy="24" r="4"/><circle cx="40" cy="24" r="4"/><path d="M12 24h8M28 24h8"/></svg><h3>Pasos</h3><p>En qué orden se hace y cuántas veces se repite.</p></div>
+        <div class="lente rv"><svg viewBox="0 0 48 48"><rect x="8" y="10" width="32" height="24" rx="4"/><path d="M18 40h12M24 34v6"/></svg><h3>Herramientas</h3><p>Con qué se trabaja y qué sobra o falta.</p></div>
+        <div class="lente rv"><svg viewBox="0 0 48 48"><path d="M8 14h24l-6-6M40 34H16l6 6"/></svg><h3>Información</h3><p>Cómo viaja de una persona a otra y dónde se pierde.</p></div>
+      </div>
+
+      <a class="puente rv" href="#cambio"><span>Ese es el qué. El cómo tiene nombre.</span><b>El Cambio Nyland</b><i aria-hidden="true">↓</i></a>
     </div>
   </section>
 
@@ -769,6 +856,13 @@ document.documentElement.classList.add('js');
   const prog = document.getElementById('progreso'), halo = document.getElementById('halo');
   addEventListener('scroll', () => { const h = document.documentElement.scrollHeight - innerHeight; prog.style.setProperty('--p', h > 0 ? scrollY / h : 0); }, { passive: true });
   addEventListener('pointermove', e => { halo.style.setProperty('--mx', e.clientX + 'px'); halo.style.setProperty('--my', e.clientY + 'px'); }, { passive: true });
+
+  // Ingeniería de procesos: antes / rediseñado
+  const fd = document.getElementById('flujoDemo');
+  fd.querySelectorAll('.fd-toggle button').forEach(b => b.addEventListener('click', () => {
+    fd.dataset.modo = b.dataset.modo;
+    fd.querySelectorAll('.fd-toggle button').forEach(x => x.classList.toggle('on', x === b));
+  }));
   // Cabecera
   const top = document.getElementById('top'); let last = 0;
   addEventListener('scroll', () => { const y = scrollY; top.classList.toggle('scrolled', y > 40); top.classList.toggle('hidden', y > 500 && y > last); last = y; }, { passive: true });
