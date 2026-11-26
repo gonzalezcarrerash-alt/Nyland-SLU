@@ -10,7 +10,7 @@
 
 ---
 
-Crea una página web de una sola página (landing) para mi consultoría.
+Crea una página web de una sola página (landing) para nuestra consultoría.
 Es una MAQUETA de prueba: el formulario y los datos de contacto son
 simulados.
 Todo el texto visible debe estar en español de España, con un tono cercano,
@@ -19,36 +19,36 @@ seguro y elegante. Trata al visitante de tú.
 --------------------------------------------------
 1. POSICIONAMIENTO
 --------------------------------------------------
-Quién soy: Nyland Consulting, una consultoría que entra en las empresas,
+Quiénes somos: Nyland Consulting, una consultoría que entra en las empresas,
 entiende desde dentro por qué no funcionan sus procesos y los transforma
 con inteligencia artificial y software a medida, para que cada persona
 dedique su tiempo a lo que de verdad sabe hacer.
 Lema de marca: "Sigue siendo tú."
 Filosofía: "El lado humano de la inteligencia artificial."
 
-A quién le hablo: dueños y gerentes de negocios con un ticket medio-alto que
+A quién le hablamos: dueños y gerentes de negocios con un ticket medio-alto que
 ya funcionan bien, pero que pierden tiempo, clientes y dinero por procesos
 que nadie ha revisado. Sector principal: clínicas dentales. Segundo ejemplo:
 empresas de rehabilitación de fachadas y edificios.
 
-Quién NO soy / qué NO ofrezco: no vendo una herramienta suelta ("te instalo
+Quiénes NO somos / qué NO ofrecemos: no vendemos una herramienta suelta ("te instalo
 esto y ya está"), ni cursos, ni tecnología por la tecnología, ni jerga
-técnica. No soy una agencia más de IA. Ningún visitante debe terminar
+técnica. No somos una agencia más de IA. Ningún visitante debe terminar
 pensando que esto es "un software más" que tendrá que aprender a usar.
 
 --------------------------------------------------
-2. MI MECANISMO CON NOMBRE
+2. NUESTRO MECANISMO CON NOMBRE
 --------------------------------------------------
-Mi servicio se presenta como un sistema propio llamado
+Nuestro servicio se presenta como un sistema propio llamado
 "El Cambio Nyland", que funciona en 4 pasos:
-1. Diagnóstico desde dentro — Me pongo en la piel de cada persona de tu
+1. Diagnóstico desde dentro — Nos ponemos en la piel de cada persona de tu
    empresa, del dueño al último puesto, y localizo qué no funciona y por qué.
-2. Soluciones rápidas — Implanto herramientas que alivian lo más urgente
+2. Soluciones rápidas — Implantamos herramientas que alivian lo más urgente
    desde las primeras semanas.
-3. Software a tu medida — Con el estudio hecho, diseño una solución adaptada
+3. Software a tu medida — Con el estudio hecho, diseñamos una solución adaptada
    exactamente a cómo trabaja tu empresa.
-4. Acompañamiento y mantenimiento — Me ocupo de que todas las herramientas y
-   procesos sigan funcionando, los actualizo y los mejoro mientras tu negocio
+4. Acompañamiento y mantenimiento — Nos ocupamos de que todas las herramientas y
+   procesos sigan funcionando, los actualizamos y los mejoramos mientras tu negocio
    crece. Frase clave: "No te dejamos solo con la tecnología. Nos encargamos
    de que funcione, hoy y dentro de un año."
 
@@ -65,7 +65,7 @@ El objetivo de la página es que el visitante haga UNA sola acción:
 Usa exactamente ese texto en TODOS los botones principales. No mezcles
 llamados a la acción distintos.
 Microcopy debajo del botón: "Sin compromiso · 15 minutos · Directamente con
-el consultor".
+nuestro equipo".
 
 El botón abre un formulario corto (en la propia página, sin salir de ella)
 con estos campos:
@@ -184,11 +184,11 @@ para que las personas sean las protagonistas. Por eso NUNCA aparece en la
 apertura ni en el hero, y nunca es más grande que el texto. Úsala solo en
 estos tres sitios, pequeña y con una entrada suave:
 1. En la pregunta de las FAQ "¿Vais a sustituir a mi equipo?", asomando
-   por un lateral y saludando, con un bocadillo: "Yo me encargo del
-   papeleo. Tu equipo, de tus clientes."
+   por un lateral y saludando, con un bocadillo: "Nosotros nos encargamos
+   del papeleo. Tu equipo, de tus clientes."
 2. En el mensaje de confirmación del formulario, saludando junto al texto.
 3. Junto al paso 4 (Acompañamiento y mantenimiento), con la frase
-   "Sigo aquí cuando termina el proyecto."
+   "Seguimos aquí cuando termina el proyecto."
 En móvil, la mascota puede ocultarse en el punto 3 si resta espacio.
 
 SÍ (estilo editorial, como una revista de diseño o una galería):
