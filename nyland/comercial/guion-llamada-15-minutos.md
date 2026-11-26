@@ -45,7 +45,7 @@ Después siembra el valor, con sus números:
 > "Lo que haríamos es un diagnóstico completo: pasamos un par de días con vuestro equipo, hablamos con cada persona y os entregamos un mapa de lo que funciona, lo que no y qué haríamos primero. El informe es vuestro aunque después no sigáis con nosotros. ¿Te mando la propuesta con el detalle y el precio?"
 
 **Si pregunta el precio:**
-> "El diagnóstico completo son 3.500 €. Son unas 16 horas de trabajo con vuestro equipo, y el informe es vuestro. Si después hacemos las soluciones, os descontamos 500 €. Estamos cerrando los primeros casos con precio de lanzamiento, así que podría quedarse en 3.200 €."
+> "El diagnóstico completo son 2.900 €. Son unas 16 horas de trabajo con vuestro equipo, y el informe es vuestro. Si después hacemos las soluciones, os descontamos 300 €. Estamos cerrando los primeros casos con precio de lanzamiento, así que podría quedarse en 2.500 €."
 
 **Si no encaja:** díselo. Es parte del pacto de transparencia.
 > "Con lo que me cuentas, no creo que ahora mismo te compense. Te mando la guía de las 5 preguntas, que te va a servir igual."

@@ -25,7 +25,7 @@ Pasamos [2] días con vuestro equipo y hablamos con cada persona, de dirección 
 
 **El informe es vuestro aunque después no sigáis con nosotros.**
 
-**Inversión:** [3.500 €] + IVA · *Precio de lanzamiento: [3.200 €] + IVA, a cambio de poder contar vuestro caso (de forma anónima si lo preferís).*
+**Inversión:** [2.900 €] + IVA · *Precio de lanzamiento: [2.500 €] + IVA, a cambio de poder contar vuestro caso (de forma anónima si lo preferís).*
 
 ### Paso 2 · Transforma · Soluciones rápidas *(opcional, tras el diagnóstico)*
 
@@ -36,13 +36,13 @@ Según lo que encontremos, normalmente incluye:
 - Un panel en el móvil para ver cómo va la clínica.
 - Formación del equipo.
 
-**Inversión:** desde [4.500 €] + IVA. **Si lo contratáis en los 30 días siguientes al informe, os descontamos 500 €.**
+**Inversión:** desde [3.500 €] + IVA. **Si lo contratáis en los 30 días siguientes al informe, os descontamos 300 €.**
 
 ### Paso 3 · Crece · Acompañamiento y mantenimiento *(opcional)*
 
 Nos encargamos de que todo siga funcionando y mejorando.
-- **Esencial:** [490 €]/mes + IVA. Mantenimiento, ajustes, soporte e informe mensual.
-- **Completo:** [790 €]/mes + IVA. Lo anterior, más una sesión mensual con el equipo y mejora continua.
+- **Esencial:** [390 €]/mes + IVA. Mantenimiento, ajustes, soporte e informe mensual.
+- **Completo:** [590 €]/mes + IVA. Lo anterior, más una sesión mensual con el equipo y mejora continua.
 
 Herramientas incluidas. Compromiso mínimo de 6 meses.
 

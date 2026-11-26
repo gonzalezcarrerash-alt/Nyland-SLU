@@ -1,6 +1,6 @@
 # Precios de Nyland Consulting · Propuesta V1
 
-*Calculada con la skill `pricing` a partir de los datos del fundador (26/11/2026). Revisar antes de enviar a ningún cliente.*
+*Calculada con la skill `pricing` a partir de los datos del fundador (26/11/2026). V2: precios ajustados a la baja para facilitar la entrada.*
 
 ## Datos de partida
 
@@ -22,24 +22,22 @@
 
 ## Cálculo del diagnóstico
 
-16 horas × 200 €/hora = **3.200 €** de trabajo directo. Sumamos un margen por preparación, desplazamiento a la clínica e imprevistos (unas 1-2 horas), y queda en **3.500 €**, que equivale a unos 200 €/hora reales.
-
-Es un precio razonable para una clínica que ahorra unos 15.000 € al año en tiempo: el diagnóstico se paga con unas 11-12 semanas de horas liberadas.
+16 horas × 200 €/hora = 3.200 €. **Ajustado a la baja a 2.900 €** para que entre con más facilidad: equivale a unos **181 €/hora**, algo por debajo de tu mínimo. Se compensa si el diagnóstico abre la puerta a las soluciones y al mantenimiento.
 
 ## Tabla de precios
 
 | Servicio | Qué incluye | Precio |
 |---|---|---|
 | **Llamada de diagnóstico** | 15 minutos para ver si tiene sentido trabajar juntos | Gratis |
-| **Escucha · Diagnóstico completo** | Entrevistas con todos los puestos, mapa de procesos real, el efecto miércoles de la clínica, informe con prioridades y propuesta de soluciones. **Es tuyo aunque no sigas con nosotros** (Pacto de transparencia) | **3.500 €** (+IVA) |
-| **Transforma · Soluciones rápidas** | Paquete base: entradas de clientes en un solo sitio, recordatorios de citas, seguimiento automático de presupuestos, panel en el móvil y formación del equipo | **Desde 4.500 €** (+IVA), según el alcance |
+| **Escucha · Diagnóstico completo** | Entrevistas con todos los puestos, mapa de procesos real, el efecto miércoles de la clínica, informe con prioridades y propuesta de soluciones. **Es tuyo aunque no sigas con nosotros** (Pacto de transparencia) | **2.900 €** (+IVA) |
+| **Transforma · Soluciones rápidas** | Paquete base: entradas de clientes en un solo sitio, recordatorios de citas, seguimiento automático de presupuestos, panel en el móvil y formación del equipo | **Desde 3.500 €** (+IVA), según el alcance |
 | **Transforma · Software a medida** | Solo cuando el diagnóstico lo justifica | Presupuesto aparte, desde 8.000 € |
-| **Crece · Esencial** | Mantenimiento de herramientas y procesos, ajustes, soporte por email y WhatsApp, informe mensual | **490 €/mes** (+IVA), mínimo 6 meses |
-| **Crece · Completo** | Todo lo anterior, más una sesión mensual con el equipo, revisión del efecto miércoles y mejoras continuas | **790 €/mes** (+IVA), mínimo 6 meses |
+| **Crece · Esencial** | Mantenimiento de herramientas y procesos, ajustes, soporte por email y WhatsApp, informe mensual | **390 €/mes** (+IVA), mínimo 6 meses |
+| **Crece · Completo** | Todo lo anterior, más una sesión mensual con el equipo, revisión del efecto miércoles y mejoras continuas | **590 €/mes** (+IVA), mínimo 6 meses |
 
 **Condiciones:**
-- **Incentivo:** si se contratan las soluciones rápidas en los 30 días siguientes al informe, **se descuentan 500 €** de las soluciones. Así el diagnóstico mantiene tu tarifa mínima de 200 €/hora.
-- **Precio de lanzamiento para los 3 primeros clientes:** diagnóstico a **3.200 €**, justo tu mínimo de 200 €/hora, a cambio de permiso para usarlo como caso (anónimo si prefieren) y una frase de testimonio. No bajes de ahí.
+- **Incentivo:** si se contratan las soluciones rápidas en los 30 días siguientes al informe, **se descuentan 300 €** de las soluciones.
+- **Precio de lanzamiento para los 3 primeros clientes:** diagnóstico a **2.500 €** (unos 156 €/hora), a cambio de permiso para usarlo como caso (anónimo si prefieren) y una frase de testimonio. No bajes de ahí.
 - Las herramientas (unos 50 €/mes) van incluidas en Crece.
 
 ## ¿Le sale rentable a la clínica? (cálculo honesto)
@@ -48,25 +46,25 @@ Opción estándar: diagnóstico + soluciones rápidas + Crece Esencial.
 
 | | Año 1 | Año 2 |
 |---|---|---|
-| Inversión | 3.500 + (4.500 − 500) + 490 × 12 = **13.380 €** | 490 × 12 = **5.880 €** |
+| Inversión | 2.900 + (3.500 − 300) + 390 × 12 = **10.780 €** | 390 × 12 = **4.680 €** |
 | Tiempo liberado (estimado) | ~15.000-16.500 € | ~15.000-16.500 € |
 | Presupuestos recuperados | Por calcular con cada clínica | Por calcular con cada clínica |
 
-**Conclusión:** el primer año, la inversión se recupera prácticamente solo con el tiempo liberado. A partir del segundo año, la clínica gana unos 9.000-10.000 € al año en tiempo, más los presupuestos recuperados. Defiéndelo así, con estos números y sin exagerar.
+**Conclusión:** el primer año, la clínica ya gana unos 4.000-5.000 € solo con el tiempo liberado. A partir del segundo año, gana unos 10.000-12.000 € al año en tiempo, más los presupuestos recuperados. Defiéndelo así, con estos números y sin exagerar.
 
 ## Los números de Nyland
 
-- **Margen de Crece:** 490 − 50 de herramientas = 440 €/mes por cliente. Con 5 clientes, **2.200 €/mes recurrentes** (unos 2.700 € si alguno contrata el Completo).
-- **Para llegar a 200 €/hora en mantenimiento**, cada cliente de Crece Esencial debe ocuparte como máximo **unas 2-3 horas al mes**. Si ves que te ocupa más, súbelo a Completo o revisa el precio.
+- **Margen de Crece:** 390 − 50 de herramientas = 340 €/mes por cliente. Con 5 clientes, **1.700 €/mes recurrentes** (unos 2.100 € si alguno contrata el Completo).
+- **Para llegar a 200 €/hora en mantenimiento**, cada cliente de Crece Esencial debe ocuparte como máximo **1 hora y media al mes**. Si ves que te ocupa más, súbelo a Completo o revisa el precio.
 - **Límite:** con 5 clientes de mantenimiento estás al máximo. Antes de llegar al sexto, plantéate subir precios, contratar ayuda o crear un plan más automatizado.
 
 ## Empresas de anestesia y sedación
 
-Siguen la misma estructura, pero su caso es distinto: coordinan profesionales entre muchas clínicas, con agendas, desplazamientos y facturación cruzada. Presupuesta el diagnóstico según su tamaño, desde 3.500 € y a 200 €/hora si hay más personas que entrevistar, y piensa en ellas también como **socio de recomendación** hacia sus clínicas.
+Siguen la misma estructura, pero su caso es distinto: coordinan profesionales entre muchas clínicas, con agendas, desplazamientos y facturación cruzada. Presupuesta el diagnóstico según su tamaño, desde 2.900 € y sumando horas si hay más personas que entrevistar, y piensa en ellas también como **socio de recomendación** hacia sus clínicas.
 
 ## Pendiente de decidir
 
 - [ ] Confirmar el coste real de una hora de recepción con 2-3 clínicas.
 - [ ] Medir en el primer caso si las 16 horas se cumplen. Si se alarga, sube el precio.
-- [ ] Decidir si en la web aparece «desde 3.500 €» o solo «precio según el ahorro».
+- [ ] Decidir si en la web aparece «desde 2.900 €» o solo «precio según el ahorro».
 - [ ] Revisar con una gestoría el IVA y el modelo de facturación recurrente.
