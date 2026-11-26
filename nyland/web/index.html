@@ -309,19 +309,16 @@ textarea{min-height:84px;resize:vertical}
 
 
 /* Voz: textos con personalidad */
-mark{background:none;color:var(--marfil);position:relative;white-space:normal;background-image:linear-gradient(90deg,var(--oro),var(--menta));background-repeat:no-repeat;background-size:100% 2px;background-position:0 100%;padding-bottom:2px;transition:background-size 1.4s cubic-bezier(.2,.7,.2,1) .4s}
-.js .rv mark{background-size:0% 2px}
-.js .rv.on mark{background-size:100% 2px}
 .firma{display:block;margin-top:10px;font-family:var(--serif);font-style:italic;font-weight:500;font-size:1.35em;color:var(--oro)}
 .voz{font-family:var(--serif)!important;font-size:clamp(23px,2.2vw,30px)!important;line-height:1.35!important;color:rgba(242,245,240,.82)!important;border-left:2px solid var(--oro);padding:4px 0 4px 26px;max-width:30ch!important;position:relative}
 .voz::before{content:"";position:absolute;left:-6px;top:0;width:10px;height:10px;border-radius:50%;background:var(--oro);box-shadow:0 0 18px var(--oro)}
 .voz mark{font-style:italic;color:var(--marfil)}
-.lead mark,.pie mark{color:var(--marfil)}
+.lead mark,.pie mark{color:var(--oro-c)}
 .mirada-cab{display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:end}
 .revela span{color:rgba(150,225,190,.55)}
 .paso p,.pilar p,.puerta p,details p,.diapo p{color:rgba(242,245,240,.78)}
 /* Barra de progreso y halo */
-.progreso{position:fixed;top:0;left:0;height:2px;width:100%;transform-origin:left;transform:scaleX(var(--p,0));background:linear-gradient(90deg,var(--menta),var(--oro));z-index:50;box-shadow:0 0 12px var(--oro)}
+.progreso{position:fixed;top:0;left:0;height:2px;width:100%;transform-origin:left;transform:scaleX(var(--p,0));background:var(--oro);z-index:50;opacity:.85}
 .halo-cursor{position:fixed;left:0;top:0;width:520px;height:520px;margin:-260px 0 0 -260px;border-radius:50%;background:radial-gradient(circle,rgba(214,178,108,.10),transparent 65%);pointer-events:none;z-index:1;transform:translate(var(--mx,-999px),var(--my,-999px));transition:transform .25s ease-out}
 @media (hover:none){.halo-cursor{display:none}}
 @media (max-width:900px){.mirada-cab{grid-template-columns:1fr;gap:28px}}
@@ -444,6 +441,18 @@ mark{background:none;color:var(--marfil);position:relative;white-space:normal;ba
   .pc-doc{padding:44px 26px}
 }
 @media (max-width:560px){.giros{grid-template-columns:1fr}.giro{min-height:250px}}
+
+
+/* Tipografía con alma */
+mark{background:none;padding:0;color:var(--oro-c);font-family:var(--serif);font-style:italic;font-weight:600;font-size:1.1em;letter-spacing:.005em;text-shadow:0 0 28px rgba(214,178,108,.28)}
+.voz mark{color:var(--oro-c);font-size:1em}
+.lead{font-family:var(--serif)!important;font-weight:500;font-size:clamp(22px,2vw,27px)!important;line-height:1.42!important;color:rgba(242,245,240,.88)!important;letter-spacing:.003em}
+.lead mark{font-size:1.04em}
+.paso p,.pilar p,.puerta p,.lente p,.diapo p,details p,.movil li,.carta p+p{font-family:var(--serif);font-weight:500;font-size:clamp(19px,1.6vw,21px);line-height:1.45;color:rgba(242,245,240,.84)}
+.cita{color:var(--marfil)}
+.firma{font-weight:600;letter-spacing:.01em;text-shadow:0 0 30px rgba(214,178,108,.3)}
+.confianza{color:var(--oro-c)}
+.revela span{color:rgba(150,225,190,.6)}
 
 /* Responsive */
 @media (max-width:900px){
