@@ -10,220 +10,294 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --verde:#1C3A2E; --verde-2:#16301f; --oro:#D6B26C; --oro-2:#e8c987;
-  --menta:#96E1BE; --marfil:#F2F5F0; --tinta:#1C3A2E; --suave:#4f665b;
+  --noche:#0b1d15; --fondo:#0f241b; --verde:#1C3A2E; --verde-c:#244a3a;
+  --oro:#D6B26C; --oro-c:#ecd08f; --menta:#96E1BE; --marfil:#F2F5F0;
+  --texto:#F2F5F0; --suave:rgba(242,245,240,.68);
   --serif:'Cormorant Garamond', Georgia, serif; --sans:Inter, system-ui, Arial, sans-serif;
-  --grano:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.11 0 0 0 0 0.23 0 0 0 0 0.18 0 0 0 .05 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  --grano:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .045 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--marfil) var(--grano);color:var(--tinta);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+html{scroll-behavior:smooth;overflow-x:clip}
+main,footer{overflow-x:clip}
+body{margin:0;background:var(--fondo);color:var(--texto);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;background:var(--grano);pointer-events:none;z-index:100;opacity:.9}
 img{max-width:100%;display:block}
 a{color:inherit}
-.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
-h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.08;margin:0}
-.eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--oro);font-weight:600}
-.muted{color:var(--suave)}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.06;margin:0}
+em{font-style:italic;color:var(--oro)}
+.eyebrow{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--menta);font-weight:600;display:inline-flex;align-items:center;gap:12px}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--menta)}
+section{position:relative}
 
 /* Botón */
-.btn{display:inline-flex;align-items:center;gap:12px;background:var(--oro);color:var(--verde);border:0;border-radius:999px;padding:18px 30px;font:600 16px var(--sans);cursor:pointer;transition:background .35s, box-shadow .35s, transform .35s;text-decoration:none}
-.btn:hover{background:var(--oro-2);box-shadow:0 0 0 6px rgba(214,178,108,.18),0 10px 30px rgba(214,178,108,.35);transform:translateY(-1px)}
-.btn:focus-visible{outline:2px solid var(--verde);outline-offset:4px}
+.btn{display:inline-flex;align-items:center;gap:12px;background:linear-gradient(135deg,var(--oro-c),var(--oro));color:var(--noche);border:0;border-radius:999px;padding:18px 32px;font:600 16px var(--sans);cursor:pointer;transition:box-shadow .35s, transform .35s;text-decoration:none;box-shadow:0 10px 30px rgba(214,178,108,.25)}
+.btn:hover{box-shadow:0 0 0 6px rgba(214,178,108,.18),0 14px 40px rgba(214,178,108,.45);transform:translateY(-2px)}
+.btn:focus-visible{outline:2px solid var(--marfil);outline-offset:4px}
 .btn .arrow{transition:transform .35s}.btn:hover .arrow{transform:translateX(4px)}
-.micro{font-size:13px;color:var(--suave);margin-top:12px;letter-spacing:.02em}
+.btn.oscuro{background:var(--noche);color:var(--oro);box-shadow:0 10px 30px rgba(11,29,21,.35)}
+.micro{font-size:13px;color:var(--suave);margin-top:14px;letter-spacing:.02em}
 
 /* Cabecera */
-header.top{position:fixed;inset:0 0 auto 0;z-index:40;transition:background .4s, box-shadow .4s, transform .5s}
-header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:76px}
-header.top.scrolled{background:rgba(242,245,240,.88);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(28,58,46,.08)}
+header.top{position:fixed;inset:0 0 auto 0;z-index:40;transition:background .4s, transform .5s}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:78px}
+header.top.scrolled{background:rgba(11,29,21,.82);backdrop-filter:blur(12px);border-bottom:1px solid rgba(214,178,108,.15)}
 header.top.hidden{transform:translateY(-100%)}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
-.brand img{width:44px;height:44px}
-.brand span{font-family:var(--serif);font-size:22px;font-weight:600;letter-spacing:.02em}
-.brand small{display:block;font:600 9px var(--sans);letter-spacing:.32em;color:var(--oro);margin-top:-2px}
+.brand img{width:46px;height:46px}
+.brand span{font-family:var(--serif);font-size:23px;font-weight:600}
+.brand small{display:block;font:600 9px var(--sans);letter-spacing:.34em;color:var(--oro);margin-top:-2px}
 header .btn{padding:11px 20px;font-size:14px}
 
+/* Globo (CSS puro, funciona sin JavaScript) */
+.globo{position:absolute;pointer-events:none}
+.globo svg{width:100%;height:100%;overflow:visible}
+.globo .mer{transform-box:fill-box;transform-origin:center;animation:meridiano 16s linear infinite}
+@keyframes meridiano{0%{transform:scaleX(1)}25%{transform:scaleX(0)}50%{transform:scaleX(-1)}75%{transform:scaleX(0)}100%{transform:scaleX(1)}}
+.globo .orbita{transform-box:fill-box;transform-origin:center;animation:orbita 40s linear infinite}
+@keyframes orbita{to{transform:rotate(360deg)}}
+.globo .nodo{animation:latido 3s ease-in-out infinite}
+@keyframes latido{0%,100%{opacity:.25}50%{opacity:1}}
+
 /* Apertura */
-.apertura{min-height:100svh;display:grid;place-items:center;text-align:center;padding:0 24px;position:relative}
-.apertura h1{font-size:clamp(40px,7.2vw,96px);max-width:15ch;margin:0 auto}
-.apertura h1 .w{display:inline-block;}
-.js .apertura h1 .w{opacity:0;filter:blur(8px);transform:translateY(14px);transition:opacity 1.2s ease, filter 1.2s ease, transform 1.2s ease}
+.apertura{min-height:100svh;display:grid;place-items:center;text-align:center;padding:0 24px;overflow:hidden;background:radial-gradient(ellipse at 50% 55%,#1f4636 0%,var(--fondo) 55%,var(--noche) 100%)}
+.apertura .globo{width:min(900px,130vw);aspect-ratio:1;left:50%;top:50%;transform:translate(-50%,-50%);opacity:.55}
+.apertura h1{position:relative;font-size:clamp(42px,7.4vw,104px);max-width:14ch;margin:0 auto;text-shadow:0 4px 40px rgba(0,0,0,.4)}
+.apertura .sub{position:relative;margin-top:30px;font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--oro)}
+.bajar{position:absolute;bottom:36px;left:50%;width:1px;height:70px;background:linear-gradient(var(--oro),transparent);animation:caer 2.4s ease-in-out infinite}
+@keyframes caer{0%,100%{transform:translateX(-50%) scaleY(.5);transform-origin:top}50%{transform:translateX(-50%) scaleY(1);transform-origin:top}}
+.js .apertura h1 .w{display:inline-block;opacity:0;filter:blur(10px);transform:translateY(16px);transition:opacity 1.2s, filter 1.2s, transform 1.2s}
 .js .apertura h1 .w.on{opacity:1;filter:none;transform:none}
-.apertura h1 em{font-style:italic;color:var(--verde)}
-.apertura .sub{margin-top:28px;font-size:14px;letter-spacing:.24em;text-transform:uppercase;color:var(--suave);transition:opacity 1.4s ease 2.6s}
-.apertura.ready .sub{opacity:1}
-.bajar{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);width:1px;height:64px;background:linear-gradient(var(--oro),transparent);opacity:0;transition:opacity 1s ease 3.2s}
-.apertura.ready .bajar{opacity:1;animation:caer 2.4s ease-in-out 3.4s infinite}
-@keyframes caer{0%,100%{transform:translateX(-50%) scaleY(.6);transform-origin:top}50%{transform:translateX(-50%) scaleY(1);transform-origin:top}}
 
 /* Hero */
-.hero{padding:80px 0 140px}
-.hero .grid{display:grid;grid-template-columns:1.5fr 1fr;gap:64px;align-items:end}
-.hero h2{font-size:clamp(42px,5.6vw,78px);max-width:13ch}
-.hero h2 em{font-style:italic;color:var(--oro);}
-.hero p.lead{font-size:20px;max-width:34ch;margin:28px 0 36px;color:var(--suave)}
-.confianza{display:flex;gap:14px;align-items:center;margin-top:36px;font-family:var(--serif);font-size:22px;font-style:italic}
+.hero{padding:120px 0 140px;background:linear-gradient(180deg,var(--noche),var(--fondo))}
+.hero .grid{display:grid;grid-template-columns:1.25fr 1fr;gap:56px;align-items:center}
+.hero h2{font-size:clamp(42px,5.4vw,80px);max-width:13ch;margin-top:20px}
+.hero p.lead{font-size:20px;max-width:36ch;margin:28px 0 38px;color:var(--suave)}
+.confianza{display:flex;gap:14px;align-items:center;margin-top:34px;font-family:var(--serif);font-size:23px;font-style:italic;color:var(--marfil)}
 .confianza::before{content:"";width:48px;height:1px;background:var(--oro)}
-.nota{font-family:var(--serif);font-style:italic;font-size:24px;line-height:1.35;border-left:1px solid var(--oro);padding-left:22px;color:var(--suave);max-width:22ch}
+.sello-hero{position:relative;aspect-ratio:1;max-width:480px;width:100%;margin-left:auto}
+.sello-hero .halo{position:absolute;inset:-12%;border-radius:50%;background:radial-gradient(circle,rgba(214,178,108,.28),transparent 62%);animation:latido 6s ease-in-out infinite}
+.sello-hero .anillo{position:absolute;inset:-6%;border:1px dashed rgba(214,178,108,.45);border-radius:50%;animation:orbita 50s linear infinite}
+.sello-hero .anillo::after{content:"";position:absolute;top:-6px;left:50%;width:12px;height:12px;border-radius:50%;background:var(--menta);box-shadow:0 0 18px var(--menta)}
+.sello-hero .anillo.b{inset:-16%;border-style:solid;border-color:rgba(150,225,190,.15);animation-duration:80s;animation-direction:reverse}
+.sello-hero img{position:relative;width:100%;filter:drop-shadow(0 30px 60px rgba(0,0,0,.5));animation:flotar 7s ease-in-out infinite}
+@keyframes flotar{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
 
-/* Revelado genérico */
-.js .rv{opacity:0;transform:translateY(24px);transition:opacity 1.1s ease, transform 1.1s ease}
+/* Banda de palabras */
+.banda{background:linear-gradient(90deg,var(--oro),var(--oro-c),var(--oro));color:var(--noche);overflow:hidden;padding:22px 0;transform:rotate(-1.5deg);margin:-10px -20px;box-shadow:0 20px 50px rgba(0,0,0,.35);z-index:5}
+.banda .pista{display:flex;width:max-content;animation:desliza 40s linear infinite}
+.banda span{font-family:var(--serif);font-size:clamp(28px,3.4vw,46px);white-space:nowrap;padding-right:48px}
+.banda span i{font-style:normal;color:var(--verde);opacity:.55;padding-right:48px}
+@keyframes desliza{to{transform:translateX(-50%)}}
+
+/* Revelados (solo si hay JS) */
+.js .rv{opacity:0;transform:translateY(28px);transition:opacity 1.1s, transform 1.1s}
 .js .rv.on{opacity:1;transform:none}
 
-/* Línea de oro que se dibuja */
-.linea{height:1px;background:var(--oro);transform:scaleX(1);}
-.js .linea{transform:scaleX(0);transform-origin:left;transition:transform 1.6s cubic-bezier(.2,.7,.2,1)}
-.js .linea.on{transform:scaleX(1)}
-
 /* Dolores */
-.dolores{padding:40px 0 140px}
-.dolores header{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;margin-bottom:56px}
-.dolores h2{font-size:clamp(34px,4.4vw,58px);max-width:14ch}
-.cols{display:grid;grid-template-columns:1fr 1fr;gap:64px}
-.col h3{font-family:var(--sans);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--oro);font-weight:600;margin-bottom:12px;display:flex;align-items:center;gap:12px}
-.col h3::after{content:"";flex:1;height:1px;background:rgba(214,178,108,.5)}
-.cita{font-family:var(--serif);font-size:clamp(24px,2.4vw,32px);line-height:1.25;padding:26px 0;border-bottom:1px solid rgba(28,58,46,.12);margin:0}
-.cita::before{content:"«";color:var(--oro);margin-right:2px}.cita::after{content:"»";color:var(--oro);margin-left:2px}
-.col:nth-child(2){margin-top:80px}
+.dolores{padding:160px 0 140px;background:var(--fondo);overflow:hidden}
+.dolores .rejilla{position:absolute;inset:0;background-image:linear-gradient(rgba(214,178,108,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(214,178,108,.06) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse at 70% 30%,#000 10%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at 70% 30%,#000 10%,transparent 70%)}
+.dolores .cab{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;margin-bottom:64px;position:relative}
+.dolores h2{font-size:clamp(36px,4.6vw,64px);max-width:13ch}
+.dolores .cab p{color:var(--suave);margin:0;max-width:42ch}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:28px;position:relative}
+.col{background:linear-gradient(160deg,rgba(36,74,58,.75),rgba(15,36,27,.6));border:1px solid rgba(214,178,108,.22);border-radius:28px;padding:40px;backdrop-filter:blur(4px)}
+.col:nth-child(2){transform:translateY(60px)}
+.col h3{font:600 12px var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--oro);margin-bottom:8px}
+.cita{font-family:var(--serif);font-size:clamp(23px,2.3vw,30px);line-height:1.25;padding:24px 0;border-bottom:1px solid rgba(242,245,240,.1);margin:0;display:flex;gap:16px}
+.cita:last-child{border:0;padding-bottom:0}
+.cita b{font-family:var(--serif);font-weight:500;color:var(--oro);font-size:1.6em;line-height:.8}
+
+/* Carrusel */
+.carrusel{padding:160px 0 140px;background:radial-gradient(ellipse at 20% 0%,#1d4232,var(--noche) 70%)}
+.carrusel .cab{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:48px;flex-wrap:wrap}
+.carrusel h2{font-size:clamp(36px,4.6vw,64px);max-width:16ch;margin-top:16px}
+.flechas{display:flex;gap:12px}
+.flechas button{width:56px;height:56px;border-radius:50%;border:1px solid rgba(214,178,108,.5);background:transparent;color:var(--oro);font-size:22px;cursor:pointer;transition:all .3s}
+.flechas button:hover{background:var(--oro);color:var(--noche)}
+.pista-c{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 max(24px,calc((100vw - 1200px)/2 + 24px)) 24px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.pista-c::-webkit-scrollbar{display:none}
+.diapo{flex:0 0 min(78vw,620px);scroll-snap-align:center;margin:0;border-radius:28px;overflow:hidden;background:var(--verde);border:1px solid rgba(214,178,108,.25);box-shadow:0 30px 70px rgba(0,0,0,.4);transition:transform .5s}
+.diapo:hover{transform:translateY(-6px)}
+.diapo .img{aspect-ratio:800/520;position:relative;overflow:hidden}
+.diapo .img svg{width:100%;height:100%;display:block}
+.diapo figcaption{padding:26px 30px 30px}
+.diapo .n{font:600 12px var(--sans);letter-spacing:.24em;color:var(--oro)}
+.diapo h3{font-size:30px;margin:8px 0 8px}
+.diapo p{margin:0;color:var(--suave);font-size:15px}
+.puntos{display:flex;justify-content:center;gap:10px;margin-top:22px}
+.puntos i{width:8px;height:8px;border-radius:99px;background:rgba(242,245,240,.25);transition:all .4s}
+.puntos i.on{width:32px;background:var(--oro)}
 
 /* Pregunta */
-.pregunta{padding:120px 0;text-align:center;border-top:1px solid rgba(28,58,46,.1);border-bottom:1px solid rgba(28,58,46,.1)}
-.pregunta h2{font-size:clamp(34px,4.6vw,62px);max-width:18ch;margin:0 auto 44px}
-.opciones{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;max-width:760px;margin:0 auto}
-.opcion{background:transparent;border:1px solid rgba(28,58,46,.3);color:var(--verde);border-radius:999px;padding:14px 24px;font:500 16px var(--sans);cursor:pointer;transition:all .35s}
+.pregunta{padding:150px 0;text-align:center;background:var(--fondo);overflow:hidden}
+.pregunta h2{font-size:clamp(36px,4.8vw,66px);max-width:18ch;margin:20px auto 44px}
+.opciones{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;max-width:780px;margin:0 auto;position:relative;z-index:2}
+.opcion{background:rgba(242,245,240,.04);border:1px solid rgba(242,245,240,.25);color:var(--marfil);border-radius:999px;padding:15px 26px;font:500 16px var(--sans);cursor:pointer;transition:all .35s}
 .opcion:hover{border-color:var(--oro);background:rgba(214,178,108,.12)}
-.opcion.sel{background:var(--verde);color:var(--marfil);border-color:var(--verde)}
-.respuesta{min-height:120px;margin-top:40px}
-.respuesta p{font-family:var(--serif);font-size:clamp(30px,4vw,52px);margin:0;opacity:0;transform:translateY(10px);transition:all .9s ease}
-.respuesta p.on{opacity:1;transform:none}
-.respuesta small{display:block;font-size:15px;color:var(--suave);margin-top:10px;opacity:0;transition:opacity .9s ease .5s}
-.respuesta small.on{opacity:1}
+.opcion.sel{background:var(--oro);color:var(--noche);border-color:var(--oro)}
+.red{max-width:720px;margin:30px auto 0;opacity:.35;transition:opacity 1s}
+.red.on{opacity:1}
+.red svg{width:100%}
+.red .ln{stroke-dasharray:6 8;animation:flujo 1.4s linear infinite}
+@keyframes flujo{to{stroke-dashoffset:-28}}
+.respuesta p{font-family:var(--serif);font-size:clamp(32px,4.2vw,56px);margin:10px 0 0}
+.respuesta small{display:block;font-size:15px;color:var(--suave);margin-top:10px}
+.js .respuesta p,.js .respuesta small{opacity:0;transform:translateY(10px);transition:all .9s}
+.js .respuesta.on p,.js .respuesta.on small{opacity:1;transform:none}
 
-/* Cambio Nyland (verde) */
-.cambio{background:var(--verde);color:var(--marfil);position:relative;overflow:hidden;padding:150px 0}
-.cambio .sello{position:absolute;right:-180px;top:80px;width:720px;opacity:.07;pointer-events:none;animation:girar 120s linear infinite}
-@keyframes girar{to{transform:rotate(360deg)}}
-.cambio h2{font-size:clamp(44px,6vw,84px);max-width:12ch}
-.cambio h2 em{color:var(--oro);font-style:italic}
-.cambio .intro{display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:end;margin-bottom:100px;position:relative}
-.cambio .intro p{color:rgba(242,245,240,.75);font-size:19px;max-width:38ch;margin:0}
-.revela{font-family:var(--serif);font-style:italic;font-size:26px;color:var(--menta);margin:0 0 40px}
-.pasos{position:relative}
-.paso{display:grid;grid-template-columns:120px 1fr 280px;gap:40px;padding:48px 0;border-top:1px solid rgba(214,178,108,.3);align-items:start;transition:filter 1.3s ease, opacity 1.3s ease}
-.js .paso{filter:blur(10px);opacity:.25}
+/* Cambio Nyland */
+.cambio{background:linear-gradient(180deg,var(--verde) 0%,#153023 100%);padding:160px 0;overflow:hidden}
+.cambio .sello{position:absolute;right:-220px;top:60px;width:780px;opacity:.08;pointer-events:none;animation:orbita 140s linear infinite}
+.cambio .intro{display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:end;margin-bottom:90px;position:relative}
+.cambio h2{font-size:clamp(46px,6.2vw,88px);max-width:12ch;margin-top:18px}
+.cambio .intro p{color:var(--suave);font-size:19px;max-width:38ch;margin:0}
+.revela{font-family:var(--serif);font-style:italic;font-size:28px;color:var(--menta);margin:0 0 30px;position:relative}
+.pasos{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;position:relative}
+.paso{background:linear-gradient(160deg,rgba(242,245,240,.07),rgba(242,245,240,.02));border:1px solid rgba(214,178,108,.25);border-radius:28px;padding:40px;position:relative;overflow:hidden;transition:filter 1.3s, opacity 1.3s, transform .5s, border-color .5s}
+.paso:hover{transform:translateY(-6px);border-color:var(--oro)}
+.js .paso{filter:blur(10px);opacity:.3}
 .js .paso.on{filter:none;opacity:1}
-.paso .num{font-family:var(--serif);font-size:72px;line-height:1;color:var(--oro)}
-.paso .tag{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--menta);font-weight:600;display:block;margin-bottom:10px}
-.paso h3{font-size:clamp(30px,3.2vw,44px);margin-bottom:14px}
-.paso p{color:rgba(242,245,240,.75);margin:0;max-width:46ch}
-.paso .extra{font-family:var(--serif);font-style:italic;font-size:21px;line-height:1.35;color:var(--marfil)}
-.mascota-paso{display:flex;align-items:center;gap:14px}
-.mascota-paso img{width:84px;height:84px;border-radius:50%;box-shadow:0 0 0 1px rgba(214,178,108,.5)}
-.mascota-paso span{font-family:var(--serif);font-style:italic;font-size:19px;line-height:1.3}
-.frase-final{margin-top:90px;text-align:center;font-family:var(--serif);font-size:clamp(28px,3.6vw,46px)}
-.frase-final em{color:var(--oro)}
+.paso .num{position:absolute;right:26px;top:10px;font-family:var(--serif);font-size:120px;line-height:1;color:var(--oro);opacity:.12}
+.paso .ico{width:64px;height:64px;margin-bottom:24px}
+.paso .tag{font:600 11px var(--sans);letter-spacing:.28em;text-transform:uppercase;color:var(--menta);display:block;margin-bottom:10px}
+.paso h3{font-size:clamp(28px,2.8vw,38px);margin-bottom:12px}
+.paso p{color:var(--suave);margin:0}
+.paso.destacado{grid-column:1/-1;display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:center;background:linear-gradient(135deg,rgba(214,178,108,.16),rgba(150,225,190,.06))}
+.mascota{display:flex;align-items:center;gap:22px}
+.mascota img{width:170px;height:170px;border-radius:50%;box-shadow:0 0 0 2px rgba(214,178,108,.6),0 20px 50px rgba(0,0,0,.4);animation:flotar 6s ease-in-out infinite}
+.mascota .bocadillo{background:var(--marfil);color:var(--verde);border-radius:20px 20px 20px 4px;padding:16px 20px;font-family:var(--serif);font-style:italic;font-size:22px;line-height:1.25}
+.frase-final{margin-top:100px;text-align:center;font-family:var(--serif);font-size:clamp(28px,3.8vw,50px);position:relative}
 
 /* Antes / Después */
-.ad{padding:150px 0}
-.ad header{text-align:center;margin-bottom:48px}
-.ad h2{font-size:clamp(34px,4.6vw,62px)}
-.comparador{position:relative;max-width:980px;margin:0 auto;aspect-ratio:16/9;border-radius:24px;overflow:hidden;box-shadow:0 30px 80px rgba(28,58,46,.18);user-select:none;touch-action:pan-y}
+.ad{padding:160px 0;background:var(--noche)}
+.ad .cab{text-align:center;margin-bottom:50px}
+.ad h2{font-size:clamp(36px,4.8vw,66px);margin-top:16px}
+.comparador{position:relative;max-width:1040px;margin:0 auto;aspect-ratio:16/9;border-radius:28px;overflow:hidden;box-shadow:0 40px 90px rgba(0,0,0,.5);border:1px solid rgba(214,178,108,.25);user-select:none;touch-action:pan-y}
 .comparador svg{position:absolute;inset:0;width:100%;height:100%}
 .comparador .despues{clip-path:inset(0 0 0 var(--x,50%))}
-.divisor{position:absolute;top:0;bottom:0;left:var(--x,50%);width:2px;background:var(--oro);transform:translateX(-1px);pointer-events:none}
-.divisor::after{content:"⟷";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:50%;background:var(--oro);color:var(--verde);display:grid;place-items:center;font-size:20px;box-shadow:0 6px 20px rgba(0,0,0,.2)}
+.flujo{stroke-dasharray:10 14;animation:flujo 3s linear infinite}
+.divisor{position:absolute;top:0;bottom:0;left:var(--x,50%);width:2px;background:var(--oro);transform:translateX(-1px);pointer-events:none;box-shadow:0 0 20px var(--oro)}
+.divisor::after{content:"⟷";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;border-radius:50%;background:var(--oro);color:var(--noche);display:grid;place-items:center;font-size:22px}
 .comparador input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
-.etq{position:absolute;top:18px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:600;padding:7px 14px;border-radius:999px;pointer-events:none}
-.etq.a{left:18px;background:rgba(28,58,46,.85);color:var(--marfil)}
-.etq.d{right:18px;background:var(--oro);color:var(--verde)}
-.ad .pie{text-align:center;font-family:var(--serif);font-style:italic;font-size:28px;margin-top:36px}
+.etq{position:absolute;top:20px;font:600 11px var(--sans);letter-spacing:.26em;text-transform:uppercase;padding:8px 16px;border-radius:999px;pointer-events:none}
+.etq.a{left:20px;background:rgba(194,91,74,.9);color:#fff}
+.etq.d{right:20px;background:var(--menta);color:var(--noche)}
+.ad .pie{text-align:center;font-family:var(--serif);font-style:italic;font-size:30px;margin-top:40px}
 
 /* Prueba */
-.prueba{padding:40px 0 150px}
+.prueba{padding:0 0 160px;background:var(--noche)}
 .prueba .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.carta{border:1px solid rgba(214,178,108,.55);border-radius:20px;padding:44px;background:rgba(255,255,255,.4)}
-.carta .eyebrow{display:block;margin-bottom:18px}
-.carta p{font-family:var(--serif);font-size:clamp(24px,2.4vw,32px);line-height:1.25;margin:0}
-.pulso{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--menta);margin-right:10px;box-shadow:0 0 0 0 rgba(150,225,190,.7);animation:pulso 2.4s infinite}
-@keyframes pulso{70%{box-shadow:0 0 0 12px rgba(150,225,190,0)}100%{box-shadow:0 0 0 0 rgba(150,225,190,0)}}
+.carta{border:1px solid rgba(214,178,108,.35);border-radius:28px;padding:46px;background:linear-gradient(160deg,rgba(36,74,58,.6),rgba(11,29,21,.4))}
+.carta .eyebrow{margin-bottom:18px}
+.carta p{font-family:var(--serif);font-size:clamp(25px,2.5vw,34px);line-height:1.25;margin:0}
+.pulso{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--menta);animation:pulso 2.4s infinite}
+@keyframes pulso{0%{box-shadow:0 0 0 0 rgba(150,225,190,.7)}70%{box-shadow:0 0 0 14px rgba(150,225,190,0)}100%{box-shadow:0 0 0 0 rgba(150,225,190,0)}}
 
-/* CTA cierre */
-.cierre{background:var(--verde);color:var(--marfil);text-align:center;padding:150px 0}
-.cierre h2{font-size:clamp(36px,5vw,70px);max-width:18ch;margin:0 auto 40px}
-.cierre .micro{color:rgba(242,245,240,.65)}
+/* Cierre en oro */
+.cierre{background:radial-gradient(ellipse at 50% 0%,var(--oro-c),var(--oro) 60%,#b8954f);color:var(--noche);text-align:center;padding:160px 0;overflow:hidden}
+.cierre .globo{width:900px;aspect-ratio:1;left:50%;top:50%;transform:translate(-50%,-50%);opacity:.18}
+.cierre h2{position:relative;font-size:clamp(38px,5.2vw,74px);max-width:17ch;margin:0 auto 44px}
+.cierre .micro{color:rgba(11,29,21,.7);position:relative}
+.cierre .btn{position:relative}
 
 /* FAQ */
-.faq{padding:150px 0}
+.faq{padding:160px 0;background:var(--fondo)}
 .faq .grid{display:grid;grid-template-columns:1fr 1.6fr;gap:80px}
-.faq h2{font-size:clamp(36px,4.6vw,62px);position:sticky;top:120px}
-details{border-bottom:1px solid rgba(28,58,46,.15);padding:6px 0}
-summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:24px;align-items:center;padding:22px 0;font-family:var(--serif);font-size:clamp(22px,2.2vw,28px)}
+.faq h2{font-size:clamp(38px,4.8vw,64px);position:sticky;top:120px}
+details{border-bottom:1px solid rgba(242,245,240,.12);padding:6px 0}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:24px;align-items:center;padding:22px 0;font-family:var(--serif);font-size:clamp(22px,2.2vw,29px)}
 summary::-webkit-details-marker{display:none}
-summary::after{content:"+";font-family:var(--sans);font-weight:400;font-size:26px;color:var(--oro);transition:transform .35s}
+summary::after{content:"+";font:300 28px var(--sans);color:var(--oro);transition:transform .35s}
 details[open] summary::after{transform:rotate(45deg)}
 details p{margin:0 0 24px;color:var(--suave);max-width:56ch}
-.faq-mascota{display:flex;align-items:flex-end;gap:16px;margin:0 0 26px;animation:asomar .9s ease both}
-.faq-mascota img{width:92px;height:92px;border-radius:50%;flex:none}
-.bocadillo{position:relative;background:var(--verde);color:var(--marfil);border-radius:18px 18px 18px 4px;padding:14px 18px;font-family:var(--serif);font-style:italic;font-size:20px;line-height:1.3}
+.faq-mascota{display:flex;align-items:flex-end;gap:16px;margin:0 0 24px;animation:asomar .9s ease both}
+.faq-mascota img{width:96px;height:96px;border-radius:50%;flex:none;box-shadow:0 0 0 2px rgba(214,178,108,.5)}
+.faq-mascota .bocadillo{background:var(--marfil);color:var(--verde);border-radius:18px 18px 18px 4px;padding:14px 18px;font-family:var(--serif);font-style:italic;font-size:20px;line-height:1.3}
 @keyframes asomar{from{opacity:0;transform:translateX(-24px) rotate(-6deg)}to{opacity:1;transform:none}}
 
 /* Pie */
-footer{background:var(--verde-2);color:rgba(242,245,240,.75);padding:70px 0 40px;font-size:14px}
+footer{background:var(--noche);color:var(--suave);padding:80px 0 40px;font-size:14px;border-top:1px solid rgba(214,178,108,.15)}
 footer .grid{display:flex;flex-wrap:wrap;justify-content:space-between;gap:32px;align-items:center}
-footer .brand span{color:var(--marfil)}
-footer .lema{font-family:var(--serif);font-style:italic;font-size:26px;color:var(--oro)}
+footer .lema{font-family:var(--serif);font-style:italic;font-size:30px;color:var(--oro)}
 footer nav{display:flex;flex-wrap:wrap;gap:22px}
 footer nav a{text-decoration:none;border-bottom:1px solid rgba(214,178,108,.4)}
-footer .legal{margin-top:40px;padding-top:24px;border-top:1px solid rgba(242,245,240,.1);font-size:12px;color:rgba(242,245,240,.5)}
+footer .legal{margin-top:40px;padding-top:24px;border-top:1px solid rgba(242,245,240,.08);font-size:12px;color:rgba(242,245,240,.45)}
 
-/* Modal formulario */
-.modal{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:16px;background:rgba(18,38,29,.55);backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:opacity .4s}
+/* Modal */
+.modal{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:16px;background:rgba(5,14,10,.7);backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:opacity .4s}
 .modal.open{opacity:1;pointer-events:auto}
-.panel{background:var(--marfil) var(--grano);width:100%;max-width:560px;max-height:92svh;overflow:auto;border-radius:24px;padding:40px;position:relative;transform:translateY(20px);transition:transform .5s}
+.panel{background:linear-gradient(160deg,var(--verde),var(--fondo));border:1px solid rgba(214,178,108,.35);width:100%;max-width:560px;max-height:92svh;overflow:auto;border-radius:28px;padding:40px;position:relative;transform:translateY(20px);transition:transform .5s}
 .modal.open .panel{transform:none}
-.cerrar{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(28,58,46,.2);background:transparent;font-size:20px;cursor:pointer;color:var(--verde)}
-.panel h2{font-size:38px;margin-bottom:6px}
+.cerrar{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(242,245,240,.25);background:transparent;font-size:20px;cursor:pointer;color:var(--marfil)}
+.panel h2{font-size:40px;margin:10px 0 6px}
 .panel form{display:grid;gap:16px;margin-top:26px}
-label{font-size:13px;font-weight:600;letter-spacing:.02em;display:grid;gap:6px}
+label{font-size:13px;font-weight:600;display:grid;gap:6px}
 label .opt{font-weight:400;color:var(--suave)}
-input,select,textarea{font:16px var(--sans);color:var(--tinta);background:#fff;border:1px solid rgba(28,58,46,.2);border-radius:12px;padding:13px 14px;width:100%}
+input,select,textarea{font:16px var(--sans);color:var(--marfil);background:rgba(242,245,240,.06);border:1px solid rgba(242,245,240,.2);border-radius:12px;padding:13px 14px;width:100%}
+select option{color:#111}
 input:focus,select:focus,textarea:focus{outline:2px solid var(--oro);outline-offset:1px;border-color:transparent}
 textarea{min-height:84px;resize:vertical}
-.check{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:13px;color:var(--suave)}
-.check input{width:18px;height:18px;margin-top:2px;flex:none;accent-color:var(--verde)}
-.error{color:#a33c2c;font-size:13px;min-height:18px;margin:0}
+.check{display:flex;gap:10px;align-items:flex-start;font-weight:400;color:var(--suave)}
+.check input{width:18px;height:18px;margin-top:2px;flex:none;accent-color:var(--oro)}
+.error{color:#f0a090;font-size:13px;min-height:18px;margin:0}
 .panel .btn{justify-content:center;width:100%}
 .demo{font-size:12px;color:var(--suave);text-align:center;margin:6px 0 0}
 .ok{text-align:center;display:none}
-.ok img{width:140px;height:140px;border-radius:50%;margin:0 auto 18px;animation:saludo 1.6s ease-in-out}
-@keyframes saludo{0%{transform:scale(.6) rotate(-10deg);opacity:0}40%{transform:scale(1.05) rotate(6deg);opacity:1}60%{transform:rotate(-4deg)}80%{transform:rotate(2deg)}100%{transform:none}}
-.ok h2{margin-bottom:12px}
+.ok img{width:150px;height:150px;border-radius:50%;margin:0 auto 18px;box-shadow:0 0 0 2px var(--oro);animation:saludo 1.6s ease-in-out}
+@keyframes saludo{0%{transform:scale(.6) rotate(-10deg);opacity:0}40%{transform:scale(1.05) rotate(6deg);opacity:1}60%{transform:rotate(-4deg)}100%{transform:none}}
 
 /* Responsive */
 @media (max-width:900px){
   body{font-size:16px}
-  .hero{padding:40px 0 100px}
-  .hero .grid,.dolores header,.cols,.cambio .intro,.faq .grid,.prueba .grid{grid-template-columns:1fr;gap:36px}
-  .col:nth-child(2){margin-top:0}
-  .paso{grid-template-columns:1fr;gap:14px;padding:36px 0}
-  .paso .num{font-size:52px}
-  .mascota-paso{display:none}
-  .cambio,.ad,.faq,.cierre{padding:100px 0}
-  .cambio .sello{width:460px;right:-200px;top:40px}
+  .hero{padding:90px 0 110px}
+  .hero .grid,.dolores .cab,.cols,.cambio .intro,.faq .grid,.prueba .grid,.pasos,.paso.destacado{grid-template-columns:1fr;gap:28px}
+  .sello-hero{max-width:300px;margin:20px auto 0}
+  .col:nth-child(2){transform:none}
+  .col,.paso,.carta{padding:28px}
+  .mascota img{width:110px;height:110px}
+  .dolores,.carrusel,.cambio,.ad,.faq,.cierre,.pregunta{padding:110px 0}
+  .prueba{padding:0 0 110px}
+  .cambio .sello{width:480px;right:-220px}
   .faq h2{position:static}
   .comparador{aspect-ratio:4/3}
   header .btn{display:none}
-  .carta{padding:30px}
   .panel{padding:30px 22px}
+  .flechas{display:none}
 }
 @media (max-width:420px){.wrap{padding:0 16px}.btn{padding:16px 22px}}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
-  .rv,.paso,.apertura h1 .w{opacity:1!important;filter:none!important;transform:none!important}
+  .js .rv,.js .paso,.js .apertura h1 .w,.js .respuesta p,.js .respuesta small{opacity:1!important;filter:none!important;transform:none!important}
 }
 </style>
 </head>
 <body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="globo" viewBox="-220 -220 440 440">
+    <circle r="200" fill="none" stroke="#96E1BE" stroke-opacity=".55" stroke-width="2"/>
+    <ellipse rx="160" ry="22" cy="-120" fill="none" stroke="#96E1BE" stroke-opacity=".35"/>
+    <ellipse rx="190" ry="30" cy="-60" fill="none" stroke="#96E1BE" stroke-opacity=".35"/>
+    <ellipse rx="200" ry="34" cy="0" fill="none" stroke="#D6B26C" stroke-opacity=".6" stroke-width="1.5"/>
+    <ellipse rx="190" ry="30" cy="60" fill="none" stroke="#96E1BE" stroke-opacity=".35"/>
+    <ellipse rx="160" ry="22" cy="120" fill="none" stroke="#96E1BE" stroke-opacity=".35"/>
+    <ellipse class="mer" rx="200" ry="200" fill="none" stroke="#96E1BE" stroke-opacity=".45" style="animation-delay:0s"/>
+    <ellipse class="mer" rx="200" ry="200" fill="none" stroke="#96E1BE" stroke-opacity=".45" style="animation-delay:-2s"/>
+    <ellipse class="mer" rx="200" ry="200" fill="none" stroke="#96E1BE" stroke-opacity=".45" style="animation-delay:-4s"/>
+    <ellipse class="mer" rx="200" ry="200" fill="none" stroke="#96E1BE" stroke-opacity=".45" style="animation-delay:-6s"/>
+    <ellipse class="mer" rx="200" ry="200" fill="none" stroke="#D6B26C" stroke-opacity=".55" style="animation-delay:-8s"/>
+    <ellipse class="mer" rx="200" ry="200" fill="none" stroke="#96E1BE" stroke-opacity=".45" style="animation-delay:-10s"/>
+    <ellipse class="mer" rx="200" ry="200" fill="none" stroke="#96E1BE" stroke-opacity=".45" style="animation-delay:-12s"/>
+    <ellipse class="mer" rx="200" ry="200" fill="none" stroke="#96E1BE" stroke-opacity=".45" style="animation-delay:-14s"/>
+    <g class="orbita"><ellipse rx="215" ry="60" fill="none" stroke="#D6B26C" stroke-opacity=".5" transform="rotate(-18)"/><circle cx="204" cy="-66" r="5" fill="#D6B26C"/></g>
+    <circle class="nodo" cx="-120" cy="-60" r="4" fill="#D6B26C"/>
+    <circle class="nodo" cx="90" cy="60" r="4" fill="#96E1BE" style="animation-delay:-1s"/>
+    <circle class="nodo" cx="40" cy="-120" r="4" fill="#D6B26C" style="animation-delay:-2s"/>
+    <circle class="nodo" cx="-60" cy="120" r="4" fill="#96E1BE" style="animation-delay:-.5s"/>
+  </symbol>
+</svg>
 
 <header class="top" id="top">
   <div class="wrap">
@@ -237,8 +311,8 @@ textarea{min-height:84px;resize:vertical}
 
 <main id="inicio">
 
-  <!-- 1 · Apertura -->
   <section class="apertura" id="apertura">
+    <div class="globo" aria-hidden="true"><svg><use href="#globo"/></svg></div>
     <div>
       <h1 id="frase">Tu empresa ya sabe lo que le pasa. <em>Nadie le ha preguntado.</em></h1>
       <p class="sub">Nyland Consulting · Sigue siendo tú</p>
@@ -246,189 +320,211 @@ textarea{min-height:84px;resize:vertical}
     <span class="bajar" aria-hidden="true"></span>
   </section>
 
-  <!-- 2 · Hero -->
   <section class="hero">
     <div class="wrap grid">
       <div class="rv">
         <span class="eyebrow">Consultoría de procesos e inteligencia artificial</span>
-        <h2 style="margin-top:18px">Recupera el tiempo que tu empresa pierde en lo que <em>no es su oficio.</em></h2>
+        <h2>Recupera el tiempo que tu empresa pierde en lo que <em>no es su oficio.</em></h2>
         <p class="lead">Entramos, escuchamos a cada persona de tu equipo y transformamos tus procesos con inteligencia artificial. Sin perder lo que te hace único.</p>
         <button class="btn" data-abrir>Solicitar un diagnóstico <span class="arrow">→</span></button>
         <p class="micro">Sin compromiso · 15 minutos · Directamente con el consultor</p>
         <p class="confianza">Primero entendemos tu empresa. Después, proponemos.</p>
       </div>
-      <aside class="nota rv">Lo que no se entiende, no se puede automatizar.</aside>
+      <div class="sello-hero" aria-hidden="true">
+        <div class="halo"></div><div class="anillo b"></div><div class="anillo"></div>
+        <img src="assets/logo-nyland-consulting-web.png" alt="">
+      </div>
     </div>
   </section>
 
-  <!-- 3 · Dolores -->
+  <div class="banda" aria-hidden="true"><div class="pista">
+    <span>Escucha <i>✦</i> Transforma <i>✦</i> Crece <i>✦</i> Sigue siendo tú <i>✦</i> Escucha <i>✦</i> Transforma <i>✦</i> Crece <i>✦</i> Sigue siendo tú <i>✦</i></span>
+    <span>Escucha <i>✦</i> Transforma <i>✦</i> Crece <i>✦</i> Sigue siendo tú <i>✦</i> Escucha <i>✦</i> Transforma <i>✦</i> Crece <i>✦</i> Sigue siendo tú <i>✦</i></span>
+  </div></div>
+
   <section class="dolores">
+    <div class="rejilla" aria-hidden="true"></div>
     <div class="wrap">
-      <header>
+      <div class="cab">
         <h2 class="rv">¿Te suena alguna de estas frases?</h2>
-        <p class="muted rv" style="margin:0;max-width:40ch">Nos las dicen dueños y gerentes que llevan años haciendo bien su trabajo. El problema nunca es el oficio. Es todo lo que lo rodea.</p>
-      </header>
-      <div class="linea" style="margin-bottom:40px"></div>
+        <p class="rv">Nos las dicen dueños y gerentes que llevan años haciendo bien su trabajo. El problema nunca es el oficio. Es todo lo que lo rodea.</p>
+      </div>
       <div class="cols">
-        <div class="col">
+        <div class="col rv">
           <h3>Clínicas dentales</h3>
-          <p class="cita rv">Hacemos presupuestos de implantes que nadie vuelve a llamar.</p>
-          <p class="cita rv">Recepción no da abasto entre el teléfono y los pacientes que tiene delante.</p>
-          <p class="cita rv">Los pacientes no vienen a la cita y nos enteramos tarde.</p>
+          <p class="cita"><b>“</b>Hacemos presupuestos de implantes que nadie vuelve a llamar.</p>
+          <p class="cita"><b>“</b>Recepción no da abasto entre el teléfono y los pacientes que tiene delante.</p>
+          <p class="cita"><b>“</b>Los pacientes no vienen a la cita y nos enteramos tarde.</p>
         </div>
-        <div class="col">
+        <div class="col rv">
           <h3>Rehabilitación de fachadas</h3>
-          <p class="cita rv">Mando presupuestos y luego no tengo tiempo de perseguirlos.</p>
-          <p class="cita rv">Me paso el día al teléfono coordinando cuadrillas.</p>
-          <p class="cita rv">Las juntas de vecinos tardan meses y pierdo la pista de cada una.</p>
+          <p class="cita"><b>“</b>Mando presupuestos y luego no tengo tiempo de perseguirlos.</p>
+          <p class="cita"><b>“</b>Me paso el día al teléfono coordinando cuadrillas.</p>
+          <p class="cita"><b>“</b>Las juntas de vecinos tardan meses y pierdo la pista de cada una.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 4 · Pregunta interactiva -->
+  <section class="carrusel" id="carrusel">
+    <div class="wrap cab">
+      <div>
+        <span class="eyebrow">Así trabajamos</span>
+        <h2 class="rv">Ingeniería de procesos, con mirada humana.</h2>
+      </div>
+      <div class="flechas"><button data-dir="-1" aria-label="Anterior">←</button><button data-dir="1" aria-label="Siguiente">→</button></div>
+    </div>
+    <div class="pista-c" id="pistaC">
+      <figure class="diapo"><div class="img"><svg viewBox="0 0 800 520" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><defs><radialGradient id="bg1" cx="30%" cy="20%" r="90%"><stop offset="0" stop-color="#1f4434"/><stop offset="1" stop-color="#0f241b"/></radialGradient><pattern id="gr1" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity=".04"/></pattern></defs><rect width="800" height="520" fill="url(#bg1)"/><rect width="800" height="520" fill="url(#gr1)"/><rect x="80" y="90" width="190" height="86" rx="14" fill="#173326" stroke="#D6B26C" stroke-opacity=".7"/><text x="175" y="140" text-anchor="middle" font-family="Inter,Arial" font-size="20" fill="#F2F5F0">Entrada</text><rect x="300" y="90" width="190" height="86" rx="14" fill="#173326" stroke="#D6B26C" stroke-opacity=".7"/><text x="395" y="140" text-anchor="middle" font-family="Inter,Arial" font-size="20" fill="#F2F5F0">Presupuesto</text><rect x="520" y="90" width="190" height="86" rx="14" fill="#173326" stroke="#D6B26C" stroke-opacity=".7"/><text x="615" y="140" text-anchor="middle" font-family="Inter,Arial" font-size="20" fill="#F2F5F0">Seguimiento</text><rect x="300" y="260" width="190" height="86" rx="14" fill="#173326" stroke="#D6B26C" stroke-opacity=".7"/><text x="395" y="310" text-anchor="middle" font-family="Inter,Arial" font-size="20" fill="#F2F5F0">Agenda</text><rect x="520" y="260" width="190" height="86" rx="14" fill="#173326" stroke="#D6B26C" stroke-opacity=".7"/><text x="615" y="310" text-anchor="middle" font-family="Inter,Arial" font-size="20" fill="#F2F5F0">Cobro</text><rect x="80" y="260" width="190" height="86" rx="14" fill="#173326" stroke="#D6B26C" stroke-opacity=".7"/><text x="175" y="310" text-anchor="middle" font-family="Inter,Arial" font-size="20" fill="#F2F5F0">Equipo</text><line x1="270" y1="133" x2="300" y2="133" stroke="#96E1BE" stroke-width="3" stroke-dasharray="8 8"><animate attributeName="stroke-dashoffset" from="32" to="0" dur="1.5s" repeatCount="indefinite"/></line><line x1="490" y1="133" x2="520" y2="133" stroke="#96E1BE" stroke-width="3" stroke-dasharray="8 8"><animate attributeName="stroke-dashoffset" from="32" to="0" dur="1.5s" repeatCount="indefinite"/></line><line x1="395" y1="176" x2="395" y2="260" stroke="#96E1BE" stroke-width="3" stroke-dasharray="8 8"><animate attributeName="stroke-dashoffset" from="32" to="0" dur="1.5s" repeatCount="indefinite"/></line><line x1="490" y1="303" x2="520" y2="303" stroke="#96E1BE" stroke-width="3" stroke-dasharray="8 8"><animate attributeName="stroke-dashoffset" from="32" to="0" dur="1.5s" repeatCount="indefinite"/></line><line x1="175" y1="260" x2="175" y2="176" stroke="#96E1BE" stroke-width="3" stroke-dasharray="8 8"><animate attributeName="stroke-dashoffset" from="32" to="0" dur="1.5s" repeatCount="indefinite"/></line><line x1="270" y1="303" x2="300" y2="303" stroke="#96E1BE" stroke-width="3" stroke-dasharray="8 8"><animate attributeName="stroke-dashoffset" from="32" to="0" dur="1.5s" repeatCount="indefinite"/></line><circle cx="704" cy="92" r="16" fill="#c25b4a"/><text x="704" y="99" text-anchor="middle" font-family="Inter,Arial" font-weight="700" font-size="20" fill="#fff">!</text><rect x="80" y="400" width="630" height="54" rx="27" fill="none" stroke="#D6B26C" stroke-opacity=".5"/><text x="395" y="434" text-anchor="middle" font-family="Inter,Arial" font-size="18" fill="#D6B26C">Aquí se pierden 4 de cada 10 presupuestos (ejemplo ilustrativo)</text></svg></div><figcaption><span class="n">01 · MAPA DE PROCESOS</span><h3>Dibujamos cómo funciona de verdad</h3><p>Cada paso, de la primera llamada al cobro. Y marcamos dónde se pierde el tiempo y el dinero.</p></figcaption></figure>
+      <figure class="diapo"><div class="img"><svg viewBox="0 0 800 520" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><defs><radialGradient id="bg2" cx="30%" cy="20%" r="90%"><stop offset="0" stop-color="#1f4434"/><stop offset="1" stop-color="#0f241b"/></radialGradient><pattern id="gr2" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity=".04"/></pattern></defs><rect width="800" height="520" fill="url(#bg2)"/><rect width="800" height="520" fill="url(#gr2)"/><line x1="150" y1="140" x2="400" y2="260" stroke="#D6B26C" stroke-opacity=".6" stroke-width="2" stroke-dasharray="6 7"><animate attributeName="stroke-dashoffset" from="26" to="0" dur="1.2s" repeatCount="indefinite"/></line><line x1="650" y1="140" x2="400" y2="260" stroke="#D6B26C" stroke-opacity=".6" stroke-width="2" stroke-dasharray="6 7"><animate attributeName="stroke-dashoffset" from="26" to="0" dur="1.2s" repeatCount="indefinite"/></line><line x1="150" y1="390" x2="400" y2="260" stroke="#D6B26C" stroke-opacity=".6" stroke-width="2" stroke-dasharray="6 7"><animate attributeName="stroke-dashoffset" from="26" to="0" dur="1.2s" repeatCount="indefinite"/></line><line x1="650" y1="390" x2="400" y2="260" stroke="#D6B26C" stroke-opacity=".6" stroke-width="2" stroke-dasharray="6 7"><animate attributeName="stroke-dashoffset" from="26" to="0" dur="1.2s" repeatCount="indefinite"/></line><line x1="400" y1="460" x2="400" y2="260" stroke="#D6B26C" stroke-opacity=".6" stroke-width="2" stroke-dasharray="6 7"><animate attributeName="stroke-dashoffset" from="26" to="0" dur="1.2s" repeatCount="indefinite"/></line><circle cx="150" cy="126" r="22" fill="#96E1BE" fill-opacity=".9"/><path d="M116 180 q34 -52 68 0z" fill="#96E1BE" fill-opacity=".9"/><text x="150" y="210" text-anchor="middle" font-family="Inter,Arial" font-size="17" fill="#F2F5F0">Dirección</text><rect x="176" y="78" width="52" height="32" rx="10" fill="#F2F5F0"/><text x="202" y="100" text-anchor="middle" font-size="18" fill="#1C3A2E">…</text><circle cx="650" cy="126" r="22" fill="#96E1BE" fill-opacity=".9"/><path d="M616 180 q34 -52 68 0z" fill="#96E1BE" fill-opacity=".9"/><text x="650" y="210" text-anchor="middle" font-family="Inter,Arial" font-size="17" fill="#F2F5F0">Recepción</text><rect x="676" y="78" width="52" height="32" rx="10" fill="#F2F5F0"/><text x="702" y="100" text-anchor="middle" font-size="18" fill="#1C3A2E">…</text><circle cx="150" cy="376" r="22" fill="#96E1BE" fill-opacity=".9"/><path d="M116 430 q34 -52 68 0z" fill="#96E1BE" fill-opacity=".9"/><text x="150" y="460" text-anchor="middle" font-family="Inter,Arial" font-size="17" fill="#F2F5F0">Comercial</text><rect x="176" y="328" width="52" height="32" rx="10" fill="#F2F5F0"/><text x="202" y="350" text-anchor="middle" font-size="18" fill="#1C3A2E">…</text><circle cx="650" cy="376" r="22" fill="#96E1BE" fill-opacity=".9"/><path d="M616 430 q34 -52 68 0z" fill="#96E1BE" fill-opacity=".9"/><text x="650" y="460" text-anchor="middle" font-family="Inter,Arial" font-size="17" fill="#F2F5F0">Limpieza</text><rect x="676" y="328" width="52" height="32" rx="10" fill="#F2F5F0"/><text x="702" y="350" text-anchor="middle" font-size="18" fill="#1C3A2E">…</text><circle cx="400" cy="446" r="22" fill="#96E1BE" fill-opacity=".9"/><path d="M366 500 q34 -52 68 0z" fill="#96E1BE" fill-opacity=".9"/><text x="400" y="530" text-anchor="middle" font-family="Inter,Arial" font-size="17" fill="#F2F5F0">Producción</text><rect x="426" y="398" width="52" height="32" rx="10" fill="#F2F5F0"/><text x="452" y="420" text-anchor="middle" font-size="18" fill="#1C3A2E">…</text><circle cx="400" cy="260" r="62" fill="#1C3A2E" stroke="#D6B26C" stroke-width="3"/><text x="400" y="278" text-anchor="middle" font-family="Georgia,serif" font-size="54" fill="#D6B26C">N</text></svg></div><figcaption><span class="n">02 · ESCUCHA</span><h3>Hablamos con todo el equipo</h3><p>Dirección, recepción, comerciales, producción y limpieza. Quien vive el problema es quien mejor lo conoce.</p></figcaption></figure>
+      <figure class="diapo"><div class="img"><svg viewBox="0 0 800 520" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><defs><radialGradient id="bg3" cx="30%" cy="20%" r="90%"><stop offset="0" stop-color="#1f4434"/><stop offset="1" stop-color="#0f241b"/></radialGradient><pattern id="gr3" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity=".04"/></pattern></defs><rect width="800" height="520" fill="url(#bg3)"/><rect width="800" height="520" fill="url(#gr3)"/><text x="60" y="150" font-family="Inter,Arial" font-size="18" fill="#F2F5F0">Atención</text><rect x="240" y="122" width="74" height="48" rx="8" fill="#c25b4a" fill-opacity=".9"/><rect x="324" y="122" width="74" height="48" rx="8" fill="#7a8f5a" fill-opacity=".9"/><rect x="408" y="122" width="74" height="48" rx="8" fill="#d98a4f" fill-opacity=".9"/><rect x="492" y="122" width="74" height="48" rx="8" fill="#2f5d49" fill-opacity=".9"/><rect x="576" y="122" width="74" height="48" rx="8" fill="#D6B26C" fill-opacity=".9"/><rect x="660" y="122" width="74" height="48" rx="8" fill="#c25b4a" fill-opacity=".9"/><text x="60" y="212" font-family="Inter,Arial" font-size="18" fill="#F2F5F0">Ventas</text><rect x="240" y="184" width="74" height="48" rx="8" fill="#D6B26C" fill-opacity=".9"/><rect x="324" y="184" width="74" height="48" rx="8" fill="#c25b4a" fill-opacity=".9"/><rect x="408" y="184" width="74" height="48" rx="8" fill="#7a8f5a" fill-opacity=".9"/><rect x="492" y="184" width="74" height="48" rx="8" fill="#d98a4f" fill-opacity=".9"/><rect x="576" y="184" width="74" height="48" rx="8" fill="#2f5d49" fill-opacity=".9"/><rect x="660" y="184" width="74" height="48" rx="8" fill="#D6B26C" fill-opacity=".9"/><text x="60" y="274" font-family="Inter,Arial" font-size="18" fill="#F2F5F0">Operaciones</text><rect x="240" y="246" width="74" height="48" rx="8" fill="#7a8f5a" fill-opacity=".9"/><rect x="324" y="246" width="74" height="48" rx="8" fill="#d98a4f" fill-opacity=".9"/><rect x="408" y="246" width="74" height="48" rx="8" fill="#2f5d49" fill-opacity=".9"/><rect x="492" y="246" width="74" height="48" rx="8" fill="#D6B26C" fill-opacity=".9"/><rect x="576" y="246" width="74" height="48" rx="8" fill="#c25b4a" fill-opacity=".9"/><rect x="660" y="246" width="74" height="48" rx="8" fill="#7a8f5a" fill-opacity=".9"/><text x="60" y="336" font-family="Inter,Arial" font-size="18" fill="#F2F5F0">Administración</text><rect x="240" y="308" width="74" height="48" rx="8" fill="#d98a4f" fill-opacity=".9"/><rect x="324" y="308" width="74" height="48" rx="8" fill="#7a8f5a" fill-opacity=".9"/><rect x="408" y="308" width="74" height="48" rx="8" fill="#D6B26C" fill-opacity=".9"/><rect x="492" y="308" width="74" height="48" rx="8" fill="#c25b4a" fill-opacity=".9"/><rect x="576" y="308" width="74" height="48" rx="8" fill="#D6B26C" fill-opacity=".9"/><rect x="660" y="308" width="74" height="48" rx="8" fill="#d98a4f" fill-opacity=".9"/><text x="60" y="398" font-family="Inter,Arial" font-size="18" fill="#F2F5F0">Personas</text><rect x="240" y="370" width="74" height="48" rx="8" fill="#D6B26C" fill-opacity=".9"/><rect x="324" y="370" width="74" height="48" rx="8" fill="#D6B26C" fill-opacity=".9"/><rect x="408" y="370" width="74" height="48" rx="8" fill="#D6B26C" fill-opacity=".9"/><rect x="492" y="370" width="74" height="48" rx="8" fill="#d98a4f" fill-opacity=".9"/><rect x="576" y="370" width="74" height="48" rx="8" fill="#d98a4f" fill-opacity=".9"/><rect x="660" y="370" width="74" height="48" rx="8" fill="#d98a4f" fill-opacity=".9"/><text x="60" y="80" font-family="Georgia,serif" font-size="30" fill="#D6B26C">Dónde duele, departamento a departamento</text></svg></div><figcaption><span class="n">03 · DIAGNÓSTICO</span><h3>Departamento a departamento</h3><p>Un mapa claro de dónde duele más, para atacar primero lo que más alivia.</p></figcaption></figure>
+      <figure class="diapo"><div class="img"><svg viewBox="0 0 800 520" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><defs><radialGradient id="bg4" cx="30%" cy="20%" r="90%"><stop offset="0" stop-color="#1f4434"/><stop offset="1" stop-color="#0f241b"/></radialGradient><pattern id="gr4" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity=".04"/></pattern></defs><rect width="800" height="520" fill="url(#bg4)"/><rect width="800" height="520" fill="url(#gr4)"/><path d="M120 260 C210.0 260 210.0 130 300 130" stroke="#D6B26C" stroke-width="2.5" fill="none" stroke-opacity=".7"/><circle r="6" fill="#96E1BE"><animateMotion dur="2.0s" repeatCount="indefinite" path="M120 260 C210.0 260 210.0 130 300 130"/></circle><path d="M120 260 C210.0 260 210.0 390 300 390" stroke="#D6B26C" stroke-width="2.5" fill="none" stroke-opacity=".7"/><circle r="6" fill="#96E1BE"><animateMotion dur="2.0s" repeatCount="indefinite" path="M120 260 C210.0 260 210.0 390 300 390"/></circle><path d="M300 130 C410.0 130 410.0 260 520 260" stroke="#D6B26C" stroke-width="2.5" fill="none" stroke-opacity=".7"/><circle r="6" fill="#96E1BE"><animateMotion dur="2.3s" repeatCount="indefinite" path="M300 130 C410.0 130 410.0 260 520 260"/></circle><path d="M300 390 C410.0 390 410.0 260 520 260" stroke="#D6B26C" stroke-width="2.5" fill="none" stroke-opacity=".7"/><circle r="6" fill="#96E1BE"><animateMotion dur="2.6s" repeatCount="indefinite" path="M300 390 C410.0 390 410.0 260 520 260"/></circle><path d="M520 260 C610.0 260 610.0 140 700 140" stroke="#D6B26C" stroke-width="2.5" fill="none" stroke-opacity=".7"/><circle r="6" fill="#96E1BE"><animateMotion dur="2.9s" repeatCount="indefinite" path="M520 260 C610.0 260 610.0 140 700 140"/></circle><path d="M520 260 C610.0 260 610.0 380 700 380" stroke="#D6B26C" stroke-width="2.5" fill="none" stroke-opacity=".7"/><circle r="6" fill="#96E1BE"><animateMotion dur="2.9s" repeatCount="indefinite" path="M520 260 C610.0 260 610.0 380 700 380"/></circle><circle cx="120" cy="260" r="44" fill="#173326" stroke="#96E1BE" stroke-width="2"/><text x="120" y="266" text-anchor="middle" font-family="Inter,Arial" font-size="15" font-weight="600" fill="#F2F5F0">WhatsApp</text><circle cx="300" cy="130" r="44" fill="#173326" stroke="#96E1BE" stroke-width="2"/><text x="300" y="136" text-anchor="middle" font-family="Inter,Arial" font-size="15" font-weight="600" fill="#F2F5F0">Agenda</text><circle cx="300" cy="390" r="44" fill="#173326" stroke="#96E1BE" stroke-width="2"/><text x="300" y="396" text-anchor="middle" font-family="Inter,Arial" font-size="15" font-weight="600" fill="#F2F5F0">Email</text><circle cx="520" cy="260" r="58" fill="#1C3A2E" stroke="#D6B26C" stroke-width="3"/><text x="520" y="266" text-anchor="middle" font-family="Inter,Arial" font-size="17" font-weight="600" fill="#D6B26C">IA Nyland</text><circle cx="700" cy="140" r="44" fill="#173326" stroke="#96E1BE" stroke-width="2"/><text x="700" y="146" text-anchor="middle" font-family="Inter,Arial" font-size="15" font-weight="600" fill="#F2F5F0">CRM</text><circle cx="700" cy="380" r="44" fill="#173326" stroke="#96E1BE" stroke-width="2"/><text x="700" y="386" text-anchor="middle" font-family="Inter,Arial" font-size="15" font-weight="600" fill="#F2F5F0">Facturas</text></svg></div><figcaption><span class="n">04 · TRANSFORMA</span><h3>Todo conectado, sin cambiar tu forma de trabajar</h3><p>Mensajes, agenda, email y facturas pueden conectarse entre sí, según la configuración de cada empresa.</p></figcaption></figure>
+      <figure class="diapo"><div class="img"><svg viewBox="0 0 800 520" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><defs><radialGradient id="bg5" cx="30%" cy="20%" r="90%"><stop offset="0" stop-color="#1f4434"/><stop offset="1" stop-color="#0f241b"/></radialGradient><pattern id="gr5" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity=".04"/></pattern></defs><rect width="800" height="520" fill="url(#bg5)"/><rect width="800" height="520" fill="url(#gr5)"/><rect x="60" y="60" width="680" height="400" rx="20" fill="#122b20" stroke="#D6B26C" stroke-opacity=".4"/><text x="96" y="110" font-family="Georgia,serif" font-size="28" fill="#F2F5F0">Panel de seguimiento</text><text x="96" y="138" font-family="Inter,Arial" font-size="14" fill="#96E1BE">Datos de ejemplo</text><rect x="96" y="164" width="196" height="96" rx="12" fill="#1C3A2E"/><text x="112" y="196" font-family="Inter,Arial" font-size="13" fill="#F2F5F0" fill-opacity=".7">Horas liberadas / semana</text><text x="112" y="240" font-family="Georgia,serif" font-size="36" fill="#D6B26C">+12</text><rect x="310" y="164" width="196" height="96" rx="12" fill="#1C3A2E"/><text x="326" y="196" font-family="Inter,Arial" font-size="13" fill="#F2F5F0" fill-opacity=".7">Presupuestos seguidos</text><text x="326" y="240" font-family="Georgia,serif" font-size="36" fill="#D6B26C">100 %</text><rect x="524" y="164" width="196" height="96" rx="12" fill="#1C3A2E"/><text x="540" y="196" font-family="Inter,Arial" font-size="13" fill="#F2F5F0" fill-opacity=".7">Citas recordadas</text><text x="540" y="240" font-family="Georgia,serif" font-size="36" fill="#D6B26C">auto</text><path d="M96 420 L170 400 L244 410 L318 370 L392 360 L466 330 L540 320 L614 290 L704 270 L704 440 L96 440Z" fill="#96E1BE" fill-opacity=".12"/><path d="M96 420 L170 400 L244 410 L318 370 L392 360 L466 330 L540 320 L614 290 L704 270" stroke="#96E1BE" stroke-width="3" fill="none" stroke-dasharray="900" stroke-dashoffset="900"><animate attributeName="stroke-dashoffset" from="900" to="0" dur="2.5s" fill="freeze" repeatCount="indefinite"/></path></svg></div><figcaption><span class="n">05 · CRECE</span><h3>Ves el cambio en números</h3><p>Un panel sencillo para seguir la mejora mes a mes. Las cifras de la imagen son de ejemplo.</p></figcaption></figure>
+    </div>
+    <div class="puntos" id="puntos" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+  </section>
+
   <section class="pregunta">
     <div class="wrap">
       <span class="eyebrow">Una pregunta antes de seguir</span>
-      <h2 class="rv" style="margin-top:18px">¿Quién sabe mejor qué falla en tu empresa?</h2>
+      <h2 class="rv">¿Quién sabe mejor qué falla en tu empresa?</h2>
       <div class="opciones" role="group" aria-label="Elige una respuesta">
-        <button class="opcion">El dueño</button>
-        <button class="opcion">Recepción</button>
-        <button class="opcion">El comercial</button>
-        <button class="opcion">La persona de la limpieza</button>
+        <button class="opcion">El dueño</button><button class="opcion">Recepción</button><button class="opcion">El comercial</button><button class="opcion">La persona de la limpieza</button>
       </div>
-      <div class="respuesta" aria-live="polite">
-        <p id="resp">Todos. Por eso hablamos con todos.</p>
-        <small id="resp2">Primero entendemos a las personas. Luego, los procesos.</small>
+      <div class="red" id="red" aria-hidden="true">
+        <svg viewBox="0 0 720 220">
+          <g stroke="#D6B26C" stroke-width="2" fill="none"><path class="ln" d="M90 40 Q240 40 360 140"/><path class="ln" d="M270 30 Q320 80 360 140"/><path class="ln" d="M450 30 Q400 80 360 140"/><path class="ln" d="M630 40 Q480 40 360 140"/></g>
+          <g fill="#96E1BE"><circle cx="90" cy="40" r="10"/><circle cx="270" cy="30" r="10"/><circle cx="450" cy="30" r="10"/><circle cx="630" cy="40" r="10"/></g>
+          <circle cx="360" cy="150" r="34" fill="#1C3A2E" stroke="#D6B26C" stroke-width="2"/><text x="360" y="163" text-anchor="middle" font-family="Georgia,serif" font-size="34" fill="#D6B26C">N</text>
+        </svg>
+      </div>
+      <div class="respuesta" id="respuesta" aria-live="polite">
+        <p>Todos. Por eso hablamos con todos.</p>
+        <small>Primero entendemos a las personas. Luego, los procesos.</small>
       </div>
     </div>
   </section>
 
-  <!-- 5-6 · El Cambio Nyland -->
   <section class="cambio" id="cambio">
     <img class="sello" src="assets/logo-nyland-consulting-web.png" alt="" aria-hidden="true">
     <div class="wrap">
       <div class="intro">
-        <div>
-          <span class="eyebrow">Nuestro método</span>
-          <h2 style="margin-top:18px">El Cambio Nyland. <em>Sigue siendo tú.</em></h2>
-        </div>
+        <div><span class="eyebrow">Nuestro método</span><h2>El Cambio Nyland. <em>Sigue siendo tú.</em></h2></div>
         <p>No te instalamos una herramienta y desaparecemos. Desmontamos tu empresa proceso a proceso, entendemos por qué las cosas no funcionan y construimos lo que de verdad necesitas.</p>
       </div>
-
       <p class="revela">El Cambio Nyland no se explica. Se descubre.</p>
-
       <div class="pasos">
-        <article class="paso">
-          <div class="num">01</div>
-          <div><span class="tag">Escucha</span><h3>Diagnóstico desde dentro</h3><p>Nos ponemos en la piel de cada persona de tu empresa, del dueño al último puesto, y localizamos qué no funciona y por qué.</p></div>
-          <div class="extra">Quien vive el problema cada día es quien mejor lo conoce.</div>
-        </article>
-        <article class="paso">
-          <div class="num">02</div>
-          <div><span class="tag">Transforma</span><h3>Soluciones rápidas</h3><p>Implantamos herramientas que alivian lo más urgente desde las primeras semanas, según el caso.</p></div>
-          <div class="extra">Alivio primero. Lo grande, después.</div>
-        </article>
-        <article class="paso">
-          <div class="num">03</div>
-          <div><span class="tag">Transforma</span><h3>Software a tu medida</h3><p>Con el estudio hecho, diseñamos una solución adaptada exactamente a cómo trabaja tu empresa. No al revés.</p></div>
-          <div class="extra">La tecnología se adapta a ti, no tú a ella.</div>
-        </article>
-        <article class="paso">
-          <div class="num">04</div>
-          <div><span class="tag">Crece</span><h3>Acompañamiento y mantenimiento</h3><p>Nos ocupamos de que todas las herramientas y procesos sigan funcionando, los actualizamos y los mejoramos mientras tu negocio crece. No te dejamos solo con la tecnología: nos encargamos de que funcione, hoy y dentro de un año.</p></div>
-          <div class="mascota-paso"><img src="assets/mascota-nyland-web.jpg" alt="Mascota de Nyland saludando"><span>Sigo aquí cuando termina el proyecto.</span></div>
+        <article class="paso"><span class="num">01</span>
+          <svg class="ico" viewBox="0 0 64 64" fill="none" stroke="#D6B26C" stroke-width="2"><circle cx="32" cy="32" r="6" fill="#96E1BE" stroke="none"/><path d="M20 20a17 17 0 0 0 0 24M44 20a17 17 0 0 1 0 24M13 13a27 27 0 0 0 0 38M51 13a27 27 0 0 1 0 38"/></svg>
+          <span class="tag">Escucha</span><h3>Diagnóstico desde dentro</h3><p>Nos ponemos en la piel de cada persona de tu empresa, del dueño al último puesto, y localizamos qué no funciona y por qué.</p></article>
+        <article class="paso"><span class="num">02</span>
+          <svg class="ico" viewBox="0 0 64 64" fill="none" stroke="#D6B26C" stroke-width="2"><path d="M36 6 16 36h14l-4 22 22-32H34z" fill="rgba(150,225,190,.2)"/></svg>
+          <span class="tag">Transforma</span><h3>Soluciones rápidas</h3><p>Implantamos herramientas que alivian lo más urgente desde las primeras semanas, según el caso.</p></article>
+        <article class="paso"><span class="num">03</span>
+          <svg class="ico" viewBox="0 0 64 64" fill="none" stroke="#D6B26C" stroke-width="2"><rect x="12" y="12" width="40" height="40" rx="8"/><path d="M12 28h40M28 28v24"/><circle cx="20" cy="20" r="2.5" fill="#96E1BE" stroke="none"/></svg>
+          <span class="tag">Transforma</span><h3>Software a tu medida</h3><p>Con el estudio hecho, diseñamos una solución adaptada exactamente a cómo trabaja tu empresa. La tecnología se adapta a ti, no al revés.</p></article>
+        <article class="paso destacado"><span class="num">04</span>
+          <div>
+            <svg class="ico" viewBox="0 0 64 64" fill="none" stroke="#D6B26C" stroke-width="2"><path d="M8 52 24 36l10 8 22-26"/><path d="M44 18h12v12"/></svg>
+            <span class="tag">Crece</span><h3>Acompañamiento y mantenimiento</h3><p>Nos ocupamos de que todas las herramientas y procesos sigan funcionando, los actualizamos y los mejoramos mientras tu negocio crece. No te dejamos solo con la tecnología: nos encargamos de que funcione, hoy y dentro de un año.</p>
+          </div>
+          <div class="mascota"><img src="assets/mascota-nyland-web.jpg" alt="Mascota de Nyland saludando"><div class="bocadillo">Sigo aquí cuando termina el proyecto.</div></div>
         </article>
       </div>
-
       <p class="frase-final rv">La inteligencia artificial multiplica tus capacidades.<br><em>La inteligencia emocional decide cómo la usas.</em></p>
     </div>
   </section>
 
-  <!-- 7 · Antes / Después -->
   <section class="ad">
     <div class="wrap">
-      <header>
-        <span class="eyebrow">Desliza</span>
-        <h2 class="rv" style="margin-top:14px">Hay un antes y un después.</h2>
-      </header>
-
+      <div class="cab"><span class="eyebrow">Desliza</span><h2 class="rv">Hay un antes y un después.</h2></div>
       <div class="comparador" id="comp" style="--x:50%">
-        <!-- ANTES -->
         <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <rect width="1600" height="900" fill="#d9ddd3"/>
-          <rect y="640" width="1600" height="260" fill="#c4c9bd"/>
-          <rect x="420" y="560" width="760" height="28" rx="6" fill="#5c4a3a"/>
-          <rect x="450" y="588" width="18" height="200" fill="#4a3b2e"/><rect x="1132" y="588" width="18" height="200" fill="#4a3b2e"/>
-          <!-- papeles -->
-          <g fill="#fff" stroke="#b8b8b0" stroke-width="2">
-            <rect x="480" y="500" width="120" height="60" transform="rotate(-8 540 530)"/>
-            <rect x="560" y="490" width="120" height="70" transform="rotate(6 620 525)"/>
-            <rect x="900" y="505" width="130" height="55" transform="rotate(-4 965 532)"/>
-            <rect x="980" y="480" width="110" height="80" transform="rotate(10 1035 520)"/>
-            <rect x="300" y="760" width="110" height="60" transform="rotate(-18 355 790)"/>
-            <rect x="1240" y="770" width="110" height="60" transform="rotate(14 1295 800)"/>
-            <rect x="520" y="430" width="100" height="70" transform="rotate(-14 570 465)"/>
-          </g>
-          <!-- persona agobiada -->
-          <g>
-            <rect x="740" y="390" width="120" height="180" rx="50" fill="#1C3A2E"/>
-            <circle cx="800" cy="330" r="52" fill="#c99a7c"/>
-            <path d="M748 320 q52 -70 104 0" fill="#3b2a20"/>
-            <path d="M745 420 q-60 -40 -10 -120" stroke="#1C3A2E" stroke-width="30" fill="none" stroke-linecap="round"/>
-            <path d="M855 420 q60 -40 10 -120" stroke="#1C3A2E" stroke-width="30" fill="none" stroke-linecap="round"/>
-          </g>
-          <!-- teléfono sonando -->
-          <g transform="translate(1040 420)">
-            <rect width="70" height="120" rx="12" fill="#2a2a2a"/>
-            <rect x="8" y="14" width="54" height="86" rx="4" fill="#e65c4f"/>
-            <path d="M-20 20 q-14 30 0 60M-38 8 q-24 42 0 84M90 20 q14 30 0 60M108 8 q24 42 0 84" stroke="#e65c4f" stroke-width="5" fill="none" stroke-linecap="round"/>
-          </g>
-          <!-- notificaciones -->
-          <g font-family="Inter, Arial" font-size="26" font-weight="600">
-            <rect x="140" y="120" width="380" height="70" rx="18" fill="#fff"/><circle cx="180" cy="155" r="14" fill="#e65c4f"/><text x="210" y="164" fill="#333">3 llamadas perdidas</text>
-            <rect x="1080" y="150" width="390" height="70" rx="18" fill="#fff"/><circle cx="1120" cy="185" r="14" fill="#e65c4f"/><text x="1150" y="194" fill="#333">12 mensajes sin leer</text>
-            <rect x="200" y="230" width="420" height="70" rx="18" fill="#fff"/><circle cx="240" cy="265" r="14" fill="#e6a74f"/><text x="270" y="274" fill="#333">Presupuesto sin respuesta</text>
-          </g>
+          <rect width="1600" height="900" fill="#13261d"/>
+          <path d="M483 66 C1072 -20 576 286 865 302 S4 458 -33 377" stroke="#8a9a90" stroke-opacity="0.28" stroke-width="2.2" fill="none"/>
+<path d="M1605 594 C949 -32 821 478 954 -45 S298 512 140 361" stroke="#c25b4a" stroke-opacity="0.30" stroke-width="2.2" fill="none"/>
+<path d="M238 7 C1182 521 728 349 1014 446 S857 755 738 916" stroke="#c25b4a" stroke-opacity="0.56" stroke-width="1.6" fill="none"/>
+<path d="M934 478 C1475 702 794 266 418 978 S113 360 1263 67" stroke="#D6B26C" stroke-opacity="0.59" stroke-width="2.2" fill="none"/>
+<path d="M1476 245 C1152 554 572 531 944 402 S1412 939 753 631" stroke="#8a9a90" stroke-opacity="0.38" stroke-width="1.9" fill="none"/>
+<path d="M1104 -75 C731 85 993 282 111 -35 S1283 42 346 330" stroke="#8a9a90" stroke-opacity="0.43" stroke-width="1.7" fill="none"/>
+<path d="M146 374 C890 677 882 255 1676 651 S585 154 49 66" stroke="#c25b4a" stroke-opacity="0.37" stroke-width="1.2" fill="none"/>
+<path d="M654 306 C919 948 946 600 1143 467 S1012 644 -3 889" stroke="#8a9a90" stroke-opacity="0.43" stroke-width="1.9" fill="none"/>
+<path d="M767 340 C243 983 1033 495 693 21 S981 13 920 490" stroke="#D6B26C" stroke-opacity="0.64" stroke-width="2.3" fill="none"/>
+<path d="M167 177 C525 301 593 387 121 834 S1688 413 771 -6" stroke="#96E1BE" stroke-opacity="0.47" stroke-width="2.4" fill="none"/>
+<path d="M829 126 C1614 298 980 457 1142 906 S1265 228 1057 0" stroke="#c25b4a" stroke-opacity="0.41" stroke-width="1.6" fill="none"/>
+<path d="M875 453 C1046 575 644 447 1319 734 S251 163 621 784" stroke="#D6B26C" stroke-opacity="0.70" stroke-width="2.6" fill="none"/>
+<path d="M750 113 C989 279 784 385 1355 695 S529 972 45 12" stroke="#8a9a90" stroke-opacity="0.53" stroke-width="2.8" fill="none"/>
+<path d="M1413 427 C1075 780 633 566 53 627 S1538 761 1250 426" stroke="#96E1BE" stroke-opacity="0.29" stroke-width="2.9" fill="none"/>
+<path d="M1199 409 C1238 -7 858 488 186 992 S-50 550 738 621" stroke="#8a9a90" stroke-opacity="0.55" stroke-width="1.8" fill="none"/>
+<path d="M888 44 C-74 968 650 351 1069 479 S1581 377 1469 809" stroke="#96E1BE" stroke-opacity="0.48" stroke-width="2.6" fill="none"/>
+<path d="M487 499 C1402 -33 997 302 1232 887 S1092 797 830 810" stroke="#c25b4a" stroke-opacity="0.49" stroke-width="1.2" fill="none"/>
+<path d="M692 101 C-93 779 829 564 210 421 S1205 512 487 470" stroke="#D6B26C" stroke-opacity="0.65" stroke-width="1.3" fill="none"/>
+<path d="M244 -54 C76 397 644 361 -50 883 S14 258 1652 567" stroke="#8a9a90" stroke-opacity="0.48" stroke-width="1.6" fill="none"/>
+<path d="M842 864 C1570 915 889 421 1507 123 S706 358 606 248" stroke="#c25b4a" stroke-opacity="0.55" stroke-width="2.6" fill="none"/>
+<path d="M1515 70 C1189 626 793 646 157 871 S1642 142 1615 338" stroke="#c25b4a" stroke-opacity="0.32" stroke-width="2.0" fill="none"/>
+<path d="M828 273 C252 250 864 455 1200 -79 S897 385 -67 265" stroke="#D6B26C" stroke-opacity="0.30" stroke-width="2.9" fill="none"/>
+<path d="M311 864 C51 199 1032 412 1531 100 S1260 802 1429 644" stroke="#8a9a90" stroke-opacity="0.57" stroke-width="1.4" fill="none"/>
+<path d="M4 657 C666 -20 989 432 1589 598 S1343 -8 1441 -27" stroke="#96E1BE" stroke-opacity="0.70" stroke-width="2.0" fill="none"/>
+<path d="M1548 584 C-22 680 816 332 1589 966 S371 99 1578 592" stroke="#8a9a90" stroke-opacity="0.48" stroke-width="1.5" fill="none"/>
+<path d="M525 -80 C351 -83 966 423 1220 506 S241 422 1582 17" stroke="#8a9a90" stroke-opacity="0.50" stroke-width="2.8" fill="none"/>
+<path d="M1647 239 C287 153 975 256 258 870 S1212 54 1681 980" stroke="#96E1BE" stroke-opacity="0.44" stroke-width="1.3" fill="none"/>
+<path d="M1097 319 C811 968 729 382 978 662 S-19 104 384 -96" stroke="#96E1BE" stroke-opacity="0.36" stroke-width="2.9" fill="none"/>
+<path d="M457 292 C-98 320 587 410 754 453 S262 455 -91 191" stroke="#D6B26C" stroke-opacity="0.43" stroke-width="1.7" fill="none"/>
+<path d="M1033 -7 C1624 839 797 364 179 882 S1311 556 1276 693" stroke="#c25b4a" stroke-opacity="0.27" stroke-width="2.7" fill="none"/>
+<path d="M1505 590 C1221 793 844 607 151 476 S808 818 1348 809" stroke="#c25b4a" stroke-opacity="0.29" stroke-width="1.3" fill="none"/>
+<path d="M1047 955 C578 397 576 623 -9 -79 S857 169 375 403" stroke="#D6B26C" stroke-opacity="0.55" stroke-width="1.3" fill="none"/>
+<path d="M1226 177 C34 192 789 523 1213 126 S1232 973 789 321" stroke="#D6B26C" stroke-opacity="0.53" stroke-width="2.4" fill="none"/>
+<path d="M39 62 C357 718 900 520 448 525 S-78 -33 384 639" stroke="#96E1BE" stroke-opacity="0.57" stroke-width="1.7" fill="none"/>
+<path d="M739 744 C1688 504 1057 648 461 -6 S751 219 38 457" stroke="#8a9a90" stroke-opacity="0.34" stroke-width="2.9" fill="none"/>
+<path d="M279 540 C155 476 660 609 1615 46 S1376 460 1496 674" stroke="#8a9a90" stroke-opacity="0.43" stroke-width="1.5" fill="none"/>
+<path d="M1610 650 C630 700 747 626 649 314 S118 264 484 272" stroke="#c25b4a" stroke-opacity="0.57" stroke-width="2.8" fill="none"/>
+<path d="M422 309 C607 999 974 364 961 297 S670 203 -13 12" stroke="#c25b4a" stroke-opacity="0.36" stroke-width="1.7" fill="none"/>
+<path d="M820 109 C572 952 914 270 1492 793 S1036 905 1593 504" stroke="#8a9a90" stroke-opacity="0.45" stroke-width="2.6" fill="none"/>
+<path d="M1060 215 C-12 919 675 512 129 419 S519 228 1230 974" stroke="#96E1BE" stroke-opacity="0.47" stroke-width="2.4" fill="none"/>
+<path d="M116 608 C35 451 825 348 1361 505 S715 266 1267 370" stroke="#c25b4a" stroke-opacity="0.40" stroke-width="1.4" fill="none"/>
+<path d="M330 184 C925 876 572 361 1249 354 S645 477 578 272" stroke="#96E1BE" stroke-opacity="0.31" stroke-width="2.1" fill="none"/>
+<path d="M1033 849 C289 198 551 263 347 340 S703 949 1428 860" stroke="#8a9a90" stroke-opacity="0.69" stroke-width="2.1" fill="none"/>
+<path d="M32 923 C1571 481 597 580 743 394 S1310 146 174 969" stroke="#8a9a90" stroke-opacity="0.29" stroke-width="2.6" fill="none"/>
+<path d="M-98 38 C925 -59 592 370 1187 959 S1028 481 687 740" stroke="#c25b4a" stroke-opacity="0.42" stroke-width="1.6" fill="none"/>
+<path d="M982 -88 C443 407 1040 532 1626 609 S1491 423 323 172" stroke="#96E1BE" stroke-opacity="0.27" stroke-width="1.5" fill="none"/>
+          <circle cx="800" cy="450" r="46" fill="#96E1BE"/><circle cx="800" cy="450" r="70" fill="none" stroke="#96E1BE" stroke-opacity=".35"/>
+          <text x="800" y="465" text-anchor="middle" font-family="Georgia,serif" font-size="42" fill="#0b1d15">Tú</text>
         </svg>
-        <!-- DESPUÉS -->
         <svg class="despues" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <rect width="1600" height="900" fill="#F2F5F0"/>
-          <rect y="640" width="1600" height="260" fill="#e3e8de"/>
-          <circle cx="1300" cy="230" r="90" fill="#96E1BE" opacity=".35"/>
-          <rect x="420" y="560" width="760" height="28" rx="6" fill="#5c4a3a"/>
-          <rect x="450" y="588" width="18" height="200" fill="#4a3b2e"/><rect x="1132" y="588" width="18" height="200" fill="#4a3b2e"/>
-          <!-- planta -->
-          <g transform="translate(470 470)"><rect x="0" y="40" width="60" height="50" rx="6" fill="#D6B26C"/><path d="M30 40 q-40 -50 -10 -80 M30 40 q40 -60 10 -90 M30 40 q0 -60 0 -70" stroke="#1C3A2E" stroke-width="8" fill="none" stroke-linecap="round"/></g>
-          <!-- persona tranquila (misma) -->
-          <g>
-            <rect x="740" y="390" width="120" height="180" rx="50" fill="#1C3A2E"/>
-            <circle cx="800" cy="330" r="52" fill="#c99a7c"/>
-            <path d="M748 320 q52 -70 104 0" fill="#3b2a20"/>
-            <path d="M780 345 q20 16 40 0" stroke="#3b2a20" stroke-width="5" fill="none" stroke-linecap="round"/>
-            <path d="M860 450 q60 10 120 -10" stroke="#1C3A2E" stroke-width="30" fill="none" stroke-linecap="round"/>
-          </g>
-          <!-- cliente -->
-          <g>
-            <rect x="1100" y="380" width="120" height="260" rx="50" fill="#D6B26C"/>
-            <circle cx="1160" cy="320" r="50" fill="#a87a5c"/>
-            <path d="M1140 335 q20 16 40 0" stroke="#3b2a20" stroke-width="5" fill="none" stroke-linecap="round"/>
-            <path d="M1100 450 q-60 10 -110 -10" stroke="#D6B26C" stroke-width="30" fill="none" stroke-linecap="round"/>
-          </g>
-          <!-- aviso tranquilo -->
-          <g font-family="Inter, Arial" font-size="26" font-weight="600">
-            <rect x="140" y="140" width="430" height="70" rx="18" fill="#fff"/><circle cx="180" cy="175" r="14" fill="#96E1BE"/><text x="210" y="184" fill="#1C3A2E">Todo al día</text>
-          </g>
+          <rect width="1600" height="900" fill="#1C3A2E"/>
+          <path class="flujo" d="M-50 60 C380 60 600 372 800 372 S1220 60 1650 60" stroke="#96E1BE" stroke-opacity=".55" stroke-width="1.6" fill="none" style="animation-delay:-0.0s"/>
+<path class="flujo" d="M-50 97 C380 97 600 379 800 379 S1220 97 1650 97" stroke="#D6B26C" stroke-opacity=".55" stroke-width="1.6" fill="none" style="animation-delay:-0.4s"/>
+<path class="flujo" d="M-50 134 C380 134 600 387 800 387 S1220 134 1650 134" stroke="#D6B26C" stroke-opacity=".55" stroke-width="1.6" fill="none" style="animation-delay:-0.8s"/>
+<path class="flujo" d="M-50 171 C380 171 600 394 800 394 S1220 171 1650 171" stroke="#96E1BE" stroke-opacity=".55" stroke-width="1.6" fill="none" style="animation-delay:-1.2s"/>
+<path class="flujo" d="M-50 209 C380 209 600 402 800 402 S1220 209 1650 209" stroke="#D6B26C" stroke-opacity=".55" stroke-width="1.6" fill="none" style="animation-delay:-1.6s"/>
+<path class="flujo" d="M-50 246 C380 246 600 409 800 409 S1220 246 1650 246" stroke="#D6B26C" stroke-opacity=".55" stroke-width="1.6" fill="none" style="animation-delay:-2.0s"/>
+<path class="flujo" d="M-50 283 C380 283 600 417 800 417 S1220 283 1650 283" stroke="#96E1BE" stroke-opacity=".55" stroke-width="1.6" fill="none" style="animation-delay:-2.4s"/>
+<path class="flujo" d="M-50 320 C380 320 600 424 800 424 S1220 320 1650 320" stroke="#D6B26C" stroke-opacity=".55" stroke-width="1.6" fill="none" style="animation-delay:-2.8s"/>
+<path class="flujo" d="M-50 357 C380 357 600 431 800 431 S1220 357 1650 357" stroke="#D6B26C" stroke-opacity=".55" stroke-width="1.6" fill="none" style="animation-delay:-3.2s"/>
+<path class="flujo" d="M-50 394 C380 394 600 439 800 439 S1220 394 1650 394" stroke="#96E1BE" stroke-opacity=".55" stroke-width="1.6" fill="none" style="animation-delay:-3.6s"/>
+<path class="flujo" d="M-50 431 C380 431 600 446 800 446 S1220 431 1650 431" stroke="#D6B26C" stroke-opacity=".55" stroke-width="1.6" fill="none" style="animation-delay:-4.0s"/>
+<path class="flujo" d="M-50 469 C380 469 600 454 800 454 S1220 469 1650 469" stroke="#D6B26C" stroke-opacity=".55" stroke-width="1.6" fill="none" style="animation-delay:-4.4s"/>
+<path class="flujo" d="M-50 506 C380 506 600 461 800 461 S1220 506 1650 506" stroke="#96E1BE" stroke-opacity=".55" stroke-width="1.6" fill="none" style="animation-delay:-4.8s"/>
+<path class="flujo" d="M-50 543 C380 543 600 469 800 469 S1220 543 1650 543" stroke="#D6B26C" stroke-opacity=".55" stroke-width="1.6" fill="none" style="animation-delay:-5.2s"/>
+<path class="flujo" d="M-50 580 C380 580 600 476 800 476 S1220 580 1650 580" stroke="#D6B26C" stroke-opacity=".55" stroke-width="1.6" fill="none" style="animation-delay:-5.6s"/>
+<path class="flujo" d="M-50 617 C380 617 600 483 800 483 S1220 617 1650 617" stroke="#96E1BE" stroke-opacity=".55" stroke-width="1.6" fill="none" style="animation-delay:-6.0s"/>
+<path class="flujo" d="M-50 654 C380 654 600 491 800 491 S1220 654 1650 654" stroke="#D6B26C" stroke-opacity=".55" stroke-width="1.6" fill="none" style="animation-delay:-6.4s"/>
+<path class="flujo" d="M-50 691 C380 691 600 498 800 498 S1220 691 1650 691" stroke="#D6B26C" stroke-opacity=".55" stroke-width="1.6" fill="none" style="animation-delay:-6.8s"/>
+<path class="flujo" d="M-50 729 C380 729 600 506 800 506 S1220 729 1650 729" stroke="#96E1BE" stroke-opacity=".55" stroke-width="1.6" fill="none" style="animation-delay:-7.2s"/>
+<path class="flujo" d="M-50 766 C380 766 600 513 800 513 S1220 766 1650 766" stroke="#D6B26C" stroke-opacity=".55" stroke-width="1.6" fill="none" style="animation-delay:-7.6s"/>
+<path class="flujo" d="M-50 803 C380 803 600 521 800 521 S1220 803 1650 803" stroke="#D6B26C" stroke-opacity=".55" stroke-width="1.6" fill="none" style="animation-delay:-8.0s"/>
+<path class="flujo" d="M-50 840 C380 840 600 528 800 528 S1220 840 1650 840" stroke="#96E1BE" stroke-opacity=".55" stroke-width="1.6" fill="none" style="animation-delay:-8.4s"/>
+          <circle cx="800" cy="450" r="46" fill="#96E1BE"/><circle cx="800" cy="450" r="70" fill="none" stroke="#96E1BE" stroke-opacity=".35"/>
+          <text x="800" y="465" text-anchor="middle" font-family="Georgia,serif" font-size="42" fill="#0b1d15">Tú</text>
         </svg>
         <span class="etq a">Antes</span><span class="etq d">Después</span>
         <div class="divisor"></div>
         <input type="range" min="0" max="100" value="50" aria-label="Comparar antes y después">
       </div>
-      <p class="pie rv">La persona es la misma. Eso es lo importante.</p>
+      <p class="pie rv">Tú sigues siendo el mismo. Lo que cambia es todo lo que te rodea.</p>
     </div>
   </section>
 
-  <!-- 8 · Prueba social honesta -->
   <section class="prueba">
     <div class="wrap grid">
       <div class="carta rv"><span class="eyebrow"><span class="pulso"></span>Ahora mismo</span><p>Diagnósticos en curso en empresas del sector sanitario e inmobiliario.</p></div>
@@ -436,23 +532,22 @@ textarea{min-height:84px;resize:vertical}
     </div>
   </section>
 
-  <!-- 9 · CTA cierre -->
   <section class="cierre">
+    <div class="globo" aria-hidden="true"><svg><use href="#globo"/></svg></div>
     <div class="wrap">
       <h2 class="rv">Cada semana que pasa, tu equipo sigue haciendo a mano lo que podría estar resuelto.</h2>
-      <button class="btn" data-abrir>Solicitar un diagnóstico <span class="arrow">→</span></button>
+      <button class="btn oscuro" data-abrir>Solicitar un diagnóstico <span class="arrow">→</span></button>
       <p class="micro">Sin compromiso · 15 minutos · Directamente con el consultor</p>
     </div>
   </section>
 
-  <!-- 10 · FAQ -->
   <section class="faq">
     <div class="wrap grid">
       <h2>Lo que nos suelen preguntar</h2>
       <div>
         <details><summary>¿Cuánto cuesta?</summary><p>Depende de cada empresa. Nuestro precio se mide por lo que te ahorramos, no por las horas que trabajamos. El diagnóstico inicial de 15 minutos no tiene coste.</p></details>
         <details><summary>¿Cuánto se tarda?</summary><p>Las primeras soluciones pueden estar funcionando en pocas semanas, según el caso. El software a medida llega después, cuando el estudio lo justifica.</p></details>
-        <details id="faq-equipo"><summary>¿Vais a sustituir a mi equipo?</summary>
+        <details id="faq-equipo" open><summary>¿Vais a sustituir a mi equipo?</summary>
           <div class="faq-mascota"><img src="assets/mascota-nyland-web.jpg" alt="Mascota de Nyland"><div class="bocadillo">Yo me encargo del papeleo. Tu equipo, de tus clientes.</div></div>
           <p>No. Le quitamos lo que le estorba para que haga mejor su trabajo. Sigue siendo tu empresa.</p></details>
         <details><summary>Ya uso programas y herramientas, ¿tengo que cambiarlos?</summary><p>No necesariamente. Primero vemos qué funciona y qué no. Lo que funciona, se queda.</p></details>
@@ -469,35 +564,25 @@ textarea{min-height:84px;resize:vertical}
       <a class="brand" href="#inicio"><img src="assets/logo-nyland-consulting-web.png" alt=""><div><span>Nyland</span><small>CONSULTING</small></div></a>
       <p class="lema">Sigue siendo tú.</p>
       <nav aria-label="Contacto y legal">
-        <a href="#" onclick="return false">hola@tudominio.es</a>
-        <a href="#" onclick="return false">+34 600 000 000</a>
-        <a href="#" onclick="return false">Política de privacidad</a>
-        <a href="#" onclick="return false">Aviso legal</a>
+        <a href="#" onclick="return false">hola@tudominio.es</a><a href="#" onclick="return false">+34 600 000 000</a>
+        <a href="#" onclick="return false">Política de privacidad</a><a href="#" onclick="return false">Aviso legal</a>
       </nav>
     </div>
     <p class="legal">© Nyland Consulting S.L. · El lado humano de la inteligencia artificial · Maqueta de prueba: contacto de ejemplo y textos legales pendientes.</p>
   </div>
 </footer>
 
-<!-- Formulario -->
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mtitulo">
   <div class="panel">
     <button class="cerrar" data-cerrar aria-label="Cerrar">×</button>
     <div id="paso-form">
       <span class="eyebrow">Escucha · el primer paso</span>
-      <h2 id="mtitulo" style="margin-top:10px">Solicitar un diagnóstico</h2>
-      <p class="muted" style="margin:0">Sin compromiso · 15 minutos · Directamente con el consultor</p>
+      <h2 id="mtitulo">Solicitar un diagnóstico</h2>
+      <p class="micro" style="margin:0">Sin compromiso · 15 minutos · Directamente con el consultor</p>
       <form id="form" novalidate>
         <label>Nombre<input name="nombre" autocomplete="name" required></label>
         <label>Empresa<input name="empresa" autocomplete="organization" required></label>
-        <label>Sector
-          <select name="sector" required>
-            <option value="">Elige una opción</option>
-            <option>Clínica dental</option>
-            <option>Rehabilitación de fachadas</option>
-            <option>Otro</option>
-          </select>
-        </label>
+        <label>Sector<select name="sector" required><option value="">Elige una opción</option><option>Clínica dental</option><option>Rehabilitación de fachadas</option><option>Otro</option></select></label>
         <label>Teléfono o email<input name="contacto" required></label>
         <label>¿Qué es lo que más tiempo le quita hoy a tu equipo? <span class="opt">(opcional)</span><textarea name="tiempo"></textarea></label>
         <label class="check"><input type="checkbox" name="rgpd" required> He leído y acepto la política de privacidad.</label>
@@ -509,7 +594,7 @@ textarea{min-height:84px;resize:vertical}
     <div class="ok" id="paso-ok">
       <img src="assets/mascota-nyland-web.jpg" alt="Mascota de Nyland saludando">
       <h2>Recibido.</h2>
-      <p class="muted">Te contactamos en menos de 24 horas laborables para fijar tus 15 minutos.</p>
+      <p class="micro">Te contactamos en menos de 24 horas laborables para fijar tus 15 minutos.</p>
       <button class="btn" data-cerrar style="margin-top:18px">Volver a la página</button>
     </div>
   </div>
@@ -520,83 +605,69 @@ document.documentElement.classList.add('js');
 (function(){
   // Apertura palabra a palabra
   const h1 = document.getElementById('frase');
-  const walk = (node) => {
-    [...node.childNodes].forEach(n => {
-      if (n.nodeType === 3) {
-        const frag = document.createDocumentFragment();
-        n.textContent.split(/(\s+)/).forEach(t => {
-          if (!t) return;
-          if (/^\s+$/.test(t)) { frag.appendChild(document.createTextNode(t)); return; }
-          const s = document.createElement('span'); s.className = 'w'; s.textContent = t; frag.appendChild(s);
-        });
-        n.replaceWith(frag);
-      } else walk(n);
-    });
-  };
+  const walk = n => [...n.childNodes].forEach(c => {
+    if (c.nodeType === 3) {
+      const f = document.createDocumentFragment();
+      c.textContent.split(/(\s+)/).forEach(t => { if (!t) return;
+        if (/^\s+$/.test(t)) f.appendChild(document.createTextNode(t));
+        else { const s = document.createElement('span'); s.className = 'w'; s.textContent = t; f.appendChild(s); } });
+      c.replaceWith(f);
+    } else walk(c);
+  });
   walk(h1);
-  const words = h1.querySelectorAll('.w');
-  words.forEach((w, i) => setTimeout(() => w.classList.add('on'), 300 + i * 190));
-  requestAnimationFrame(() => document.getElementById('apertura').classList.add('ready'));
+  h1.querySelectorAll('.w').forEach((w, i) => setTimeout(() => w.classList.add('on'), 300 + i * 190));
 
-  // Revelados al hacer scroll
-  const io = new IntersectionObserver(es => es.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
-  }), { threshold: .25, rootMargin: '0px 0px -8% 0px' });
-  const todos = document.querySelectorAll('.rv, .linea, .paso');
+  // Revelados
+  const todos = document.querySelectorAll('.rv, .paso');
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } }), { threshold: .2 });
   todos.forEach(el => io.observe(el));
-  // Seguridad: si el visor no avisa del scroll, se muestra todo igualmente
   setTimeout(() => todos.forEach(el => el.classList.add('on')), 6000);
 
   // Cabecera
   const top = document.getElementById('top'); let last = 0;
-  addEventListener('scroll', () => {
-    const y = scrollY;
-    top.classList.toggle('scrolled', y > 40);
-    top.classList.toggle('hidden', y > 400 && y > last);
-    last = y;
-  }, { passive: true });
+  addEventListener('scroll', () => { const y = scrollY; top.classList.toggle('scrolled', y > 40); top.classList.toggle('hidden', y > 500 && y > last); last = y; }, { passive: true });
 
-  // Pregunta interactiva
-  const resp = document.getElementById('resp'), resp2 = document.getElementById('resp2');
+  // Pregunta
+  const resp = document.getElementById('respuesta'), red = document.getElementById('red');
   document.querySelectorAll('.opcion').forEach(b => b.addEventListener('click', () => {
     document.querySelectorAll('.opcion').forEach(o => o.classList.remove('sel'));
-    b.classList.add('sel');
-    resp.classList.remove('on'); resp2.classList.remove('on');
-    setTimeout(() => { resp.classList.add('on'); resp2.classList.add('on'); }, 120);
+    b.classList.add('sel'); resp.classList.remove('on');
+    setTimeout(() => { resp.classList.add('on'); red.classList.add('on'); }, 120);
   }));
+
+  // Carrusel
+  const pista = document.getElementById('pistaC'), puntos = [...document.querySelectorAll('#puntos i')];
+  const diapos = [...pista.children];
+  const actual = () => { const c = pista.scrollLeft + pista.clientWidth / 2; let best = 0, d = 1e9;
+    diapos.forEach((s, i) => { const m = s.offsetLeft + s.clientWidth / 2; if (Math.abs(m - c) < d) { d = Math.abs(m - c); best = i; } }); return best; };
+  const ir = i => { const s = diapos[(i + diapos.length) % diapos.length]; pista.scrollTo({ left: s.offsetLeft - (pista.clientWidth - s.clientWidth) / 2, behavior: 'smooth' }); };
+  pista.addEventListener('scroll', () => { const a = actual(); puntos.forEach((p, i) => p.classList.toggle('on', i === a)); }, { passive: true });
+  document.querySelectorAll('.flechas button').forEach(b => b.addEventListener('click', () => ir(actual() + +b.dataset.dir)));
+  let auto = setInterval(() => ir(actual() + 1), 5000);
+  pista.addEventListener('pointerdown', () => clearInterval(auto), { once: true });
 
   // Antes / Después
   const comp = document.getElementById('comp');
   comp.querySelector('input').addEventListener('input', e => comp.style.setProperty('--x', e.target.value + '%'));
 
-  // FAQ: la mascota se asoma al abrir
+  // FAQ
   const fe = document.getElementById('faq-equipo');
-  fe.addEventListener('toggle', () => {
-    const m = fe.querySelector('.faq-mascota');
-    if (fe.open) { m.style.animation = 'none'; m.offsetHeight; m.style.animation = ''; }
-  });
+  fe.addEventListener('toggle', () => { const m = fe.querySelector('.faq-mascota'); if (fe.open) { m.style.animation = 'none'; m.offsetHeight; m.style.animation = ''; } });
 
-  // Modal y formulario simulado
+  // Formulario simulado
   const modal = document.getElementById('modal'), form = document.getElementById('form');
   const pForm = document.getElementById('paso-form'), pOk = document.getElementById('paso-ok'), err = document.getElementById('error');
   let lastFocus = null;
-  const abrir = () => {
-    lastFocus = document.activeElement;
-    pForm.style.display = ''; pOk.style.display = 'none'; err.textContent = ''; form.reset();
-    modal.classList.add('open'); document.body.style.overflow = 'hidden';
-    setTimeout(() => form.querySelector('input').focus(), 300);
-  };
+  const abrir = () => { lastFocus = document.activeElement; pForm.style.display = ''; pOk.style.display = 'none'; err.textContent = ''; form.reset();
+    modal.classList.add('open'); document.body.style.overflow = 'hidden'; setTimeout(() => form.querySelector('input').focus({ preventScroll: true }), 300); };
   const cerrar = () => { modal.classList.remove('open'); document.body.style.overflow = ''; lastFocus && lastFocus.focus(); };
   document.querySelectorAll('[data-abrir]').forEach(b => b.addEventListener('click', abrir));
   modal.addEventListener('click', e => { if (e.target === modal || e.target.closest('[data-cerrar]')) cerrar(); });
   addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('open')) cerrar(); });
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    const f = form.elements;
+  form.addEventListener('submit', e => { e.preventDefault(); const f = form.elements;
     if (!f.nombre.value.trim() || !f.empresa.value.trim() || !f.sector.value || !f.contacto.value.trim()) { err.textContent = 'Completa los campos obligatorios, por favor.'; return; }
     if (!f.rgpd.checked) { err.textContent = 'Necesitamos que aceptes la política de privacidad.'; return; }
-    pForm.style.display = 'none'; pOk.style.display = 'block';
-  });
+    pForm.style.display = 'none'; pOk.style.display = 'block'; });
 })();
 </script>
 </body>
