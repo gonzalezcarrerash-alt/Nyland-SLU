@@ -4,7 +4,8 @@
 > contacto y logo están simulados para ver cómo queda. Antes de publicar de
 > verdad hay que conectar el formulario, poner el contacto real y redactar la
 > política de privacidad y el aviso legal. Copia desde la línea
-> "Crea una página web…" hasta el final.
+> "Crea una página web…" hasta el final y adjunta en AI Studio las dos
+> imágenes de `nyland/web/assets/` (logo-nyland.png y mascota-nyland.png).
 
 ---
 
@@ -171,6 +172,20 @@ PROHIBIDO (los tópicos de las webs de IA):
   negocio".
 - Plantillas con tres tarjetas iguales con iconos.
 - Ventanas de chatbot que saltan solas.
+- Única excepción a "nada de robots": la mascota de Nyland (ver abajo).
+
+MASCOTA (imagen adjunta "mascota-nyland.png", un robot amable sentado sobre
+un globo). Su papel en la historia: es quien se encarga del trabajo pesado
+para que las personas sean las protagonistas. Por eso NUNCA aparece en la
+apertura ni en el hero, y nunca es más grande que el texto. Úsala solo en
+estos tres sitios, pequeña y con una entrada suave:
+1. En la pregunta de las FAQ "¿Vais a sustituir a mi equipo?", asomando
+   por un lateral y saludando, con un bocadillo: "Yo me encargo del
+   papeleo. Tu equipo, de tus clientes."
+2. En el mensaje de confirmación del formulario, saludando junto al texto.
+3. Junto al paso 4 (Acompañamiento y mantenimiento), con la frase
+   "Sigo aquí cuando termina el proyecto."
+En móvil, la mascota puede ocultarse en el punto 3 si resta espacio.
 
 SÍ (estilo editorial, como una revista de diseño o una galería):
 - Paleta Nyland: verde profundo #1C3A2E, oro #D6B26C, menta #96E1BE y
@@ -186,9 +201,10 @@ SÍ (estilo editorial, como una revista de diseño o una galería):
   líneas finas en oro que se dibujan al hacer scroll. Nada brusco y nada que
   distraiga del botón.
 - Hover en botones: el oro se ilumina ligeramente.
-- Logo: usa "Nyland" en serif grande como logotipo, con "Consulting" en
-  versalitas pequeñas y espaciadas debajo, en oro sobre verde o en verde
-  sobre marfil.
+- Logo: usa la imagen adjunta "logo-nyland.png" (sello circular verde y
+  oro con un globo y una N). Ponlo pequeño en la cabecera y en el pie, y
+  como sello decorativo grande y semitransparente detrás de la sección
+  "El Cambio Nyland". No lo deformes ni le cambies los colores.
 - Prioriza la versión móvil: la mayoría de los visitantes llegará desde el
   teléfono. En móvil, las animaciones deben ser más ligeras y todo debe
   leerse sin hacer zoom.
