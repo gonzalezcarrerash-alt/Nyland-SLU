@@ -55,7 +55,7 @@ Mi servicio se presenta como un sistema propio llamado
 Frase que acompaña siempre al nombre: "El Cambio Nyland. Sigue siendo tú."
 Los tres verbos de la marca resumen el método y deben aparecer como
 subtítulos o etiquetas de los pasos: ESCUCHA (paso 1) · TRANSFORMA
-(pasos 2 y 3) · ACOMPAÑA (paso 4).
+(pasos 2 y 3) · CRECE (paso 4).
 
 --------------------------------------------------
 3. OBJETIVO Y CTA ÚNICO
@@ -207,7 +207,7 @@ SÍ (estilo editorial, como una revista de diseño o una galería):
 - Hover en botones: el oro se ilumina ligeramente.
 - Logo: usa la imagen adjunta "logo-nyland-consulting.png" (sello circular
   verde y oro con un globo y una N; arriba "NYLAND · CONSULTING" y abajo
-  "ESCUCHA · TRANSFORMA · ACOMPAÑA"). Ponlo pequeño en la cabecera y en el pie, y
+  "ESCUCHA · TRANSFORMA · CRECE"). Ponlo pequeño en la cabecera y en el pie, y
   como sello decorativo grande y semitransparente detrás de la sección
   "El Cambio Nyland". No lo deformes ni le cambies los colores.
 - Prioriza la versión móvil: la mayoría de los visitantes llegará desde el
