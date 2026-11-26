@@ -84,12 +84,6 @@ header .btn{padding:11px 20px;font-size:14px}
 .sello-hero img{position:relative;width:100%;filter:drop-shadow(0 30px 60px rgba(0,0,0,.5));animation:flotar 7s ease-in-out infinite}
 @keyframes flotar{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
 
-/* Banda de palabras */
-.banda{background:linear-gradient(90deg,var(--oro),var(--oro-c),var(--oro));color:var(--noche);overflow:hidden;padding:22px 0;transform:rotate(-1.5deg);margin:-10px -20px;box-shadow:0 20px 50px rgba(0,0,0,.35);z-index:5}
-.banda .pista{display:flex;width:max-content;animation:desliza 40s linear infinite}
-.banda span{font-family:var(--serif);font-size:clamp(28px,3.4vw,46px);white-space:nowrap;padding-right:48px}
-.banda span i{font-style:normal;color:var(--verde);opacity:.55;padding-right:48px}
-@keyframes desliza{to{transform:translateX(-50%)}}
 
 /* Revelados (solo si hay JS) */
 .js .rv{opacity:0;transform:translateY(28px);transition:opacity 1.1s, transform 1.1s}
@@ -313,6 +307,25 @@ textarea{min-height:84px;resize:vertical}
   .foto-marco{aspect-ratio:4/3}
 }
 
+
+/* Voz: textos con personalidad */
+mark{background:none;color:var(--marfil);position:relative;white-space:normal;background-image:linear-gradient(90deg,var(--oro),var(--menta));background-repeat:no-repeat;background-size:100% 2px;background-position:0 100%;padding-bottom:2px;transition:background-size 1.4s cubic-bezier(.2,.7,.2,1) .4s}
+.js .rv mark{background-size:0% 2px}
+.js .rv.on mark{background-size:100% 2px}
+.firma{display:block;margin-top:10px;font-family:var(--serif);font-style:italic;font-weight:500;font-size:1.35em;color:var(--oro)}
+.voz{font-family:var(--serif)!important;font-size:clamp(23px,2.2vw,30px)!important;line-height:1.35!important;color:rgba(242,245,240,.82)!important;border-left:2px solid var(--oro);padding:4px 0 4px 26px;max-width:30ch!important;position:relative}
+.voz::before{content:"";position:absolute;left:-6px;top:0;width:10px;height:10px;border-radius:50%;background:var(--oro);box-shadow:0 0 18px var(--oro)}
+.voz mark{font-style:italic;color:var(--marfil)}
+.lead mark,.pie mark{color:var(--marfil)}
+.mirada-cab{display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:end}
+.revela span{color:rgba(150,225,190,.55)}
+.paso p,.pilar p,.puerta p,details p,.diapo p{color:rgba(242,245,240,.78)}
+/* Barra de progreso y halo */
+.progreso{position:fixed;top:0;left:0;height:2px;width:100%;transform-origin:left;transform:scaleX(var(--p,0));background:linear-gradient(90deg,var(--menta),var(--oro));z-index:50;box-shadow:0 0 12px var(--oro)}
+.halo-cursor{position:fixed;left:0;top:0;width:520px;height:520px;margin:-260px 0 0 -260px;border-radius:50%;background:radial-gradient(circle,rgba(214,178,108,.10),transparent 65%);pointer-events:none;z-index:1;transform:translate(var(--mx,-999px),var(--my,-999px));transition:transform .25s ease-out}
+@media (hover:none){.halo-cursor{display:none}}
+@media (max-width:900px){.mirada-cab{grid-template-columns:1fr;gap:28px}}
+
 /* Responsive */
 @media (max-width:900px){
   body{font-size:16px}
@@ -364,6 +377,8 @@ textarea{min-height:84px;resize:vertical}
   </symbol>
 </svg>
 
+<div class="progreso" id="progreso" aria-hidden="true"></div>
+<div class="halo-cursor" id="halo" aria-hidden="true"></div>
 <header class="top" id="top">
   <div class="wrap">
     <a class="brand" href="#inicio" aria-label="Nyland Consulting, inicio">
@@ -390,7 +405,7 @@ textarea{min-height:84px;resize:vertical}
       <div class="rv">
         <span class="eyebrow">Consultoría de procesos e inteligencia artificial</span>
         <h2>Recupera el tiempo que tu empresa pierde en lo que <em>no es su oficio.</em></h2>
-        <p class="lead">Entramos, escuchamos a cada persona de tu equipo y transformamos tus procesos con inteligencia artificial. Sin perder lo que te hace único.</p>
+        <p class="lead">Entramos, escuchamos a <mark>cada persona de tu equipo</mark> y transformamos tus procesos con inteligencia artificial. <strong class="firma">Sin perder lo que te hace único.</strong></p>
         <button class="btn" data-abrir>Solicitar un diagnóstico <span class="arrow">→</span></button>
         <p class="micro">Sin compromiso · 15 minutos · Directamente con el consultor</p>
         <p class="confianza">Primero entendemos tu empresa. Después, proponemos.</p>
@@ -402,17 +417,57 @@ textarea{min-height:84px;resize:vertical}
     </div>
   </section>
 
-  <div class="banda" aria-hidden="true"><div class="pista">
-    <span>Escucha <i>✦</i> Transforma <i>✦</i> Crece <i>✦</i> Sigue siendo tú <i>✦</i> Escucha <i>✦</i> Transforma <i>✦</i> Crece <i>✦</i> Sigue siendo tú <i>✦</i></span>
-    <span>Escucha <i>✦</i> Transforma <i>✦</i> Crece <i>✦</i> Sigue siendo tú <i>✦</i> Escucha <i>✦</i> Transforma <i>✦</i> Crece <i>✦</i> Sigue siendo tú <i>✦</i></span>
-  </div></div>
+
+  <section class="mirada" id="mirada">
+    <div class="fondo" style="background-image:url('assets/fotos/foto7.jpg')" aria-hidden="true"></div>
+    <div class="wrap">
+      <span class="eyebrow">Una mirada de fuera</span>
+      <div class="mirada-cab"><h2 class="rv">Vemos lo que desde dentro <em>ya no se ve.</em></h2><p class="voz rv">Cuando llevas años dentro de tu empresa, <mark>dejas de ver lo que la frena.</mark> Nosotros llegamos sin costumbres, sin prisas y sin miedo a preguntar.</p></div>
+      <div class="puertas">
+        <div class="puerta rv"><span class="k">i</span><h3>Alternativas que no habías considerado</h3><p>Te mostramos caminos nuevos, a ti y a tu equipo, que el día a día no deja ver.</p></div>
+        <div class="puerta rv"><span class="k">ii</span><h3>Tu realidad, concretada</h3><p>Ponemos sobre la mesa cómo funciona de verdad tu empresa, sin suposiciones.</p></div>
+        <div class="puerta rv"><span class="k">iii</span><h3>Una huella que se queda</h3><p>Conceptos nuevos que tu empresa sigue aplicando cuando nosotros ya no estamos en la sala.</p></div>
+      </div>
+      <p class="remate rv">Abrimos puertas que no sabías que estaban ahí.</p>
+    </div>
+  </section>
+
+  <section class="cambio" id="cambio">
+    <img class="sello" src="assets/logo-nyland-consulting-web.png" alt="" aria-hidden="true">
+    <div class="wrap">
+      <div class="intro">
+        <div><span class="eyebrow">Nuestro método</span><h2>El <em>Cambio</em> Nyland.</h2></div>
+        <p class="voz rv"><mark>No te instalamos una herramienta y desaparecemos.</mark> Desmontamos tu empresa proceso a proceso, entendemos por qué las cosas no funcionan y construimos lo que de verdad necesitas.</p>
+      </div>
+      <p class="revela"><span>El Cambio Nyland no se explica.</span> Se descubre.</p>
+      <div class="pasos">
+        <article class="paso"><span class="num">01</span>
+          <svg class="ico" viewBox="0 0 64 64" fill="none" stroke="#D6B26C" stroke-width="2"><circle cx="32" cy="32" r="6" fill="#96E1BE" stroke="none"/><path d="M20 20a17 17 0 0 0 0 24M44 20a17 17 0 0 1 0 24M13 13a27 27 0 0 0 0 38M51 13a27 27 0 0 1 0 38"/></svg>
+          <span class="tag">Escucha</span><h3>Diagnóstico desde dentro</h3><p>Nos ponemos en la piel de cada persona de tu empresa, del dueño al último puesto, y localizamos qué no funciona y por qué.</p></article>
+        <article class="paso"><span class="num">02</span>
+          <svg class="ico" viewBox="0 0 64 64" fill="none" stroke="#D6B26C" stroke-width="2"><path d="M36 6 16 36h14l-4 22 22-32H34z" fill="rgba(150,225,190,.2)"/></svg>
+          <span class="tag">Transforma</span><h3>Soluciones rápidas</h3><p>Implantamos herramientas que alivian lo más urgente desde las primeras semanas, según el caso.</p></article>
+        <article class="paso"><span class="num">03</span>
+          <svg class="ico" viewBox="0 0 64 64" fill="none" stroke="#D6B26C" stroke-width="2"><rect x="12" y="12" width="40" height="40" rx="8"/><path d="M12 28h40M28 28v24"/><circle cx="20" cy="20" r="2.5" fill="#96E1BE" stroke="none"/></svg>
+          <span class="tag">Transforma</span><h3>Software a tu medida</h3><p>Con el estudio hecho, diseñamos una solución adaptada exactamente a cómo trabaja tu empresa. La tecnología se adapta a ti, no al revés.</p></article>
+        <article class="paso destacado"><span class="num">04</span>
+          <div>
+            <svg class="ico" viewBox="0 0 64 64" fill="none" stroke="#D6B26C" stroke-width="2"><path d="M8 52 24 36l10 8 22-26"/><path d="M44 18h12v12"/></svg>
+            <span class="tag">Crece</span><h3>Acompañamiento y mantenimiento</h3><p>Nos ocupamos de que todas las herramientas y procesos sigan funcionando, los actualizamos y los mejoramos mientras tu negocio crece. No te dejamos solo con la tecnología: nos encargamos de que funcione, hoy y dentro de un año.</p>
+          </div>
+          <div class="mascota"><img src="assets/mascota-nyland-web.jpg" alt="Mascota de Nyland saludando"><div class="bocadillo">Sigo aquí cuando termina el proyecto.</div></div>
+        </article>
+      </div>
+      <p class="frase-final rv">La inteligencia artificial multiplica tus capacidades.<br><em>La inteligencia emocional decide cómo la usas.</em></p>
+    </div>
+  </section>
 
   <section class="dolores">
     <div class="rejilla" aria-hidden="true"></div>
     <div class="wrap">
       <div class="cab">
         <h2 class="rv">¿Te suena alguna de estas frases?</h2>
-        <p class="rv">Nos las dicen dueños y gerentes que llevan años haciendo bien su trabajo. El problema nunca es el oficio. Es todo lo que lo rodea.</p>
+        <p class="voz rv">Nos las dicen dueños y gerentes que llevan años haciendo bien su trabajo. <mark>El problema nunca es el oficio.</mark> Es todo lo que lo rodea.</p>
       </div>
       <div class="cols">
         <div class="col rv">
@@ -477,7 +532,7 @@ textarea{min-height:84px;resize:vertical}
         <div>
           <span class="eyebrow">Por qué existimos</span>
           <h2 class="rv">La eficiencia de una empresa empieza <em>en cada persona.</em></h2>
-          <p class="lead rv">Lo vemos en cada empresa en la que entramos. Cuando a un trabajador le faltan herramientas, procesos claros o la formación adecuada, su eficiencia cae. Y lo que le pasa al trabajador acaba pasándole a la empresa.</p>
+          <p class="lead rv">Lo vemos en cada empresa en la que entramos. Cuando a un trabajador le faltan herramientas, procesos claros o la formación adecuada, su eficiencia cae. Y <mark>lo que le pasa al trabajador acaba pasándole a la empresa.</mark></p>
           <div class="cadena rv" aria-label="Del trabajador a la empresa"><span>Trabajador</span><i>→</i><span>Equipo</span><i>→</i><span class="fin">Empresa</span></div>
         </div>
         <figure class="foto-marco rv" style="margin:0"><img src="assets/fotos/foto6.jpg" alt="Una mentora forma a una empleada con el móvil"><figcaption class="pie-f">Un equipo que se siente tenido en cuenta trabaja mejor.</figcaption></figure>
@@ -495,7 +550,7 @@ textarea{min-height:84px;resize:vertical}
       <div>
         <span class="eyebrow">Tu empresa en la palma de la mano</span>
         <h2 class="rv">Todo tu negocio, <em>en tu móvil.</em></h2>
-        <p class="lead rv">El móvil es la herramienta que hoy usamos todos. Por eso te enseñamos lo fácil que es manejar tu panel empresarial desde él, estés donde estés.</p>
+        <p class="lead rv"><mark>El móvil es la herramienta que hoy usamos todos.</mark> Por eso te enseñamos lo fácil que es manejar tu panel empresarial desde él, estés donde estés.</p>
         <ul class="rv">
           <li>Ves de un vistazo cómo va tu empresa hoy.</li>
           <li>Sabes qué tareas se han resuelto solas y cuáles necesitan a una persona.</li>
@@ -519,49 +574,7 @@ textarea{min-height:84px;resize:vertical}
     </div>
   </section>
 
-  <section class="mirada" id="mirada">
-    <div class="fondo" style="background-image:url('assets/fotos/foto7.jpg')" aria-hidden="true"></div>
-    <div class="wrap">
-      <span class="eyebrow">Una mirada de fuera</span>
-      <h2 class="rv">Vemos lo que desde dentro <em>ya no se ve.</em></h2>
-      <div class="puertas">
-        <div class="puerta rv"><span class="k">i</span><h3>Alternativas que no habías considerado</h3><p>Te mostramos caminos nuevos, a ti y a tu equipo, que el día a día no deja ver.</p></div>
-        <div class="puerta rv"><span class="k">ii</span><h3>Tu realidad, concretada</h3><p>Ponemos sobre la mesa cómo funciona de verdad tu empresa, sin suposiciones.</p></div>
-        <div class="puerta rv"><span class="k">iii</span><h3>Una huella que se queda</h3><p>Conceptos nuevos que tu empresa sigue aplicando cuando nosotros ya no estamos en la sala.</p></div>
-      </div>
-      <p class="remate rv">Abrimos puertas que no sabías que estaban ahí.</p>
-    </div>
-  </section>
 
-  <section class="cambio" id="cambio">
-    <img class="sello" src="assets/logo-nyland-consulting-web.png" alt="" aria-hidden="true">
-    <div class="wrap">
-      <div class="intro">
-        <div><span class="eyebrow">Nuestro método</span><h2>El Cambio Nyland. <em>Sigue siendo tú.</em></h2></div>
-        <p>No te instalamos una herramienta y desaparecemos. Desmontamos tu empresa proceso a proceso, entendemos por qué las cosas no funcionan y construimos lo que de verdad necesitas.</p>
-      </div>
-      <p class="revela">El Cambio Nyland no se explica. Se descubre.</p>
-      <div class="pasos">
-        <article class="paso"><span class="num">01</span>
-          <svg class="ico" viewBox="0 0 64 64" fill="none" stroke="#D6B26C" stroke-width="2"><circle cx="32" cy="32" r="6" fill="#96E1BE" stroke="none"/><path d="M20 20a17 17 0 0 0 0 24M44 20a17 17 0 0 1 0 24M13 13a27 27 0 0 0 0 38M51 13a27 27 0 0 1 0 38"/></svg>
-          <span class="tag">Escucha</span><h3>Diagnóstico desde dentro</h3><p>Nos ponemos en la piel de cada persona de tu empresa, del dueño al último puesto, y localizamos qué no funciona y por qué.</p></article>
-        <article class="paso"><span class="num">02</span>
-          <svg class="ico" viewBox="0 0 64 64" fill="none" stroke="#D6B26C" stroke-width="2"><path d="M36 6 16 36h14l-4 22 22-32H34z" fill="rgba(150,225,190,.2)"/></svg>
-          <span class="tag">Transforma</span><h3>Soluciones rápidas</h3><p>Implantamos herramientas que alivian lo más urgente desde las primeras semanas, según el caso.</p></article>
-        <article class="paso"><span class="num">03</span>
-          <svg class="ico" viewBox="0 0 64 64" fill="none" stroke="#D6B26C" stroke-width="2"><rect x="12" y="12" width="40" height="40" rx="8"/><path d="M12 28h40M28 28v24"/><circle cx="20" cy="20" r="2.5" fill="#96E1BE" stroke="none"/></svg>
-          <span class="tag">Transforma</span><h3>Software a tu medida</h3><p>Con el estudio hecho, diseñamos una solución adaptada exactamente a cómo trabaja tu empresa. La tecnología se adapta a ti, no al revés.</p></article>
-        <article class="paso destacado"><span class="num">04</span>
-          <div>
-            <svg class="ico" viewBox="0 0 64 64" fill="none" stroke="#D6B26C" stroke-width="2"><path d="M8 52 24 36l10 8 22-26"/><path d="M44 18h12v12"/></svg>
-            <span class="tag">Crece</span><h3>Acompañamiento y mantenimiento</h3><p>Nos ocupamos de que todas las herramientas y procesos sigan funcionando, los actualizamos y los mejoramos mientras tu negocio crece. No te dejamos solo con la tecnología: nos encargamos de que funcione, hoy y dentro de un año.</p>
-          </div>
-          <div class="mascota"><img src="assets/mascota-nyland-web.jpg" alt="Mascota de Nyland saludando"><div class="bocadillo">Sigo aquí cuando termina el proyecto.</div></div>
-        </article>
-      </div>
-      <p class="frase-final rv">La inteligencia artificial multiplica tus capacidades.<br><em>La inteligencia emocional decide cómo la usas.</em></p>
-    </div>
-  </section>
 
   <section class="ad">
     <div class="wrap">
@@ -649,7 +662,7 @@ textarea{min-height:84px;resize:vertical}
         <div class="divisor"></div>
         <input type="range" min="0" max="100" value="50" aria-label="Comparar antes y después">
       </div>
-      <p class="pie rv">Tú sigues siendo el mismo. Lo que cambia es todo lo que te rodea.</p>
+      <p class="pie rv">Tú sigues siendo el mismo. <mark>Lo que cambia es todo lo que te rodea.</mark></p>
     </div>
   </section>
 
@@ -751,6 +764,11 @@ document.documentElement.classList.add('js');
   todos.forEach(el => io.observe(el));
   setTimeout(() => todos.forEach(el => el.classList.add('on')), 6000);
 
+
+  // Progreso y halo
+  const prog = document.getElementById('progreso'), halo = document.getElementById('halo');
+  addEventListener('scroll', () => { const h = document.documentElement.scrollHeight - innerHeight; prog.style.setProperty('--p', h > 0 ? scrollY / h : 0); }, { passive: true });
+  addEventListener('pointermove', e => { halo.style.setProperty('--mx', e.clientX + 'px'); halo.style.setProperty('--my', e.clientY + 'px'); }, { passive: true });
   // Cabecera
   const top = document.getElementById('top'); let last = 0;
   addEventListener('scroll', () => { const y = scrollY; top.classList.toggle('scrolled', y > 40); top.classList.toggle('hidden', y > 500 && y > last); last = y; }, { passive: true });
