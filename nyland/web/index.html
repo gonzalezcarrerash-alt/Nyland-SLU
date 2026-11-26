@@ -454,6 +454,39 @@ mark{background:none;padding:0;color:var(--oro-c);font-family:var(--serif);font-
 .confianza{color:var(--oro-c)}
 .revela span{color:rgba(150,225,190,.6)}
 
+
+/* Niveles: destaca en tu sector */
+.niveles{padding:160px 0;background:linear-gradient(180deg,var(--fondo),#12291f 50%,var(--noche))}
+.nv-cab{display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:end;margin-bottom:90px}
+.niveles h2{font-size:clamp(38px,4.8vw,68px);max-width:17ch;margin-top:18px}
+.escalera{list-style:none;margin:0 auto;padding:0;position:relative;max-width:980px}
+.esc-linea{position:absolute;left:50%;top:10px;bottom:10px;width:2px;transform:translateX(-50%);background:rgba(214,178,108,.18);border-radius:2px;overflow:hidden}
+.esc-luz{position:absolute;left:0;top:0;width:100%;height:calc(var(--prog,1)*100%);background:linear-gradient(180deg,var(--menta),var(--oro));box-shadow:0 0 16px var(--oro)}
+.js .esc-luz{height:calc(var(--prog,0)*100%)}
+.nv{position:relative;display:grid;grid-template-columns:1fr 90px 1fr;align-items:center;margin-bottom:34px}
+.nv-num{grid-column:2;justify-self:center;z-index:1;display:grid;place-items:center;width:72px;height:72px;border-radius:50%;background:var(--noche);border:2px solid var(--oro);font-family:var(--serif);font-size:30px;color:var(--oro);box-shadow:0 0 0 8px rgba(11,29,21,.9)}
+.nv-card{grid-row:1;grid-column:1;text-align:right;padding:30px 34px;border-radius:24px;background:linear-gradient(160deg,rgba(36,74,58,.7),rgba(15,36,27,.6));border:1px solid rgba(214,178,108,.25);transition:transform .5s,border-color .5s}
+.nv:nth-of-type(even) .nv-card{grid-column:3;text-align:left}
+.nv-card:hover{transform:translateY(-4px);border-color:var(--oro)}
+.nv-emo{display:inline-block;font:600 11px var(--sans);letter-spacing:.26em;text-transform:uppercase;color:var(--noche);background:var(--menta);padding:5px 12px;border-radius:999px}
+.nv-card h3{font-size:clamp(26px,2.6vw,34px);margin:14px 0 8px}
+.nv-card p{margin:0;font-family:var(--serif);font-weight:500;font-size:clamp(19px,1.6vw,21px);line-height:1.45;color:rgba(242,245,240,.84)}
+.nv-final .nv-num{background:var(--oro);color:var(--noche);box-shadow:0 0 0 8px rgba(11,29,21,.9),0 0 40px rgba(214,178,108,.5)}
+.nv-final .nv-card{grid-column:1/-1!important;grid-row:2;text-align:center!important;margin-top:24px;background:radial-gradient(ellipse at 50% 0%,var(--oro-c),var(--oro) 70%);color:var(--noche);border:0;padding:44px}
+.nv-final .nv-card h3{font-size:clamp(32px,3.6vw,50px)}
+.nv-final .nv-card p{color:rgba(11,29,21,.85);max-width:46ch;margin:0 auto}
+.nv-final .nv-emo{background:var(--noche);color:var(--oro)}
+@media (max-width:900px){
+  .niveles{padding:110px 0}
+  .nv-cab{grid-template-columns:1fr;gap:28px;margin-bottom:60px}
+  .esc-linea{left:28px}
+  .nv{grid-template-columns:56px 1fr;column-gap:18px;align-items:start}
+  .nv-num{grid-column:1;width:56px;height:56px;font-size:30px}
+  .nv-card,.nv:nth-of-type(even) .nv-card{grid-column:2;grid-row:1;text-align:left;padding:24px}
+  .nv-final .nv-card{grid-column:1/-1!important;grid-row:1;margin-top:10px}
+  .nv-final .nv-num{display:none}
+}
+
 /* Responsive */
 @media (max-width:900px){
   body{font-size:16px}
@@ -736,6 +769,25 @@ mark{background:none;padding:0;color:var(--oro-c);font-family:var(--serif);font-
     </div>
   </section>
 
+  <section class="niveles" id="niveles">
+    <div class="wrap">
+      <div class="nv-cab">
+        <div><span class="eyebrow">Destaca en tu sector</span>
+          <h2 class="rv">Déjanos desmontar tu empresa. <em>Te enseñamos a verla con los ojos de tu equipo.</em></h2></div>
+        <p class="voz rv">Te enseñamos a aplicar la inteligencia emocional en tus procesos: <mark>ponerte en la piel de cada trabajador</mark>, prevenir la caída de un departamento antes de que ocurra y gestionar los días malos.</p>
+      </div>
+      <ol class="escalera" id="escalera">
+        <span class="esc-linea" aria-hidden="true"><span class="esc-luz"></span></span>
+        <li class="nv rv"><span class="nv-num">01</span><div class="nv-card"><span class="nv-emo">Desmontar</span><h3>Desmontamos tu empresa pieza a pieza</h3><p>Departamento a departamento, proceso a proceso. Vemos cómo funciona de verdad, no como dice el organigrama.</p></div></li>
+        <li class="nv rv"><span class="nv-num">02</span><div class="nv-card"><span class="nv-emo">Empatía</span><h3>Te ponemos en la piel de cada trabajador</h3><p>Te enseñamos cómo vive su día tu recepcionista, tu comercial o quien limpia la oficina. Y por qué actúan como actúan.</p></div></li>
+        <li class="nv rv"><span class="nv-num">03</span><div class="nv-card"><span class="nv-emo">Prevención</span><h3>Ves venir la caída de un departamento</h3><p>Aprendes a leer las señales antes de que un equipo se colapse: la sobrecarga, el desgaste, el error que se repite.</p></div></li>
+        <li class="nv rv"><span class="nv-num">04</span><div class="nv-card"><span class="nv-emo">Gestión</span><h3>Sabes gestionar los días malos</h3><p>Procesos que sostienen a la persona cuando no está al cien por cien. Y una forma de actuar cuando el día se tuerce.</p></div></li>
+        <li class="nv rv"><span class="nv-num">05</span><div class="nv-card"><span class="nv-emo">Aprendizaje</span><h3>Conviertes cada mal día en aprendizaje</h3><p>Lo que falló se habla, se entiende y no se repite. El equipo crece con cada tropiezo en lugar de esconderlo.</p></div></li>
+        <li class="nv nv-final rv"><span class="nv-num">✦</span><div class="nv-card"><span class="nv-emo">El resultado</span><h3>Tu empresa destaca en su sector</h3><p>Tus clientes notan la diferencia antes de saber explicarla: un equipo tranquilo, preparado y orgulloso de lo que hace.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
   <section class="movil" id="movil">
     <div class="wrap grid">
       <div>
@@ -1015,6 +1067,11 @@ document.documentElement.classList.add('js');
   document.querySelectorAll('.giro').forEach(g => g.addEventListener('click', () => {
     const on = g.classList.toggle('on'); g.setAttribute('aria-pressed', on);
   }));
+
+  // Escalera de niveles: la línea se ilumina al bajar
+  const esc = document.getElementById('escalera');
+  const pintaEsc = () => { const r = esc.getBoundingClientRect(); const p = Math.min(1, Math.max(0, (innerHeight * .6 - r.top) / r.height)); esc.style.setProperty('--prog', p.toFixed(3)); };
+  addEventListener('scroll', pintaEsc, { passive: true }); pintaEsc();
   // Cabecera
   const top = document.getElementById('top'); let last = 0;
   addEventListener('scroll', () => { const y = scrollY; top.classList.toggle('scrolled', y > 40); top.classList.toggle('hidden', y > 500 && y > last); last = y; }, { passive: true });
