@@ -44,7 +44,6 @@ src = src.replace('https://tudominio.es', DOM)
 src = src.replace('<label class="sr">Tu email<input', '<label class="sr"><span class="lbl">Tu email</span><input')
 src = re.sub(r'<nav aria-label="Contacto y legal">.*?</nav>', f'<nav aria-label="Contacto y legal">\n        <a href="mailto:{EMAIL}">{EMAIL}</a>\n        <a href="privacidad.html">Política de privacidad</a><a href="aviso-legal.html">Aviso legal</a>\n      </nav>', src, count=1, flags=re.S)
 src = src.replace(' · Maqueta de prueba: contacto de ejemplo y textos legales pendientes.', '')
-src = src.replace('<p class="micro">Maqueta: el email no se envía ni se guarda.</p>', '<p class="micro">Se abrirá tu programa de correo con la petición lista para enviar.</p>')
 src = src.replace('<p class="demo">Maqueta: los datos no se envían ni se guardan.</p>', '<p class="demo">Al pulsar, se abrirá tu correo con la solicitud lista para enviar a ' + EMAIL + '.</p>')
 src = src.replace('Acepto la política de privacidad y recibir la guía por email.', 'Acepto la <a href="privacidad.html">política de privacidad</a>.')
 src = src.replace('He leído y acepto la política de privacidad.', 'He leído y acepto la <a href="privacidad.html">política de privacidad</a>.')
@@ -62,11 +61,11 @@ src = head + '<main id="inicio">' + body
 # 5. Formularios: sin servidor todavía, envían a tu correo con mailto (no guardan datos)
 js = re.sub(r"pForm\.style\.display = 'none'; pOk\.style\.display = 'block'; \}\);",
   "const cuerpo = `Nombre: ${f.nombre.value.trim()}\\nEmpresa: ${f.empresa.value.trim()}\\nSector: ${f.sector.value}\\nContacto: ${f.contacto.value.trim()}\\n\\nLo que más tiempo le quita al equipo:\\n${f.tiempo.value.trim()}`;\n    location.href = 'mailto:" + EMAIL + "?subject=' + encodeURIComponent('Solicitud de diagnóstico · ' + f.empresa.value.trim()) + '&body=' + encodeURIComponent(cuerpo);\n    pForm.style.display = 'none'; pOk.style.display = 'block'; });", js, count=1)
-js = js.replace("gok.style.color = ''; gok.textContent = 'Hecho. Te llegará la guía en unos minutos.'; gf.reset(); });",
+js = js.replace("__sin_uso__",
   "location.href = 'mailto:" + EMAIL + "?subject=' + encodeURIComponent('Quiero la guía: 5 preguntas para mi equipo') + '&body=' + encodeURIComponent('Hola, me gustaría recibir la guía. Mi email es: ' + em);\n    gok.style.color = ''; gok.textContent = 'Se ha abierto tu correo con la petición. Envíala y te mandamos la guía.'; gf.reset(); });")
 src = src.replace('<p class="micro">Te contactamos en menos de 24 horas laborables para fijar tus 15 minutos.</p>', '<p class="micro">Se ha abierto tu programa de correo con la solicitud. Envíala y te contactamos en menos de 24 horas laborables para fijar tus 15 minutos.</p>')
 src = src.replace('<h2>Recibido.</h2>', '<h2>Casi listo.</h2>')
-assert 'mailto:' in js and js.count('location.href') == 2, 'formularios sin conectar'
+assert 'mailto:' in js and js.count('location.href') == 1, 'formulario de diagnóstico sin conectar'
 open(f'{out}/assets/styles.css', 'w').write(css)
 open(f'{out}/assets/app.js', 'w').write(js)
 open(f'{out}/index.html', 'w').write(src)
@@ -81,7 +80,8 @@ open(f'{out}/assets/legal.css', 'w').write("body{margin:0;background:#0f241b;col
 PEND = '<p class="aviso">Texto en revisión. Si tienes cualquier duda, escríbenos a <a href="mailto:%s">%s</a>.</p>' % (EMAIL, EMAIL)
 open(f'{out}/privacidad.html', 'w').write(pagina('Política de privacidad', PEND + f'''
 <h2>Responsable</h2><p>Nyland Consulting S.L. · Email: <a href="mailto:{EMAIL}">{EMAIL}</a>. [Pendiente: NIF y domicilio social.]</p>
-<h2>Qué datos tratamos</h2><p>Esta web no usa cookies de seguimiento ni herramientas de analítica, y no guarda en su servidor los datos de los formularios. Los formularios abren tu programa de correo para que nos envíes tú mismo la solicitud. Solo tratamos los datos que nos escribas por email (nombre, empresa, contacto y lo que nos cuentes).</p>
+<h2>Qué datos tratamos</h2><p>Esta web no usa cookies de seguimiento ni herramientas de analítica, y no guarda en su servidor los datos de los formularios. El formulario de diagnóstico abre tu programa de correo para que nos envíes tú mismo la solicitud. Tratamos los datos que nos escribas por email (nombre, empresa, contacto y lo que nos cuentes) y, si pides la guía, los del apartado siguiente.</p>
+<h2>Guía gratuita y emails</h2><p>Si pides nuestra guía, tu nombre y tu email se guardan en Brevo (Sendinblue SAS, proveedor de email marketing con servidores en la Unión Europea), que actúa como encargado del tratamiento. Los usamos para enviarte la guía y algunos emails relacionados con ella. Cada email incluye un enlace para darte de baja cuando quieras.</p>
 <h2>Para qué</h2><p>Para responder a tu solicitud de diagnóstico o enviarte la guía que nos pidas. No los usamos para otros fines ni los cedemos a terceros, salvo obligación legal.</p>
 <h2>Base legal</h2><p>Tu consentimiento al escribirnos y, si llegamos a trabajar juntos, la relación precontractual o contractual.</p>
 <h2>Cuánto tiempo</h2><p>El necesario para atender tu solicitud y, en su caso, los plazos que marque la ley.</p>

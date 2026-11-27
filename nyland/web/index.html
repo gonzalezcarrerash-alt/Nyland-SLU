@@ -764,13 +764,8 @@ mark{background:none;padding:0;color:var(--oro-c);font-family:var(--serif);font-
             <li>En qué momento exacto se te escapa un cliente.</li>
             <li>Qué se quedaría parado si mañana faltara alguien.</li>
           </ul>
-          <form class="gu-form" id="guiaForm" novalidate>
-            <label class="sr">Tu email<input type="email" name="email" placeholder="Tu email profesional" autocomplete="email" required></label>
-            <button class="btn" type="submit">Quiero la guía</button>
-          </form>
-          <label class="check gu-check"><input type="checkbox" id="guiaRgpd"> Acepto la política de privacidad y recibir la guía por email.</label>
-          <p class="gu-ok" id="guiaOk" aria-live="polite"></p>
-          <p class="micro">Maqueta: el email no se envía ni se guarda.</p>
+          <a class="btn" href="https://65b167e8.sibforms.com/serve/MUIFAHC74YK4BUtau3wKFd1ArbIl6TUGcwhtsEimLPvJ7Mq9g61HHGuOBdF8ssr2VmkANlEF854V7UJKA1yR_bRsT6-cNuxLLIeWhUXnM51Di1-58ALy0dj9QWJ06Cvr3QgpRfFp21ZVqhI6xlrDccJVGUId9U0MHmy4yNi9fWm6AELIyyBBbLkpi1M_Tts-xvGXYR-jxh0z3QuXXw==" target="_blank" rel="noopener">Quiero la guía <span class="arrow">→</span></a>
+          <p class="micro">Gratis · Te la enviamos al momento por email · Puedes darte de baja cuando quieras</p>
         </div>
       </div>
     </div>
@@ -1210,13 +1205,6 @@ document.documentElement.classList.add('js');
   const pintaEsc = () => { const r = esc.getBoundingClientRect(); const p = Math.min(1, Math.max(0, (innerHeight * .6 - r.top) / r.height)); esc.style.setProperty('--prog', p.toFixed(3)); };
   addEventListener('scroll', pintaEsc, { passive: true }); pintaEsc();
 
-  // Guía gratuita (simulado)
-  const gf = document.getElementById('guiaForm'), gok = document.getElementById('guiaOk');
-  gf.addEventListener('submit', e => { e.preventDefault();
-    const em = gf.elements.email.value.trim();
-    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)) { gok.style.color = '#f0a090'; gok.textContent = 'Revisa tu email, por favor.'; return; }
-    if (!document.getElementById('guiaRgpd').checked) { gok.style.color = '#f0a090'; gok.textContent = 'Necesitamos que aceptes la política de privacidad.'; return; }
-    gok.style.color = ''; gok.textContent = 'Hecho. Te llegará la guía en unos minutos.'; gf.reset(); });
   // Cabecera
   const top = document.getElementById('top'); let last = 0;
   addEventListener('scroll', () => { const y = scrollY; top.classList.toggle('scrolled', y > 40); top.classList.toggle('hidden', y > 500 && y > last); last = y; }, { passive: true });
