@@ -9,6 +9,7 @@ out = 'dist'
 shutil.rmtree(out, ignore_errors=True)
 os.makedirs(out + '/assets/fonts', exist_ok=True)
 shutil.copytree('assets/fotos', out + '/assets/fotos', ignore=shutil.ignore_patterns('raw*'))
+shutil.copy('guia-5-preguntas.pdf', out + '/guia-5-preguntas.pdf')
 for f in ['logo-nyland-consulting-web.png', 'mascota-nyland-web.jpg', 'og-nyland.jpg']:
     shutil.copy('assets/' + f, out + '/assets/' + f)
 
