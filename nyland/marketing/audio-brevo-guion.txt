@@ -1,0 +1,15 @@
+Hola. Te explico cómo funcionaría Brevo en Nyland, cuánto cuesta y qué pasa si coges el plan Starter.
+
+Primero, para qué sirve. Brevo es la herramienta que recoge los contactos de tu web y les envía emails automáticos. En Nyland funcionaría así. Alguien pide en la web la guía de las cinco preguntas para hacerle mañana a su equipo. Brevo guarda su email en una lista y le pide que lo confirme, lo que te protege con la ley de protección de datos. Después le envía la guía de forma automática, sin que tú hagas nada. Y durante los días siguientes le llegan tres o cuatro emails más, también automáticos: uno sobre el efecto miércoles, otro con un ejemplo de proceso, y al final la invitación al diagnóstico de quince minutos. Además, cuando alguien pida un diagnóstico, sus datos quedarán en Brevo y te llegará un aviso a contacto arroba nylandconsulting punto es. Y tendrás una ficha de cada contacto, con los emails que ha abierto y en qué ha pulsado, para saber a quién llamar primero.
+
+Una cosa importante: los emails en frío a clínicas no van por Brevo. Esos envíalos desde tu propio correo, personalizados y de uno en uno. Mandar campañas masivas a gente que no se ha apuntado puede bloquearte la cuenta y te puede dar problemas legales.
+
+Ahora, los precios. Confírmalos en la web de Brevo, porque cambian, y en euros pueden ser algo distintos. El plan gratuito permite enviar hasta trescientos emails al día, con contactos ilimitados, formularios y automatizaciones. Para empezar, es suficiente. El plan Starter cuesta desde unos nueve dólares al mes. Quita el límite diario y te da desde cinco mil emails al mes. Y el plan Standard, desde unos dieciocho dólares al mes, añade automatizaciones más avanzadas y pruebas para comparar versiones. Ese, más adelante.
+
+¿Y qué pasa si coges el Starter? Ganas que desaparece el límite de trescientos emails al día. Pero ojo, porque no ganas algo que quizá esperas: el aviso de enviado con Brevo sigue apareciendo en tus emails. Para quitarlo hay que pagar un extra de unos ocho a doce euros al mes, aparte del Starter. Y las automatizaciones tienen el mismo límite que en el plan gratuito.
+
+Haz la cuenta. Si cien personas al mes piden la guía y cada una recibe cinco emails, son unos quinientos emails al mes. Con el plan gratuito vas sobrado. Mi recomendación: empieza con el gratuito, y pasa al Starter, con el extra para quitar el logo, cuando tengas volumen o cuando cierres tus primeros clientes y quieras una imagen más cuidada.
+
+Por último, cómo lo montamos. Tú solo tienes que hacer tres cosas, en unos diez minutos. Crea la cuenta gratuita en brevo punto com con tu correo de contacto. Rellena los datos de empresa que te pida. Y después dime que está listo: te pediré la clave de Brevo con un formulario seguro, nunca por el chat. A partir de ahí me encargo yo. Verifico tu dominio para que los emails no lleguen a spam, creo las listas, conecto los formularios de la web, convierto la guía en un PDF con tu diseño, escribo la secuencia de emails automáticos, actualizo la política de privacidad, y lo pruebo todo de principio a fin.
+
+¿Creas la cuenta y empezamos?
