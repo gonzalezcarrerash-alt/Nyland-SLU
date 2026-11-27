@@ -1,6 +1,6 @@
 # 5 preguntas para hacerle mañana a tu equipo
 
-*Guía gratuita de Nyland Consulting · Sigue siendo tú*
+*Guía gratuita de Nyland Consulting · Forja tu identidad empresarial*
 
 > Tu empresa ya sabe lo que le pasa. Nadie le ha preguntado.
 > Estas cinco preguntas te ayudan a descubrir en 20 minutos lo que tu equipo vive cada día y quizá tú no ves.

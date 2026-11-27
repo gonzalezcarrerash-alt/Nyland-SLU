@@ -2,7 +2,7 @@
 
 *El sistema operativo comercial de Nyland: quiénes somos, cómo captamos clientes y qué herramienta (skill) usamos en cada paso. Cualquier sesión de trabajo empieza aquí.*
 
-**Lema:** Sigue siendo tú · **Filosofía:** El lado humano de la inteligencia artificial · **Método:** El Cambio Nyland (Escucha · Transforma · Crece)
+**Lema:** Forja tu identidad empresarial (cierre emocional: «Sigue siendo tú») · **Filosofía:** El lado humano de la inteligencia artificial · **Método:** El Cambio Nyland (Escucha · Transforma · Crece)
 
 ---
 

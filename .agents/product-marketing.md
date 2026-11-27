@@ -91,7 +91,7 @@
 **Tone:** Cercano, seguro, elegante. Habla en plural ("nosotros").
 **Style:** Directo, frases cortas, pregunta incómoda + respuesta humana. Español de España.
 **Personality:** Humano, transparente, curioso, sereno, exigente.
-**Visual:** Verde #1C3A2E, oro #D6B26C, menta #96E1BE, marfil #F2F5F0. Sello "Nyland · Consulting / Escucha · Transforma · Crece". Lema: "Sigue siendo tú."
+**Visual:** Verde #1C3A2E, oro #D6B26C, menta #96E1BE, marfil #F2F5F0. Sello "Nyland · Consulting / Escucha · Transforma · Crece". Lema: "Forja tu identidad empresarial." Frase de cierre: "Sigue siendo tú."
 
 ## Proof Points
 **Metrics:** Ninguna todavía. No inventar cifras.
