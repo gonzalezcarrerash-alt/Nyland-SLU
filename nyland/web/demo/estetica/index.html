@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Demo Nyland · Clínica estética</title><meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="/assets/logo-nyland-consulting-web.png">
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="../demo.css">
+</head><body>
+<header class="cab"><a href="/" class="marca"><img src="/assets/logo-nyland-consulting-web.png" alt=""><span>Nyland<small>CONSULTING</small></span></a><span class="aviso-demo">Demo con datos de ejemplo</span></header>
+<main class="envoltorio">
+  <section class="intro">
+    <span class="k">Así se vería en tu clínica</span>
+    <h1>El panel de <em id="nicho"></em>, después del Cambio Nyland</h1>
+    <p>Esto es un ejemplo de las herramientas que montamos tras escuchar a tu equipo. Pulsa las pestañas del móvil: todo funciona con datos inventados.</p>
+    <ul class="ventajas">
+      <li>Todos los mensajes (WhatsApp, Instagram y email) en un solo sitio, con respuesta sugerida.</li>
+      <li>Presupuestos con seguimiento automático: nadie se queda sin llamar.</li>
+      <li>Citas confirmadas solas y recordatorios el día antes.</li>
+      <li>Tu efecto miércoles a la vista, con una propuesta para resolverlo.</li>
+    </ul>
+    <a class="btn" href="/#diagnostico">Quiero esto en mi clínica</a>
+    <p class="nota">El software final se diseña a medida de cada clínica, después del diagnóstico.</p>
+  </section>
+  <section class="movil" aria-label="Simulación del panel en el móvil">
+    <div class="tel"><div class="pantalla">
+      <div class="barra"><span id="clinica"></span><span class="hora">09:41</span></div>
+      <div class="vista" id="vista"></div>
+      <nav class="pestanas" role="tablist">
+        <button data-v="hoy" class="on">Hoy</button><button data-v="pres">Presupuestos</button><button data-v="agenda">Agenda</button><button data-v="msj">Mensajes</button><button data-v="semana">Semana</button>
+      </nav>
+    </div></div>
+  </section>
+</main>
+<footer class="pie">Nyland Consulting · Sigue siendo tú · <a href="/">nylandconsulting.es</a></footer>
+<script type="application/json" id="datos">{"titulo": "Clínica estética", "clinica": "Clínica Estética Lumen (ejemplo)", "tratamiento": "Tratamientos", "kpis": [["10 h", "horas de recepción liberadas esta semana"], ["11", "presupuestos en seguimiento automático"], ["91 %", "citas confirmadas por WhatsApp"], ["5", "clientas recuperadas este mes"]], "presupuestos": [["Laura M.", "Ácido hialurónico", "420 €", "Recordatorio 1 enviado", "abierto"], ["Cristina F.", "Bono láser (6 sesiones)", "690 €", "Ha preguntado por pago en cuotas", "caliente"], ["Elena T.", "Toxina botulínica", "350 €", "Aceptado ✓", "aceptado"], ["Sara P.", "Mesoterapia facial", "280 €", "Sin abrir · recordatorio mañana", "frio"], ["Marc R.", "Tratamiento capilar", "900 €", "Aceptado ✓", "aceptado"]], "agenda": [["10:00", "Láser · Cristina F.", "Confirmada por WhatsApp"], ["11:00", "Valoración · Laura M.", "Recordatorio enviado"], ["12:30", "Revisión toxina · Elena T.", "Confirmada por WhatsApp"], ["17:00", "Higiene facial · Júlia S.", "Confirmada por WhatsApp"], ["18:30", "Primera visita · Irene C.", "Pendiente de confirmar"]], "mensajes": [["Instagram", "Hola, ¿qué precio tiene el ácido hialurónico en labios?", "¡Hola! Depende de la zona y el volumen. Hacemos una valoración gratuita de 15 minutos. ¿Te va bien el jueves por la tarde?"], ["WhatsApp", "¿Puedo pagar el bono de láser en cuotas?", "Sí, puedes pagarlo en 3 cuotas sin intereses. ¿Te reservo la primera sesión?"], ["Email", "Me salió una pequeña rojez tras el tratamiento", "Gracias por avisarnos. Es habitual las primeras 48 h; aun así, la doctora te llamará hoy para revisarlo contigo."]], "semana": [["L", 60], ["M", 78], ["X", 85], ["J", 52], ["V", 90]], "dia_bajo": "jueves", "motivo": "Los jueves concentran revisiones y llamadas de clientas con dudas. Proponemos respuestas automáticas de seguimiento tras cada tratamiento y un bloque fijo de revisiones por la mañana."}</script>
+<script src="../demo.js" defer></script>
+</body></html>

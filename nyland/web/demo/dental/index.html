@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Demo Nyland · Clínica dental</title><meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="/assets/logo-nyland-consulting-web.png">
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="../demo.css">
+</head><body>
+<header class="cab"><a href="/" class="marca"><img src="/assets/logo-nyland-consulting-web.png" alt=""><span>Nyland<small>CONSULTING</small></span></a><span class="aviso-demo">Demo con datos de ejemplo</span></header>
+<main class="envoltorio">
+  <section class="intro">
+    <span class="k">Así se vería en tu clínica</span>
+    <h1>El panel de <em id="nicho"></em>, después del Cambio Nyland</h1>
+    <p>Esto es un ejemplo de las herramientas que montamos tras escuchar a tu equipo. Pulsa las pestañas del móvil: todo funciona con datos inventados.</p>
+    <ul class="ventajas">
+      <li>Todos los mensajes (WhatsApp, Instagram y email) en un solo sitio, con respuesta sugerida.</li>
+      <li>Presupuestos con seguimiento automático: nadie se queda sin llamar.</li>
+      <li>Citas confirmadas solas y recordatorios el día antes.</li>
+      <li>Tu efecto miércoles a la vista, con una propuesta para resolverlo.</li>
+    </ul>
+    <a class="btn" href="/#diagnostico">Quiero esto en mi clínica</a>
+    <p class="nota">El software final se diseña a medida de cada clínica, después del diagnóstico.</p>
+  </section>
+  <section class="movil" aria-label="Simulación del panel en el móvil">
+    <div class="tel"><div class="pantalla">
+      <div class="barra"><span id="clinica"></span><span class="hora">09:41</span></div>
+      <div class="vista" id="vista"></div>
+      <nav class="pestanas" role="tablist">
+        <button data-v="hoy" class="on">Hoy</button><button data-v="pres">Presupuestos</button><button data-v="agenda">Agenda</button><button data-v="msj">Mensajes</button><button data-v="semana">Semana</button>
+      </nav>
+    </div></div>
+  </section>
+</main>
+<footer class="pie">Nyland Consulting · Sigue siendo tú · <a href="/">nylandconsulting.es</a></footer>
+<script type="application/json" id="datos">{"titulo": "Clínica dental", "clinica": "Clínica Dental Sonrisa (ejemplo)", "tratamiento": "Implantes", "kpis": [["12 h", "horas de recepción liberadas esta semana"], ["8", "presupuestos en seguimiento automático"], ["94 %", "citas confirmadas por WhatsApp"], ["3", "pacientes recuperados este mes"]], "presupuestos": [["Marta G.", "Implante unitario", "1.250 €", "Recordatorio 2 enviado", "abierto"], ["Jordi P.", "Ortodoncia invisible", "3.400 €", "Ha pedido financiación", "caliente"], ["Lucía R.", "Carillas (4)", "1.900 €", "Aceptado ✓", "aceptado"], ["Pere M.", "Implantes (2)", "2.600 €", "Sin abrir · llamada mañana", "frio"], ["Anna S.", "Blanqueamiento", "320 €", "Aceptado ✓", "aceptado"]], "agenda": [["09:00", "Revisión · Carlos V.", "Confirmada por WhatsApp"], ["09:30", "Limpieza · Núria B.", "Confirmada por WhatsApp"], ["10:30", "Implante · Marta G.", "Recordatorio enviado"], ["12:00", "Ortodoncia · Jordi P.", "Confirmada por WhatsApp"], ["16:00", "Primera visita · Pau T.", "Pendiente de confirmar"]], "mensajes": [["WhatsApp", "Hola, ¿tenéis hueco esta semana para una limpieza?", "¡Hola! Sí: jueves a las 17:30 o viernes a las 10:00. ¿Cuál te va mejor?"], ["Instagram", "¿Cuánto cuesta un implante?", "Depende de cada caso. Te proponemos una primera visita gratuita para valorarlo. ¿Te reservo una?"], ["Email", "Necesito cambiar mi cita del martes", "Sin problema. Tienes libre el martes a las 18:00 o el miércoles a las 9:30. ¿Te cambio a alguna?"]], "semana": [["L", 72], ["M", 80], ["X", 41], ["J", 88], ["V", 65]], "dia_bajo": "miércoles", "motivo": "Los miércoles coinciden cirugías, proveedores y llamadas. Proponemos mover las visitas de proveedor al jueves por la tarde y activar respuestas automáticas en las horas punta."}</script>
+<script src="../demo.js" defer></script>
+</body></html>

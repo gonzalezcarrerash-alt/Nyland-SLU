@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Demo Nyland · __TITULO__</title><meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="/assets/logo-nyland-consulting-web.png">
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="../demo.css">
+</head><body>
+<header class="cab"><a href="/" class="marca"><img src="/assets/logo-nyland-consulting-web.png" alt=""><span>Nyland<small>CONSULTING</small></span></a><span class="aviso-demo">Demo con datos de ejemplo</span></header>
+<main class="envoltorio">
+  <section class="intro">
+    <span class="k">Así se vería en tu clínica</span>
+    <h1>El panel de <em id="nicho"></em>, después del Cambio Nyland</h1>
+    <p>Esto es un ejemplo de las herramientas que montamos tras escuchar a tu equipo. Pulsa las pestañas del móvil: todo funciona con datos inventados.</p>
+    <ul class="ventajas">
+      <li>Todos los mensajes (WhatsApp, Instagram y email) en un solo sitio, con respuesta sugerida.</li>
+      <li>Presupuestos con seguimiento automático: nadie se queda sin llamar.</li>
+      <li>Citas confirmadas solas y recordatorios el día antes.</li>
+      <li>Tu efecto miércoles a la vista, con una propuesta para resolverlo.</li>
+    </ul>
+    <a class="btn" href="/#diagnostico">Quiero esto en mi clínica</a>
+    <p class="nota">El software final se diseña a medida de cada clínica, después del diagnóstico.</p>
+  </section>
+  <section class="movil" aria-label="Simulación del panel en el móvil">
+    <div class="tel"><div class="pantalla">
+      <div class="barra"><span id="clinica"></span><span class="hora">09:41</span></div>
+      <div class="vista" id="vista"></div>
+      <nav class="pestanas" role="tablist">
+        <button data-v="hoy" class="on">Hoy</button><button data-v="pres">Presupuestos</button><button data-v="agenda">Agenda</button><button data-v="msj">Mensajes</button><button data-v="semana">Semana</button>
+      </nav>
+    </div></div>
+  </section>
+</main>
+<footer class="pie">Nyland Consulting · Sigue siendo tú · <a href="/">nylandconsulting.es</a></footer>
+<script type="application/json" id="datos">__DATOS__</script>
+<script src="../demo.js" defer></script>
+</body></html>

@@ -1258,6 +1258,7 @@ document.documentElement.classList.add('js');
     modal.classList.add('open'); document.body.style.overflow = 'hidden'; setTimeout(() => form.querySelector('input').focus({ preventScroll: true }), 300); };
   const cerrar = () => { modal.classList.remove('open'); document.body.style.overflow = ''; lastFocus && lastFocus.focus(); };
   document.querySelectorAll('[data-abrir]').forEach(b => b.addEventListener('click', abrir));
+  if (location.hash === '#diagnostico') setTimeout(abrir, 400);
   modal.addEventListener('click', e => { if (e.target === modal || e.target.closest('[data-cerrar]')) cerrar(); });
   addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('open')) cerrar(); });
   form.addEventListener('submit', e => { e.preventDefault(); const f = form.elements;
