@@ -37,6 +37,7 @@ src = re.sub(r'<link href="https://fonts.googleapis.com[^>]*>\n?', '', src)
 # 3. Foco del ratón mucho más suave
 css = re.sub(r'\.halo-cursor\{[^}]*\}', '.halo-cursor{position:fixed;left:0;top:0;width:360px;height:360px;margin:-180px 0 0 -180px;border-radius:50%;background:radial-gradient(circle,rgba(214,178,108,.045),transparent 70%);pointer-events:none;z-index:1;transform:translate(var(--mx,-999px),var(--my,-999px));transition:transform .35s ease-out}', css, count=1)
 # Enfoque visible con teclado en todos los elementos interactivos
+css += '\n.check{display:block!important;position:relative;padding-left:32px}\n.check input{position:absolute!important;left:0;top:1px;margin:0}\n'
 css += '\na:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--oro);outline-offset:3px}\n.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}\nfooter nav a{color:var(--marfil);display:inline-block;padding:10px 0}\n.check input{width:22px!important;height:22px!important}\n.check a{display:inline-block;padding:6px 0}\n'
 css = css.replace('.sr>input{width:100%}', '.sr>input{width:100%}\n.gu-form label .lbl{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}')
 
@@ -61,6 +62,9 @@ src = head + '<main id="inicio">' + body
 
 # 5. Formularios: los envía /api/enviar.php (email a contacto@ y lista de Brevo)
 assert '/api/enviar.php' in js, 'formularios sin conectar'
+# Versión en los nombres de recursos para que ninguna caché sirva una copia antigua
+ver = hashlib.sha1((css + js).encode()).hexdigest()[:10]
+src = src.replace('href="assets/styles.css"', f'href="assets/styles.css?v={ver}"').replace('href="assets/fonts.css"', f'href="assets/fonts.css?v={ver}"').replace('src="assets/app.js"', f'src="assets/app.js?v={ver}"')
 open(f'{out}/assets/styles.css', 'w').write(css)
 open(f'{out}/assets/app.js', 'w').write(js)
 open(f'{out}/index.html', 'w').write(src)
