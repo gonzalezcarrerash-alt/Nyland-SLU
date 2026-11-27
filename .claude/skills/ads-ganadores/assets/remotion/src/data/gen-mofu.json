@@ -1,0 +1,233 @@
+[
+  {
+    "id": "mofu-clinica-1", "theme": "y2k", "tag": "Agentes IA", "cat": "agentes", "stage": "MOFU", "nicho": "clinica",
+    "title": "Tu WhatsApp agenda citas en segundos", "angle": "Respuesta inmediata",
+    "scenes": [
+      { "type": "statement", "dur": 60, "kicker": "Clínicas", "text": "Pacientes que se van\npor *no responder*.", "vo": "Hay clínicas que siguen perdiendo pacientes… cuando podrían tener un agente de inteligencia artificial respondiendo por WhatsApp y agendando citas en segundos." },
+      { "type": "beforeAfter", "dur": 60, "left": { "title": "Recepción saturada", "items": ["El paciente se enfría", "Huecos en la agenda", "Dinero que no vuelve"] }, "right": { "title": "Con agente IA", "items": ["Respuesta al momento", "Agenda llena", "Cada consulta atendida"] }, "vo": "No es magia, es lógica: si tu recepcionista no da abasto, el paciente se enfría. Y cada hueco en la agenda es dinero que no vuelve." },
+      { "type": "statement", "dur": 60, "text": "No te faltan *leads*.\nTe falta responder a tiempo.", "vo": "La mayoría de las clínicas no pierde ventas por falta de leads. Las pierde porque responde tarde, o porque no responde. Y cuando el paciente quiere hablar, nadie le atiende. La solución ya existe, y responde en segundos." },
+      { "type": "list", "dur": 60, "title": "Tu agente de *WhatsApp*", "items": ["Responde al instante", "Explica tratamientos y precios", "Filtra las consultas", "Agenda en tu calendario"], "vo": "Hoy puedes tener un agente de inteligencia artificial que atiende WhatsApp al instante, explica tratamientos y precios, filtra las consultas y agenda la cita directamente en tu calendario. Y si tu clínica trabaja de otra forma, se adapta." },
+      { "type": "counter", "dur": 60, "value": 400, "suffix": "%", "label": "más conversión si respondes en menos de 5 minutos.", "source": "Lead Response Management Study", "vo": "Te doy un dato: responder en menos de cinco minutos puede aumentar hasta un cuatrocientos por ciento tu tasa de conversión, según el Lead Response Management Study. Un agente de inteligencia artificial lo hace en menos de treinta segundos, sin pausas, sin errores y sin distracciones." },
+      { "type": "statement", "dur": 60, "text": "El trabajo de\n*2 o 3 personas*.", "sub": "Sin bajas. Sin cansancio.", "vo": "Un agente de inteligencia artificial puede hacer el trabajo de dos o tres personas. Eso es ahorro en sueldos, Seguridad Social, formación y tiempo operativo. Y además, nunca se pone enfermo ni se agota." },
+      { "type": "statement", "dur": 60, "text": "Hecho por *desarrolladores*,\nno con un par de prompts.", "sub": "Inversión recuperada en 1 o 2 meses", "vo": "Esto no se monta con un par de prompts. En nuestro equipo lo hacen desarrolladores de software especializados en inteligencia artificial. No jugamos a ser marketers ni improvisamos. Por eso la mayoría de nuestros clientes recupera su inversión en uno o dos meses." },
+      { "type": "chat", "dur": 60, "header": "Clínica Aura", "msgs": [
+        { "from": "c", "text": "Hola, ¿tenéis cita para depilación láser?" },
+        { "from": "a", "text": "¡Hola! La sesión cuesta 80 €. Tengo el martes a las 10:00 o el miércoles a las 18:00. ¿Cuál prefieres?" },
+        { "from": "c", "text": "Miércoles 👍" },
+        { "from": "a", "text": "Hecho ✅ Reservado el miércoles a las 18:00." }
+      ], "vo": "Como en Clínica Aura: una paciente escribió a las once de la noche preguntando si tenían cita para depilación láser. El agente le respondió con el precio y dos horarios, ella eligió uno, y por la mañana la cita ya estaba en la agenda." },
+      { "type": "cta", "dur": 60, "headline": "Pruébalo en\n*tu clínica*.", "button": "Agenda tu demo", "sub": "Demo gratuita de 30 minutos", "vo": "Así que, si te estás preguntando si esto funcionaría en tu clínica, reserva una demo gratuita y compruébalo tú mismo. Toca este anuncio y nos vemos en la llamada." }
+    ]
+  },
+  {
+    "id": "mofu-clinica-2", "theme": "serif", "tag": "Agentes de voz", "cat": "agentes", "stage": "MOFU", "nicho": "clinica",
+    "title": "Pacientes que no vienen sin avisar", "angle": "Coste de ausencias",
+    "scenes": [
+      { "type": "statement", "dur": 60, "text": "¿Cuántos pacientes\n*no vinieron* este mes?", "vo": "¿Cuántos pacientes no vinieron este mes sin avisar? Un agente de voz con inteligencia artificial podría haberlos llamado a todos para confirmar." },
+      { "type": "statement", "dur": 60, "text": "Cada ausencia es\nun *hueco* que ya\nno se puede vender.", "vo": "Tu recepción no llega a confirmar cada cita por teléfono. Y cada ausencia es un hueco en la agenda que ya no se puede vender." },
+      { "type": "statement", "dur": 60, "text": "No te faltan *pacientes*.\nTe falta llamarlos a tiempo.", "vo": "La mayoría de las clínicas no pierde ventas por falta de leads. Las pierde porque responde tarde, o porque no responde. Y cuando el paciente quiere hablar, nadie le atiende. La solución ya existe, y responde en segundos." },
+      { "type": "call", "dur": 60, "name": "Laura · cita de mañana", "lines": [
+        { "from": "a", "text": "Hola, Laura, te llamo de Clínica Aura para confirmar tu cita de mañana a las 11. ¿Te viene bien?" },
+        { "from": "c", "text": "Uy, mañana no puedo." },
+        { "from": "a", "text": "Sin problema. Tengo el jueves a las 16:00, ¿te lo reservo?" }
+      ], "result": "Cita movida · Jue 16:00", "vo": "Hoy puedes tener un agente de voz que llama a cada paciente el día antes, confirma la cita, la reprograma si hace falta y deja el horario libre para otro paciente. También atiende las llamadas entrantes cuando la recepción está ocupada." },
+      { "type": "counter", "dur": 60, "value": 800, "suffix": " €", "label": "al mes en ausencias. Ejemplo: 10 citas de 80 €.", "vo": "Haz la cuenta: si tienes diez ausencias al mes y cada cita vale ochenta euros, son ochocientos euros que se pierden cada mes. El agente llama a todos tus pacientes, a la hora que tú elijas, sin olvidarse de ninguno." },
+      { "type": "statement", "dur": 60, "text": "Llama a *todos*.\nNunca se cansa.", "sub": "El trabajo de 2 o 3 personas", "vo": "Un agente de inteligencia artificial puede hacer el trabajo de dos o tres personas. Eso es ahorro en sueldos, Seguridad Social, formación y tiempo operativo. Y además, nunca se pone enfermo ni se agota." },
+      { "type": "list", "dur": 60, "title": "Quién lo *construye*", "items": ["Desarrolladores de software", "Especialistas en IA", "Sin improvisar", "Retorno en 1 o 2 meses"], "vo": "Esto no se monta con un par de prompts. En nuestro equipo lo hacen desarrolladores de software especializados en inteligencia artificial. No jugamos a ser marketers ni improvisamos. Por eso la mayoría de nuestros clientes recupera su inversión en uno o dos meses." },
+      { "type": "call", "dur": 60, "name": "Clínica Aura · ronda de las 18:00", "lines": [
+        { "from": "a", "text": "Hola, te llamo para confirmar tu cita de mañana a las 10." },
+        { "from": "c", "text": "No llego, ¿la puedo cambiar?" },
+        { "from": "a", "text": "Claro, te paso al viernes a las 12:00." }
+      ], "result": "Agenda actualizada", "vo": "Como en Clínica Aura: el agente llamaba a las seis de la tarde a los pacientes del día siguiente. Los que no podían, reprogramaban en la misma llamada, y la recepción solo veía la agenda actualizada." },
+      { "type": "cta", "dur": 60, "headline": "Menos ausencias.\n*Agenda llena*.", "button": "Reserva tu demo", "sub": "Demo gratuita de 30 minutos", "vo": "Así que, si te estás preguntando si esto funcionaría en tu clínica, reserva una demo gratuita y compruébalo tú mismo. Toca este anuncio y nos vemos en la llamada." }
+    ]
+  },
+  {
+    "id": "mofu-clinica-3", "theme": "cleanDark", "tag": "Agentes IA", "cat": "agentes", "stage": "MOFU", "nicho": "clinica",
+    "title": "Pacientes dormidos en tu base", "angle": "Reactivar pacientes",
+    "scenes": [
+      { "type": "statement", "dur": 60, "text": "Cientos de pacientes\n*dormidos* en tu base.", "vo": "Hay clínicas con cientos de pacientes dormidos en su base de datos… cuando un agente de inteligencia artificial podría escribirles a todos y llenar la agenda de este mes." },
+      { "type": "statement", "dur": 60, "text": "Nadie les escribe.\nY acaban en la clínica\nque *sí* lo hizo.", "vo": "Nadie en tu equipo tiene tiempo de escribir uno por uno a quien vino hace seis meses. Y ese paciente acaba en la clínica que sí le escribió." },
+      { "type": "statement", "dur": 60, "text": "No te faltan *leads*.\nYa los tienes.", "vo": "La mayoría de las clínicas no pierde ventas por falta de leads. Las pierde porque responde tarde, o porque no responde. Y cuando el paciente quiere hablar, nadie le atiende. La solución ya existe, y responde en segundos." },
+      { "type": "pipeline", "dur": 60, "title": "Pacientes que *vuelven*", "cols": ["Inactivo", "Escrito", "Responde", "Cita"], "vo": "Hoy puedes tener un agente de inteligencia artificial que revisa tu base, escribe por WhatsApp a cada paciente inactivo con un mensaje personal, responde sus dudas y le agenda la cita sin que nadie intervenga." },
+      { "type": "counter", "dur": 60, "value": 25, "label": "citas extra este mes. Ejemplo: 500 inactivos, vuelve 1 de cada 20.", "vo": "Haz la cuenta: si tienes quinientos pacientes inactivos y solo vuelve uno de cada veinte, son veinticinco citas este mes que hoy no tienes, sin gastar un euro más en anuncios." },
+      { "type": "statement", "dur": 60, "text": "Escribe a *500*\nsin cansarse.", "sub": "El trabajo de 2 o 3 personas", "vo": "Un agente de inteligencia artificial puede hacer el trabajo de dos o tres personas. Eso es ahorro en sueldos, Seguridad Social, formación y tiempo operativo. Y además, nunca se pone enfermo ni se agota." },
+      { "type": "statement", "dur": 60, "text": "Ingeniería de verdad.\nNo *un par de prompts*.", "sub": "Inversión recuperada en 1 o 2 meses", "vo": "Esto no se monta con un par de prompts. En nuestro equipo lo hacen desarrolladores de software especializados en inteligencia artificial. No jugamos a ser marketers ni improvisamos. Por eso la mayoría de nuestros clientes recupera su inversión en uno o dos meses." },
+      { "type": "chat", "dur": 60, "header": "Clínica Aura", "msgs": [
+        { "from": "a", "text": "Hola, Marta. Hace seis meses te hiciste la limpieza facial con nosotros. Este mes tenemos huecos los martes, ¿te reservo uno?" },
+        { "from": "c", "text": "¡Sí! El martes por la tarde." },
+        { "from": "a", "text": "Perfecto ✅ Martes a las 17:00. ¡Te esperamos!" }
+      ], "vo": "Como en Clínica Aura: el agente escribió a los pacientes que no venían desde hacía seis meses. Los que respondieron recibieron horarios y reservaron por WhatsApp; la clínica solo vio las citas nuevas en la agenda." },
+      { "type": "cta", "dur": 60, "headline": "Despierta a\n*tus pacientes*.", "button": "Agenda tu demo", "sub": "Demo gratuita de 30 minutos", "vo": "Así que, si te estás preguntando si esto funcionaría en tu clínica, reserva una demo gratuita y compruébalo tú mismo. Toca este anuncio y nos vemos en la llamada." }
+    ]
+  },
+  {
+    "id": "mofu-inmo-1", "theme": "playfulDark", "tag": "Agentes de voz", "cat": "agentes", "stage": "MOFU", "nicho": "inmo",
+    "title": "Llama a tu lead en el primer minuto", "angle": "Velocidad de llamada",
+    "scenes": [
+      { "type": "statement", "dur": 60, "kicker": "Inmobiliarias", "text": "Tu lead, llamado\nen el *primer minuto*.", "vo": "Los agentes de voz inmobiliarios llaman a tu lead en el primer minuto. No esperan a que salgas de una visita ni lo dejan para mañana." },
+      { "type": "beforeAfter", "dur": 60, "left": { "title": "Llamas tarde", "items": ["Estabas en una visita", "El lead ya no contesta", "Otra agencia se lo queda"] }, "right": { "title": "Llama tu agente", "items": ["En el primer minuto", "Califica al comprador", "Visita agendada"] }, "vo": "Y como bien sabes, en este negocio el que llama primero se queda con la visita. El comprador deja sus datos en varias inmobiliarias y elige a la que le contesta antes." },
+      { "type": "statement", "dur": 60, "text": "No te faltan *leads*.\nTe falta llamar primero.", "vo": "La mayoría de las inmobiliarias no pierde ventas por falta de leads. Las pierde porque responde tarde, o porque no responde. Y cuando el comprador quiere hablar, nadie le atiende. La solución ya existe, y responde en segundos." },
+      { "type": "call", "dur": 60, "name": "Javier · lead del portal", "lines": [
+        { "from": "a", "text": "Hola, Javier, te llamo de Inmobiliaria Norte por el piso de Chamberí. ¿Buscas para vivir o para invertir?" },
+        { "from": "c", "text": "Para vivir. Hasta 350 mil." },
+        { "from": "a", "text": "Encaja. ¿Te va bien verlo el sábado a las 11?" }
+      ], "result": "Visita agendada · Sáb 11:00", "vo": "Hoy puedes tener un agente de voz que llama a cada lead en cuanto entra, pregunta zona, presupuesto y plazos, califica si es un comprador real y agenda la visita en tu calendario. Todo queda registrado para tu equipo." },
+      { "type": "counter", "dur": 60, "value": 400, "suffix": "%", "label": "más conversión si respondes en menos de 5 minutos.", "source": "Lead Response Management Study", "vo": "Te doy un dato: responder en menos de cinco minutos puede aumentar hasta un cuatrocientos por ciento tu tasa de conversión, según el Lead Response Management Study. Un agente de inteligencia artificial lo hace en menos de treinta segundos, sin pausas, sin errores y sin distracciones." },
+      { "type": "statement", "dur": 60, "text": "Un agente.\nEl trabajo de *2 o 3*.", "sub": "Sin bajas. Sin cansancio.", "vo": "Un agente de inteligencia artificial puede hacer el trabajo de dos o tres personas. Eso es ahorro en sueldos, Seguridad Social, formación y tiempo operativo. Y además, nunca se pone enfermo ni se agota." },
+      { "type": "list", "dur": 60, "title": "Por qué *funciona*", "items": ["Desarrolladores de software", "Especialistas en IA", "Nada improvisado", "Retorno en 1 o 2 meses"], "vo": "Esto no se monta con un par de prompts. En nuestro equipo lo hacen desarrolladores de software especializados en inteligencia artificial. No jugamos a ser marketers ni improvisamos. Por eso la mayoría de nuestros clientes recupera su inversión en uno o dos meses." },
+      { "type": "call", "dur": 60, "name": "Inmobiliaria Norte · lead 20:15", "lines": [
+        { "from": "a", "text": "Hola, Lucía, has consultado por el piso de Retiro. ¿Con qué presupuesto buscas?" },
+        { "from": "c", "text": "Unos 400 mil, para mudarme este año." },
+        { "from": "a", "text": "Perfecto. ¿Te reservo visita el martes a las 18:00?" }
+      ], "result": "Llamada a las 20:16 · Visita agendada", "vo": "Como en Inmobiliaria Norte: entraba un lead del portal a las ocho y cuarto, y a las ocho y dieciséis el agente ya le estaba llamando. Los curiosos quedaban filtrados, y los compradores con presupuesto salían con visita agendada." },
+      { "type": "cta", "dur": 60, "headline": "Llama primero.\n*Vende primero*.", "button": "Reserva tu demo", "sub": "Demo gratuita de 30 minutos", "vo": "Así que, si te estás preguntando si esto funcionaría en tu inmobiliaria, reserva una demo gratuita y compruébalo tú mismo. Toca este anuncio y nos vemos en la llamada." }
+    ]
+  },
+  {
+    "id": "mofu-inmo-2", "theme": "corporateLight", "tag": "Agentes IA", "cat": "agentes", "stage": "MOFU", "nicho": "inmo",
+    "title": "El WhatsApp que nunca llega tarde", "angle": "Agente con panel",
+    "scenes": [
+      { "type": "statement", "dur": 60, "text": "Nunca dice «estaba\nen una *visita*».", "vo": "Los agentes de inteligencia artificial inmobiliarios no se olvidan de responder un WhatsApp. No te dicen «justo estaba en una visita». Y no pierden una reserva por llegar tarde al chat." },
+      { "type": "statement", "dur": 60, "text": "El que responde primero\n*marca el ritmo*.", "vo": "En este negocio, el que responde primero marca el ritmo. El comprador no va a esperar a que salgas de una reunión. ¿Y si un agente respondiera por ti, calificara al interesado y agendara la visita sin que toques el móvil?" },
+      { "type": "statement", "dur": 60, "text": "No te faltan *leads*.\nTe falta contestar a tiempo.", "vo": "La mayoría de las inmobiliarias no pierde ventas por falta de leads. Las pierde porque responde tarde, o porque no responde. Y cuando el comprador quiere hablar, nadie le atiende. La solución ya existe, y responde en segundos." },
+      { "type": "list", "dur": 60, "title": "Conoce *tu cartera*", "items": ["Precio, metros y ubicación", "Califica al interesado", "Agenda la visita", "Todo en un panel"], "vo": "Hoy puedes tener un agente de inteligencia artificial que conoce cada propiedad de tu cartera, responde precio, metros, horarios y ubicación, califica al interesado y agenda la visita. Todo queda en un panel para tu equipo." },
+      { "type": "counter", "dur": 60, "value": 400, "suffix": "%", "label": "más conversión si respondes en menos de 5 minutos.", "source": "Lead Response Management Study", "vo": "Te doy un dato: responder en menos de cinco minutos puede aumentar hasta un cuatrocientos por ciento tu tasa de conversión, según el Lead Response Management Study. Un agente de inteligencia artificial lo hace en menos de treinta segundos, sin pausas, sin errores y sin distracciones." },
+      { "type": "statement", "dur": 60, "text": "Responde por *2 o 3*\npersonas.", "sub": "Y nunca se agota", "vo": "Un agente de inteligencia artificial puede hacer el trabajo de dos o tres personas. Eso es ahorro en sueldos, Seguridad Social, formación y tiempo operativo. Y además, nunca se pone enfermo ni se agota." },
+      { "type": "statement", "dur": 60, "text": "Lo construyen\n*desarrolladores de IA*.", "sub": "Inversión recuperada en 1 o 2 meses", "vo": "Esto no se monta con un par de prompts. En nuestro equipo lo hacen desarrolladores de software especializados en inteligencia artificial. No jugamos a ser marketers ni improvisamos. Por eso la mayoría de nuestros clientes recupera su inversión en uno o dos meses." },
+      { "type": "dashboard", "dur": 60, "title": "Inmobiliaria Norte · ¿cómo fue el día?", "kpis": [{ "l": "Visitas agendadas", "v": 7 }, { "l": "Confirmaciones", "v": 3 }, { "l": "Sin respuesta", "v": 2 }], "note": "Datos de ejemplo", "vo": "Como en Inmobiliaria Norte: el agente respondía todas las consultas por WhatsApp y todo quedaba en un panel interno. Además tenían su GPT privado: preguntaban «¿cómo ha ido el día?» y recibían «se han agendado siete visitas, ha habido tres confirmaciones y quedan dos interesados sin respuesta»." },
+      { "type": "cta", "dur": 60, "headline": "Tu cartera,\n*siempre respondiendo*.", "button": "Agenda tu demo", "sub": "Demo gratuita de 30 minutos", "vo": "Así que, si te estás preguntando si esto funcionaría en tu inmobiliaria, reserva una demo gratuita y compruébalo tú mismo. Toca este anuncio y nos vemos en la llamada." }
+    ]
+  },
+  {
+    "id": "mofu-inmo-3", "theme": "brutalYellow", "tag": "Agentes IA", "cat": "agentes", "stage": "MOFU", "nicho": "inmo",
+    "title": "Exclusivas que se pierden cada semana", "angle": "Captar propietarios",
+    "scenes": [
+      { "type": "statement", "dur": 60, "text": "Exclusivas perdidas\n*cada semana*.", "vo": "Hay inmobiliarias que pierden exclusivas cada semana… cuando un agente de inteligencia artificial podría contestar a cada propietario en el momento y agendarle la tasación." },
+      { "type": "statement", "dur": 60, "text": "Firma con la *primera*.\nNo con la mejor.", "vo": "El propietario que pide tasación consulta a dos o tres agencias. Y firma con la primera que le da cita, no con la mejor." },
+      { "type": "statement", "dur": 60, "text": "No te faltan *propietarios*.\nTe falta llegar antes.", "vo": "La mayoría de las inmobiliarias no pierde ventas por falta de leads. Las pierde porque responde tarde, o porque no responde. Y cuando el propietario quiere hablar, nadie le atiende. La solución ya existe, y responde en segundos." },
+      { "type": "pipeline", "dur": 60, "title": "Del pedido a la *tasación*", "cols": ["Pedido", "Calificado", "Seguimiento", "Tasación"], "vo": "Hoy puedes tener un agente de inteligencia artificial que responde a cada propietario por WhatsApp o por llamada, pregunta por la propiedad y los plazos, agenda la tasación y hace seguimiento a los que todavía no están listos." },
+      { "type": "counter", "dur": 60, "value": 400, "suffix": "%", "label": "más conversión si respondes en menos de 5 minutos.", "source": "Lead Response Management Study", "vo": "Te doy un dato: responder en menos de cinco minutos puede aumentar hasta un cuatrocientos por ciento tu tasa de conversión, según el Lead Response Management Study. Un agente de inteligencia artificial lo hace en menos de treinta segundos, sin pausas, sin errores y sin distracciones." },
+      { "type": "statement", "dur": 60, "text": "*2 o 3 personas*\nen un solo agente.", "vo": "Un agente de inteligencia artificial puede hacer el trabajo de dos o tres personas. Eso es ahorro en sueldos, Seguridad Social, formación y tiempo operativo. Y además, nunca se pone enfermo ni se agota." },
+      { "type": "statement", "dur": 60, "text": "Sin improvisar.\n*Desarrolladores de IA*.", "sub": "Inversión recuperada en 1 o 2 meses", "vo": "Esto no se monta con un par de prompts. En nuestro equipo lo hacen desarrolladores de software especializados en inteligencia artificial. No jugamos a ser marketers ni improvisamos. Por eso la mayoría de nuestros clientes recupera su inversión en uno o dos meses." },
+      { "type": "statement", "dur": 60, "kicker": "Inmobiliaria Norte", "text": "El lunes, las tasaciones\n*ya estaban agendadas*.", "vo": "Como en Inmobiliaria Norte: los pedidos de tasación del fin de semana se respondían en minutos. El lunes, el equipo empezaba con las tasaciones ya agendadas en el calendario." },
+      { "type": "cta", "dur": 60, "headline": "Capta *antes*\nque nadie.", "button": "Reserva tu demo", "sub": "Demo gratuita de 30 minutos", "vo": "Así que, si te estás preguntando si esto funcionaría en tu inmobiliaria, reserva una demo gratuita y compruébalo tú mismo. Toca este anuncio y nos vemos en la llamada." }
+    ]
+  },
+  {
+    "id": "mofu-ecom-1", "theme": "corporate", "tag": "Agentes IA", "cat": "agentes", "stage": "MOFU", "nicho": "ecom",
+    "title": "Tu tienda vende mientras duermes", "angle": "Vendedor 24/7",
+    "scenes": [
+      { "type": "statement", "dur": 60, "text": "Tu tienda sigue vendiendo\n*mientras duermes*.", "vo": "Tu tienda vende de día. Un agente de inteligencia artificial puede seguir vendiendo por WhatsApp mientras duermes." },
+      { "type": "beforeAfter", "dur": 60, "left": { "title": "Nadie responde", "items": ["Pierdes la venta", "Pierdes la confianza", "Pierdes la recompra"] }, "right": { "title": "Con agente IA", "items": ["Respuesta al momento", "Sin sueldo ni excusas", "Venta cerrada"] }, "vo": "Cada vez que un cliente pregunta y nadie responde, no solo pierdes una venta: pierdes la confianza, la recompra y la recomendación. Y un agente que lo haga por ti, sin sueldo, sin errores y sin dramas, es un vendedor que nunca pone excusas." },
+      { "type": "statement", "dur": 60, "text": "No te faltan *visitas*.\nTe falta responderlas.", "vo": "La mayoría de las tiendas online no pierde ventas por falta de leads. Las pierde porque responde tarde, o porque no responde. Y cuando el cliente quiere hablar, nadie le atiende. La solución ya existe, y responde en segundos." },
+      { "type": "list", "dur": 60, "title": "Conoce *tu catálogo*", "items": ["Stock, tallas y envíos", "Recomienda productos", "Envía el enlace de pago", "A cualquier hora"], "vo": "Hoy puedes tener un agente de inteligencia artificial que conoce tu catálogo, responde stock, tallas y envíos, recomienda productos y envía el enlace de pago al instante, a cualquier hora." },
+      { "type": "counter", "dur": 60, "value": 400, "suffix": "%", "label": "más conversión si respondes en menos de 5 minutos.", "source": "Lead Response Management Study", "vo": "Te doy un dato: responder en menos de cinco minutos puede aumentar hasta un cuatrocientos por ciento tu tasa de conversión, según el Lead Response Management Study. Un agente de inteligencia artificial lo hace en menos de treinta segundos, sin pausas, sin errores y sin distracciones." },
+      { "type": "statement", "dur": 60, "text": "El trabajo de\n*2 o 3 personas*.", "sub": "Sin bajas. Sin cansancio.", "vo": "Un agente de inteligencia artificial puede hacer el trabajo de dos o tres personas. Eso es ahorro en sueldos, Seguridad Social, formación y tiempo operativo. Y además, nunca se pone enfermo ni se agota." },
+      { "type": "list", "dur": 60, "title": "Detrás del *agente*", "items": ["Desarrolladores de software", "Especialistas en IA", "Cero improvisación", "Retorno en 1 o 2 meses"], "vo": "Esto no se monta con un par de prompts. En nuestro equipo lo hacen desarrolladores de software especializados en inteligencia artificial. No jugamos a ser marketers ni improvisamos. Por eso la mayoría de nuestros clientes recupera su inversión en uno o dos meses." },
+      { "type": "chat", "dur": 60, "header": "Tienda Nova", "msgs": [
+        { "from": "c", "text": "¿Os queda la chaqueta negra en talla M?" },
+        { "from": "a", "text": "¡Sí! Quedan 3 unidades en M. Envío en 24-48 h. Aquí tienes el enlace de pago 👇" },
+        { "from": "c", "text": "Comprada 🙌" }
+      ], "vo": "Como en Tienda Nova: un cliente preguntaba a medianoche por un producto, el agente le confirmaba el stock y le enviaba el enlace de pago, y la venta entraba sin que nadie del equipo estuviera conectado." },
+      { "type": "cta", "dur": 60, "headline": "Vende *las 24 horas*.", "button": "Agenda tu demo", "sub": "Demo gratuita de 30 minutos", "vo": "Así que, si te estás preguntando si esto funcionaría en tu tienda, reserva una demo gratuita y compruébalo tú mismo. Toca este anuncio y nos vemos en la llamada." }
+    ]
+  },
+  {
+    "id": "mofu-ecom-2", "theme": "brutal", "tag": "Agentes IA", "cat": "agentes", "stage": "MOFU", "nicho": "ecom",
+    "title": "Dinero parado en carritos abandonados", "angle": "Recuperar carritos",
+    "scenes": [
+      { "type": "statement", "dur": 60, "text": "¿Cuánto dinero hay\nen tus *carritos abandonados*?", "vo": "¿Cuánto dinero hay ahora mismo en los carritos abandonados de tu tienda? Un agente de inteligencia artificial podría estar recuperándolo por WhatsApp." },
+      { "type": "beforeAfter", "dur": 60, "left": { "title": "Hoy", "items": ["Llega al checkout", "Email sin abrir", "Venta perdida"] }, "right": { "title": "Con agente IA", "items": ["WhatsApp en minutos", "Duda resuelta", "Compra terminada"] }, "vo": "El cliente llegó hasta el checkout y se fue. El email de recordatorio se queda sin abrir, y esa venta se da por perdida." },
+      { "type": "statement", "dur": 60, "text": "No te faltan *clientes*.\nTe falta una respuesta.", "vo": "La mayoría de las tiendas online no pierde ventas por falta de leads. Las pierde porque responde tarde, o porque no responde. Y cuando el cliente quiere hablar, nadie le atiende. La solución ya existe, y responde en segundos." },
+      { "type": "list", "dur": 60, "title": "Recupera *cada carrito*", "items": ["Escribe por WhatsApp", "Pregunta qué le frenó", "Resuelve tallas y envíos", "Devuelve el enlace"], "vo": "Hoy puedes tener un agente de inteligencia artificial que escribe por WhatsApp a cada carrito abandonado, pregunta qué le frenó, responde dudas de talla, envío o pago y le devuelve el enlace para terminar la compra." },
+      { "type": "counter", "dur": 60, "value": 400, "suffix": " €", "label": "al mes recuperados. Ejemplo: 100 carritos de 40 €, vuelve 1 de cada 10.", "vo": "Haz la cuenta: si se abandonan cien carritos al mes con un ticket de cuarenta euros y el agente recupera uno de cada diez, son cuatrocientos euros al mes que hoy se pierden." },
+      { "type": "statement", "dur": 60, "text": "*2 o 3 personas*.\nCero bajas.", "vo": "Un agente de inteligencia artificial puede hacer el trabajo de dos o tres personas. Eso es ahorro en sueldos, Seguridad Social, formación y tiempo operativo. Y además, nunca se pone enfermo ni se agota." },
+      { "type": "statement", "dur": 60, "text": "No es un *prompt*.\nEs software.", "sub": "Inversión recuperada en 1 o 2 meses", "vo": "Esto no se monta con un par de prompts. En nuestro equipo lo hacen desarrolladores de software especializados en inteligencia artificial. No jugamos a ser marketers ni improvisamos. Por eso la mayoría de nuestros clientes recupera su inversión en uno o dos meses." },
+      { "type": "chat", "dur": 60, "header": "Tienda Nova", "msgs": [
+        { "from": "a", "text": "Hola, Sofía, has dejado las zapatillas blancas en el carrito. ¿Te ha quedado alguna duda?" },
+        { "from": "c", "text": "¿Cuánto tarda el envío?" },
+        { "from": "a", "text": "Llega en 48 h y el cambio es gratis. Aquí tienes tu carrito 👇" },
+        { "from": "c", "text": "¡Pagado!" }
+      ], "vo": "Como en Tienda Nova: el agente escribía a los veinte minutos del abandono. Muchos clientes solo tenían una duda sobre el envío; con la respuesta y el enlace, terminaban la compra en el mismo chat." },
+      { "type": "cta", "dur": 60, "headline": "Del carrito\na la *caja*.", "button": "Reserva tu demo", "sub": "Demo gratuita de 30 minutos", "vo": "Así que, si te estás preguntando si esto funcionaría en tu tienda, reserva una demo gratuita y compruébalo tú mismo. Toca este anuncio y nos vemos en la llamada." }
+    ]
+  },
+  {
+    "id": "mofu-ecom-3", "theme": "clean", "tag": "Agentes IA", "cat": "agentes", "stage": "MOFU", "nicho": "ecom",
+    "title": "¿Dónde está mi pedido?, resuelto", "angle": "Postventa automática",
+    "scenes": [
+      { "type": "statement", "dur": 60, "text": "«¿Dónde está\n*mi pedido*?»", "vo": "Tu equipo no debería pasarse el día respondiendo «¿dónde está mi pedido?». Un agente de inteligencia artificial lo contesta en segundos, a cualquier hora." },
+      { "type": "statement", "dur": 60, "text": "Postventa lenta =\n*malas reseñas*.", "vo": "Cuando la postventa se retrasa, el cliente se enfada, deja una mala reseña y no vuelve a comprar. La venta que ya hiciste empieza a costarte clientes." },
+      { "type": "statement", "dur": 60, "text": "No te faltan *clientes*.\nTe falta atenderlos.", "vo": "La mayoría de las tiendas online no pierde ventas por falta de leads. Las pierde porque responde tarde, o porque no responde. Y cuando el cliente quiere hablar, nadie le atiende. La solución ya existe, y responde en segundos." },
+      { "type": "phoneApp", "dur": 60, "screens": [
+        { "title": "Envíos", "rows": ["Pedido 4512 · llega el jueves", "Pedido 4519 · en reparto", "Pedido 4523 · preparado"] },
+        { "title": "Cambios", "rows": ["Cambio de talla · aprobado", "Devolución · etiqueta enviada", "Duda de uso · resuelta"] },
+        { "title": "Para tu equipo", "rows": ["Caso especial · Ana R.", "Resto resuelto por IA"] }
+      ], "vo": "Hoy puedes tener un agente de inteligencia artificial que consulta el estado de cada envío, gestiona cambios y devoluciones, responde dudas de uso y le pasa a tu equipo solo lo que necesita una persona." },
+      { "type": "counter", "dur": 60, "value": 60, "suffix": " h", "label": "al mes que podrían ir a vender. Ejemplo: 3 horas al día.", "vo": "Haz la cuenta: si tu equipo dedica tres horas al día a responder lo mismo, son sesenta horas al mes que podrían ir a vender." },
+      { "type": "statement", "dur": 60, "text": "El trabajo de\n*2 o 3 personas*.", "sub": "Sin bajas. Sin cansancio.", "vo": "Un agente de inteligencia artificial puede hacer el trabajo de dos o tres personas. Eso es ahorro en sueldos, Seguridad Social, formación y tiempo operativo. Y además, nunca se pone enfermo ni se agota." },
+      { "type": "statement", "dur": 60, "text": "Hecho por *desarrolladores*,\nno con un par de prompts.", "sub": "Inversión recuperada en 1 o 2 meses", "vo": "Esto no se monta con un par de prompts. En nuestro equipo lo hacen desarrolladores de software especializados en inteligencia artificial. No jugamos a ser marketers ni improvisamos. Por eso la mayoría de nuestros clientes recupera su inversión en uno o dos meses." },
+      { "type": "chat", "dur": 60, "header": "Tienda Nova", "msgs": [
+        { "from": "c", "text": "¿Dónde está mi pedido 4512?" },
+        { "from": "a", "text": "Salió ayer y llega el jueves 📦 Este es tu número de seguimiento: NV4512ES." },
+        { "from": "c", "text": "¡Genial, gracias!" }
+      ], "vo": "Como en Tienda Nova: el agente respondía las consultas de seguimiento y cambios, y el equipo pasó a atender solo los casos especiales." },
+      { "type": "cta", "dur": 60, "headline": "Postventa\n*en piloto automático*.", "button": "Agenda tu demo", "sub": "Demo gratuita de 30 minutos", "vo": "Así que, si te estás preguntando si esto funcionaría en tu tienda, reserva una demo gratuita y compruébalo tú mismo. Toca este anuncio y nos vemos en la llamada." }
+    ]
+  },
+  {
+    "id": "mofu-info-1", "theme": "playful", "tag": "Agentes IA", "cat": "agentes", "stage": "MOFU", "nicho": "info",
+    "title": "¿Eso es escalar?", "angle": "Setter con IA",
+    "scenes": [
+      { "type": "statement", "dur": 60, "kicker": "Infoproductores", "text": "Leads sin *calificar*.\nSin responder.", "vo": "Como infoproductor, ¿cuántos leads más vas a dejar sin calificar, sin filtrar y sin responder? Un agente de inteligencia artificial podría calificarlos y llevarlos directamente a tu agenda." },
+      { "type": "statement", "dur": 60, "text": "Dime la verdad:\n¿eso es *escalar*?", "vo": "Responder uno a uno, hacer seguimiento, agendar llamadas, filtrar curiosos… Dime la verdad, ¿eso es escalar? El cuello de botella no es tu embudo: es el tiempo que tardas en atender a quien ya te escribió." },
+      { "type": "statement", "dur": 60, "text": "No te faltan *leads*.\nTe falta atenderlos.", "vo": "La mayoría de los negocios no pierde ventas por falta de leads. Las pierde porque responde tarde, o porque no responde. Y cuando el lead quiere hablar, nadie le atiende. La solución ya existe, y responde en segundos." },
+      { "type": "pipeline", "dur": 60, "title": "Tu setter *con IA*", "cols": ["Nuevo", "Calificado", "Seguimiento", "Llamada"], "vo": "Hoy puedes tener un agente de inteligencia artificial que responde a cada lead en segundos, hace tus preguntas de calificación, agenda solo a los que encajan y hace seguimiento al resto hasta que estén listos. Y no te pide comisión ni vacaciones." },
+      { "type": "counter", "dur": 60, "value": 400, "suffix": "%", "label": "más conversión si respondes en menos de 5 minutos.", "source": "Lead Response Management Study", "vo": "Te doy un dato: responder en menos de cinco minutos puede aumentar hasta un cuatrocientos por ciento tu tasa de conversión, según el Lead Response Management Study. Un agente de inteligencia artificial lo hace en menos de treinta segundos, sin pausas, sin errores y sin distracciones." },
+      { "type": "statement", "dur": 60, "text": "Un setter que vale\npor *2 o 3*.", "sub": "Sin comisión. Sin vacaciones.", "vo": "Un agente de inteligencia artificial puede hacer el trabajo de dos o tres personas. Eso es ahorro en sueldos, Seguridad Social, formación y tiempo operativo. Y además, nunca se pone enfermo ni se agota." },
+      { "type": "list", "dur": 60, "title": "Quién lo *construye*", "items": ["Desarrolladores de software", "Especialistas en IA", "Sin improvisar", "Retorno en 1 o 2 meses"], "vo": "Esto no se monta con un par de prompts. En nuestro equipo lo hacen desarrolladores de software especializados en inteligencia artificial. No jugamos a ser marketers ni improvisamos. Por eso la mayoría de nuestros clientes recupera su inversión en uno o dos meses." },
+      { "type": "chat", "dur": 60, "header": "Academia Pro", "msgs": [
+        { "from": "a", "text": "¡Gracias por venir al webinar! ¿Qué te gustaría conseguir con el programa?" },
+        { "from": "c", "text": "Pasar de 3.000 a 10.000 € al mes." },
+        { "from": "a", "text": "Encaja con el programa. ¿Te va bien una llamada el martes a las 17:00?" }
+      ], "vo": "Como en Academia Pro: después de cada webinar, el agente hablaba por WhatsApp con todos los inscritos. Las llamadas de la semana siguiente eran solo con leads calificados." },
+      { "type": "cta", "dur": 60, "headline": "Escala sin\n*responder a mano*.", "button": "Agenda tu demo", "sub": "Demo gratuita de 30 minutos", "vo": "Así que, si te estás preguntando si esto funcionaría en tu negocio, reserva una demo gratuita y compruébalo tú mismo. Toca este anuncio y nos vemos en la llamada." }
+    ]
+  },
+  {
+    "id": "mofu-info-2", "theme": "editorial", "tag": "Agentes IA", "cat": "agentes", "stage": "MOFU", "nicho": "info",
+    "title": "300 comentarios, ¿cuántas ventas?", "angle": "Comentarios a ventas",
+    "scenes": [
+      { "type": "statement", "dur": 60, "text": "300 comentarios.\n¿Cuántas *ventas*?", "vo": "Tu reel tuvo trescientos comentarios pidiendo el recurso. ¿Cuántos acabaron en una venta? Un agente de inteligencia artificial convierte cada comentario en una conversación." },
+      { "type": "beforeAfter", "dur": 60, "left": { "title": "DMs a mano", "items": ["Contestas tarde", "La conversación se corta", "El interés se pierde"] }, "right": { "title": "Con agente IA", "items": ["DM en segundos", "Conversación activa", "Lead calificado"] }, "vo": "Responder mensajes directos a mano no escala. Contestas tarde, la conversación se corta y el interés que generó tu contenido se pierde." },
+      { "type": "statement", "dur": 60, "text": "No te faltan *leads*.\nTe sobran comentarios sin respuesta.", "vo": "La mayoría de los negocios no pierde ventas por falta de leads. Las pierde porque responde tarde, o porque no responde. Y cuando el lead quiere hablar, nadie le atiende. La solución ya existe, y responde en segundos." },
+      { "type": "list", "dur": 60, "title": "Del comentario\na la *venta*", "items": ["DM al instante", "Entrega el recurso", "Califica al lead", "Checkout o agenda"], "vo": "Hoy puedes tener un agente de inteligencia artificial que responde cada comentario con un mensaje directo al instante, entrega el recurso, califica al lead con preguntas y lo lleva a tu checkout o a tu agenda." },
+      { "type": "counter", "dur": 60, "value": 400, "suffix": "%", "label": "más conversión si respondes en menos de 5 minutos.", "source": "Lead Response Management Study", "vo": "Te doy un dato: responder en menos de cinco minutos puede aumentar hasta un cuatrocientos por ciento tu tasa de conversión, según el Lead Response Management Study. Un agente de inteligencia artificial lo hace en menos de treinta segundos, sin pausas, sin errores y sin distracciones." },
+      { "type": "statement", "dur": 60, "text": "El trabajo de\n*2 o 3 personas*.", "sub": "Sin bajas. Sin cansancio.", "vo": "Un agente de inteligencia artificial puede hacer el trabajo de dos o tres personas. Eso es ahorro en sueldos, Seguridad Social, formación y tiempo operativo. Y además, nunca se pone enfermo ni se agota." },
+      { "type": "statement", "dur": 60, "text": "Ingeniería,\n*no improvisación*.", "sub": "Inversión recuperada en 1 o 2 meses", "vo": "Esto no se monta con un par de prompts. En nuestro equipo lo hacen desarrolladores de software especializados en inteligencia artificial. No jugamos a ser marketers ni improvisamos. Por eso la mayoría de nuestros clientes recupera su inversión en uno o dos meses." },
+      { "type": "statement", "dur": 60, "kicker": "Academia Pro", "text": "Cientos de DMs.\nAl equipo, solo los\n*listos para comprar*.", "vo": "Como en Academia Pro: cada reel con llamada a comentar generaba cientos de mensajes directos. El agente los atendía en segundos y le pasaba al equipo solo los leads listos para comprar." },
+      { "type": "cta", "dur": 60, "headline": "Cada comentario,\n*una conversación*.", "button": "Reserva tu demo", "sub": "Demo gratuita de 30 minutos", "vo": "Así que, si te estás preguntando si esto funcionaría en tu negocio, reserva una demo gratuita y compruébalo tú mismo. Toca este anuncio y nos vemos en la llamada." }
+    ]
+  },
+  {
+    "id": "mofu-info-3", "theme": "warmth", "tag": "Agentes IA", "cat": "agentes", "stage": "MOFU", "nicho": "info",
+    "title": "Llamadas que no se presentan", "angle": "Anti no-show",
+    "scenes": [
+      { "type": "statement", "dur": 60, "text": "¿Cuántas llamadas\n*no se presentaron*?", "vo": "¿Cuántas llamadas agendadas no se presentaron este mes? Un agente de inteligencia artificial las habría confirmado y reagendado él solo." },
+      { "type": "beforeAfter", "dur": 60, "left": { "title": "Sin seguimiento", "items": ["Hora de closer perdida", "Lead que se enfría", "«Lo pienso» olvidado"] }, "right": { "title": "Con agente IA", "items": ["Llamada confirmada", "No-show reagendado", "Seguimiento hasta decidir"] }, "vo": "Cada no-show es una hora de tu closer perdida y un lead que se enfría. Y los que dijeron «me lo pienso» se quedan sin seguimiento porque nadie tiene tiempo." },
+      { "type": "statement", "dur": 60, "text": "No te faltan *leads*.\nTe falta seguimiento.", "vo": "La mayoría de los negocios no pierde ventas por falta de leads. Las pierde porque responde tarde, o porque no responde. Y cuando el lead quiere hablar, nadie le atiende. La solución ya existe, y responde en segundos." },
+      { "type": "list", "dur": 60, "title": "Tu agente de *seguimiento*", "items": ["Confirma cada llamada", "Recuerda la hora", "Reagenda no-shows", "Sigue a los «lo pienso»"], "vo": "Hoy puedes tener un agente de inteligencia artificial que confirma cada llamada, recuerda la hora, reagenda a quien no aparece y sigue en contacto con los que dijeron «me lo pienso» hasta que deciden." },
+      { "type": "counter", "dur": 60, "value": 3000, "suffix": " €", "label": "al mes en la agenda vacía. Ejemplo: 8 llamadas caídas, cierras 1 de cada 4 a 1.500 €.", "vo": "Haz la cuenta: si se te caen ocho llamadas al mes y cierras una de cada cuatro con un ticket de mil quinientos euros, son tres mil euros al mes que se quedan en la agenda vacía." },
+      { "type": "statement", "dur": 60, "text": "Hace el trabajo\nde *2 o 3 personas*.", "sub": "Y nunca se olvida de nadie", "vo": "Un agente de inteligencia artificial puede hacer el trabajo de dos o tres personas. Eso es ahorro en sueldos, Seguridad Social, formación y tiempo operativo. Y además, nunca se pone enfermo ni se agota." },
+      { "type": "statement", "dur": 60, "text": "Lo construyen\n*desarrolladores de IA*.", "sub": "Inversión recuperada en 1 o 2 meses", "vo": "Esto no se monta con un par de prompts. En nuestro equipo lo hacen desarrolladores de software especializados en inteligencia artificial. No jugamos a ser marketers ni improvisamos. Por eso la mayoría de nuestros clientes recupera su inversión en uno o dos meses." },
+      { "type": "chat", "dur": 60, "header": "Academia Pro", "msgs": [
+        { "from": "a", "text": "Hola, Diego, te esperamos hoy a las 18:00 para la llamada. ¿Sigues pudiendo?" },
+        { "from": "c", "text": "Hoy se me complica…" },
+        { "from": "a", "text": "Sin problema. ¿Mañana a las 12:00 o a las 17:00?" },
+        { "from": "c", "text": "A las 17:00 👍" }
+      ], "vo": "Como en Academia Pro: el agente confirmaba por WhatsApp por la mañana y una hora antes de cada llamada. Los que no aparecían recibían nuevos horarios en el momento." },
+      { "type": "cta", "dur": 60, "headline": "Que ninguna llamada\n*se quede vacía*.", "button": "Agenda tu demo", "sub": "Demo gratuita de 30 minutos", "vo": "Así que, si te estás preguntando si esto funcionaría en tu negocio, reserva una demo gratuita y compruébalo tú mismo. Toca este anuncio y nos vemos en la llamada." }
+    ]
+  }
+]

@@ -13,3 +13,9 @@ Sigue íntegramente el prompt maestro de @prompts/ingeniero-ia-nyland.md.
 - El agente propone, una persona decide: todo entregable se revisa antes de
   instalarse en el cliente.
 - Idioma por defecto: español de España.
+
+## Cerebro comercial de Nyland
+- Antes de cualquier tarea de marketing, ventas o captación, lee `nyland/cerebro/README.md`:
+  reúne la marca, la estrategia, el embudo y qué skill usar en cada paso.
+- El contexto de marca está en `.agents/product-marketing.md` y la estrategia en
+  `nyland/estrategia/ficha-estrategia-nyland.html`.

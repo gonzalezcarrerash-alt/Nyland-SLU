@@ -1,0 +1,312 @@
+{
+  "ads": [
+    {
+      "id": "bofu-agentes",
+      "theme": "corporate",
+      "tag": "Agentes IA",
+      "cat": "agentes",
+      "stage": "BOFU",
+      "title": "Ya viste la demo: lo que cuesta esperar (ejemplo de garantía)",
+      "angle": "Objeción: precio",
+      "scenes": [
+        { "type": "statement", "dur": 60, "kicker": "Remarketing · Agentes IA", "text": "Ya viste la demo.\nY *no agendaste*.", "vo": "Si estás viendo esto, ya viste cómo funciona el agente. Y no agendaste. Es más normal de lo que crees." },
+        { "type": "statement", "dur": 60, "text": "«Suena bien,\npero *es caro*.»", "sub": "Es la duda más habitual. Y es válida.", "vo": "Seguramente pensaste: suena bien, pero es caro. Es la duda más habitual, y es válida." },
+        { "type": "counter", "dur": 60, "value": 400, "suffix": "%", "label": "más conversión si respondes en menos de 5 minutos.", "source": "Lead Response Management Study", "vo": "Pero piensa en esto: responder en menos de cinco minutos puede aumentar hasta un cuatrocientos por ciento la conversión." },
+        { "type": "beforeAfter", "dur": 60, "left": { "title": "Lo que ya pagas", "items": ["Leads que nadie contesta", "Citas que se caen", "Horas de recepción en WhatsApp"] }, "right": { "title": "Con tu agente", "items": ["Respuesta en segundos", "Citas confirmadas", "Recuperas clientes que hoy pierdes"] }, "vo": "La pregunta no es cuánto cuesta el agente. Es cuánto te cuesta cada cliente que hoy no contestas. Con que recuperes uno o dos, haz tú la cuenta." },
+        { "type": "statement", "dur": 60, "kicker": "Sin riesgo", "text": "Si en 30 días no te funciona,\n*te devolvemos el dinero*.", "vo": "Y el riesgo lo asumimos nosotros: si en treinta días no te funciona, te devolvemos el dinero." },
+        { "type": "cta", "dur": 60, "headline": "Deja de perder\n*lo que ya pagas*.", "button": "Reserva tu llamada", "sub": "30 minutos con tu caso real", "vo": "Deja de perder lo que ya estás pagando. Reserva tu llamada de treinta minutos y lo vemos con tu caso real." }
+      ]
+    },
+    {
+      "id": "bofu-contenido",
+      "theme": "editorial",
+      "tag": "Contenido con IA",
+      "cat": "contenido",
+      "stage": "BOFU",
+      "title": "«La IA suena a robot» (ejemplo de garantía)",
+      "angle": "Objeción: la IA suena a robot",
+      "scenes": [
+        { "type": "statement", "dur": 60, "kicker": "Ya nos conoces", "text": "Ya viste cómo trabajamos.\nPero *algo te frenó*.", "vo": "Ya viste cómo creamos contenido con inteligencia artificial. Pero algo te frenó." },
+        { "type": "statement", "dur": 60, "text": "«La IA\n*suena a robot*.»", "sub": "Si no la entrenas con tu voz, tienes razón.", "vo": "Probablemente pensaste: la inteligencia artificial suena a robot. Y si no se entrena con tu voz, tienes toda la razón." },
+        { "type": "beforeAfter", "dur": 60, "left": { "title": "IA sin contexto", "items": ["Textos genéricos", "Frases de plantilla", "No suena a ti"] }, "right": { "title": "IA con tu voz", "items": ["Parte de tus audios y textos", "Revisión humana en cada pieza", "Tú apruebas antes de publicar"] }, "vo": "La diferencia está en el proceso: partimos de tus audios y tus textos, revisamos cada pieza a mano y tú apruebas todo antes de publicar." },
+        { "type": "statement", "dur": 60, "text": "Tú pones las ideas.\nNosotros, *las horas*.", "vo": "Tú pones las ideas. Nosotros ponemos las horas que hoy no tienes." },
+        { "type": "statement", "dur": 60, "kicker": "Sin riesgo", "text": "Si en 30 días no suena a ti,\n*te devolvemos el dinero*.", "vo": "Y si en treinta días no te funciona, te devolvemos el dinero. Así de simple." },
+        { "type": "cta", "dur": 60, "headline": "Contenido que\n*suena a ti*.", "button": "Empieza este mes", "sub": "Primera llamada sin compromiso", "vo": "Contenido que suena a ti. Empieza este mes: la primera llamada es sin compromiso." }
+      ]
+    },
+    {
+      "id": "bofu-publicidad",
+      "theme": "brutalYellow",
+      "tag": "Publicidad con IA",
+      "cat": "publicidad",
+      "stage": "BOFU",
+      "title": "«Mi negocio es distinto» (ejemplo de garantía)",
+      "angle": "Objeción: mi negocio es distinto",
+      "scenes": [
+        { "type": "statement", "dur": 60, "text": "Ya viste la demo.\n*Lo dejaste para luego*.", "vo": "Ya viste la demo de cómo hacemos tus anuncios con inteligencia artificial. Y lo dejaste para luego." },
+        { "type": "statement", "dur": 60, "text": "«Mi negocio\n*es distinto*.»", "sub": "Por eso no usamos plantillas: probamos con tus datos.", "vo": "Quizá pensaste: mi negocio es distinto, esto no va a funcionar aquí. Por eso no usamos plantillas." },
+        { "type": "beforeAfter", "dur": 60, "left": { "title": "Probar a ciegas", "items": ["Un anuncio al mes", "Decides por gusto", "Subes presupuesto y esperas"] }, "right": { "title": "Probar con IA", "items": ["10 variantes por semana", "Deciden tus datos", "Escalas solo lo que vende"] }, "vo": "Precisamente porque tu negocio es distinto, no adivinamos. Probamos variantes cada semana y dejamos que tus datos decidan." },
+        { "type": "adgrid", "dur": 60, "title": "probando en tu sector…", "vo": "Generamos las variantes, las probamos en tu sector y escalamos solo la que vende." },
+        { "type": "statement", "dur": 60, "kicker": "Sin riesgo", "text": "Si en 30 días no te funciona,\n*te devolvemos el dinero*.", "vo": "Y si en treinta días no te funciona, te devolvemos el dinero." },
+        { "type": "cta", "dur": 60, "headline": "Que decidan\n*tus datos*.", "button": "Quiero empezar", "sub": "Revisamos tu cuenta en la primera llamada", "vo": "Que decidan tus datos, no tu intuición. Reserva y revisamos tu cuenta en la primera llamada." }
+      ]
+    },
+    {
+      "id": "bofu-software",
+      "theme": "clean",
+      "tag": "Software con IA",
+      "cat": "software",
+      "stage": "BOFU",
+      "title": "«No tengo tiempo de implementarlo» (ejemplo de garantía)",
+      "angle": "Objeción: no tengo tiempo",
+      "scenes": [
+        { "type": "statement", "dur": 60, "kicker": "Software con IA", "text": "Ya viste la demo.\n*Y sigues en Excel*.", "vo": "Ya viste cómo sería tu app. Y sigues trabajando con el mismo Excel de siempre." },
+        { "type": "statement", "dur": 60, "text": "«No tengo tiempo\nde *implementarlo*.»", "sub": "Justo por eso lo hacemos nosotros.", "vo": "Seguramente pensaste: no tengo tiempo de implementarlo. Justo por eso lo hacemos nosotros." },
+        { "type": "beforeAfter", "dur": 60, "left": { "title": "Tu semana hoy", "items": ["Copiar datos a mano", "Buscar la versión buena", "Preguntar por WhatsApp"] }, "right": { "title": "Tu parte con nosotros", "items": ["Una llamada para contarnos tu proceso", "Revisar la primera versión", "Dar acceso a tu equipo"] }, "vo": "Hoy pierdes horas copiando datos y buscando la versión buena. Con nosotros, tu parte es una llamada, revisar la primera versión y dar acceso a tu equipo." },
+        { "type": "statement", "dur": 60, "text": "No te quita tiempo.\n*Te lo devuelve*.", "vo": "No es un proyecto que te quite tiempo. Es uno que te lo devuelve." },
+        { "type": "statement", "dur": 60, "kicker": "Sin riesgo", "text": "Si en 30 días no te funciona,\n*te devolvemos el dinero*.", "vo": "Y si en treinta días no te funciona, te devolvemos el dinero." },
+        { "type": "cta", "dur": 60, "headline": "Tu proceso,\n*hecho app*.", "button": "Agenda la llamada", "sub": "20 minutos para contarnos cómo trabajas", "vo": "Tu proceso, convertido en app. Agenda una llamada de veinte minutos y cuéntanos cómo trabajas." }
+      ]
+    }
+  ],
+  "cars": [
+    {
+      "id": "car-bofu-contenido",
+      "stage": "BOFU",
+      "theme": "warmth",
+      "cat": "contenido",
+      "type": "Objeciones",
+      "title": "«La IA no va a sonar a mí»",
+      "caption": "Ya viste cómo trabajamos y te quedaste pensando. Normal.\n\nLa duda que más escuchamos: «la IA no va a sonar a mí». Tiene solución, y no es escribir tú cada post.\n\n(Ejemplo de garantía: si en 30 días no te funciona, te devolvemos el dinero).\n\n👉 Reserva tu llamada y te enseñamos tres piezas hechas con tu voz.",
+      "slides": [
+        { "kind": "hero", "kicker": "Para quien ya nos vio", "title": "Ya viste cómo trabajamos.\nY *te quedaste pensando*.", "sub": "Normal. Vamos a por la duda que te frenó." },
+        { "kind": "text", "tone": "alt", "kicker": "La duda", "title": "«La IA *no va a sonar a mí*.»", "body": "Y es lógica: has visto mucho contenido genérico hecho con IA." },
+        { "kind": "text", "tone": "accent", "kicker": "Otra forma de verlo", "title": "El problema no es la IA.\nEs *usarla sin tu voz*.", "body": "La IA imita lo que le das. Si le das tu forma de hablar, suena a ti." },
+        { "kind": "bento", "title": "Cómo lo hacemos", "cards": [{ "t": "Tus audios", "d": "y textos como punto de partida" }, { "t": "Tu tono", "d": "recogido en una guía" }, { "t": "Revisión", "d": "humana en cada pieza" }, { "t": "Tu OK", "d": "antes de publicar" }] },
+        { "kind": "text", "tone": "inverse", "kicker": "Compruébalo", "title": "Te enseñamos *3 piezas* con tu voz antes de empezar.", "body": "Si no te reconoces en ellas, no seguimos." },
+        { "kind": "text", "tone": "alt", "kicker": "Sin riesgo", "title": "Si en 30 días no te funciona, *te devolvemos el dinero*." },
+        { "kind": "cta", "tone": "accent", "title": "Tu contenido, *con tu voz*.", "body": "Reserva una llamada y te enseñamos las 3 piezas.", "button": "Reservar llamada" }
+      ]
+    },
+    {
+      "id": "car-bofu-agentes",
+      "stage": "BOFU",
+      "theme": "corporateLight",
+      "cat": "agentes",
+      "type": "Comparación de costes",
+      "title": "¿Contratar a alguien o un agente de IA?",
+      "caption": "Antes de decidir, haz la cuenta completa.\n\nUna persona en recepción no cuesta solo su sueldo. Y un agente de IA no viene a sustituirla: viene a que no se escape ningún cliente.\n\n👉 Reserva 30 minutos y calculamos cuánto te cuesta hoy no responder a tiempo.",
+      "slides": [
+        { "kind": "hero", "kicker": "Haz la cuenta", "title": "¿Contratar a alguien\no un *agente de IA*?", "sub": "Lo que cuesta de verdad atender tu WhatsApp." },
+        { "kind": "text", "tone": "alt", "title": "Una persona en recepción cuesta *más que su sueldo*.", "body": "Seguridad Social, formación, vacaciones, bajas y horas extra." },
+        { "kind": "compare", "title": "Lo que pagas", "left": { "t": "Persona contratada", "items": ["Sueldo + Seguridad Social", "8 horas al día", "Vacaciones y bajas", "Formación si rota"] }, "right": { "t": "Agente de IA", "items": ["Cuota mensual fija", "24 horas, 7 días", "Sin bajas ni rotación", "Se configura una vez"] } },
+        { "kind": "compare", "tone": "alt", "title": "Lo que obtienes", "left": { "t": "Solo tu equipo", "items": ["Responde cuando puede", "Una conversación a la vez", "Leads de noche sin respuesta"] }, "right": { "t": "Equipo + agente", "items": ["Respuesta en segundos", "Muchas conversaciones a la vez", "Tu equipo, en lo que vende"] } },
+        { "kind": "text", "tone": "inverse", "title": "Responder en menos de 5 minutos puede aumentar hasta un *400 %* la conversión.", "body": "Fuente: Lead Response Management Study." },
+        { "kind": "text", "tone": "accent", "title": "No viene a sustituir a tu equipo.\nViene a que *no se escape nadie*." },
+        { "kind": "cta", "title": "Haz la cuenta *con tus números*.", "body": "En 30 minutos calculamos cuánto te cuesta no responder.", "button": "Calcular mi caso" }
+      ]
+    },
+    {
+      "id": "car-bofu-software",
+      "stage": "BOFU",
+      "theme": "cleanDark",
+      "cat": "software",
+      "type": "Preguntas frecuentes",
+      "title": "5 preguntas antes de encargar tu app",
+      "caption": "Si te quedaste a medias, seguramente fue por una de estas preguntas.\n\nAquí van las respuestas, sin letra pequeña.\n\n(Ejemplo de garantía: si en 30 días no te funciona, te devolvemos el dinero).\n\n👉 ¿Te queda alguna? Agenda 20 minutos y nos la haces en directo.",
+      "slides": [
+        { "kind": "hero", "kicker": "Preguntas frecuentes", "title": "Lo que nos preguntas\n*antes de empezar*.", "sub": "Respuestas cortas, sin letra pequeña." },
+        { "kind": "item", "n": 1, "label": "Pregunta", "title": "¿Necesito saber programar?", "body": "No. Tú nos cuentas tu proceso; nosotros construimos la app con IA." },
+        { "kind": "item", "n": 2, "label": "Pregunta", "title": "¿Cuánto tiempo me va a quitar?", "body": "Una llamada para entender tu proceso y una revisión de la primera versión." },
+        { "kind": "item", "n": 3, "label": "Pregunta", "title": "¿Y si mi proceso es muy particular?", "body": "Mejor: la app se adapta a ti, no tú a ella." },
+        { "kind": "item", "n": 4, "label": "Pregunta", "title": "¿Qué pasa con mis Excel?", "body": "Pasamos tus datos a la app. No empiezas de cero." },
+        { "kind": "item", "n": 5, "label": "Pregunta", "title": "¿Y si no me convence?", "body": "Si en 30 días no te funciona, te devolvemos el dinero." },
+        { "kind": "cta", "tone": "accent", "title": "¿Te queda *alguna duda*?", "body": "Pregúntanosla en una llamada de 20 minutos.", "button": "Agendar llamada" }
+      ]
+    }
+  ],
+  "images": [
+    {
+      "id": "img-tofu-agentes", "stage": "TOFU", "cat": "agentes", "theme": "cleanDark",
+      "kicker": "Agentes de IA",
+      "headline": "Tus clientes escriben de noche. ¿Quién les *responde*?",
+      "sub": "Te enseñamos cómo un agente de IA atiende tu WhatsApp mientras duermes.",
+      "cta": "Comenta AGENTE",
+      "prompt": "Moody night photograph of a smartphone glowing on the reception desk of an empty small clinic, cool blue and teal light, dark background, shallow depth of field, phone placed in the upper third, large empty dark area in the lower half for copy, vertical 9:16, cinematic and minimal. No readable text, no logos."
+    },
+    {
+      "id": "img-tofu-contenido", "stage": "TOFU", "cat": "contenido", "theme": "playful",
+      "kicker": "Contenido con IA",
+      "headline": "Un mes de contenido en *una tarde*",
+      "sub": "La guía con el sistema que usamos para planificar treinta piezas con tu voz.",
+      "cta": "Comenta CONTENIDO",
+      "prompt": "Bright playful top-down flat lay of a desk with a laptop, colorful sticky notes, a phone on a mini tripod and a coffee cup, pastel and vivid colors, soft daylight, objects grouped in the top half, clean empty pastel surface in the lower half, vertical 9:16. No readable text, no logos."
+    },
+    {
+      "id": "img-tofu-publicidad", "stage": "TOFU", "cat": "publicidad", "theme": "y2k",
+      "kicker": "Publicidad con IA",
+      "headline": "Tu anuncio no falla. Falla *lo de después*.",
+      "sub": "Descubre dónde se enfrían tus leads entre el clic y la venta.",
+      "cta": "Comenta ANUNCIOS",
+      "prompt": "Y2K style 3D render of a glossy chrome cursor clicking a floating translucent phone screen, iridescent holographic gradients, neon pink and electric blue, retro-futuristic, elements in the upper half, smooth empty gradient background in the lower half, vertical 9:16. No readable text, no logos."
+    },
+    {
+      "id": "img-tofu-software", "stage": "TOFU", "cat": "software", "theme": "editorial",
+      "kicker": "Apps con IA",
+      "headline": "Si lo haces cada semana, *puede ser app*.",
+      "sub": "Cuatro procesos que cualquier negocio pequeño puede convertir en su propia app.",
+      "cta": "Comenta APP",
+      "prompt": "Editorial still life photograph of a stack of paper order sheets and a tablet side by side on a warm wooden table, muted natural tones, soft window light, magazine aesthetic, objects in the upper half, calm empty table surface in the lower half, vertical 9:16. No readable text, no logos."
+    },
+    {
+      "id": "img-mofu-agentes", "stage": "MOFU", "cat": "agentes", "theme": "corporate",
+      "kicker": "Agentes IA · WhatsApp",
+      "headline": "Responde a cada lead en *segundos*, no en horas.",
+      "sub": "Tu agente de IA contesta, califica y agenda en tu calendario. Te lo enseñamos en directo.",
+      "cta": "Ver demo en directo",
+      "prompt": "Professional corporate photo of a modern office reception with a smartphone on a stand showing an abstract chat interface made of blurred colored bubbles, navy and white palette, soft studio lighting, subject in the upper half, clean blurred empty area in the lower half, vertical 9:16. No readable text, no logos."
+    },
+    {
+      "id": "img-mofu-contenido", "stage": "MOFU", "cat": "contenido", "theme": "warmth",
+      "kicker": "Contenido con tu voz",
+      "headline": "Contenido con IA que *suena a ti*",
+      "sub": "Partimos de tus audios y textos. Tú solo apruebas antes de publicar.",
+      "cta": "Ver una demo",
+      "prompt": "Warm cozy photograph of a therapist's desk with a microphone, an open notebook and a phone recording audio, terracotta and cream tones, golden hour light, plants in the background, objects in the upper half, soft empty warm wall in the lower half, vertical 9:16. No readable text, no logos."
+    },
+    {
+      "id": "img-mofu-publicidad", "stage": "MOFU", "cat": "publicidad", "theme": "brutal",
+      "kicker": "Creativos con IA",
+      "headline": "10 creativos por semana. *Escala* solo el ganador.",
+      "sub": "Generamos variantes con IA, las probamos y te decimos cuál escalar.",
+      "cta": "Pedir demo",
+      "prompt": "Neo-brutalist graphic render of a grid of blank colorful ad cards with thick black outlines and hard drop shadows, one card highlighted and larger, flat bold colors on off-white, grid in the upper half, empty flat background in the lower half, vertical 9:16. No readable text, no logos."
+    },
+    {
+      "id": "img-mofu-software", "stage": "MOFU", "cat": "software", "theme": "corporateLight",
+      "kicker": "Software a medida",
+      "headline": "De 17 pestañas de Excel a *una app*.",
+      "sub": "Pedidos, clientes y stock en un panel. Te enseñamos un ejemplo en 20 minutos.",
+      "cta": "Ver demo",
+      "prompt": "Clean light corporate render of a laptop and phone displaying an abstract dashboard with charts made of shapes and lines only, white and soft blue palette, bright even lighting, devices in the upper half, empty light gray surface in the lower half, vertical 9:16. No readable text, no logos."
+    },
+    {
+      "id": "img-bofu-agentes", "stage": "BOFU", "cat": "agentes", "theme": "serif",
+      "kicker": "Ya viste la demo",
+      "headline": "Cada mensaje sin responder *ya lo estás pagando*.",
+      "sub": "Si en 30 días tu agente no te funciona, te devolvemos el dinero.",
+      "cta": "Reservar llamada",
+      "note": "Garantía de ejemplo: ajústala a la oferta real antes de publicar.",
+      "prompt": "Elegant fine-art photograph of a phone face down on a marble side table next to a pair of reading glasses, deep green and ivory tones, soft directional light, refined and quiet mood, objects in the upper half, empty marble surface in the lower half, vertical 9:16. No readable text, no logos."
+    },
+    {
+      "id": "img-bofu-contenido", "stage": "BOFU", "cat": "contenido", "theme": "playfulDark",
+      "kicker": "Para quien ya dudó",
+      "headline": "¿Miedo a sonar a robot? *Apruebas cada pieza*.",
+      "sub": "Nada sale sin tu OK. Si en 30 días no funciona, te devolvemos el dinero.",
+      "cta": "Empezar ahora",
+      "note": "Garantía de ejemplo: ajústala a la oferta real antes de publicar.",
+      "prompt": "Playful dark-mode 3D render of a cute friendly toy robot holding a big green check mark next to a phone, vibrant purple, lime and pink accents on a deep navy background, soft glow, characters in the upper half, empty dark background in the lower half, vertical 9:16. No readable text, no logos."
+    },
+    {
+      "id": "img-bofu-publicidad", "stage": "BOFU", "cat": "publicidad", "theme": "brutalYellow",
+      "kicker": "¿Tu negocio es distinto?",
+      "headline": "Por eso probamos con *tus datos*, no con plantillas.",
+      "sub": "Probamos en tu sector. Si en 30 días no funciona, te devolvemos el dinero.",
+      "cta": "Quiero empezar",
+      "note": "Garantía de ejemplo: ajústala a la oferta real antes de publicar.",
+      "prompt": "Bold brutalist graphic render of stacked blank ad cards and an upward bar chart made of solid black blocks, saturated yellow background, thick outlines and hard shadows, composition in the upper half, empty flat yellow area in the lower half, vertical 9:16. No readable text, no logos."
+    },
+    {
+      "id": "img-bofu-software", "stage": "BOFU", "cat": "software", "theme": "clean",
+      "kicker": "Sin tiempo, sin problema",
+      "headline": "Tú nos cuentas el proceso. *Nosotros construimos la app*.",
+      "sub": "Tu parte: una llamada. Si en 30 días no funciona, te devolvemos el dinero.",
+      "cta": "Agendar llamada",
+      "note": "Garantía de ejemplo: ajústala a la oferta real antes de publicar.",
+      "prompt": "Minimal clean photograph of a business owner's hands holding a phone showing an abstract app interface of simple colored blocks, white background, soft natural light, lots of negative space, subject in the upper half, empty white space in the lower half, vertical 9:16. No readable text, no logos."
+    }
+  ],
+  "formulas": [
+    {
+      "t": "Ya viste (lo que mostramos). Lo que te frenó no fue el interés, fue (objeción).",
+      "w": "Reconoce la intención y valida la duda antes de rebatirla, así baja la guardia.",
+      "ex": {
+        "agentes": "Ya viste cómo responde el agente. Lo que te frenó no fue el interés, fue el precio.",
+        "contenido": "Ya viste cómo creamos tu contenido. Lo que te frenó no fue el interés, fue el miedo a que suene a robot.",
+        "publicidad": "Ya viste cómo probamos creativos. Lo que te frenó no fue el interés, fue pensar que tu negocio es distinto.",
+        "software": "Ya viste la demo de tu app. Lo que te frenó no fue el interés, fue no tener tiempo para implementarla."
+      }
+    },
+    {
+      "t": "La pregunta no es cuánto cuesta (solución). Es cuánto te cuesta (pérdida actual).",
+      "w": "Mueve el ancla del precio a la pérdida que ya está ocurriendo.",
+      "ex": {
+        "agentes": "La pregunta no es cuánto cuesta el agente. Es cuánto te cuesta cada lead que contestas tarde.",
+        "contenido": "La pregunta no es cuánto cuesta el contenido. Es cuánto te cuestan los domingos que pasas diseñando posts.",
+        "publicidad": "La pregunta no es cuánto cuestan los creativos. Es cuánto te cuesta seguir pagando un anuncio que no engancha.",
+        "software": "La pregunta no es cuánto cuesta la app. Es cuánto te cuestan las horas copiando datos entre Excel."
+      }
+    },
+    {
+      "t": "No necesitas que (solución) haga magia. Con que (resultado mínimo), haz tú la cuenta.",
+      "w": "Lógica económica con un umbral pequeño y creíble que el cliente calcula solo.",
+      "ex": {
+        "agentes": "No necesitas que el agente haga magia. Con que recupere uno o dos clientes al mes, haz tú la cuenta.",
+        "contenido": "No necesitas un contenido viral. Con que te traiga una o dos consultas al mes, haz tú la cuenta.",
+        "publicidad": "No necesitas que todos los anuncios funcionen. Con que encuentres un ganador, haz tú la cuenta.",
+        "software": "No necesitas una app perfecta. Con que te ahorre unas horas a la semana, haz tú la cuenta."
+      }
+    },
+    {
+      "t": "Si en (plazo) no (resultado prometido), (inversión del riesgo).",
+      "w": "Traslada el riesgo de la decisión a la agencia y elimina el «¿y si sale mal?». Garantía de ejemplo: ajústala a tu oferta real.",
+      "ex": {
+        "agentes": "Si en 30 días tu agente no te funciona, te devolvemos el dinero.",
+        "contenido": "Si en 30 días el contenido no suena a ti, te devolvemos el dinero.",
+        "publicidad": "Si en 30 días no te funciona, te devolvemos el dinero.",
+        "software": "Si en 30 días la app no te funciona, te devolvemos el dinero."
+      }
+    },
+    {
+      "t": "No es «lo hago o no lo hago». Es «sigo (perdiendo X) o lo resuelvo».",
+      "w": "Crea tensión de decisión: no actuar también tiene un coste.",
+      "ex": {
+        "agentes": "No es «pongo un agente o no». Es «sigo perdiendo los leads de la noche o lo resuelvo».",
+        "contenido": "No es «uso IA o no». Es «sigo sin publicar o lo resuelvo».",
+        "publicidad": "No es «pruebo más creativos o no». Es «sigo quemando presupuesto en el mismo anuncio o lo resuelvo».",
+        "software": "No es «hago la app o no». Es «sigo perdiendo horas en Excel o lo resuelvo»."
+      }
+    },
+    {
+      "t": "«(Objeción literal).» Por eso (cómo el método la resuelve).",
+      "w": "Convierte la objeción en la razón de ser del método en lugar de discutirla.",
+      "ex": {
+        "agentes": "«Mis clientes quieren hablar con una persona.» Por eso el agente responde al momento y te pasa la conversación cuando hace falta.",
+        "contenido": "«La IA suena a robot.» Por eso partimos de tus audios y apruebas cada pieza antes de publicarla.",
+        "publicidad": "«Mi negocio es distinto.» Por eso no usamos plantillas: probamos variantes con tus datos.",
+        "software": "«No tengo tiempo de implementarlo.» Por eso lo construimos nosotros y tu parte es una llamada."
+      }
+    },
+    {
+      "t": "Tu parte: (mínimo esfuerzo). La nuestra: (todo lo demás).",
+      "w": "Simplifica la implementación y desactiva la objeción de falta de tiempo.",
+      "ex": {
+        "agentes": "Tu parte: contarnos cómo atiendes. La nuestra: configurar, conectar y entrenar a tu agente.",
+        "contenido": "Tu parte: un audio a la semana. La nuestra: guiones, carruseles, textos y calendario.",
+        "publicidad": "Tu parte: darnos acceso a tu cuenta. La nuestra: crear, probar y escalar los creativos.",
+        "software": "Tu parte: una llamada y una revisión. La nuestra: diseñar, construir y poner en marcha la app."
+      }
+    },
+    {
+      "t": "No tienes que decidir hoy. En (duración) ves (qué verá con su caso) y decides tú.",
+      "w": "Elimina presión y reduce el compromiso del siguiente paso a algo pequeño y concreto.",
+      "ex": {
+        "agentes": "No tienes que decidir hoy. En 30 minutos ves cómo respondería el agente a tus clientes y decides tú.",
+        "contenido": "No tienes que decidir hoy. En 30 minutos ves tres piezas con tu voz y decides tú.",
+        "publicidad": "No tienes que decidir hoy. En 30 minutos revisamos tu cuenta contigo y decides tú.",
+        "software": "No tienes que decidir hoy. En 20 minutos ves cómo quedaría tu proceso en una app y decides tú."
+      }
+    }
+  ]
+}

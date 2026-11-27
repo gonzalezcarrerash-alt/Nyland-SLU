@@ -1,0 +1,234 @@
+[
+  {
+    "id": "tofu-clinica-1", "theme": "corporate", "tag": "Agentes IA", "cat": "agentes", "stage": "TOFU", "nicho": "clinica",
+    "title": "El paciente de las 21:40", "angle": "Respuesta fuera de horario",
+    "scenes": [
+      { "type": "statement", "dur": 60, "kicker": "Guía gratis para clínicas", "text": "Tu agente que\n*agenda citas*.\nSin código.", "vo": "Descarga gratis la guía para clínicas sobre cómo crear tu agente de WhatsApp que agenda citas, sin código y en menos de cinco minutos. Pero antes, mira el error que lo hace necesario." },
+      { "type": "beforeAfter", "dur": 60, "left": { "title": "21:40 · El paciente escribe", "items": ["«¿Tienes cita esta semana?»", "Recepción cerrada"] }, "right": { "title": "10:00 · Respondes", "items": ["Al día siguiente", "Demasiado tarde"] }, "vo": "Un paciente escribe a las nueve y cuarenta de la noche: «¿Tienes cita para una limpieza facial esta semana?». La recepción ya ha cerrado y la respuesta llega al día siguiente, a las diez." },
+      { "type": "statement", "dur": 60, "text": "Reservó en\n*otra clínica*.", "vo": "Para entonces ya ha reservado en otra clínica que le contestó primero. Y no has perdido una consulta: has perdido un paciente que podía volver cada mes." },
+      { "type": "statement", "dur": 60, "text": "Los pacientes\n*ya te escriben*.", "vo": "La mayoría cree que le faltan pacientes. Pero muchas veces los pacientes ya escriben; lo que falta es alguien que conteste en el momento." },
+      { "type": "list", "dur": 60, "title": "Tu agente de *WhatsApp*", "items": ["Responde al instante", "Pregunta qué tratamiento busca", "Ofrece tus horarios libres"], "vo": "Un agente de WhatsApp hace tres cosas: responde al instante, pregunta qué tratamiento busca y le ofrece los horarios libres de tu agenda." },
+      { "type": "chat", "dur": 60, "header": "Clínica Aura", "msgs": [
+        { "from": "c", "text": "¿Precio de la limpieza facial?" },
+        { "from": "a", "text": "Cuesta 60 €. Tengo el jueves a las 17:00 o el viernes a las 11:00, ¿cuál te viene mejor?" },
+        { "from": "c", "text": "Jueves 👌" },
+        { "from": "a", "text": "¡Hecho! Reservado el jueves a las 17:00 ✅" }
+      ], "vo": "El paciente pregunta el precio de la limpieza facial. El agente responde: cuesta sesenta euros, tengo el jueves a las cinco o el viernes a las once, ¿cuál te viene mejor? Y la cita queda en tu agenda." },
+      { "type": "list", "dur": 60, "title": "Sirve para", "items": ["Estética", "Odontología", "Fisioterapia", "Nutrición"], "vo": "Sirve igual para estética, odontología, fisioterapia o nutrición: cualquier clínica que viva de citas." },
+      { "type": "guide", "dur": 60, "title": "Agente de WhatsApp que agenda citas", "sub": "Sin código · gratis · en menos de 5 minutos", "vo": "En la guía te enseño paso a paso cómo crearlo sin código, qué preguntas tiene que hacer y cómo conectarlo a tu agenda." },
+      { "type": "cta", "dur": 60, "headline": "Llena tu agenda\n*mientras duermes*.", "keyword": "CITAS", "sub": "Te enviamos la guía por privado", "vo": "Comenta CITAS y te la envío por privado." }
+    ]
+  },
+  {
+    "id": "tofu-clinica-2", "theme": "clean", "tag": "Agentes de voz", "cat": "agentes", "stage": "TOFU", "nicho": "clinica",
+    "title": "El paciente que no vino", "angle": "Ausencias evitables",
+    "scenes": [
+      { "type": "statement", "dur": 60, "kicker": "Agente de voz · Guía gratis", "text": "Cada ausencia es\nun *hueco perdido*.", "vo": "Cada paciente que no viene te deja un hueco que ya no puedes vender. Descarga gratis la guía para clínicas sobre cómo crear tu agente de voz que confirma citas, sin código y en menos de cinco minutos." },
+      { "type": "statement", "dur": 60, "text": "Reservó, *se olvidó*\ny no avisó.", "vo": "El paciente reservó hace dos semanas, se olvidó y no avisó. Tu recepción no tuvo tiempo de llamar a todos para confirmar." },
+      { "type": "statement", "dur": 60, "text": "Box vacío.\nProfesional *esperando*.", "vo": "Ese hueco no se recupera: el box vacío, la profesional esperando y otro paciente que habría querido ese horario." },
+      { "type": "beforeAfter", "dur": 60, "left": { "title": "Lo que crees", "items": ["Culpa del paciente", "No se puede evitar"] }, "right": { "title": "Lo que pasa", "items": ["Faltó confirmar", "Una llamada el día antes"] }, "vo": "Muchos creen que las ausencias son culpa del paciente. Pero la mayoría se evita con algo muy simple: una llamada que confirme la cita el día antes." },
+      { "type": "list", "dur": 60, "title": "Tu agente de *voz*", "items": ["Llama a cada paciente", "Confirma la cita", "Reprograma en la misma llamada"], "vo": "Un agente de voz llama a cada paciente, confirma la cita y, si no puede venir, le ofrece otro horario en la misma llamada." },
+      { "type": "call", "dur": 60, "name": "Laura · cita mañana 11:00", "lines": [
+        { "from": "a", "text": "Hola, Laura, te llamo de Clínica Aura para confirmar tu cita de mañana a las 11. ¿Te viene bien?" },
+        { "from": "c", "text": "No puedo, lo siento." },
+        { "from": "a", "text": "Sin problema. Tengo el jueves a las 16:00, ¿te lo reservo?" }
+      ], "result": "Reprogramada · Jue 16:00", "vo": "Hola, Laura, te llamo de Clínica Aura para confirmar tu cita de mañana a las once. ¿Te viene bien? No puedo. Sin problema, tengo el jueves a las cuatro, ¿te lo reservo? Y el horario de las once queda libre para otro paciente." },
+      { "type": "statement", "dur": 60, "text": "Funciona con\n*cualquier agenda*.", "vo": "Funciona en estética, odontología, fisioterapia o cualquier consulta que trabaje con agenda." },
+      { "type": "guide", "dur": 60, "title": "Agente de voz que confirma citas", "sub": "Sin código · guion incluido · en menos de 5 minutos", "vo": "En la guía te explico cómo crear ese agente de voz sin código, qué guion usar en la llamada y cómo conectarlo a tu agenda." },
+      { "type": "cta", "dur": 60, "headline": "Menos ausencias.\n*Agenda llena*.", "keyword": "VOZ", "sub": "Te enviamos la guía por privado", "vo": "Comenta VOZ y te la envío por privado." }
+    ]
+  },
+  {
+    "id": "tofu-clinica-3", "theme": "warmth", "tag": "Agentes IA", "cat": "agentes", "stage": "TOFU", "nicho": "clinica",
+    "title": "Pacientes dormidos", "angle": "Reactivar tu base",
+    "scenes": [
+      { "type": "statement", "dur": 60, "kicker": "Guía gratis para clínicas", "text": "Tu próxima facturación:\n*pacientes dormidos*.", "vo": "Tu próxima facturación puede estar en la lista de pacientes que no volvieron. Descarga gratis la guía para clínicas sobre cómo crear tu agente que los reactiva, sin código y en menos de cinco minutos." },
+      { "type": "statement", "dur": 60, "text": "Vinieron, les gustó…\ny *nadie les escribió*.", "vo": "Tienes cientos de pacientes que vinieron una vez, quedaron contentos… y no volvieron. Nadie les escribió." },
+      { "type": "beforeAfter", "dur": 60, "left": { "title": "Lo que haces", "items": ["Pagas anuncios", "Buscas pacientes nuevos"] }, "right": { "title": "Lo que olvidas", "items": ["Ya te conocen", "Escribirles cuesta menos"] }, "vo": "Mientras tanto pagas anuncios para conseguir pacientes nuevos, que cuestan más que escribirle a alguien que ya te conoce." },
+      { "type": "statement", "dur": 60, "text": "Crece con\n*los que ya tienes*.", "vo": "La mayoría cree que para crecer necesita más pacientes nuevos. Muchas veces basta con que vuelvan los que ya tienes." },
+      { "type": "list", "dur": 60, "title": "Tu agente de *reactivación*", "items": ["Escribe un mensaje personal", "Responde sus dudas", "Le ofrece reservar"], "vo": "Un agente de reactivación le escribe a cada paciente inactivo con un mensaje personal, responde sus dudas y le ofrece reservar." },
+      { "type": "chat", "dur": 60, "header": "Clínica Aura", "msgs": [
+        { "from": "a", "text": "Hola, Marta. Hace seis meses te hiciste la limpieza facial con nosotros. Este mes tenemos horarios libres los martes, ¿quieres que te reserve uno?" },
+        { "from": "c", "text": "¡Sí! El martes por la tarde" },
+        { "from": "a", "text": "Perfecto, reservado el martes a las 17:00 ✅" }
+      ], "vo": "Hola, Marta, hace seis meses te hiciste la limpieza facial con nosotros. Este mes tenemos horarios libres los martes, ¿quieres que te reserve uno? Si responde que sí, la cita queda agendada." },
+      { "type": "list", "dur": 60, "title": "Lo que *se repite*", "items": ["Limpiezas", "Revisiones", "Mantenimiento", "Controles"], "vo": "Sirve para todo tratamiento que se repite: limpiezas, revisiones, mantenimiento y controles." },
+      { "type": "guide", "dur": 60, "title": "Agente que reactiva pacientes", "sub": "Sin código · gratis · en menos de 5 minutos", "vo": "En la guía te enseño cómo crearlo sin código, qué mensajes enviar y cada cuánto, sin que parezca spam." },
+      { "type": "cta", "dur": 60, "headline": "Haz que\n*vuelvan*.", "keyword": "VOLVER", "sub": "Te enviamos la guía por privado", "vo": "Comenta VOLVER y te la envío por privado." }
+    ]
+  },
+  {
+    "id": "tofu-inmo-1", "theme": "cleanDark", "tag": "Agentes de voz", "cat": "agentes", "stage": "TOFU", "nicho": "inmo",
+    "title": "El lead del portal de las 19:00", "angle": "Llamar primero",
+    "scenes": [
+      { "type": "statement", "dur": 60, "kicker": "Guía inmobiliaria gratis", "text": "Tu agente de voz\n*inmobiliario*.\nEn 5 minutos.", "vo": "Descarga la guía inmobiliaria sobre cómo crear tu agente de voz inmobiliario sin código, gratis y en menos de cinco minutos. Te cuento para qué sirve." },
+      { "type": "beforeAfter", "dur": 60, "left": { "title": "19:00 · Entra el lead", "items": ["Estás en una visita", "No puedes llamar"] }, "right": { "title": "21:00 · Llamas", "items": ["Ya no contesta", "Lead perdido"] }, "vo": "Entra un lead de un portal a las siete. Estás en una visita. Lo llamas dos horas después y ya no contesta." },
+      { "type": "statement", "dur": 60, "text": "Dejó sus datos en tres.\n*Llamó otra*.", "vo": "Ese comprador dejó sus datos en tres inmobiliarias a la vez. La que lo llamó primero ya le ha agendado una visita." },
+      { "type": "statement", "dur": 60, "text": "El lead era bueno.\n*Se enfrió*.", "vo": "Muchos creen que los leads de portales son de mala calidad. Muchas veces el lead era bueno: se enfrió esperando la llamada." },
+      { "type": "list", "dur": 60, "title": "Llama en *1 minuto*", "items": ["Pregunta zona", "Pregunta presupuesto y plazos", "Agenda la visita si encaja"], "vo": "Un agente de voz llama al lead en el primer minuto, le pregunta zona, presupuesto y plazos, y si encaja le agenda la visita." },
+      { "type": "call", "dur": 60, "name": "Javier · lead del portal", "lines": [
+        { "from": "a", "text": "Hola, Javier, te llamo por el piso de Chamberí que consultaste. ¿Buscas para vivir o para invertir?" },
+        { "from": "c", "text": "Para vivir. Hasta 350 mil." },
+        { "from": "a", "text": "Perfecto. Tengo visita el sábado a las 11, ¿te la reservo?" }
+      ], "result": "Visita agendada · Sáb 11:00", "vo": "Hola, Javier, te llamo por el piso de Chamberí que consultaste. ¿Buscas para vivir o para invertir? ¿Con qué presupuesto? Y si encaja: tengo visita el sábado a las once, ¿te la reservo?" },
+      { "type": "list", "dur": 60, "title": "Sirve para", "items": ["Venta", "Alquiler", "Captar propietarios"], "vo": "Sirve para venta, alquiler y para captar propietarios: cualquier lead que llega y necesita una llamada rápida." },
+      { "type": "guide", "dur": 60, "title": "Agente de voz inmobiliario", "sub": "Sin código · guion incluido · en menos de 5 minutos", "vo": "En la guía te enseño cómo crearlo sin código, el guion de preguntas para calificar y cómo conectarlo a tu agenda de visitas." },
+      { "type": "cta", "dur": 60, "headline": "Llama *primero*.\nSiempre.", "keyword": "VOZ", "sub": "Te enviamos la guía por privado", "vo": "Comenta VOZ y te la envío por privado." }
+    ]
+  },
+  {
+    "id": "tofu-inmo-2", "theme": "corporateLight", "tag": "Agentes IA", "cat": "agentes", "stage": "TOFU", "nicho": "inmo",
+    "title": "¿Sigue disponible?", "angle": "Consultas repetidas",
+    "scenes": [
+      { "type": "statement", "dur": 60, "kicker": "Guía inmobiliaria gratis", "text": "«¿Sigue\n*disponible*?»\nVeinte veces al día.", "vo": "Si te escriben «¿sigue disponible?» veinte veces al día, esto te interesa. Descarga gratis la guía inmobiliaria sobre cómo crear tu agente de WhatsApp que agenda visitas, sin código y en menos de cinco minutos." },
+      { "type": "list", "dur": 60, "title": "Las *mismas* preguntas", "items": ["¿Precio?", "¿Cuántos metros?", "¿Gastos?", "¿Acepta mascotas?"], "vo": "Cada propiedad publicada genera las mismas preguntas: precio, metros, gastos, si acepta mascotas. Y tú las contestas una por una." },
+      { "type": "statement", "dur": 60, "text": "El interesado\n*se cansó* de esperar.", "vo": "Mientras respondes lo de siempre, el interesado que estaba listo para visitar se cansa de esperar." },
+      { "type": "beforeAfter", "dur": 60, "left": { "title": "Lo que crees", "items": ["Alguien pegado al móvil", "Responder a mano"] }, "right": { "title": "Hoy", "items": ["Un agente que conoce cada ficha", "Responde al momento"] }, "vo": "Muchos creen que responder rápido exige tener a alguien pegado al móvil. Hoy lo puede hacer un agente que conoce cada ficha." },
+      { "type": "pipeline", "dur": 60, "title": "Del chat a la *visita*", "cols": ["Consulta", "Responde", "Filtra", "Visita"], "vo": "El agente lee la ficha de la propiedad, responde las dudas, pregunta lo necesario para filtrar y ofrece horarios de visita." },
+      { "type": "chat", "dur": 60, "header": "Inmobiliaria Norte", "msgs": [
+        { "from": "c", "text": "¿Sigue disponible el piso de Chamberí?" },
+        { "from": "a", "text": "Sí. Son 75 m², 1.200 € al mes y acepta mascotas. ¿Quieres visitarlo el jueves a las 18:00 o el sábado a las 10:00?" },
+        { "from": "c", "text": "El sábado" },
+        { "from": "a", "text": "Reservado el sábado a las 10:00 ✅" }
+      ], "vo": "¿Sigue disponible el piso de Chamberí? Sí. Son setenta y cinco metros, mil doscientos euros al mes y acepta mascotas. ¿Quieres visitarlo el jueves a las seis o el sábado a las diez?" },
+      { "type": "statement", "dur": 60, "text": "Venta o alquiler.\n*Toda tu cartera*.", "vo": "Funciona para venta y alquiler, con una cartera pequeña o con cientos de propiedades." },
+      { "type": "guide", "dur": 60, "title": "Agente de WhatsApp que agenda visitas", "sub": "Sin código · gratis · en menos de 5 minutos", "vo": "En la guía te explico cómo crearlo sin código y cómo cargarle tus fichas para que responda como tú." },
+      { "type": "cta", "dur": 60, "headline": "Menos chat.\n*Más visitas*.", "keyword": "VISITAS", "sub": "Te enviamos la guía por privado", "vo": "Comenta VISITAS y te la envío por privado." }
+    ]
+  },
+  {
+    "id": "tofu-inmo-3", "theme": "editorial", "tag": "Agentes IA", "cat": "agentes", "stage": "TOFU", "nicho": "inmo",
+    "title": "Sin propiedades no hay ventas", "angle": "Captar propietarios",
+    "scenes": [
+      { "type": "statement", "dur": 60, "kicker": "Guía inmobiliaria gratis", "text": "Sin propiedades\n*no hay ventas*.", "vo": "Sin propiedades no hay ventas. Descarga gratis la guía inmobiliaria sobre cómo crear tu agente que capta propietarios y agenda tasaciones, sin código y en menos de cinco minutos." },
+      { "type": "beforeAfter", "dur": 60, "left": { "title": "Domingo", "items": ["Pide tasación online", "Nadie responde"] }, "right": { "title": "Martes", "items": ["Por fin lo llamas", "Ya es tarde"] }, "vo": "Un propietario pide una tasación online un domingo. El lunes estás con visitas y lo llamas el martes." },
+      { "type": "statement", "dur": 60, "text": "Ya *firmó con otra*\nagencia.", "vo": "Para el martes ya ha firmado con otra agencia. Y esa propiedad te iba a traer compradores durante meses." },
+      { "type": "statement", "dur": 60, "text": "El propietario\n*ya levantó la mano*.", "vo": "Muchos creen que captar es cuestión de puerta fría o de suerte. Muchas veces el propietario ya levantó la mano y nadie le hizo caso." },
+      { "type": "list", "dur": 60, "title": "Tu agente de *captación*", "items": ["Responde en el momento", "Pregunta propiedad y plazos", "Agenda la tasación", "Hace seguimiento"], "vo": "Un agente le responde al propietario en el momento, le pregunta por la propiedad y sus plazos y le agenda la tasación contigo. Si todavía no está listo, le hace seguimiento." },
+      { "type": "chat", "dur": 60, "header": "Inmobiliaria Norte", "msgs": [
+        { "from": "a", "text": "Hola, Ana. Hemos recibido tu petición de tasación del piso en Salamanca. ¿Cuántos metros tiene y cuándo piensas vender?" },
+        { "from": "c", "text": "Unos 90 m². En dos o tres meses." },
+        { "from": "a", "text": "Perfecto. ¿Te viene bien que pasemos el miércoles a las 17:00?" }
+      ], "vo": "Hola, Ana, hemos recibido tu petición de tasación del piso en Salamanca. ¿Cuántos metros tiene y cuándo piensas vender? En dos o tres meses. Perfecto, ¿te viene bien que pasemos el miércoles a las cinco?" },
+      { "type": "list", "dur": 60, "title": "Sirve para", "items": ["Formularios de tasación", "Carteles de «se vende»", "Propietarios en redes"], "vo": "Sirve para formularios de tasación, carteles de «se vende» y propietarios que escriben por redes." },
+      { "type": "guide", "dur": 60, "title": "Agente que capta propietarios", "sub": "Sin código · gratis · en menos de 5 minutos", "vo": "En la guía te enseño cómo crearlo sin código y qué preguntas hace para separar al que vende ya del que solo curiosea." },
+      { "type": "cta", "dur": 60, "headline": "Consigue más\n*exclusivas*.", "keyword": "CAPTAR", "sub": "Te enviamos la guía por privado", "vo": "Comenta CAPTAR y te la envío por privado." }
+    ]
+  },
+  {
+    "id": "tofu-ecom-1", "theme": "playful", "tag": "Agentes IA", "cat": "agentes", "stage": "TOFU", "nicho": "ecom",
+    "title": "¿Tenéis la talla M?", "angle": "Venta en el chat",
+    "scenes": [
+      { "type": "statement", "dur": 60, "kicker": "Guía gratis para e-commerce", "text": "«¿Tenéis la *talla M*?»", "vo": "Si tu tienda recibe «¿tenéis la talla M?» y lo contestas al día siguiente, estás regalando ventas. Descarga gratis la guía para e-commerce sobre cómo crear tu agente que vende por WhatsApp, sin código y en menos de cinco minutos." },
+      { "type": "statement", "dur": 60, "text": "Preguntó antes de comprar.\n*Sin respuesta*.", "vo": "El cliente vio tu anuncio, le gustó el producto y, antes de comprar, hizo una pregunta. Nadie le respondió en el momento." },
+      { "type": "statement", "dur": 60, "text": "Tú *pagaste el clic*.\nVendió otro.", "vo": "Cerró el chat, siguió mirando y compró algo parecido en otra tienda. Tú pagaste el clic y la venta se la llevó otro." },
+      { "type": "beforeAfter", "dur": 60, "left": { "title": "Lo que crees", "items": ["Bajar el precio", "Mejorar el anuncio"] }, "right": { "title": "Lo que pasa", "items": ["La venta se perdió en el chat"] }, "vo": "La mayoría cree que tiene que bajar el precio o mejorar el anuncio. Muchas veces la venta se perdió en el chat." },
+      { "type": "list", "dur": 60, "title": "Tu agente de *ventas*", "items": ["Conoce tu catálogo", "Responde stock, tallas y envíos", "Envía el enlace de pago"], "vo": "Un agente de ventas conoce tu catálogo, responde stock, tallas y envíos, y envía el enlace de pago en la misma conversación." },
+      { "type": "chat", "dur": 60, "header": "Tienda Nova", "msgs": [
+        { "from": "c", "text": "¿Tenéis el vestido en rojo y talla M?" },
+        { "from": "a", "text": "¡Sí! Lo tenemos en rojo y negro, talla M disponible." },
+        { "from": "a", "text": "Aquí tienes el enlace para comprarlo 🛍️" }
+      ], "vo": "¿Tenéis el vestido en rojo y talla M? Sí, lo tenemos en rojo y negro, talla M disponible. Aquí tienes el enlace para comprarlo. Y se vende solo." },
+      { "type": "list", "dur": 60, "title": "Para *cualquier tienda*", "items": ["Moda", "Cosmética", "Suplementos", "Decoración"], "vo": "Sirve para moda, cosmética, suplementos o decoración: cualquier tienda donde el cliente pregunta antes de comprar." },
+      { "type": "guide", "dur": 60, "title": "Agente que vende por WhatsApp", "sub": "Sin código · gratis · en menos de 5 minutos", "vo": "En la guía te enseño cómo crearlo sin código y cómo conectarlo a tu catálogo para que responda con el stock real." },
+      { "type": "cta", "dur": 60, "headline": "Vende *en el chat*.", "keyword": "VENDER", "sub": "Te enviamos la guía por privado", "vo": "Comenta VENDER y te la envío por privado." }
+    ]
+  },
+  {
+    "id": "tofu-ecom-2", "theme": "brutalYellow", "tag": "Agentes IA", "cat": "agentes", "stage": "TOFU", "nicho": "ecom",
+    "title": "Carrito lleno, caja vacía", "angle": "Recuperar carritos",
+    "scenes": [
+      { "type": "statement", "dur": 60, "kicker": "Guía gratis para e-commerce", "text": "*Carritos abandonados*.", "vo": "Muchos clientes llegan al carrito de tu tienda y se van sin pagar. Descarga gratis la guía para e-commerce sobre cómo crear tu agente que los recupera por WhatsApp, sin código y en menos de cinco minutos." },
+      { "type": "statement", "dur": 60, "text": "Un email\nque *nadie abre*.", "vo": "Llegan al carrito, ven el envío o dudan con la talla y cierran la pestaña. Tu tienda les manda un email que nadie abre." },
+      { "type": "statement", "dur": 60, "text": "Carrito lleno.\n*Caja vacía*.", "vo": "Ya has pagado el anuncio, la visita y el interés. Y te quedas con el carrito lleno y la caja vacía." },
+      { "type": "statement", "dur": 60, "text": "No era un no.\n*Tenía una duda*.", "vo": "Muchos creen que el cliente que abandona no quería comprar. Muchas veces tenía una duda y nadie se la resolvió." },
+      { "type": "funnel", "dur": 60, "title": "Recupera la *venta*", "steps": ["Abandona el carrito", "Le escribe por WhatsApp", "Pregunta qué lo frenó", "Resuelve la duda", "Termina la compra"], "vo": "Un agente le escribe por WhatsApp a los pocos minutos, le pregunta qué lo frenó, le resuelve la duda y le devuelve el enlace para terminar la compra." },
+      { "type": "chat", "dur": 60, "header": "Tienda Nova", "msgs": [
+        { "from": "a", "text": "Hola, Sofía. Dejaste las zapatillas blancas en el carrito. ¿Te quedó alguna duda con la talla o el envío?" },
+        { "from": "c", "text": "No sé si me van en 38." },
+        { "from": "a", "text": "Tallan normal y tienes cambio gratis. Aquí tienes tu carrito para terminar la compra 🛒" }
+      ], "vo": "Hola, Sofía, dejaste las zapatillas blancas en el carrito. ¿Te quedó alguna duda con la talla o el envío? No sé si me van en la treinta y ocho. Tallan normal y tienes cambio gratis. Aquí tienes tu carrito para terminar la compra." },
+      { "type": "statement", "dur": 60, "text": "Para cualquier tienda\ncon *WhatsApp en el checkout*.", "vo": "Sirve para cualquier tienda que pida el WhatsApp del cliente en el checkout." },
+      { "type": "guide", "dur": 60, "title": "Agente que recupera carritos", "sub": "Sin código · gratis · en menos de 5 minutos", "vo": "En la guía te enseño cómo crearlo sin código, cuándo escribir y qué decir para recuperar la venta sin molestar." },
+      { "type": "cta", "dur": 60, "headline": "Recupera\n*tus carritos*.", "keyword": "CARRITO", "sub": "Te enviamos la guía por privado", "vo": "Comenta CARRITO y te la envío por privado." }
+    ]
+  },
+  {
+    "id": "tofu-ecom-3", "theme": "y2k", "tag": "Agentes IA", "cat": "agentes", "stage": "TOFU", "nicho": "ecom",
+    "title": "¿Dónde está mi pedido?", "angle": "Postventa automática",
+    "scenes": [
+      { "type": "statement", "dur": 60, "kicker": "Guía gratis para e-commerce", "text": "«¿Dónde está\n*mi pedido*?»", "vo": "Si tu equipo pasa el día contestando «¿dónde está mi pedido?», este vídeo es para ti. Descarga gratis la guía para e-commerce sobre cómo crear tu agente de postventa, sin código y en menos de cinco minutos." },
+      { "type": "list", "dur": 60, "title": "*Siempre* lo mismo", "items": ["¿Dónde está mi pedido?", "¿Cómo cambio la talla?", "¿Cuándo llega?"], "vo": "Muchos de los mensajes de tu tienda son iguales: dónde está mi pedido, cómo cambio la talla, cuándo llega." },
+      { "type": "statement", "dur": 60, "text": "Respuesta lenta.\n*Mala reseña*.", "vo": "Tu equipo se ahoga en postventa, tarda en responder y el cliente molesto deja una mala reseña o no vuelve a comprar." },
+      { "type": "beforeAfter", "dur": 60, "left": { "title": "Lo que crees", "items": ["Contratar más gente", "Más horas de atención"] }, "right": { "title": "Lo que necesitas", "items": ["Que alguien responda lo repetitivo"] }, "vo": "Muchos creen que necesitan contratar más gente para atención al cliente. Muchas veces necesitan que alguien responda lo repetitivo." },
+      { "type": "dashboard", "dur": 60, "title": "Postventa", "kpis": [{ "l": "Consultas de envío", "v": 42 }, { "l": "Cambios", "v": 9 }, { "l": "Pasadas al equipo", "v": 3 }], "note": "Datos de ejemplo", "vo": "Un agente de postventa consulta el estado del envío, explica cambios y devoluciones y solo pasa a una persona los casos especiales." },
+      { "type": "chat", "dur": 60, "header": "Tienda Nova", "msgs": [
+        { "from": "c", "text": "¿Dónde está mi pedido 4512?" },
+        { "from": "a", "text": "Salió ayer y llega el jueves 📦 Este es tu número de seguimiento: NV4512ES" }
+      ], "vo": "¿Dónde está mi pedido cuatro mil quinientos doce? Salió ayer y llega el jueves. Este es tu número de seguimiento. En segundos, sin que nadie del equipo lo toque." },
+      { "type": "list", "dur": 60, "title": "Para *cualquier tienda*", "items": ["Moda", "Cosmética", "Electrónica", "Hogar"], "vo": "Sirve para cualquier tienda con envíos y cambios: moda, cosmética, electrónica u hogar." },
+      { "type": "guide", "dur": 60, "title": "Agente de postventa", "sub": "Sin código · gratis · en menos de 5 minutos", "vo": "En la guía te enseño cómo crearlo sin código y cómo conectarlo al estado de tus pedidos." },
+      { "type": "cta", "dur": 60, "headline": "Postventa\n*en piloto automático*.", "keyword": "PEDIDO", "sub": "Te enviamos la guía por privado", "vo": "Comenta PEDIDO y te la envío por privado." }
+    ]
+  },
+  {
+    "id": "tofu-info-1", "theme": "brutal", "tag": "Agentes IA", "cat": "agentes", "stage": "TOFU", "nicho": "info",
+    "title": "Tu agenda llena de curiosos", "angle": "Calificar leads",
+    "scenes": [
+      { "type": "statement", "dur": 60, "kicker": "Guía gratis para infoproductores", "text": "El problema\n*no es tu closer*.", "vo": "Si tu agenda de llamadas se llena de curiosos, el problema no es tu closer. Descarga gratis la guía para infoproductores sobre cómo crear tu agente setter que califica leads, sin código y en menos de cinco minutos." },
+      { "type": "statement", "dur": 60, "text": "Llamadas con gente\n*sin presupuesto*.", "vo": "Entran leads del webinar o del anuncio, cualquiera agenda una llamada y tu closer pasa la tarde con gente sin presupuesto ni urgencia." },
+      { "type": "statement", "dur": 60, "text": "Y el lead bueno\n*se enfría*.", "vo": "Y mientras tanto, el lead bueno que escribió por WhatsApp espera respuesta hasta que se enfría." },
+      { "type": "beforeAfter", "dur": 60, "left": { "title": "Lo que crees", "items": ["Necesitas más leads"] }, "right": { "title": "Lo que necesitas", "items": ["Filtrar mejor los que tienes"] }, "vo": "La mayoría cree que necesita más leads. Muchas veces necesita filtrar mejor los que ya tiene." },
+      { "type": "pipeline", "dur": 60, "title": "Tu agente *setter*", "cols": ["Lead", "Conversa", "Califica", "Llamada"], "vo": "Un agente setter conversa con cada lead, le hace las preguntas de calificación y solo le agenda llamada al que encaja." },
+      { "type": "chat", "dur": 60, "header": "Academia Pro", "msgs": [
+        { "from": "a", "text": "¿Qué te gustaría lograr con el programa?" },
+        { "from": "c", "text": "Escalar mi consultoría" },
+        { "from": "a", "text": "¿Cuánto facturas hoy y cuándo quieres empezar?" },
+        { "from": "c", "text": "Unos 5.000 € al mes. Este mes." },
+        { "from": "a", "text": "¡Encajas! Aquí tienes el enlace para reservar tu llamada 📅" }
+      ], "vo": "¿Qué te gustaría lograr con el programa? ¿Cuánto facturas hoy? ¿Cuándo quieres empezar? Si encaja, recibe el enlace a tu agenda. Si no, recibe un recurso gratuito." },
+      { "type": "list", "dur": 60, "title": "Sirve para", "items": ["Coaches", "Consultores", "Mentores", "Infoproductos con llamada"], "vo": "Sirve para coaches, consultores, mentores y cualquier infoproducto que se cierre en una llamada." },
+      { "type": "guide", "dur": 60, "title": "Agente setter que califica leads", "sub": "Sin código · preguntas incluidas · en menos de 5 minutos", "vo": "En la guía te enseño cómo crearlo sin código y las preguntas de calificación para separar a los curiosos de los compradores." },
+      { "type": "cta", "dur": 60, "headline": "Solo llamadas\n*que cierran*.", "keyword": "SETTER", "sub": "Te enviamos la guía por privado", "vo": "Comenta SETTER y te la envío por privado." }
+    ]
+  },
+  {
+    "id": "tofu-info-2", "theme": "playfulDark", "tag": "Agentes IA", "cat": "agentes", "stage": "TOFU", "nicho": "info",
+    "title": "Del comentario al DM", "angle": "Comentarios en ventas",
+    "scenes": [
+      { "type": "statement", "dur": 60, "kicker": "Guía gratis para infoproductores", "text": "Comentario → *DM*.\nEn segundos.", "vo": "Cada vez que alguien comenta una palabra en tu reel y le respondes horas después, pierdes una venta. Descarga gratis la guía para infoproductores sobre cómo crear tu agente de mensajes directos de Instagram, sin código y en menos de cinco minutos." },
+      { "type": "statement", "dur": 60, "text": "*100 comentarios*.\nUna noche respondiendo.", "vo": "Tu reel funciona, entran cien comentarios pidiendo el recurso y te pasas la noche respondiendo mensajes uno por uno." },
+      { "type": "statement", "dur": 60, "text": "Los primeros\n*ya se olvidaron*.", "vo": "Para cuando llegas al número cincuenta, los primeros ya se han olvidado de quién eras." },
+      { "type": "beforeAfter", "dur": 60, "left": { "title": "La meta que crees", "items": ["Contenido viral"] }, "right": { "title": "La meta real", "items": ["Convertir comentarios en conversaciones"] }, "vo": "Muchos creen que el contenido viral es la meta. Pero el contenido viral solo sirve si alguien convierte esos comentarios en conversaciones." },
+      { "type": "list", "dur": 60, "title": "Tu agente de *DMs*", "items": ["Detecta el comentario", "Envía el recurso por DM", "Sigue la conversación"], "vo": "Un agente detecta el comentario, envía el recurso por mensaje directo en segundos y sigue la conversación para entender qué necesita esa persona." },
+      { "type": "chat", "dur": 60, "header": "Academia Pro", "msgs": [
+        { "from": "c", "text": "GUÍA" },
+        { "from": "a", "text": "¡Aquí tienes la guía! 📩 Cuéntame, ¿ya vendes online o estás empezando?" },
+        { "from": "c", "text": "Ya vendo, pero quiero escalar" },
+        { "from": "a", "text": "¡Genial! ¿Te paso un horario para una llamada?" }
+      ], "vo": "Alguien comenta GUÍA. A los pocos segundos recibe: aquí tienes la guía. Cuéntame, ¿ya vendes online o estás empezando? Y según la respuesta, le ofrece tu programa o una llamada." },
+      { "type": "statement", "dur": 60, "text": "Para creadores que dicen\n«*comenta y te lo envío*».", "vo": "Sirve para cualquier creador que usa la mecánica de «comenta y te lo envío»." },
+      { "type": "guide", "dur": 60, "title": "Agente de comentarios y DMs", "sub": "Sin código · gratis · en menos de 5 minutos", "vo": "En la guía te enseño cómo crearlo sin código y cómo pasar del mensaje directo a la venta sin sonar a robot." },
+      { "type": "cta", "dur": 60, "headline": "Míralo funcionar\n*en tu chat*.", "keyword": "DM", "sub": "Te llega la guía por DM", "vo": "Comenta DM y te la envío… y verás el agente funcionando en tu propio chat." }
+    ]
+  },
+  {
+    "id": "tofu-info-3", "theme": "serif", "tag": "Agentes IA", "cat": "agentes", "stage": "TOFU", "nicho": "info",
+    "title": "Lo pienso es un todavía no", "angle": "Seguimiento post-llamada",
+    "scenes": [
+      { "type": "statement", "dur": 60, "kicker": "Guía gratis para infoproductores", "text": "La venta se pierde\n*después de la llamada*.", "vo": "Muchas ventas de tu programa se pierden después de la llamada, no durante. Descarga gratis la guía para infoproductores sobre cómo crear tu agente de seguimiento, sin código y en menos de cinco minutos." },
+      { "type": "beforeAfter", "dur": 60, "left": { "title": "Lead 1", "items": ["Agenda la llamada", "No aparece"] }, "right": { "title": "Lead 2", "items": ["Te dice «lo pienso»", "Nunca más le escribes"] }, "vo": "Un lead agenda una llamada y no aparece. Otro te dice «lo pienso» y nunca más le escribes." },
+      { "type": "statement", "dur": 60, "text": "Pagaste todo.\n*Compró a otro*.", "vo": "Pagaste el anuncio, el webinar y la hora de tu closer. Y ese lead termina comprándole al siguiente que sí le hizo seguimiento." },
+      { "type": "statement", "dur": 60, "text": "«Lo pienso» es\nun *todavía no*.", "vo": "Muchos creen que «lo pienso» es un no. Muchas veces es un «todavía no», y gana quien sigue presente." },
+      { "type": "list", "dur": 60, "title": "Tu agente de *seguimiento*", "items": ["Confirma cada llamada", "Reagenda a quien no aparece", "Escribe a los «lo pienso»"], "vo": "Un agente confirma cada llamada antes de la hora, reagenda a quien no aparece y les escribe a los «lo pienso» durante los días siguientes." },
+      { "type": "chat", "dur": 60, "header": "Academia Pro", "msgs": [
+        { "from": "a", "text": "Hola, Diego. Te espero hoy a las 18:00 para la llamada. ¿Sigues pudiendo?" },
+        { "from": "a", "text": "Hoy no hemos coincidido. ¿Te paso dos horarios para mañana?" },
+        { "from": "c", "text": "Sí, perdona. Mañana por la tarde" }
+      ], "vo": "Hola, Diego, te espero hoy a las seis para la llamada. ¿Sigues pudiendo? Y si no aparece: hoy no hemos coincidido, ¿te paso dos horarios para mañana?" },
+      { "type": "calendar", "dur": 60, "title": "Tu agenda", "label": "Llamadas confirmadas y reagendadas", "vo": "Sirve para programas, mentorías y servicios que se venden por llamada." },
+      { "type": "guide", "dur": 60, "title": "Agente de seguimiento", "sub": "Sin código · secuencia incluida · en menos de 5 minutos", "vo": "En la guía te enseño cómo crearlo sin código y la secuencia de mensajes de seguimiento que puedes copiar." },
+      { "type": "cta", "dur": 60, "headline": "Que ningún lead\n*se quede sin respuesta*.", "keyword": "SEGUIMIENTO", "sub": "Te enviamos la guía por privado", "vo": "Comenta SEGUIMIENTO y te la envío por privado." }
+    ]
+  }
+]
