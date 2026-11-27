@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
+<meta name="facebook-domain-verification" content="3efpudoat2csdr3g65sj1o0frqe0jz" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Nyland Consulting · Consultoría de procesos e IA</title>
 <meta name="description" content="Consultoría de procesos e inteligencia artificial para pymes. Escuchamos a cada persona de tu equipo, desmontamos tus procesos y los transformamos sin perder lo que te hace único.">
@@ -1390,7 +1391,7 @@ document.documentElement.classList.add('js');
     try {
       const r = await fetch('/api/enviar.php', { method: 'POST', body: datos, headers: { 'Accept': 'application/json' } });
       const j = await r.json().catch(() => ({}));
-      if (r.ok && j.ok) return true;
+      if (r.ok && j.ok) { window.nylandLead && window.nylandLead(datos.get('tipo')); return true; }
       aviso.textContent = j.error || 'No hemos podido enviarlo. Escríbenos a contacto@nylandconsulting.es.';
     } catch (e) { aviso.textContent = 'Sin conexión. Inténtalo de nuevo o escríbenos a contacto@nylandconsulting.es.'; }
     finally { boton.disabled = false; boton.innerHTML = texto; }

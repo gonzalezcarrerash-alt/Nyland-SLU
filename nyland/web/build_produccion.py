@@ -11,6 +11,7 @@ os.makedirs(out + '/assets/fonts', exist_ok=True)
 shutil.copytree('assets/fotos', out + '/assets/fotos', ignore=shutil.ignore_patterns('raw*'))
 shutil.copy('guia-5-preguntas.pdf', out + '/guia-5-preguntas.pdf')
 shutil.copytree('api', out + '/api')
+shutil.copy('cookies.js', out + '/assets/cookies.js')
 shutil.copytree('demo', out + '/demo', ignore=shutil.ignore_patterns('*.py', 'plantilla.html'))
 for f in ['logo-nyland-consulting-web.png', 'mascota-nyland-web.jpg', 'og-nyland.jpg']:
     shutil.copy('assets/' + f, out + '/assets/' + f)
@@ -31,7 +32,7 @@ open(f'{out}/assets/fonts.css', 'w').write('\n'.join(faces))
 css = re.search(r'<style>(.*?)</style>', src, re.S).group(1)
 js = re.search(r'<script>\n(.*?)</script>', src, re.S).group(1)
 src = re.sub(r'<style>.*?</style>', '<link rel="stylesheet" href="assets/fonts.css">\n<link rel="stylesheet" href="assets/styles.css">', src, count=1, flags=re.S)
-src = re.sub(r'<script>\n.*?</script>', '<script src="assets/app.js" defer></script>', src, count=1, flags=re.S)
+src = re.sub(r'<script>\n.*?</script>', '<script src="assets/cookies.js" defer></script>\n<script src="assets/app.js" defer></script>', src, count=1, flags=re.S)
 src = re.sub(r'<link rel="preconnect"[^>]*>\n?', '', src)
 src = re.sub(r'<link href="https://fonts.googleapis.com[^>]*>\n?', '', src)
 
@@ -45,7 +46,7 @@ css = css.replace('.sr>input{width:100%}', '.sr>input{width:100%}\n.gu-form labe
 # 4. Dominio, email y textos de maqueta
 src = src.replace('https://tudominio.es', DOM)
 src = src.replace('<label class="sr">Tu email<input', '<label class="sr"><span class="lbl">Tu email</span><input')
-src = re.sub(r'<nav aria-label="Contacto y legal">.*?</nav>', f'<nav aria-label="Contacto y legal">\n        <a href="mailto:{EMAIL}">{EMAIL}</a>\n        <a href="privacidad.html">Política de privacidad</a><a href="aviso-legal.html">Aviso legal</a>\n      </nav>', src, count=1, flags=re.S)
+src = re.sub(r'<nav aria-label="Contacto y legal">.*?</nav>', f'<nav aria-label="Contacto y legal">\n        <a href="mailto:{EMAIL}">{EMAIL}</a>\n        <a href="privacidad.html">Política de privacidad</a><a href="aviso-legal.html">Aviso legal</a><a href="#" data-cookies>Cookies</a>\n      </nav>', src, count=1, flags=re.S)
 src = src.replace(' · Maqueta de prueba: contacto de ejemplo y textos legales pendientes.', '')
 src = src.replace('<p class="demo">Maqueta: los datos no se envían ni se guardan.</p>', '<p class="demo">Al pulsar, se abrirá tu correo con la solicitud lista para enviar a ' + EMAIL + '.</p>')
 src = src.replace('Acepto la política de privacidad y recibir la guía por email.', 'Acepto la <a href="privacidad.html">política de privacidad</a>.')
@@ -65,7 +66,7 @@ src = head + '<main id="inicio">' + body
 assert '/api/enviar.php' in js, 'formularios sin conectar'
 # Versión en los nombres de recursos para que ninguna caché sirva una copia antigua
 ver = hashlib.sha1((css + js).encode()).hexdigest()[:10]
-src = src.replace('href="assets/styles.css"', f'href="assets/styles.css?v={ver}"').replace('href="assets/fonts.css"', f'href="assets/fonts.css?v={ver}"').replace('src="assets/app.js"', f'src="assets/app.js?v={ver}"')
+src = src.replace('href="assets/styles.css"', f'href="assets/styles.css?v={ver}"').replace('href="assets/fonts.css"', f'href="assets/fonts.css?v={ver}"').replace('src="assets/app.js"', f'src="assets/app.js?v={ver}"').replace('src="assets/cookies.js"', f'src="assets/cookies.js?v={ver}"')
 open(f'{out}/assets/styles.css', 'w').write(css)
 open(f'{out}/assets/app.js', 'w').write(js)
 open(f'{out}/index.html', 'w').write(src)
@@ -75,13 +76,14 @@ def pagina(titulo, cuerpo):
     return f'''<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{titulo} · Nyland Consulting</title><meta name="robots" content="noindex"><link rel="icon" type="image/png" href="assets/logo-nyland-consulting-web.png">
 <link rel="stylesheet" href="assets/fonts.css"><link rel="stylesheet" href="assets/legal.css"></head><body><main>
-<a class="volver" href="/">← Volver a Nyland Consulting</a><h1>{titulo}</h1>{cuerpo}</main></body></html>'''
+<a class="volver" href="/">← Volver a Nyland Consulting</a><h1>{titulo}</h1>{cuerpo}</main><script src="/assets/cookies.js" defer></script></body></html>'''
 open(f'{out}/assets/legal.css', 'w').write("body{margin:0;background:#0f241b;color:#F2F5F0;font:17px/1.7 Inter,system-ui,sans-serif}main{max-width:760px;margin:0 auto;padding:80px 20px}h1,h2{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500}h1{font-size:52px;margin:24px 0}h2{font-size:30px;margin-top:40px}a{color:#D6B26C}.volver{text-decoration:none;font-size:14px;letter-spacing:.06em}.aviso{border:1px solid rgba(214,178,108,.5);border-radius:14px;padding:16px 20px;color:#ecd08f}")
 PEND = '<p class="aviso">Texto en revisión. Si tienes cualquier duda, escríbenos a <a href="mailto:%s">%s</a>.</p>' % (EMAIL, EMAIL)
 open(f'{out}/privacidad.html', 'w').write(pagina('Política de privacidad', PEND + f'''
 <h2>Responsable</h2><p>Nyland Consulting S.L. · Email: <a href="mailto:{EMAIL}">{EMAIL}</a>. [Pendiente: NIF y domicilio social.]</p>
-<h2>Qué datos tratamos</h2><p>Esta web no usa cookies de seguimiento ni herramientas de analítica, y no guarda en su servidor los datos de los formularios. El formulario de diagnóstico abre tu programa de correo para que nos envíes tú mismo la solicitud. Tratamos los datos que nos escribas por email (nombre, empresa, contacto y lo que nos cuentes) y, si pides la guía, los del apartado siguiente.</p>
+<h2>Qué datos tratamos</h2><p>Tratamos los datos que nos envías en los formularios de la web (nombre, empresa, sector, contacto y lo que nos cuentes), que nos llegan por email y no se guardan en una base de datos de la web, y, si pides la guía, los del apartado siguiente.</p>
 <h2>Guía gratuita y emails</h2><p>Si pides nuestra guía, tu nombre y tu email se guardan en Brevo (Sendinblue SAS, proveedor de email marketing con servidores en la Unión Europea), que actúa como encargado del tratamiento. Los usamos para enviarte la guía y algunos emails relacionados con ella. Cada email incluye un enlace para darte de baja cuando quieras.</p>
+<h2 id="cookies">Cookies</h2><p>Solo si las aceptas en el aviso de cookies, usamos el píxel de Meta (Meta Platforms Ireland Ltd.) para medir la eficacia de nuestros anuncios en Facebook e Instagram y mostrar anuncios a personas que han visitado la web. Meta puede tratar estos datos fuera de la Unión Europea con las garantías que exige la ley. Si las rechazas, no se carga ninguna cookie de terceros. Guardamos tu elección en tu navegador y puedes cambiarla cuando quieras desde el enlace «Cookies» del pie de la web o <a href="#" data-cookies>aquí</a>.</p>
 <h2>Para qué</h2><p>Para responder a tu solicitud de diagnóstico o enviarte la guía que nos pidas. No los usamos para otros fines ni los cedemos a terceros, salvo obligación legal.</p>
 <h2>Base legal</h2><p>Tu consentimiento al escribirnos y, si llegamos a trabajar juntos, la relación precontractual o contractual.</p>
 <h2>Cuánto tiempo</h2><p>El necesario para atender tu solicitud y, en su caso, los plazos que marque la ley.</p>
@@ -116,7 +118,7 @@ RewriteRule (^|/)\.(?!well-known/) - [F]
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
   Header always set Cross-Origin-Opener-Policy "same-origin"
-  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; upgrade-insecure-requests"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' https://connect.facebook.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.facebook.com; font-src 'self'; connect-src 'self' https://www.facebook.com https://connect.facebook.net; form-action 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; upgrade-insecure-requests"
   Header unset X-Powered-By
   <FilesMatch "\.(css|js|woff2|jpg|png)$">
     Header set Cache-Control "public, max-age=2592000"
