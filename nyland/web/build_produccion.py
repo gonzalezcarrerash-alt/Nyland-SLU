@@ -10,6 +10,7 @@ shutil.rmtree(out, ignore_errors=True)
 os.makedirs(out + '/assets/fonts', exist_ok=True)
 shutil.copytree('assets/fotos', out + '/assets/fotos', ignore=shutil.ignore_patterns('raw*'))
 shutil.copy('guia-5-preguntas.pdf', out + '/guia-5-preguntas.pdf')
+shutil.copytree('api', out + '/api')
 for f in ['logo-nyland-consulting-web.png', 'mascota-nyland-web.jpg', 'og-nyland.jpg']:
     shutil.copy('assets/' + f, out + '/assets/' + f)
 
@@ -58,14 +59,8 @@ head, body = src.split('<main id="inicio">', 1)
 body = re.sub(r'<img [^>]*>', lazy, body)
 src = head + '<main id="inicio">' + body
 
-# 5. Formularios: sin servidor todavía, envían a tu correo con mailto (no guardan datos)
-js = re.sub(r"pForm\.style\.display = 'none'; pOk\.style\.display = 'block'; \}\);",
-  "const cuerpo = `Nombre: ${f.nombre.value.trim()}\\nEmpresa: ${f.empresa.value.trim()}\\nSector: ${f.sector.value}\\nContacto: ${f.contacto.value.trim()}\\n\\nLo que más tiempo le quita al equipo:\\n${f.tiempo.value.trim()}`;\n    location.href = 'mailto:" + EMAIL + "?subject=' + encodeURIComponent('Solicitud de diagnóstico · ' + f.empresa.value.trim()) + '&body=' + encodeURIComponent(cuerpo);\n    pForm.style.display = 'none'; pOk.style.display = 'block'; });", js, count=1)
-js = js.replace("__sin_uso__",
-  "location.href = 'mailto:" + EMAIL + "?subject=' + encodeURIComponent('Quiero la guía: 5 preguntas para mi equipo') + '&body=' + encodeURIComponent('Hola, me gustaría recibir la guía. Mi email es: ' + em);\n    gok.style.color = ''; gok.textContent = 'Se ha abierto tu correo con la petición. Envíala y te mandamos la guía.'; gf.reset(); });")
-src = src.replace('<p class="micro">Te contactamos en menos de 24 horas laborables para fijar tus 15 minutos.</p>', '<p class="micro">Se ha abierto tu programa de correo con la solicitud. Envíala y te contactamos en menos de 24 horas laborables para fijar tus 15 minutos.</p>')
-src = src.replace('<h2>Recibido.</h2>', '<h2>Casi listo.</h2>')
-assert 'mailto:' in js and js.count('location.href') == 1, 'formulario de diagnóstico sin conectar'
+# 5. Formularios: los envía /api/enviar.php (email a contacto@ y lista de Brevo)
+assert '/api/enviar.php' in js, 'formularios sin conectar'
 open(f'{out}/assets/styles.css', 'w').write(css)
 open(f'{out}/assets/app.js', 'w').write(js)
 open(f'{out}/index.html', 'w').write(src)
@@ -116,7 +111,7 @@ RewriteRule (^|/)\.(?!well-known/) - [F]
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
   Header always set Cross-Origin-Opener-Policy "same-origin"
-  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self' mailto:; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; upgrade-insecure-requests"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; upgrade-insecure-requests"
   Header unset X-Powered-By
   <FilesMatch "\.(css|js|woff2|jpg|png)$">
     Header set Cache-Control "public, max-age=2592000"

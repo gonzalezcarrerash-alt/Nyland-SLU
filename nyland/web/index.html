@@ -517,6 +517,10 @@ mark{background:none;padding:0;color:var(--oro-c);font-family:var(--serif);font-
 .sr>input{width:100%}
 @media (max-width:900px){.guia{padding:100px 0}.gu-grid{grid-template-columns:1fr;gap:50px}.libro{max-width:240px}.libro b{font-size:28px}}
 
+.trampa{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0}
+.gu-ok{color:#f0a090}
+.gu-ok.bien{color:var(--menta)}
+.gu-form .btn[disabled],#form .btn[disabled]{opacity:.7;cursor:wait}
 /* Responsive */
 @media (max-width:900px){
   body{font-size:16px}
@@ -764,8 +768,16 @@ mark{background:none;padding:0;color:var(--oro-c);font-family:var(--serif);font-
             <li>En qué momento exacto se te escapa un cliente.</li>
             <li>Qué se quedaría parado si mañana faltara alguien.</li>
           </ul>
-          <a class="btn" href="https://65b167e8.sibforms.com/serve/MUIFAHC74YK4BUtau3wKFd1ArbIl6TUGcwhtsEimLPvJ7Mq9g61HHGuOBdF8ssr2VmkANlEF854V7UJKA1yR_bRsT6-cNuxLLIeWhUXnM51Di1-58ALy0dj9QWJ06Cvr3QgpRfFp21ZVqhI6xlrDccJVGUId9U0MHmy4yNi9fWm6AELIyyBBbLkpi1M_Tts-xvGXYR-jxh0z3QuXXw==" target="_blank" rel="noopener">Quiero la guía <span class="arrow">→</span></a>
-          <p class="micro">Gratis · Te la enviamos al momento por email · Puedes darte de baja cuando quieras</p>
+          <form class="gu-form" id="guiaForm" novalidate>
+            <input type="hidden" name="tipo" value="guia">
+            <input type="text" name="web" class="trampa" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <label class="sr"><span class="lbl">Tu nombre</span><input name="nombre" placeholder="Tu nombre" autocomplete="given-name"></label>
+            <label class="sr"><span class="lbl">Tu email</span><input type="email" name="email" placeholder="Tu email profesional" autocomplete="email" required></label>
+            <button class="btn" type="submit">Solicitar la guía</button>
+          </form>
+          <label class="check gu-check"><input type="checkbox" id="guiaRgpd"> Acepto la <a href="privacidad.html">política de privacidad</a> y recibir la guía y emails de Nyland Consulting.</label>
+          <p class="gu-ok" id="guiaOk" aria-live="polite"></p>
+          <p class="micro">Gratis · Puedes darte de baja cuando quieras</p>
         </div>
       </div>
     </div>
@@ -1139,6 +1151,8 @@ mark{background:none;padding:0;color:var(--oro-c);font-family:var(--serif);font-
       <h2 id="mtitulo">Solicitar un diagnóstico</h2>
       <p class="micro" style="margin:0">Sin compromiso · 15 minutos · Directamente con nuestro equipo</p>
       <form id="form" novalidate>
+        <input type="hidden" name="tipo" value="diagnostico">
+        <input type="text" name="web" class="trampa" tabindex="-1" autocomplete="off" aria-hidden="true">
         <label>Nombre<input name="nombre" autocomplete="name" required></label>
         <label>Empresa<input name="empresa" autocomplete="organization" required></label>
         <label>Sector<select name="sector" required><option value="">Elige una opción</option><option>Clínica dental</option><option>Rehabilitación de fachadas</option><option>Otro</option></select></label>
@@ -1147,7 +1161,7 @@ mark{background:none;padding:0;color:var(--oro-c);font-family:var(--serif);font-
         <label class="check"><input type="checkbox" name="rgpd" required> He leído y acepto la política de privacidad.</label>
         <p class="error" id="error" aria-live="assertive"></p>
         <button class="btn" type="submit">Solicitar un diagnóstico</button>
-        <p class="demo">Maqueta: los datos no se envían ni se guardan.</p>
+        <p class="demo">Te respondemos en menos de 24 horas laborables desde contacto@nylandconsulting.es.</p>
       </form>
     </div>
     <div class="ok" id="paso-ok">
@@ -1249,7 +1263,31 @@ document.documentElement.classList.add('js');
   form.addEventListener('submit', e => { e.preventDefault(); const f = form.elements;
     if (!f.nombre.value.trim() || !f.empresa.value.trim() || !f.sector.value || !f.contacto.value.trim()) { err.textContent = 'Completa los campos obligatorios, por favor.'; return; }
     if (!f.rgpd.checked) { err.textContent = 'Necesitamos que aceptes la política de privacidad.'; return; }
-    pForm.style.display = 'none'; pOk.style.display = 'block'; });
+    enviar(form, err).then(ok => { if (ok) { pForm.style.display = 'none'; pOk.style.display = 'block'; } }); });
+
+  // Envío de formularios al servidor de la web
+  async function enviar(formulario, aviso) {
+    const boton = formulario.querySelector('button[type=submit]');
+    const texto = boton.innerHTML; boton.disabled = true; boton.textContent = 'Enviando…';
+    const datos = new FormData(formulario); datos.set('rgpd', '1');
+    try {
+      const r = await fetch('/api/enviar.php', { method: 'POST', body: datos, headers: { 'Accept': 'application/json' } });
+      const j = await r.json().catch(() => ({}));
+      if (r.ok && j.ok) return true;
+      aviso.textContent = j.error || 'No hemos podido enviarlo. Escríbenos a contacto@nylandconsulting.es.';
+    } catch (e) { aviso.textContent = 'Sin conexión. Inténtalo de nuevo o escríbenos a contacto@nylandconsulting.es.'; }
+    finally { boton.disabled = false; boton.innerHTML = texto; }
+    return false;
+  }
+
+  // Guía gratuita
+  const gf = document.getElementById('guiaForm'), gok = document.getElementById('guiaOk');
+  gf.addEventListener('submit', e => { e.preventDefault(); gok.classList.remove('bien');
+    const em = gf.elements.email.value.trim();
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)) { gok.textContent = 'Revisa tu email, por favor.'; return; }
+    if (!document.getElementById('guiaRgpd').checked) { gok.textContent = 'Necesitamos que aceptes la política de privacidad.'; return; }
+    gok.textContent = '';
+    enviar(gf, gok).then(ok => { if (ok) { gok.classList.add('bien'); gok.textContent = '¡Listo! Revisa tu correo: te hemos enviado un email para confirmar y, al confirmar, recibirás la guía.'; gf.reset(); } }); });
 })();
 </script>
 </body>
